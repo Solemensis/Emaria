@@ -23,10 +23,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="container">
+  <div data-aos="zoom-in" class="container">
     <p>
       Don't have an account?
-      <NuxtLink to="/SignupPage" class="register">Register</NuxtLink>
+      <NuxtLink to="/signup" class="register">Register</NuxtLink>
     </p>
     <h2>
       Login to
@@ -63,6 +63,9 @@ onMounted(() => {
 
       <p><NuxtLink class="forgot-pass">Forgot Your Password?</NuxtLink></p>
     </FormKit>
+    <teleport to='body' >
+   <NuxtLink to="/"> <p class="entity-arrow">	&#8592</p></NuxtLink>
+  </teleport>
   </div>
 </template>
 
@@ -131,6 +134,18 @@ button:active {
 </style>
 
 <style scoped>
+
+.entity-arrow{
+  font-size:5rem;
+  color:rgb(130, 130, 130) ;
+ border-right:1px rgb(177, 177, 177) solid;
+ display:inline-block;
+ padding-bottom:1rem;
+ position:absolute;
+ left:5%;
+ top:25%;
+ cursor: pointer;
+}
 * {
   text-align: center;
 }
@@ -138,7 +153,7 @@ button:active {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) !important;
 }
 
 h2 {

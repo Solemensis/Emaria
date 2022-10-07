@@ -1,7 +1,8 @@
-<script setup></script>
-
 <template lang="">
-  <div><LoginForm /></div>
+  <div>
+    <Navbar />
+    <Products />
+  </div>
 </template>
 
 <style lang=""></style>
