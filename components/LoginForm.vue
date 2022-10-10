@@ -16,13 +16,18 @@ const user = useSupabaseUser();
 onMounted(() => {
   watchEffect(() => {
     if (user.value) {
-      navigateTo("/");
+    navigateTo("/");
     }
   });
 });
+
+
+
 </script>
 
 <template>
+
+
   <div data-aos="zoom-in" class="container">
     <p>
       Don't have an account?
@@ -32,12 +37,11 @@ onMounted(() => {
       Login to
       <span>Emaria</span>
     </h2>
-    <FormKit
+      <FormKit
       messages-class="messages"
       type="form"
       submit-label="Sign In"
-      @submit="() => login()"
-    >
+      @submit="() => login()">
       <FormKit
         :classes="{
           input: 'input1',

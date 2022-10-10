@@ -1,6 +1,8 @@
 <script setup>
 const route = useRoute();
 const { data: products } = await useFetch("https://fakestoreapi.com/products/");
+const cartStore =useCartStore();
+
 
 // function idToInteger() {
 //   return parseInt(route.params.id);
@@ -10,6 +12,10 @@ const { data: products } = await useFetch("https://fakestoreapi.com/products/");
 //   //çalışmıyor niye anlayamadım
 //   return products.find((e) => e.id == route.params.id);
 // }
+
+function addToCart(product) {
+cartStore.addToCart(product)
+}
 </script>
 
 <template>
@@ -40,7 +46,7 @@ const { data: products } = await useFetch("https://fakestoreapi.com/products/");
         <!-- <p>{{ products.find((e) => e.id == route.params.id).rating }}</p> -->
         <div class="buttons">
           <button class="add-to-fav button">❤️</button
-          ><button class="add-to-cart button">Add To Cart</button>
+          ><button @click="addToCart(products.find((e) => e.id == route.params.id))" class="add-to-cart button">Add To Cart</button>
         </div>
       </div>
     </div>

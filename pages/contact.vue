@@ -1,16 +1,12 @@
-<script setup>
-let show = ref(true);
-</script>
+<script setup></script>
 
 <template>
-  <Transition>
-    <section v-if="show">
-      <Navbar />
-      <main data-aos="zoom-in" class="contact">
-        <h1>This is a contact page</h1>
-      </main>
-    </section>
-  </Transition>
+  <div>
+    <Navbar />
+    <div data-aos="zoom-in" class="contact">
+      <h1>This is a contact page</h1>
+    </div>
+  </div>
 </template>
 
 <style scoped>
@@ -32,9 +28,5 @@ let show = ref(true);
   padding: 5rem 10rem;
   border-radius: 1rem;
   font-size: 2rem;
-}
-
-section {
-  height: 100vw;
 }
 </style>

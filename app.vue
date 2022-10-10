@@ -10,6 +10,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abel&display=swap");
 
+@media (min-width: 1920px) {
+  html {
+    font-size: 70% !important;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;

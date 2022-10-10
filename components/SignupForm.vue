@@ -24,10 +24,14 @@ const user = useSupabaseUser();
 onMounted(() => {
   watchEffect(() => {
     if (user.value) {
-      navigateTo("/");
+    navigateTo("/");
     }
   });
 });
+
+
+
+
 </script>
 
 <template>
@@ -36,6 +40,7 @@ onMounted(() => {
       Already have an account?
       <NuxtLink to="/login" class="register">Login</NuxtLink>
     </p>
+  
     <h2>
       Create Your <br />
       <span>Emaria</span> Account

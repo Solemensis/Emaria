@@ -1,17 +1,15 @@
 <script setup>
-// import { useProducts } from "@/stores/product";
 const { data: products } = await useFetch("https://fakestoreapi.com/products/");
 
-// const { data: products } = useProducts;
 const shoppingCart = reactive([]);
 
-// function addToCart(product) {
-//   if (shoppingCart.includes(product.title && product.price)) {
-//     return;
-//   } else {
-//     shoppingCart.push({ title: product.title, price: product.price });
-//   }
-// }
+function addToCart(product) {
+  if (shoppingCart.includes(product.title && product.price)) {
+    return;
+  } else {
+    shoppingCart.push({ title: product.title, price: product.price });
+  }
+}
 </script>
 
 <template>
@@ -47,6 +45,7 @@ const shoppingCart = reactive([]);
   </div>
   <div>
     <h2>shopping cart</h2>
+
     <p>{{ shoppingCart }}</p>
   </div>
 </template>
@@ -148,7 +147,8 @@ h2 {
   align-items: center;
   margin: 0 auto;
   margin-top: 10rem;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1rem));
+  /* grid-template-columns: repeat(auto-fit, minmax(30rem, 1rem)); */
+  grid-template-columns: repeat(auto-fit, minmax(27rem, 1rem));
 
   /* grid-template-columns: 1fr 1fr 1fr; */
 }

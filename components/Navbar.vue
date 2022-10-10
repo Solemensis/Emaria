@@ -22,6 +22,15 @@ const signOut = async () => {
     </ul>
 
     <div class="user-logged" v-if="user">
+      <NuxtLink to="/cart">
+        <div class="cart-box">
+          <img class="cart-img" src="@/assets/images/shopping-cart.svg" />
+          <p class="cart-counter">
+            {{ useCartStore().totalCount }}
+          </p>
+        </div>
+      </NuxtLink>
+
       <p>Hello, {{ user.user_metadata.userName }}!</p>
       <button class="logout-button" @click="signOut()">Logout</button>
     </div>
@@ -37,6 +46,30 @@ const signOut = async () => {
 </template>
 
 <style scoped>
+.cart-counter {
+  position: absolute;
+  color: red !important;
+  font-size: 1.5rem !important;
+  top: -0.5rem;
+  font-weight: 800 !important;
+}
+.cart-box {
+  /* border: 3px solid rgb(255, 156, 255); */
+  padding: 0.2rem;
+  margin-right: 4rem;
+  border-radius: 1rem;
+  transition: 0.1s;
+  cursor: pointer;
+  position: relative;
+}
+.cart-box:hover {
+  transform: scale(0.95);
+}
+
+.cart-img {
+  width: 3rem;
+  margin-top: 0.2rem;
+}
 .login-signup {
   display: flex;
   align-items: center;
