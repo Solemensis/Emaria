@@ -1,31 +1,30 @@
 <script setup>
 
- import { createClient } from "@supabase/supabase-js";
+//  import { createClient } from "@supabase/supabase-js";
 
- const config = useRuntimeConfig();
+//  const config = useRuntimeConfig();
 
- const supabaseUrl = config.SUPABASE_URL;
- const supabaseKey = config.SUPABASE_KEY;
- const supabase = createClient(supabaseUrl, supabaseKey);
+//  const supabaseUrl = config.SUPABASE_URL;
+//  const supabaseKey = config.SUPABASE_KEY;
+//  const supabase = createClient(supabaseUrl, supabaseKey);
 
+const supabase = useSupabaseClient();
 
 const route = useRoute();
 const { data: products } = await useFetch("https://fakestoreapi.com/products/");
-const cartStore =useCartStore();
+const cartStore = useCartStore();
 
 
 
 
 // function product() {
-//   //çalışmıyor niye anlayamadım
+   //çalışmıyor niye anlayamadım
 //   return products.find((e) => e.id == route.params.id);
 // }
 
  function addToCart(product) {
  cartStore.addToCart(product)
-
-
- }
+}
 
 
 
@@ -34,7 +33,7 @@ async function anan(){
   const { data, error } = await supabase
   .from('anan')
   .insert([
-    { id: 16, anannasil: 'othersdsd123123Value' },
+    { id: 6, anannasil: 'othersdsd123123Value' },
   ])
  
 
@@ -71,7 +70,7 @@ async function anan(){
         <!-- <p>{{ products.find((e) => e.id == route.params.id).rating }}</p> -->
         <div class="buttons">
           <button class="add-to-fav button">❤️</button
-          ><button @click="anan()" class="add-to-cart button">Add To Cart</button>
+          ><button @click="anan(), addToCart(products.find((e) => e.id == route.params.id))" class="add-to-cart button">Add To Cart</button>
         </div>
       </div>
     </div>

@@ -1,11 +1,13 @@
 <script setup>
-import { createClient } from "@supabase/supabase-js";
+// import { createClient } from "@supabase/supabase-js";
 
-const config = useRuntimeConfig();
+// const config = useRuntimeConfig();
 
-const supabaseUrl = config.SUPABASE_URL;
-const supabaseKey = config.SUPABASE_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+// const supabaseUrl = config.SUPABASE_URL;
+// const supabaseKey = config.SUPABASE_KEY;
+// const supabase = createClient(supabaseUrl, supabaseKey);
+
+const supabase = useSupabaseClient();
 
 let { data: anan, error } = await supabase.from("anan").select("*");
 </script>
