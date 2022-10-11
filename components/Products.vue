@@ -1,20 +1,10 @@
 <script setup>
 const { data: products } = await useFetch("https://fakestoreapi.com/products/");
-
-const shoppingCart = reactive([]);
-
-function addToCart(product) {
-  if (shoppingCart.includes(product.title && product.price)) {
-    return;
-  } else {
-    shoppingCart.push({ title: product.title, price: product.price });
-  }
-}
 </script>
 
 <template>
-  <!-- <h2>Shop</h2>
-  <div class="filter page-format">
+  <!-- <h2>Shop</h2> -->
+  <!-- <div class="filter page-format">
     <div class="categories">
       <img src="@/assets/images/123.png" alt="" />
       <img src="@/assets/images/123.png" alt="" />
@@ -43,11 +33,7 @@ function addToCart(product) {
       </div>
     </div>
   </div>
-  <div>
-    <h2>shopping cart</h2>
-
-    <p>{{ shoppingCart }}</p>
-  </div>
+  <div></div>
 </template>
 
 <style scoped>
@@ -172,7 +158,6 @@ h2 {
 p {
   text-align: center;
 }
-
 .product-img-2 {
   max-width: 58%;
 }

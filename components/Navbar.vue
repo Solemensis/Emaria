@@ -91,6 +91,7 @@ const signOut = async () => {
   font-family: "Abel";
   font-weight: 800;
   color: black;
+  cursor: pointer;
 }
 
 button {
@@ -179,9 +180,7 @@ button {
   justify-content: center;
   align-items: center;
 }
-.logo-container h2 {
-  cursor: pointer;
-}
+
 .logo-container img {
   height: 5.5rem;
   margin-right: 0.3rem;

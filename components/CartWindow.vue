@@ -1,19 +1,97 @@
-<script setup></script>
+<script setup>
+const subTotal = useCartStore().subTotal;
+const taxes = subTotal * 0.1;
+const total = subTotal + taxes;
+
+const cartStore = useCartStore();
+
+// function removeFromCart(item) {
+//   cartStore.removeFromCart(item);
+// }
+</script>
 
 <template>
-  <div class="wrapper" data-aos="zoom-in">
-    <h2 class="heading">Your Cart</h2>
-    <div class="price-box">
-      <ul>
-        <li>Subtotal:</li>
-        <li>Estimated Taxes:</li>
-        <li>Total:</li>
-      </ul>
-      <button class="checkout">checkout</button>
+  <div class="wrapper page-format" data-aos="zoom-in">
+    <h2 v-if="cartStore.items.length" class="heading">Your Cart</h2>
+    <h2 v-else class="heading2">Your cart is empty.</h2>
+    <div class="flex">
+      <table v-if="cartStore.items.length">
+        <tr>
+          <th class="delete-button"></th>
+          <th>Image</th>
+          <th>Title</th>
+          <th>Price</th>
+          <th>Amount</th>
+        </tr>
+        <tr v-for="(item, index) in cartStore.items">
+          <td @click="removeFromCart(item)">&#10006;</td>
+          <td>
+            <img :src="item.item.image" />
+          </td>
+
+          <td class="title-table">
+            <NuxtLink
+              class="title"
+              :to="{ name: 'shop-id', params: { id: item.item.id } }"
+            >
+              {{ item.item.title }}</NuxtLink
+            >
+          </td>
+          <td>${{ (item.item.price * item.amount).toFixed(2) }}</td>
+          <td class="amount-table">
+            <input
+              min="0"
+              type="number"
+              v-model="cartStore.items[index].amount"
+            />
+          </td>
+        </tr>
+      </table>
+      <div v-if="cartStore.items.length" class="price-box">
+        <ul>
+          <li>Subtotal: ${{ subTotal.toFixed(2) }}</li>
+          <li>Estimated Taxes: ${{ taxes.toFixed(2) }}</li>
+          <li>Total: ${{ total.toFixed(2) }}</li>
+        </ul>
+        <button class="checkout">checkout</button>
+      </div>
     </div>
   </div>
 </template>
 <style scoped>
+input {
+  width: 5rem;
+}
+.title-table {
+  width: 50%;
+}
+.title {
+  font-weight: 600;
+  color: black;
+  cursor: pointer;
+}
+
+table {
+  width: 70%;
+}
+th {
+  text-align: start;
+  font-size: 2.5rem;
+  height: 10rem;
+}
+td {
+  font-size: 2rem;
+  height: 10rem;
+}
+td img {
+  width: 6rem;
+}
+
+.flex {
+  display: flex;
+
+  justify-content: space-between;
+}
 .wrapper {
   position: absolute;
   left: 50%;
@@ -24,12 +102,26 @@
   font-size: 4rem;
   margin-bottom: 2rem;
 }
+.heading2 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+}
 .price-box {
-  background-color: rgb(212, 212, 212);
   color: red;
   font-size: 2rem;
-  display: inline-block;
+
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+.price-box ul {
+  list-style: none;
+}
+
 .checkout {
   background-image: linear-gradient(
     to right,

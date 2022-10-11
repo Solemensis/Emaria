@@ -1,25 +1,50 @@
 <script setup>
+
+ import { createClient } from "@supabase/supabase-js";
+
+ const config = useRuntimeConfig();
+
+ const supabaseUrl = config.SUPABASE_URL;
+ const supabaseKey = config.SUPABASE_KEY;
+ const supabase = createClient(supabaseUrl, supabaseKey);
+
+
 const route = useRoute();
 const { data: products } = await useFetch("https://fakestoreapi.com/products/");
 const cartStore =useCartStore();
 
 
-// function idToInteger() {
-//   return parseInt(route.params.id);
-// }
+
 
 // function product() {
 //   //çalışmıyor niye anlayamadım
 //   return products.find((e) => e.id == route.params.id);
 // }
 
-function addToCart(product) {
-cartStore.addToCart(product)
+ function addToCart(product) {
+ cartStore.addToCart(product)
+
+
+ }
+
+
+
+
+async function anan(){
+  const { data, error } = await supabase
+  .from('anan')
+  .insert([
+    { id: 16, anannasil: 'othersdsd123123Value' },
+  ])
+ 
+
 }
+
 </script>
 
 <template>
   <div >
+  
     <Navbar />
 
     <div  class="flex">
@@ -46,7 +71,7 @@ cartStore.addToCart(product)
         <!-- <p>{{ products.find((e) => e.id == route.params.id).rating }}</p> -->
         <div class="buttons">
           <button class="add-to-fav button">❤️</button
-          ><button @click="addToCart(products.find((e) => e.id == route.params.id))" class="add-to-cart button">Add To Cart</button>
+          ><button @click="anan()" class="add-to-cart button">Add To Cart</button>
         </div>
       </div>
     </div>

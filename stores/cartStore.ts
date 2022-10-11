@@ -11,11 +11,19 @@ export const useCartStore = defineStore("cart-store", {
         this.items.push({ item, amount: 1 });
       }
     },
+    // removeFromCart(item: any) {
+    //   const index = this.items.findIndex((i) => i.item.id == item.id);
+    //   if (index > -1) {
+    //     this.items.splice(index, 1);
+    //   }
+    // },
   },
 
   getters: {
     totalCount: (state) =>
       state.items.reduce((acc, item) => acc + item.amount, 0),
+    subTotal: (state) =>
+      state.items.reduce((acc, item) => acc + item.item.price * item.amount, 0),
   },
 });
 
