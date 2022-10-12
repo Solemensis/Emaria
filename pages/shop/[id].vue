@@ -31,16 +31,41 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-
+function userId() {
+  if (user.value) {
+    return user.value.id;
+  } else return;
+}
 
 async function insert(){
-  const { data, error } = await supabase
+  // if(
+  //  await supabase
+  // .from("anan")
+  // .select("item")
+  // .eq("user_id", userId())
+  // .eq("item", (products.value.find((e) => e.id == route.params.id)))
+  // ){
+  // const { data } = await supabase
+  // .from('anan')
+  // .update(
+  //   {  amount: amount++}).eq('item', (products.value.find((e) => e.id == route.params.id)))
+    
+  
+ 
+  // }else
+  
+  {
+  const { data } = await supabase
   .from('anan')
   .insert([
     {  row_id:getRandomInt(99999999), user_id:user.value.id, 
-      item:(products.value.find((e) => e.id == route.params.id))
+      item:(products.value.find((e) => e.id == route.params.id)), amount:1
     },
-  ])
+  ],
+ )
+  }
+
+ 
 }
 
 

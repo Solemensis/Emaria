@@ -1,7 +1,11 @@
 <script setup>
-const subTotal = useCartStore().subTotal;
-const taxes = subTotal * 0.1;
-const total = subTotal + taxes;
+// const subTotal = useCartStore().subTotal;
+// const taxes = subTotal * 0.1;
+// const total = subTotal + taxes;
+
+const subTotal = 1;
+const taxes = 1;
+const total = 1;
 
 const cartStore = useCartStore();
 
@@ -19,17 +23,17 @@ function userId() {
 
 let { data: anan, error } = await supabase
   .from("anan")
-  .select("product_id")
+  .select("item")
   .eq("user_id", userId());
 
-function handledb() {}
-if (user.value) {
-  cartStore.items = anan;
+function handledb() {
+  if (user.value) {
+    cartStore.items = anan;
+  }
 }
 </script>
 
 <template>
-  <h2>{{ cartStore.items }}</h2>
   <div class="wrapper page-format" data-aos="zoom-in">
     <h2 v-if="cartStore.items" class="heading">Your Cart</h2>
     <h2 v-else class="heading2">Your cart is empty.</h2>
