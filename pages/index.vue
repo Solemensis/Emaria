@@ -1,6 +1,14 @@
-<script setup></script>
+<script setup>
+const user = useSupabaseUser();
+const supabase = useSupabaseClient();
+
+const cartStore = useCartStore();
+</script>
 <template lang="">
   <div>
+    <h2>{{ user }}</h2>
+    <h2>{{ anan }}</h2>
+    <h2>{{ useCartStore().items }}</h2>
     <Navbar />
     <div class="container">
       <!-- <div class="arrow-container">
@@ -32,7 +40,9 @@
       </div>
     </div>
     <!-- <img class="line-border" src="@/assets/images/lineborder.png" alt="" /> -->
+
     <EpicCards />
+
     <EpicZ />
   </div>
 </template>

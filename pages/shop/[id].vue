@@ -9,6 +9,7 @@
 //  const supabase = createClient(supabaseUrl, supabaseKey);
 
 const supabase = useSupabaseClient();
+const user = useSupabaseUser();
 
 const route = useRoute();
 const { data: products } = await useFetch("https://fakestoreapi.com/products/");
@@ -26,24 +27,29 @@ const cartStore = useCartStore();
  cartStore.addToCart(product)
 }
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
 
 
 
-async function anan(){
+async function insert(){
   const { data, error } = await supabase
   .from('anan')
   .insert([
-    { id: 6, anannasil: 'othersdsd123123Value' },
+    {  row_id:getRandomInt(99999999), user_id:user.value.id, 
+      item:(products.value.find((e) => e.id == route.params.id))
+    },
   ])
- 
-
 }
+
 
 </script>
 
 <template>
+
   <div >
-  
+  <h2>{{useCartStore().items}}</h2>
     <Navbar />
 
     <div  class="flex">
@@ -70,7 +76,7 @@ async function anan(){
         <!-- <p>{{ products.find((e) => e.id == route.params.id).rating }}</p> -->
         <div class="buttons">
           <button class="add-to-fav button">❤️</button
-          ><button @click="anan(), addToCart(products.find((e) => e.id == route.params.id))" class="add-to-cart button">Add To Cart</button>
+          ><button @click="insert(), addToCart(products.find((e) => e.id == route.params.id))" class="add-to-cart button">Add To Cart</button>
         </div>
       </div>
     </div>

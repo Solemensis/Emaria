@@ -3,5 +3,9 @@
     <SignupForm />
   </div>
 </template>
-<script setup></script>
+<script setup>
+definePageMeta({
+  middleware: "auth",
+});
+</script>
 <style lang=""></style>

@@ -1,10 +1,11 @@
 <script setup>
 const user = useSupabaseUser();
 
-const client = useSupabaseClient();
+const supabase = useSupabaseClient();
 
 const signOut = async () => {
-  const { error } = await client.auth.signOut();
+  const { error } = await supabase.auth.signOut();
+  navigateTo("/");
 };
 </script>
 
@@ -31,7 +32,7 @@ const signOut = async () => {
         </div>
       </NuxtLink>
 
-      <p>Hello, {{ user.user_metadata.userName }}!</p>
+      <p>Hello, {{ user.user_metadata.user_name }}!</p>
       <button class="logout-button" @click="signOut()">Logout</button>
     </div>
     <div v-else class="login-signup">
@@ -52,8 +53,10 @@ const signOut = async () => {
   font-size: 1.5rem !important;
   top: -0.5rem;
   font-weight: 800 !important;
+  z-index: 999;
 }
 .cart-box {
+  z-index: 999;
   /* border: 3px solid rgb(255, 156, 255); */
   padding: 0.2rem;
   margin-right: 4rem;
@@ -168,6 +171,7 @@ button {
 }
 .logout-button {
   cursor: pointer;
+  z-index: 999;
 }
 .logout-button:hover {
   background: transparent;

@@ -7,36 +7,62 @@
 // const supabaseKey = config.SUPABASE_KEY;
 // const supabase = createClient(supabaseUrl, supabaseKey);
 
-const supabase = useSupabaseClient();
+const cartStore = useCartStore();
 
 const email = ref("");
 const password = ref("");
 
+const supabase = useSupabaseClient();
+const user = useSupabaseUser();
 
 const login = async () => {
-  const { user, error } = await supabase.auth.signInWithPassword({
+  const {data, error } = await supabase.auth.signInWithPassword({
     email: email.value,
     password: password.value,
+   
   });
-  console.log("user", user);
+  console.log("data", data);
   console.log("error", error);
 };
 
-const user = useSupabaseUser();
+function userId() {
+  if (user.value) {
+    return user.value.id;
+  } else return;
+}
+
+let { data: anan, error } = await supabase
+  .from("anan")
+  .select("product_id")
+  .eq("user_id", userId());
+
+
+
 onMounted(() => {
   watchEffect(() => {
-    if (user.value) {
-    navigateTo("/");
+    if ( user.value) {
+      cartStore.items = anan;
+   
     }
   });
 });
 
 
 
+
+
+// onMounted(() => {
+//   watchEffect(() => {
+//     if (user.value) {
+//       useCartStore().items = anan;
+//     }
+//   });
+// });
+
 </script>
 
 <template>
-
+<!-- <h1>{{anan}}</h1>  -->
 
   <div data-aos="zoom-in" class="container">
     <p>

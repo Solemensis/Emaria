@@ -16,29 +16,21 @@ const password = ref("");
 
 
 const signUp = async () => {
-  const { user, error } = await supabase.auth.signUp(
+  const { data, error } = await supabase.auth.signUp(
     {
       email: email.value,
       password: password.value,
-    },
-    {
+      options: {
       data: {
-        userName: userName.value,
-      },
+        user_name:userName.value
+      }
+    }
     }
   );
-  console.log("user", user);
+  console.log("data", data);
   console.log("error", error);
 };
 
-const user = useSupabaseUser();
-onMounted(() => {
-  watchEffect(() => {
-    if (user.value) {
-    navigateTo("/");
-    }
-  });
-});
 
 
 

@@ -8,14 +8,33 @@ const cartStore = useCartStore();
 // function removeFromCart(item) {
 //   cartStore.removeFromCart(item);
 // }
+const user = useSupabaseUser();
+const supabase = useSupabaseClient();
+
+function userId() {
+  if (user.value) {
+    return user.value.id;
+  } else return;
+}
+
+let { data: anan, error } = await supabase
+  .from("anan")
+  .select("product_id")
+  .eq("user_id", userId());
+
+function handledb() {}
+if (user.value) {
+  cartStore.items = anan;
+}
 </script>
 
 <template>
+  <h2>{{ cartStore.items }}</h2>
   <div class="wrapper page-format" data-aos="zoom-in">
-    <h2 v-if="cartStore.items.length" class="heading">Your Cart</h2>
+    <h2 v-if="cartStore.items" class="heading">Your Cart</h2>
     <h2 v-else class="heading2">Your cart is empty.</h2>
     <div class="flex">
-      <table v-if="cartStore.items.length">
+      <table v-if="cartStore.items">
         <tr>
           <th class="delete-button"></th>
           <th>Image</th>
@@ -47,7 +66,9 @@ const cartStore = useCartStore();
           </td>
         </tr>
       </table>
-      <div v-if="cartStore.items.length" class="price-box">
+
+      <button @click="handledb()">anan</button>
+      <div v-if="cartStore.items" class="price-box">
         <ul>
           <li>Subtotal: ${{ subTotal.toFixed(2) }}</li>
           <li>Estimated Taxes: ${{ taxes.toFixed(2) }}</li>
