@@ -1,6 +1,30 @@
-<script setup></script>
+<script setup>
+const supabase = useSupabaseClient();
+const user = useSupabaseUser();
+
+const cartStore = useCartStore();
+
+function userId() {
+  if (user.value) {
+    return user.value.id;
+  } else return;
+}
+
+let { data: anann } = await supabase
+  .from("anan")
+  .select("item")
+  .eq("user_id", userId());
+
+if (user.value) {
+  if (anann !== []) {
+    // cartStore.items = anann[0].item;
+    cartStore.items = anann;
+  }
+}
+</script>
 <template>
   <div>
+    <h2>{{ anann[0].item }}</h2>
     <NuxtPage />
   </div>
 </template>

@@ -21,15 +21,21 @@ function userId() {
   } else return;
 }
 
-let { data: anan, error } = await supabase
-  .from("anan")
-  .select("item")
-  .eq("user_id", userId());
+// let { data: anannn} = await supabase
+//   .from("anan")
+//   .select("item")
+//   .eq("user_id", userId());
 
-function handledb() {
-  if (user.value) {
-    cartStore.items = anan;
-  }
+//   if (user.value) {
+//     cartStore.items = anannn;
+//   }
+
+async function inputChange() {
+  await supabase
+    .from("anan")
+
+    .update({ item: cartStore.items })
+    .eq("user_id", userId());
 }
 </script>
 
@@ -40,14 +46,15 @@ function handledb() {
     <div class="flex">
       <table v-if="cartStore.items">
         <tr>
-          <th class="delete-button"></th>
+          <!-- <th class="delete-button"></th> -->
           <th>Image</th>
           <th>Title</th>
           <th>Price</th>
           <th>Amount</th>
         </tr>
         <tr v-for="(item, index) in cartStore.items">
-          <td @click="removeFromCart(item)">&#10006;</td>
+          <!-- <td @click="removeFromCart(item)">&#10006;</td> -->
+
           <td>
             <img :src="item.item.image" />
           </td>
@@ -63,6 +70,7 @@ function handledb() {
           <td>${{ (item.item.price * item.amount).toFixed(2) }}</td>
           <td class="amount-table">
             <input
+              @input="inputChange()"
               min="0"
               type="number"
               v-model="cartStore.items[index].amount"
@@ -71,7 +79,6 @@ function handledb() {
         </tr>
       </table>
 
-      <button @click="handledb()">anan</button>
       <div v-if="cartStore.items" class="price-box">
         <ul>
           <li>Subtotal: ${{ subTotal.toFixed(2) }}</li>

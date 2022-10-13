@@ -27,7 +27,7 @@ const signOut = async () => {
         <div class="cart-box">
           <img class="cart-img" src="@/assets/images/shopping-cart.svg" />
           <p class="cart-counter">
-            {{ useCartStore().totalCount }}
+            <!-- {{ useCartStore().totalCount }} -->
           </p>
         </div>
       </NuxtLink>

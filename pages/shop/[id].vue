@@ -1,12 +1,6 @@
 <script setup>
 
-//  import { createClient } from "@supabase/supabase-js";
 
-//  const config = useRuntimeConfig();
-
-//  const supabaseUrl = config.SUPABASE_URL;
-//  const supabaseKey = config.SUPABASE_KEY;
-//  const supabase = createClient(supabaseUrl, supabaseKey);
 
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
@@ -37,46 +31,82 @@ function userId() {
   } else return;
 }
 
+
+
 async function insert(){
-  // if(
-  //  await supabase
-  // .from("anan")
-  // .select("item")
-  // .eq("user_id", userId())
-  // .eq("item", (products.value.find((e) => e.id == route.params.id)))
-  // ){
-  // const { data } = await supabase
-  // .from('anan')
-  // .update(
-  //   {  amount: amount++}).eq('item', (products.value.find((e) => e.id == route.params.id)))
-    
-  
- 
-  // }else
-  
-  {
-  const { data } = await supabase
+  let { data: anann} =await supabase
   .from('anan')
-  .insert([
-    {  row_id:getRandomInt(99999999), user_id:user.value.id, 
-      item:(products.value.find((e) => e.id == route.params.id)), amount:1
-    },
-  ],
- )
+  .select("item")
+  .eq('user_id', userId())
+
+   if( anann.length===0) { await supabase
+   .from('anan')
+      .insert([
+     {  row_id:getRandomInt(99999999), user_id:userId(), 
+       item:cartStore.items[0]
+     },
+   ],
+  )}else{
+  await supabase
+     .from("anan")
+
+     .update({ item:cartStore.items})
+     .eq('user_id', userId());
+    }
   }
+// async function insert(){
+//   console.log("it runs!")
 
+//   let { data: anann} =await supabase
+//   .from('anan')
+//   .select("id, amount")
+//   .eq('user_id', userId()).eq("id", route.params.id)
+
+//   if( anann.length===0) { await supabase
+//   .from('anan')
+//   .insert([
+//     {  row_id:getRandomInt(99999999), user_id:userId(), 
+//       item:(products.value.find((e) => e.id == route.params.id)), amount:1, id:route.params.id
+//     },
+//   ],
+//  )
+
+//  let { data: anannn} = await supabase
+//   .from("anan")
+//   .select("item")
+//   .eq("user_id", userId());
+
+
+//   if (user.value) {
+//     cartStore.items = anannn;
+//   }
+// }else{
+// await supabase
+//     .from("anan")
+
+//     .update({ amount:(anann[0].amount)+1})
+//     .eq("id", route.params.id);
+  
+    
+// let { data: anannn} = await supabase
+//   .from("anan")
+//   .select("item")
+//   .eq("user_id", userId());
+
+
+//   if (user.value) {
+//     cartStore.items = anannn;
+//   }
+//   }
+// }
  
-}
-
-
 </script>
 
 <template>
-
-  <div >
-  <h2>{{useCartStore().items}}</h2>
+<div >
     <Navbar />
-
+ 
+    <button @click="deney()">&#10006;</button>
     <div  class="flex">
       <img data-aos="zoom-out"
         class="image"
@@ -101,7 +131,9 @@ async function insert(){
         <!-- <p>{{ products.find((e) => e.id == route.params.id).rating }}</p> -->
         <div class="buttons">
           <button class="add-to-fav button">❤️</button
-          ><button @click="insert(), addToCart(products.find((e) => e.id == route.params.id))" class="add-to-cart button">Add To Cart</button>
+          ><button @click="addToCart(products.find((e) => e.id == route.params.id)), insert()" class="add-to-cart button">Add To Cart</button>
+          <!-- @click="insert()" -->
+          
         </div>
       </div>
     </div>

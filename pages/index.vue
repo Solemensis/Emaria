@@ -3,12 +3,22 @@ const user = useSupabaseUser();
 const supabase = useSupabaseClient();
 
 const cartStore = useCartStore();
+
+function userId() {
+  if (user.value) {
+    return user.value.id;
+  } else return;
+}
+
+let { data: anann } = await supabase
+  .from("anan")
+  .select("item")
+  .eq("user_id", userId());
 </script>
 <template lang="">
   <div>
-    <h2>{{ user }}</h2>
-    <h2>{{ anan }}</h2>
-    <h2>{{ useCartStore().items }}</h2>
+    <!-- <h2>{{ anann[0].item }}</h2> -->
+
     <Navbar />
     <div class="container">
       <!-- <div class="arrow-container">
