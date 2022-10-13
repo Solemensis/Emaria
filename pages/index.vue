@@ -17,8 +17,6 @@ let { data: anann } = await supabase
 </script>
 <template lang="">
   <div>
-    <!-- <h2>{{ anann[0].item }}</h2> -->
-
     <Navbar />
     <div class="container">
       <!-- <div class="arrow-container">

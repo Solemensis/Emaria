@@ -39,11 +39,24 @@ async function insert(){
   .select("item")
   .eq('user_id', userId())
 
+
+//   watch(
+//   useCartStore().items,
+//   () => {
+//    anann =  useCartStore().items;
+//   },
+//   {
+//     deep: true,
+//   }
+// );
+
+
    if( anann.length===0) { await supabase
    .from('anan')
       .insert([
      {  row_id:getRandomInt(99999999), user_id:userId(), 
-       item:cartStore.items[0]
+      //  item:cartStore.items[0]
+      item:cartStore.items
      },
    ],
   )}else{
@@ -104,6 +117,7 @@ async function insert(){
 
 <template>
 <div >
+  
     <Navbar />
  
     <button @click="deney()">&#10006;</button>

@@ -46,17 +46,18 @@ async function inputChange() {
     <div class="flex">
       <table v-if="cartStore.items">
         <tr>
-          <!-- <th class="delete-button"></th> -->
+          <th class="delete-button"></th>
           <th>Image</th>
           <th>Title</th>
           <th>Price</th>
           <th>Amount</th>
         </tr>
         <tr v-for="(item, index) in cartStore.items">
-          <!-- <td @click="removeFromCart(item)">&#10006;</td> -->
+          <td @click="removeFromCart(item)">&#10006;</td>
 
           <td>
             <img :src="item.item.image" />
+            <!-- <img :src="item.item.item.image" /> -->
           </td>
 
           <td class="title-table">
@@ -66,15 +67,28 @@ async function inputChange() {
             >
               {{ item.item.title }}</NuxtLink
             >
+            <!-- <NuxtLink
+              class="title"
+              :to="{ name: 'shop-id', params: { id: item.item.item.id } }"
+            >
+              {{ item.item.item.title }}</NuxtLink
+            > -->
           </td>
           <td>${{ (item.item.price * item.amount).toFixed(2) }}</td>
+          <!-- <td>${{ (item.item.item.price * item.item.amount).toFixed(2) }}</td> -->
           <td class="amount-table">
             <input
               @input="inputChange()"
-              min="0"
+              min="1"
               type="number"
               v-model="cartStore.items[index].amount"
             />
+            <!-- <input
+              @input="inputChange()"
+              min="0"
+              type="number"
+              v-model="cartStore.items[0][index].amount"
+            /> -->
           </td>
         </tr>
       </table>

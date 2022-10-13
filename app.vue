@@ -16,15 +16,12 @@ let { data: anann } = await supabase
   .eq("user_id", userId());
 
 if (user.value) {
-  if (anann !== []) {
-    // cartStore.items = anann[0].item;
-    cartStore.items = anann;
-  }
+  // cartStore.items = anann[0].item;
+  cartStore.items = anann[0].item;
 }
 </script>
 <template>
   <div>
-    <h2>{{ anann[0].item }}</h2>
     <NuxtPage />
   </div>
 </template>
