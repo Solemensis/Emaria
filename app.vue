@@ -16,10 +16,18 @@ let { data: anann } = await supabase
   .eq("user_id", userId());
 
 if (user.value && anann[0]) {
-  // if (anann[0]) {
   cartStore.items = anann[0].item;
-  // }
 }
+
+//   watch(
+//   useCartStore().items,
+//   () => {
+//    anann =  useCartStore().items;
+//   },
+//   {
+//     deep: true,
+//   }
+// );
 </script>
 <template>
   <div>

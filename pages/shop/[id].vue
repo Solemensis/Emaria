@@ -40,15 +40,6 @@ async function insert(){
   .eq('user_id', userId())
 
 
-//   watch(
-//   useCartStore().items,
-//   () => {
-//    anann =  useCartStore().items;
-//   },
-//   {
-//     deep: true,
-//   }
-// );
 
 
    if( anann.length===0) { await supabase
@@ -67,51 +58,7 @@ async function insert(){
      .eq('user_id', userId());
     }
   }
-// async function insert(){
-//   console.log("it runs!")
 
-//   let { data: anann} =await supabase
-//   .from('anan')
-//   .select("id, amount")
-//   .eq('user_id', userId()).eq("id", route.params.id)
-
-//   if( anann.length===0) { await supabase
-//   .from('anan')
-//   .insert([
-//     {  row_id:getRandomInt(99999999), user_id:userId(), 
-//       item:(products.value.find((e) => e.id == route.params.id)), amount:1, id:route.params.id
-//     },
-//   ],
-//  )
-
-//  let { data: anannn} = await supabase
-//   .from("anan")
-//   .select("item")
-//   .eq("user_id", userId());
-
-
-//   if (user.value) {
-//     cartStore.items = anannn;
-//   }
-// }else{
-// await supabase
-//     .from("anan")
-
-//     .update({ amount:(anann[0].amount)+1})
-//     .eq("id", route.params.id);
-  
-    
-// let { data: anannn} = await supabase
-//   .from("anan")
-//   .select("item")
-//   .eq("user_id", userId());
-
-
-//   if (user.value) {
-//     cartStore.items = anannn;
-//   }
-//   }
-// }
  
 </script>
 

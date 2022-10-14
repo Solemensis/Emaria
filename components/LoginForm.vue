@@ -1,48 +1,32 @@
 <script setup>
+
+
 const cartStore = useCartStore();
+
+
 
 const email = ref("");
 const password = ref("");
 
 const supabase = useSupabaseClient();
+
 const user = useSupabaseUser();
 
 const login = async () => {
-  const {data, error } = await supabase.auth.signInWithPassword({
+  await supabase.auth.signInWithPassword({
     email: email.value,
     password: password.value,
-   
   });
-  console.log("data", data);
-  console.log("error", error);
+ 
 };
 
-// function userId() {
-//   if (user.value) {
-//     return user.value.id;
-//   } else return;
-// }
 
-// let { data: anan } = await supabase
-//   .from("anan")
-//   .select("product_id")
-//   .eq("user_id", userId());
-
-
-
-// onMounted(() => {
-//   watchEffect(() => {
-//     if ( user.value) {
-//       cartStore.items = anan;
-   
-//     }
-//   });
-// });
 
 </script>
 
-<template>
-<!-- <h1>{{anan}}</h1>  -->
+<template> 
+
+
 
   <div data-aos="zoom-in" class="container">
     <p>
@@ -57,7 +41,7 @@ const login = async () => {
       messages-class="messages"
       type="form"
       submit-label="Sign In"
-      @submit="() => login()">
+      @submit=" login()">
       <FormKit
         :classes="{
           input: 'input1',
