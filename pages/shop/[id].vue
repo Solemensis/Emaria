@@ -120,7 +120,7 @@ async function insert(){
   
     <Navbar />
  
-    <button @click="deney()">&#10006;</button>
+    
     <div  class="flex">
       <img data-aos="zoom-out"
         class="image"

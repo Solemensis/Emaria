@@ -1,17 +1,13 @@
 <script setup>
-// const subTotal = useCartStore().subTotal;
-// const taxes = subTotal * 0.1;
-// const total = subTotal + taxes;
-
-const subTotal = 1;
-const taxes = 1;
-const total = 1;
-
 const cartStore = useCartStore();
 
-// function removeFromCart(item) {
-//   cartStore.removeFromCart(item);
-// }
+function subT() {
+  return cartStore.subTotal;
+}
+
+function removeFromCart(item) {
+  cartStore.items = cartStore.items.filter((i) => i !== item);
+}
 const user = useSupabaseUser();
 const supabase = useSupabaseClient();
 
@@ -41,10 +37,10 @@ async function inputChange() {
 
 <template>
   <div class="wrapper page-format" data-aos="zoom-in">
-    <h2 v-if="cartStore.items" class="heading">Your Cart</h2>
+    <h2 v-if="cartStore.items.length" class="heading">Your Cart</h2>
     <h2 v-else class="heading2">Your cart is empty.</h2>
     <div class="flex">
-      <table v-if="cartStore.items">
+      <table v-if="cartStore.items.length">
         <tr>
           <th class="delete-button"></th>
           <th>Image</th>
@@ -53,7 +49,7 @@ async function inputChange() {
           <th>Amount</th>
         </tr>
         <tr v-for="(item, index) in cartStore.items">
-          <td @click="removeFromCart(item)">&#10006;</td>
+          <td @click="removeFromCart(item), inputChange()">&#10006;</td>
 
           <td>
             <img :src="item.item.image" />
@@ -93,11 +89,11 @@ async function inputChange() {
         </tr>
       </table>
 
-      <div v-if="cartStore.items" class="price-box">
+      <div v-if="cartStore.items.length" class="price-box">
         <ul>
-          <li>Subtotal: ${{ subTotal.toFixed(2) }}</li>
-          <li>Estimated Taxes: ${{ taxes.toFixed(2) }}</li>
-          <li>Total: ${{ total.toFixed(2) }}</li>
+          <li>Subtotal: ${{ subT().toFixed(2) }}</li>
+          <li>Estimated Taxes: ${{ (subT() * 0.1).toFixed(2) }}</li>
+          <li>Total: ${{ (subT() + subT() * 0.1).toFixed(2) }}</li>
         </ul>
         <button class="checkout">checkout</button>
       </div>

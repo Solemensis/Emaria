@@ -28,7 +28,7 @@ const { data: products } = await useFetch("https://fakestoreapi.com/products/");
       <div class="price-flex">
         <p class="price">${{ product.price }}</p>
         <NuxtLink :to="{ name: 'shop-id', params: { id: product.id } }"
-          ><button @click="addToCart(product)">View Item</button>
+          ><button>View Item</button>
         </NuxtLink>
       </div>
     </div>

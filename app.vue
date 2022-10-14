@@ -15,9 +15,10 @@ let { data: anann } = await supabase
   .select("item")
   .eq("user_id", userId());
 
-if (user.value) {
-  // cartStore.items = anann[0].item;
+if (user.value && anann[0]) {
+  // if (anann[0]) {
   cartStore.items = anann[0].item;
+  // }
 }
 </script>
 <template>
