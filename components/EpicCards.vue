@@ -47,7 +47,6 @@ h2 {
   font-weight: 500;
   font-size: 4.5rem;
   text-align: center;
-
   margin-bottom: 6rem;
   color: rgb(36, 36, 36);
 }
@@ -71,7 +70,6 @@ h2 {
   height: 24rem;
   transition: 0.2s;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-
   background-color: #06d69e38;
   border-radius: 1.3rem;
   position: relative;

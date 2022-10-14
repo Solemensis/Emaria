@@ -52,9 +52,7 @@ img {
   width: 40rem;
   margin-bottom: 5rem;
 }
-/* .second-img {
-  width: 45rem;
-} */
+
 h3 {
   font-size: 4rem;
   margin-bottom: 2rem;

@@ -12,12 +12,6 @@ export const useCartStore = defineStore("cart-store", {
         this.items.push({ item, amount: 1 });
       }
     },
-    // removeFromCart(item: any) {
-    //   const index = this.items.findIndex((i) => i.item.id == item.id);
-    //   if (index > -1) {
-    //     this.items.splice(index, 1);
-    //   }
-    // },
   },
 
   getters: {

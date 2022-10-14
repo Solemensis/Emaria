@@ -1,4 +1,7 @@
 <script setup>
+const user = useSupabaseUser();
+const supabase = useSupabaseClient();
+
 const cartStore = useCartStore();
 
 function subT() {
@@ -8,23 +11,12 @@ function subT() {
 function removeFromCart(item) {
   cartStore.items = cartStore.items.filter((i) => i !== item);
 }
-const user = useSupabaseUser();
-const supabase = useSupabaseClient();
 
 function userId() {
   if (user.value) {
     return user.value.id;
   } else return;
 }
-
-// let { data: anannn} = await supabase
-//   .from("anan")
-//   .select("item")
-//   .eq("user_id", userId());
-
-//   if (user.value) {
-//     cartStore.items = anannn;
-//   }
 
 async function inputChange() {
   await supabase
@@ -63,15 +55,9 @@ async function inputChange() {
             >
               {{ item.item.title }}</NuxtLink
             >
-            <!-- <NuxtLink
-              class="title"
-              :to="{ name: 'shop-id', params: { id: item.item.item.id } }"
-            >
-              {{ item.item.item.title }}</NuxtLink
-            > -->
           </td>
           <td>${{ (item.item.price * item.amount).toFixed(2) }}</td>
-          <!-- <td>${{ (item.item.item.price * item.item.amount).toFixed(2) }}</td> -->
+
           <td class="amount-table">
             <input
               @input="inputChange()"
@@ -79,12 +65,6 @@ async function inputChange() {
               type="number"
               v-model="cartStore.items[index].amount"
             />
-            <!-- <input
-              @input="inputChange()"
-              min="0"
-              type="number"
-              v-model="cartStore.items[0][index].amount"
-            /> -->
           </td>
         </tr>
       </table>
@@ -131,7 +111,6 @@ td img {
 
 .flex {
   display: flex;
-
   justify-content: space-between;
 }
 .wrapper {
@@ -155,8 +134,8 @@ td img {
   color: red;
   font-size: 2rem;
 
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }

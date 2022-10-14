@@ -1,12 +1,4 @@
 <script setup>
-// import { createClient } from "@supabase/supabase-js";
-
-// const config = useRuntimeConfig();
-
-// const supabaseUrl = config.SUPABASE_URL;
-// const supabaseKey = config.SUPABASE_KEY;
-// const supabase = createClient(supabaseUrl, supabaseKey);
-
 const cartStore = useCartStore();
 
 const email = ref("");
@@ -25,36 +17,24 @@ const login = async () => {
   console.log("error", error);
 };
 
-function userId() {
-  if (user.value) {
-    return user.value.id;
-  } else return;
-}
+// function userId() {
+//   if (user.value) {
+//     return user.value.id;
+//   } else return;
+// }
 
-let { data: anan, error } = await supabase
-  .from("anan")
-  .select("product_id")
-  .eq("user_id", userId());
-
-
-
-onMounted(() => {
-  watchEffect(() => {
-    if ( user.value) {
-      cartStore.items = anan;
-   
-    }
-  });
-});
-
-
+// let { data: anan } = await supabase
+//   .from("anan")
+//   .select("product_id")
+//   .eq("user_id", userId());
 
 
 
 // onMounted(() => {
 //   watchEffect(() => {
-//     if (user.value) {
-//       useCartStore().items = anan;
+//     if ( user.value) {
+//       cartStore.items = anan;
+   
 //     }
 //   });
 // });
