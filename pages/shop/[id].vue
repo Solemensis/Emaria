@@ -60,7 +60,7 @@ async function insert(){
 
 
 
-   if( anann.length===0 && anannn.value ) { await supabase
+   if( anann.length===0 && anannn.value !=null ) { await supabase
    .from('anan')
       .insert([
      {  row_id:getRandomInt(99999999), user_id:userId(), 
@@ -81,8 +81,9 @@ async function insert(){
 </script>
 
 <template>
-<div >
   
+<div >
+
     <Navbar />
  
     
@@ -164,8 +165,6 @@ height:100%;
 display:flex;
 justify-content:center;
 align-items:center;
-
-
 }
 
 .back-arrow {

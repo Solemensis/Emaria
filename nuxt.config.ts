@@ -20,5 +20,5 @@ export default defineNuxtConfig({
   imports: {
     dirs: ["stores"],
   },
-  target: "static",
+  // target: "static",
 });

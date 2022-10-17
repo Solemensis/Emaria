@@ -4,9 +4,9 @@ const user = useSupabaseUser();
 const supabase = useSupabaseClient();
 
 const signOut = async () => {
-  const { error } = await supabase.auth.signOut();
-  // redirectTo: '/'
-  console.log(error);
+  await supabase.auth.signOut();
+
+  window.location.reload();
 };
 </script>
 
@@ -79,6 +79,7 @@ const signOut = async () => {
   align-items: center;
   justify-content: space-between;
   width: 15rem;
+  z-index: 9999;
 }
 .nav-link {
   color: #000000;

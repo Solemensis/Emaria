@@ -13,23 +13,48 @@ const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 
 const login = async () => {
-  const {data,error} = await supabase.auth.signInWithPassword({
+const {data, error} = await supabase.auth.signInWithPassword({
     email: email.value,
     password: password.value,
+  //   options: {
+  //  redirectTo: '/'
+  //  }
   });
- console.log(data);
- console.log(error);
+
+  if (!error) {
+    window.location.reload();
+  }
+if (error) {
+ 
+      show2.value = true;
+      setTimeout(hideModal2, 2000)
+}
+
 };
+
+const show2 = ref(false);
+function hideModal2(){
+  if(show2.value==true)
+  show2.value = false;
+}
+
   
 
 const oAuth = async () => {
 const { data, error } = await supabase.auth.signInWithOAuth({
   provider: 'github',
-  // options: {
-  //   redirectTo: '/'
-  // }
+  //  options: {
+  //  redirectTo: '/'
+  //  }
 })}
 
+// onMounted(()=>{
+//   watchEffect(()=> {
+//     if (user.value) {
+//       navigateTo("/")
+//     }
+//   })
+// })
 
 </script>
 
@@ -38,7 +63,13 @@ const { data, error } = await supabase.auth.signInWithOAuth({
 
 
   <div data-aos="zoom-in" class="container">
-    <p @click="oAuth()">signin git oç</p>
+    <transition name="my-transition">
+      <div v-show="show2"  class="alert2">
+      <h3 class="modal-text" >Your Info is Incorrect.</h3>
+      </div>
+    </transition>
+    
+    <!-- <p @click="oAuth()">signin git oç</p> -->
     <p>
       Don't have an account?
       <NuxtLink to="/signup" class="register">Register</NuxtLink>
@@ -200,5 +231,26 @@ p {
 }
 .forgot-pass:hover {
   border-bottom: 1px solid #2e2b2b;
+}
+
+.alert2{
+  width:25rem;
+ height:5rem;
+  padding:0.5rem 1rem;
+  background-color:rgba(255, 112, 112, 0.859);
+  border-radius:1.5rem;
+  position:absolute;
+  right:2.5rem;
+  bottom:-7rem;
+}
+
+.modal-text{
+  color:rgb(52, 52, 52);
+  font-size:1.8rem;
+  font-weight:600;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 </style>

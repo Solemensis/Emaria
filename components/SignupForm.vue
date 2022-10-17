@@ -20,9 +20,31 @@ const signUp = async () => {
       }
     }
     });
-  console.log(data);
- console.log(error);
+ 
+    if (data) {
+      show1.value = true;
+      setTimeout(hideModal1, 2000)
+    }
+    if(error){
+      show2.value = true;
+      setTimeout(hideModal2, 2000)
+    }
 };
+
+const show1 = ref(false);
+const show2 = ref(false);
+
+function hideModal1(){
+  if(show1.value==true)
+  show1.value = false;
+}
+function hideModal2(){
+  if(show2.value==true)
+  show2.value = false;
+}
+
+
+
 
 
 
@@ -32,6 +54,19 @@ const signUp = async () => {
 
 <template>
   <div data-aos="zoom-in" class="container">
+    <transition name="my-transition">
+     
+    <div v-show="show1"   class="alert1">
+        <h3 class="modal-text" >Confirm Your E-mail.</h3>
+      </div>
+      
+    </transition>
+      <transition name="my-transition">
+      <div v-show="show2"  class="alert2">
+      <h3 class="modal-text" >There was an Error.</h3>
+      </div>
+    </transition>
+    
     <p>
       Already have an account?
       <NuxtLink to="/login" class="register">Login</NuxtLink>
@@ -42,7 +77,7 @@ const signUp = async () => {
       <span>Emaria</span> Account
     </h2>
 
-    <FormKit type="form" submit-label="Sign Up" @submit="() => signUp()">
+    <FormKit messages-class="messages" type="form" submit-label="Sign Up" @submit="() => signUp()">
       <FormKit
         :classes="{ input: 'input4', messages: 'messages' }"
         v-model="userName"
@@ -110,7 +145,7 @@ const signUp = async () => {
 
 .messages {
   position: absolute;
-  display: none;
+  display: none !important;
 }
 
 button {
@@ -204,4 +239,36 @@ p {
 .forgot-pass:hover {
   border-bottom: 1px solid #2e2b2b;
 }
+
+.alert1 {
+  width:25rem;
+ height:5rem;
+  padding:0.5rem 1rem;
+  background-color:rgba(123, 248, 123, 0.859);
+  border-radius:1.5rem;
+  position:absolute;
+  right:2.5rem;
+  bottom:-7rem;
+}
+.alert2{
+  width:25rem;
+ height:5rem;
+  padding:0.5rem 1rem;
+  background-color:rgba(255, 112, 112, 0.859);
+  border-radius:1.5rem;
+  position:absolute;
+  right:2.5rem;
+  bottom:-7rem;
+}
+
+.modal-text{
+  color:rgb(52, 52, 52);
+  font-size:1.8rem;
+  font-weight:600;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
 </style>
