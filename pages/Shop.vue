@@ -3,6 +3,7 @@
   <div>
     <Navbar />
     <Products />
+    <Footer />
   </div>
 </template>
 

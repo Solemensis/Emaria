@@ -10,18 +10,18 @@ const password = ref("");
 
 
 const signUp = async () => {
-  await supabase.auth.signUp(
+  const {data, error} = await supabase.auth.signUp(
     {
       email: email.value,
       password: password.value,
       options: {
       data: {
-        user_name:userName.value
+        user_name:userName.value,
       }
     }
-    }
-  );
- 
+    });
+  console.log(data);
+ console.log(error);
 };
 
 

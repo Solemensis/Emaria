@@ -2,6 +2,7 @@
 
 
 
+
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 
@@ -9,6 +10,18 @@ const route = useRoute();
 const { data: products } = await useFetch("https://fakestoreapi.com/products/");
 const cartStore = useCartStore();
 
+const show = ref(false);
+
+function hideModal(){
+  if(show.value==true)
+  show.value = false;
+}
+
+function showModal(){
+  show.value = true;
+
+  setTimeout(hideModal, 2000)
+}
 
 
 
@@ -39,10 +52,15 @@ async function insert(){
   .select("item")
   .eq('user_id', userId())
 
+  let { data: anannn} =await supabase
+  .from('anan')
+  .select("user_id")
+  .eq('user_id', userId())
 
 
 
-   if( anann.length===0) { await supabase
+
+   if( anann.length===0 && anannn.value ) { await supabase
    .from('anan')
       .insert([
      {  row_id:getRandomInt(99999999), user_id:userId(), 
@@ -58,7 +76,7 @@ async function insert(){
      .eq('user_id', userId());
     }
   }
-
+ 
  
 </script>
 
@@ -83,30 +101,73 @@ async function insert(){
         </h2>
 
         <h3 class="price">
-          <span>$</span
+          <span  class="dollar-sign">$</span
           >{{ products.find((e) => e.id == route.params.id).price }}
         </h3>
         <p class="description">
           {{ products.find((e) => e.id == route.params.id).description }}
         </p>
-        <!-- <p>{{ products.find((e) => e.id == route.params.id).rating }}</p> -->
+        <!-- <p>{{ products.find((e) => e.id == route.params.id).rating.rate }}</p> -->
         <div class="buttons">
           <button class="add-to-fav button">❤️</button
-          ><button @click="addToCart(products.find((e) => e.id == route.params.id)), insert()" class="add-to-cart button">Add To Cart</button>
+          ><button @click="addToCart(products.find((e) => e.id == route.params.id)), insert(), showModal()" class="add-to-cart button">Add To Cart</button>
           <!-- @click="insert()" -->
           
         </div>
       </div>
     </div>
+    <transition name="my-transition">
+      <div v-show="show" v-if="user"  class="alert1">
+        <h3 class="modal-text" >Item added to the cart!</h3>
+      </div>
+    <div v-show="show" v-else  class="alert2">
+      <h3 class="modal-text" >You need to login.</h3>
+      </div>
+  </transition>
     <NuxtLink to="/shop"
       >
-      <!-- <img class="back-arrow" src="@/assets/images/left-arrow.png" alt=""/> -->
       <p class="entity-arrow">	&#8592</p>
     </NuxtLink>
-  </div>
+ 
+
+  </div> 
 </template>
 
 <style scoped>
+
+
+.alert1 {
+  width:25rem;
+ height:5rem;
+  padding:0.5rem 1rem;
+  background-color:rgba(123, 248, 123, 0.859);
+  border-radius:1.5rem;
+  position:absolute;
+  right:2rem;
+  bottom:2rem;
+}
+.alert2{
+  width:25rem;
+ height:5rem;
+  padding:0.5rem 1rem;
+  background-color:rgba(255, 112, 112, 0.859);
+  border-radius:1.5rem;
+  position:absolute;
+  right:2rem;
+  bottom:2rem;
+}
+.modal-text{
+  color:rgb(52, 52, 52);
+  font-size:1.8rem;
+  font-weight:600;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+
+
+}
+
 .back-arrow {
   width: 7rem;
   position: absolute;
@@ -189,7 +250,7 @@ async function insert(){
   font-size: 3.8rem;
   color: rgb(45, 45, 45);
 }
-span {
+.dollar-sign {
   position: absolute;
   left: 1rem;
   top: 1.7rem;

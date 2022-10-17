@@ -13,13 +13,22 @@ const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 
 const login = async () => {
-  await supabase.auth.signInWithPassword({
+  const {data,error} = await supabase.auth.signInWithPassword({
     email: email.value,
     password: password.value,
   });
- 
+ console.log(data);
+ console.log(error);
 };
+  
 
+const oAuth = async () => {
+const { data, error } = await supabase.auth.signInWithOAuth({
+  provider: 'github',
+  // options: {
+  //   redirectTo: '/'
+  // }
+})}
 
 
 </script>
@@ -29,6 +38,7 @@ const login = async () => {
 
 
   <div data-aos="zoom-in" class="container">
+    <p @click="oAuth()">signin git oç</p>
     <p>
       Don't have an account?
       <NuxtLink to="/signup" class="register">Register</NuxtLink>

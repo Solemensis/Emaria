@@ -40,6 +40,24 @@ if (user.value && anann[0]) {
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abel&display=swap");
 
+/* .page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.2s ease-out;
+} */
+
+.my-transition-enter-from,
+.my-transition-leave-to {
+  opacity: 0;
+}
+.my-transition-enter-active,
+.my-transition-leave-active {
+  transition: opacity 0.2s ease-out;
+}
+
 @media (min-width: 1920px) {
   html {
     font-size: 70% !important;
@@ -80,5 +98,10 @@ html {
   font-size: 62.5%;
   scroll-behavior: smooth;
   user-select: none;
+}
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 </style>

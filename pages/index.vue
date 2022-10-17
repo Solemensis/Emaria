@@ -52,6 +52,7 @@ let { data: anann } = await supabase
     <EpicCards />
 
     <EpicZ />
+    <Footer />
   </div>
 </template>
 

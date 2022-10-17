@@ -4,8 +4,8 @@
     <div data-aos="fade-left" class="flex-column">
       <h3>Visit Shops To Get Coupons!</h3>
       <p>
-        Come to our place, share your location in your social media via GPS to
-        get discount and product coupons!
+        Come to our place, share your location on social media via GPS to get
+        discount and product coupons!
       </p>
     </div>
 

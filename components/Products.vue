@@ -1,54 +1,65 @@
 <script setup>
 const { data: products } = await useFetch("https://fakestoreapi.com/products/");
+// function handleFilter() {
+//   products.value.filter((e) => e.category == 2);
+// }
 </script>
 
 <template>
-  <!-- <h2>Shop</h2> -->
-  <!-- <div class="filter page-format">
-    <div class="categories">
-      <img src="@/assets/images/123.png" alt="" />
-      <img src="@/assets/images/123.png" alt="" />
-      <img src="@/assets/images/123.png" alt="" />
-      <img src="@/assets/images/123.png" alt="" />
+  <div>
+    <!-- <h2>{{ useProductStore().items.get() }}</h2> -->
+    <!-- <h2 class="shop-heading">Shop</h2> -->
+
+    <div data-aos="zoom-in" class="categories">
+      <img src="@/assets/images/cat0.png" alt="" />
+      <img @click="handleFilter()" src="@/assets/images/cat1.png" alt="" />
+      <img src="@/assets/images/cat2.png" alt="" />
+      <img src="@/assets/images/cat3.png" alt="" />
+      <img src="@/assets/images/cat4.png" alt="" />
     </div>
-  </div> -->
 
-  <div class="grid">
-    <div
-      v-for="(product, index) in products"
-      :key="product.id"
-      class="card"
-      data-aos="zoom-in"
-    >
-      <img :class="'product-img product-img-' + index" :src="product.image" />
-      <p class="title">
-        {{ product.title }}
-      </p>
+    <div class="grid">
+      <div
+        v-for="(product, index) in products"
+        :key="product.id"
+        class="card"
+        data-aos="zoom-in"
+      >
+        <img :class="'product-img product-img-' + index" :src="product.image" />
+        <p class="title">
+          {{ product.title }}
+        </p>
 
-      <div class="price-flex">
-        <p class="price">${{ product.price }}</p>
-        <NuxtLink :to="{ name: 'shop-id', params: { id: product.id } }"
-          ><button>View Item</button>
-        </NuxtLink>
+        <div class="price-flex">
+          <p class="price">${{ product.price }}</p>
+          <NuxtLink :to="{ name: 'shop-id', params: { id: product.id } }"
+            ><button>View Item</button>
+          </NuxtLink>
+        </div>
       </div>
     </div>
   </div>
-  <div></div>
 </template>
 
 <style scoped>
-.filter {
-  background-color: rgb(240, 206, 255);
-  display: flex;
-  justify-content: center;
-}
 .categories {
   display: flex;
+  flex-direction: column;
 
   align-items: center;
+  position: fixed;
+  left: 5rem;
+  top: 20rem;
 }
 .categories img {
-  width: 8rem;
+  width: 6rem;
+  border: rgb(186, 186, 186) 2px solid;
+  transition: 0.1s;
+  margin-bottom: 3px;
+}
+
+.categories img:hover {
+  border: rgb(238, 116, 116) 2px solid;
 }
 .product-img {
   max-width: 50%;
@@ -109,7 +120,7 @@ button:hover {
   text-decoration: none;
 }
 
-h2 {
+.shop-heading {
   margin-bottom: 3rem;
   text-align: center;
   font-size: 5rem;
@@ -117,12 +128,6 @@ h2 {
   padding-top: 15rem;
 }
 
-* {
-  font-size: 1.5rem;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
 .grid {
   display: grid;
   grid-row-gap: 4rem;
@@ -131,8 +136,8 @@ h2 {
   justify-content: center;
   justify-items: center;
   align-items: center;
-  margin: 0 auto;
-  margin-top: 10rem;
+  margin: 10rem auto;
+
   /* grid-template-columns: repeat(auto-fit, minmax(30rem, 1rem)); */
   grid-template-columns: repeat(auto-fit, minmax(27rem, 1rem));
 

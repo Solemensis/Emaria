@@ -1,0 +1,83 @@
+<script setup></script>
+
+<template>
+  <div>
+    <div class="footer-container">
+      <h2 class="copyright">2022 @Solemensis</h2>
+
+      <div>
+        <!-- <div class="links">
+          <a href="">Home</a>
+          <a href="">Shop</a>
+          <a href="">Contact</a>
+        </div> -->
+        <a href="#"
+          ><img class="logo" src="assets/images/logo2.png" alt=""
+        /></a>
+      </div>
+
+      <div class="social-container">
+        <a href="https://github.com/Solemensis" target="_blank"
+          ><img class="github" src="assets/images/github.png" alt="" /></a
+        ><a href="https://www.instagram.com/ulassacli/" target="_blank">
+          <img class="instagram" src="assets/images/instagram.png" alt=""
+        /></a>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.logo {
+  height: 8rem;
+  animation: turn 3s linear infinite;
+  cursor: pointer;
+}
+
+@keyframes turn {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  width: 20rem;
+}
+.links a {
+  color: white;
+  font-size: 1.4rem;
+}
+.copyright {
+  color: #ededed;
+}
+.footer-container {
+  background-color: #000000;
+  background-image: linear-gradient(315deg, #212121 0%, #313131 74%);
+  height: 15rem;
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10rem;
+}
+.social-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 12rem;
+}
+.github {
+  height: 4rem !important;
+  cursor: pointer;
+}
+.instagram {
+  height: 3.5rem;
+  margin-top: 0.1rem;
+  cursor: pointer;
+}
+</style>
