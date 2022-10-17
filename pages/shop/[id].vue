@@ -34,13 +34,10 @@ function showModal(){
  cartStore.addToCart(product)
 }
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
 
 function userId() {
   if (user.value) {
-    return user.value.id;
+    return (user.value.id);
   } else return;
 }
 
@@ -60,10 +57,12 @@ async function insert(){
   // if( anann.length===0 && anannn.value) 
 
 
+
+ 
    if( anann.length===0) { await supabase
    .from('anan')
       .insert([
-     {  row_id:getRandomInt(99999999), user_id:userId(), 
+     {  user_id:userId(), 
       //  item:cartStore.items[0]
       item:cartStore.items
      },
@@ -77,7 +76,7 @@ async function insert(){
     }
   }
  
- 
+  
 </script>
 
 <template>
