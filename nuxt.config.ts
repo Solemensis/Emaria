@@ -20,5 +20,8 @@ export default defineNuxtConfig({
   imports: {
     dirs: ["stores"],
   },
-  // target: "static",
+  target: "static",
+  router: {
+    base: "/general-e-commerce/",
+  },
 });

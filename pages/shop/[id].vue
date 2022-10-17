@@ -52,15 +52,15 @@ async function insert(){
   .select("item")
   .eq('user_id', userId())
 
-  let { data: anannn} =await supabase
-  .from('anan')
-  .select("user_id")
-  .eq('user_id', userId())
+  // let { data: anannn} =await supabase
+  // .from('anan')
+  // .select("user_id")
+  // .eq('user_id', userId())
+
+  // if( anann.length===0 && anannn.value) 
 
 
-
-
-   if( anann.length===0 && anannn.value !=null ) { await supabase
+   if( anann.length===0) { await supabase
    .from('anan')
       .insert([
      {  row_id:getRandomInt(99999999), user_id:userId(), 
