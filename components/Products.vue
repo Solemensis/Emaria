@@ -1,26 +1,71 @@
 <script setup>
+// const { data: products } = await useFetch("https://fakestoreapi.com/products/");
+
+let save = null;
+let save2 = null;
+
+// if (useProductStore().items.length < 20) {
 const { data: products } = await useFetch("https://fakestoreapi.com/products/");
-// function handleFilter() {
-//   products.value.filter((e) => e.category == 2);
+useProductStore().items = products.value;
+save2 = products.value;
 // }
+save = useProductStore().items;
+
+function handleFilter0() {
+  save = save2;
+  useProductStore().items = save;
+}
+
+function handleFilter1() {
+  save = save2;
+  useProductStore().items = save;
+  useProductStore().items = useProductStore().items.filter(
+    (e) => e.category == "electronics"
+  );
+}
+function handleFilter2() {
+  save = save2;
+  useProductStore().items = save;
+  useProductStore().items = useProductStore().items.filter(
+    (e) => e.category == "men's clothing"
+  );
+}
+function handleFilter3() {
+  save = save2;
+  useProductStore().items = save;
+  useProductStore().items = useProductStore().items.filter(
+    (e) => e.category == "women's clothing"
+  );
+}
+function handleFilter4() {
+  save = save2;
+  useProductStore().items = save;
+  useProductStore().items = useProductStore().items.filter(
+    (e) => e.category == "jewelery"
+  );
+}
 </script>
 
 <template>
   <div>
-    <!-- <h2>{{ useProductStore().items.get() }}</h2> -->
     <!-- <h2 class="shop-heading">Shop</h2> -->
 
     <div data-aos="zoom-in" class="categories">
-      <img src="@/assets/images/cat0.png" alt="" />
-      <img @click="handleFilter()" src="@/assets/images/cat1.png" alt="" />
-      <img src="@/assets/images/cat2.png" alt="" />
-      <img src="@/assets/images/cat3.png" alt="" />
-      <img src="@/assets/images/cat4.png" alt="" />
+      <img
+        @click="handleFilter0()"
+        class="endless-cat"
+        src="@/assets/images/cat0.png"
+        alt=""
+      />
+      <img @click="handleFilter1()" src="@/assets/images/cat1.png" alt="" />
+      <img @click="handleFilter2()" src="@/assets/images/cat2.png" alt="" />
+      <img @click="handleFilter3()" src="@/assets/images/cat3.png" alt="" />
+      <img @click="handleFilter4()" src="@/assets/images/cat4.png" alt="" />
     </div>
 
     <div class="grid">
       <div
-        v-for="(product, index) in products"
+        v-for="(product, index) in useProductStore().items"
         :key="product.id"
         class="card"
         data-aos="zoom-in"
@@ -54,8 +99,8 @@ const { data: products } = await useFetch("https://fakestoreapi.com/products/");
 .categories img {
   width: 6rem;
   border: rgb(186, 186, 186) 2px solid;
-  transition: 0.1s;
-  margin-bottom: 3px;
+
+  transition: 0.2s;
 }
 
 .categories img:hover {
@@ -163,12 +208,10 @@ button:hover {
 p {
   text-align: center;
 }
-.product-img-2 {
+/* .product-img-2 {
   max-width: 58%;
 }
-.product-img-4 {
-  max-width: 35%;
-}
+
 
 .product-img-6 {
   max-width: 45%;
@@ -182,5 +225,9 @@ p {
 
 .product-img-16 {
   max-width: 45%;
+} */
+
+.product-img-4 {
+  max-width: 40%;
 }
 </style>

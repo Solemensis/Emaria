@@ -8,8 +8,8 @@ const cartStore = useCartStore();
 const email = ref("");
 const password = ref("");
 
-const supabase = useSupabaseClient();
 
+const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 
 const login = async () => {

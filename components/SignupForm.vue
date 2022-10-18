@@ -23,11 +23,11 @@ const signUp = async () => {
  
     if (data) {
       show1.value = true;
-      setTimeout(hideModal1, 2000)
+      setTimeout(hideModal1, 4000)
     }
     if(error){
       show2.value = true;
-      setTimeout(hideModal2, 2000)
+      setTimeout(hideModal2, 4000)
     }
 };
 

@@ -7,7 +7,21 @@ const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 
 const route = useRoute();
-const { data: products } = await useFetch("https://fakestoreapi.com/products/");
+
+
+
+// const { data: products } = await useFetch("https://fakestoreapi.com/products/");
+
+
+if (useProductStore().items.length == 0) {
+  const { data: products } = await useFetch(
+    "https://fakestoreapi.com/products/"
+  );
+  useProductStore().items = products;
+}
+
+
+
 const cartStore = useCartStore();
 
 const show = ref(false);
@@ -89,28 +103,28 @@ async function insert(){
     <div  class="flex">
       <img data-aos="zoom-out"
         class="image"
-        :src="products.find((e) => e.id == route.params.id).image"
+        :src="useProductStore().items.find((e) => e.id == route.params.id).image"
         alt=""
       />
       <div data-aos="zoom-out" class="text-block">
         <p class="category">
-          - {{ products.find((e) => e.id == route.params.id).category }} -
+          - {{useProductStore().items.find((e) => e.id == route.params.id).category }} -
         </p>
         <h2 class="title">
-          {{ products.find((e) => e.id == route.params.id).title }}
+          {{ useProductStore().items.find((e) => e.id == route.params.id).title }}
         </h2>
 
         <h3 class="price">
           <span  class="dollar-sign">$</span
-          >{{ products.find((e) => e.id == route.params.id).price }}
+          >{{ useProductStore().items.find((e) => e.id == route.params.id).price }}
         </h3>
         <p class="description">
-          {{ products.find((e) => e.id == route.params.id).description }}
+          {{ useProductStore().items.find((e) => e.id == route.params.id).description }}
         </p>
         <!-- <p>{{ products.find((e) => e.id == route.params.id).rating.rate }}</p> -->
         <div class="buttons">
           <button class="add-to-fav button">❤️</button
-          ><button @click="addToCart(products.find((e) => e.id == route.params.id)), insert(), showModal()" class="add-to-cart button">Add To Cart</button>
+          ><button @click="addToCart(useProductStore().items.find((e) => e.id == route.params.id)), insert(), showModal()" class="add-to-cart button">Add To Cart</button>
           <!-- @click="insert()" -->
           
         </div>
