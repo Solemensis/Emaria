@@ -50,7 +50,12 @@ function handleFilter4() {
   <div>
     <!-- <h2 class="shop-heading">Shop</h2> -->
 
-    <div data-aos="zoom-in" class="categories">
+    <div
+      data-aos="zoom-in"
+      data-aos-duration="500"
+      data-aos-easing="in-out-sine"
+      class="categories"
+    >
       <img
         @click="handleFilter0()"
         class="endless-cat"
@@ -69,6 +74,8 @@ function handleFilter4() {
         :key="product.id"
         class="card"
         data-aos="zoom-in"
+        data-aos-duration="500"
+        data-aos-easing="in-out-sine"
       >
         <img :class="'product-img product-img-' + index" :src="product.image" />
         <p class="title">

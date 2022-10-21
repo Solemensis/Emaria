@@ -25,7 +25,7 @@ let { data: anann } = await supabase
 
       <div
         data-aos="zoom-in"
-        data-aos-duration="1000"
+        data-aos-duration="1700"
         class="hero-section page-format"
       >
         <div class="hero-left">

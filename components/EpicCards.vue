@@ -1,18 +1,35 @@
 <script setup></script>
 <template lang="">
   <div class="container">
-    <h2 data-aos="zoom-in">Thousands of people use our store!</h2>
+    <h2>Thousands of people use our store!</h2>
 
     <div class="cards page-format">
-      <div data-aos="zoom-in" class="card1 card">
+      <div
+        data-aos="fade-down"
+        data-aos-duration="1800"
+        data-aos-easing="ease-out-back"
+        class="card1 card"
+      >
         <img src="@/assets/images/epic1.png" alt="" />
         <h3>Free Shipping</h3>
       </div>
-      <div data-aos="zoom-in" class="card2 card">
+      <div
+        data-aos="fade-down"
+        data-aos-duration="1800"
+        data-aos-easing="ease-out-back"
+        data-aos-delay="300"
+        class="card2 card"
+      >
         <img src="@/assets/images/epic2.png" alt="" />
         <h3>24/7 Hour Support</h3>
       </div>
-      <div data-aos="zoom-in" class="card3 card">
+      <div
+        data-aos="fade-down"
+        data-aos-duration="1800"
+        data-aos-easing="ease-out-back"
+        data-aos-delay="600"
+        class="card3 card"
+      >
         <img src="@/assets/images/epic3.png" alt="" />
         <h3>100% Moneyback</h3>
       </div>

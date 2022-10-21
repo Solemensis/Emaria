@@ -102,11 +102,16 @@ async function insert(){
     
     <div  class="flex">
       <img data-aos="zoom-out"
+           data-aos-duration="600"
+           data-aos-easing="in-out-sine"
         class="image"
         :src="useProductStore().items.find((e) => e.id == route.params.id).image"
         alt=""
       />
-      <div data-aos="zoom-out" class="text-block">
+      <div data-aos="zoom-out" data-aos-duration="600"
+           data-aos-easing="in-out-sine" 
+           data-aos-delay="50"
+       class="text-block">
         <p class="category">
           - {{useProductStore().items.find((e) => e.id == route.params.id).category }} -
         </p>

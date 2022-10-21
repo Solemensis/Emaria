@@ -3,7 +3,7 @@
 <template>
   <div>
     <Navbar />
-    <div data-aos="zoom-in" class="contact">
+    <div data-aos="zoom-in" data-aos-duration="1500" class="contact">
       <h1>This is a contact page</h1>
     </div>
     <!-- <Footer class="footer" /> -->

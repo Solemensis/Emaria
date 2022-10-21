@@ -62,7 +62,7 @@ const { data, error } = await supabase.auth.signInWithOAuth({
 
 
 
-  <div data-aos="zoom-in" class="container">
+  <div data-aos="zoom-in" data-aos-duration="900" class="container">
     <transition name="my-transition">
       <div v-show="show2"  class="alert2">
       <h3 class="modal-text" >Your Info is Incorrect.</h3>

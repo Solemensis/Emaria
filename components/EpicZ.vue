@@ -1,7 +1,18 @@
 <template lang="">
   <div class="grid page-format">
-    <img data-aos="fade-right" src="@/assets/images/big2.png" alt="" />
-    <div data-aos="fade-left" class="flex-column">
+    <img
+      data-aos="fade-right"
+      data-aos-duration="1500"
+      data-aos-easing="ease-out-back"
+      src="@/assets/images/big2.png"
+      alt=""
+    />
+    <div
+      data-aos="fade-right"
+      data-aos-duration="1500"
+      data-aos-easing="ease-out-back"
+      class="flex-column"
+    >
       <h3>Visit Shops To Get Coupons!</h3>
       <p>
         Come to our place, share your location on social media via GPS to get
@@ -9,7 +20,12 @@
       </p>
     </div>
 
-    <div data-aos="fade-right" class="flex-column">
+    <div
+      data-aos="fade-left"
+      data-aos-duration="1500"
+      data-aos-easing="ease-out-back"
+      class="flex-column"
+    >
       <h3>Exchange Like a Boss!</h3>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, ullam.
@@ -18,19 +34,37 @@
     </div>
     <img
       data-aos="fade-left"
+      data-aos-duration="1500"
+      data-aos-easing="ease-out-back"
       class="second-img"
       src="@/assets/images/big3.png"
       alt=""
     />
-    <img data-aos="fade-right" src="@/assets/images/big4.png" alt="" />
-    <div data-aos="fade-left" class="flex-column">
+    <img
+      data-aos="fade-right"
+      data-aos-duration="1500"
+      data-aos-easing="ease-out-back"
+      src="@/assets/images/big4.png"
+      alt=""
+    />
+    <div
+      data-aos="fade-right"
+      data-aos-duration="1500"
+      data-aos-easing="ease-out-back"
+      class="flex-column"
+    >
       <h3>Earn Points In Monthly Events!</h3>
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet sunt
         numquam accusamus.
       </p>
     </div>
-    <div data-aos="fade-right" class="flex-column">
+    <div
+      data-aos="fade-left"
+      data-aos-duration="1500"
+      data-aos-easing="ease-out-back"
+      class="flex-column"
+    >
       <h3>Gain Coupons With Every Purchase!</h3>
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae provident
@@ -38,7 +72,13 @@
         similique autem voluptate.
       </p>
     </div>
-    <img data-aos="fade-left" src="@/assets/images/big.png" alt="" />
+    <img
+      data-aos="fade-left"
+      data-aos-duration="1500"
+      data-aos-easing="ease-out-back"
+      src="@/assets/images/big.png"
+      alt=""
+    />
   </div>
 </template>
 

@@ -40,7 +40,7 @@ function increase(i) {
 </script>
 
 <template>
-  <div class="wrapper page-format" data-aos="zoom-in">
+  <div class="wrapper page-format" data-aos="zoom-in" data-aos-duration="1500">
     <h2 v-if="cartStore.items.length" class="heading">Your Cart</h2>
     <h2 v-else class="heading2">Your cart is empty.</h2>
     <div class="flex">

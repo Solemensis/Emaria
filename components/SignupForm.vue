@@ -53,7 +53,7 @@ function hideModal2(){
 </script>
 
 <template>
-  <div data-aos="zoom-in" class="container">
+  <div data-aos="zoom-in" data-aos-duration="900" class="container">
     <transition name="my-transition">
      
     <div v-show="show1"   class="alert1">
