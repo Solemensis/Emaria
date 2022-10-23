@@ -26,15 +26,19 @@ let { data: hahha } = await supabase
   .select("user_id")
   .eq("user_id", userId());
 
-if (hahha) {
-  onMounted(() => {
-    watchEffect(() => {
-      if (user.value) {
-        user.value.id = hahha.value;
-      }
-    });
+onMounted(() => {
+  watchEffect(() => {
+    if (hahha) {
+      onMounted(() => {
+        watchEffect(() => {
+          if (user.value) {
+            user.value.id = hahha.value;
+          }
+        });
+      });
+    }
   });
-}
+});
 
 //   watch(
 //   useCartStore().items,
