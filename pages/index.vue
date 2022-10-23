@@ -10,10 +10,10 @@ function userId() {
   } else return;
 }
 
-let { data: anann } = await supabase
-  .from("anan")
-  .select("item")
-  .eq("user_id", userId());
+// let { data: anann } = await supabase
+//   .from("anan")
+//   .select("item")
+//   .eq("user_id", userId());
 </script>
 <template lang="">
   <div>
