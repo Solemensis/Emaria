@@ -45,7 +45,9 @@ function showModal(){
 // }
 
  function addToCart(product) {
+  if(user.value){
  cartStore.addToCart(product)
+}
 }
 
 
