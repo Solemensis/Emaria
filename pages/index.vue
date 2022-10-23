@@ -16,8 +16,8 @@ let { data: anann } = await supabase
   .eq("user_id", userId());
 </script>
 <template lang="">
-  <h2 v-if="user">{{ user }}</h2>
   <div>
+    <h2 v-if="user">{{ user }}</h2>
     <Navbar />
     <div class="container">
       <!-- <div class="arrow-container">
