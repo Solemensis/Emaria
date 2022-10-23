@@ -4,11 +4,11 @@ const supabase = useSupabaseClient();
 
 const cartStore = useCartStore();
 
-function userId() {
-  if (user.value) {
-    return user.value.id;
-  } else return;
-}
+// function userId() {
+//   if (user.value) {
+//     return user.value.id;
+//   } else return;
+// }
 
 // let { data: anann } = await supabase
 //   .from("anan")
