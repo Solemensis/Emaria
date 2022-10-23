@@ -30,6 +30,7 @@ if (error) {
       show2.value = true;
       setTimeout(hideModal2, 2000)
 }
+user = data.user;
 console.log("data: ", data)
 console.log("error: ", error)
 };
