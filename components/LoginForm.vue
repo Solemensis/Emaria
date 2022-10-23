@@ -17,11 +17,13 @@ const user = useSupabaseUser();
 
 const login = async () => {
 await supabase.auth.signInWithPassword({
-    email: email.value,
-    password: password.value,
-     options: {
-  redirectTo: '/'
-     }
+    // email: email.value,
+    // password: password.value,
+    email: "ulassacli@outlook.com",
+    password: "123123",
+  //    options: {
+  // redirectTo: '/'
+  //    }
   });
 
   // if (data) {
