@@ -1,7 +1,4 @@
 <script setup>
-// definePageMeta({
-//   middleware: 'auth'
-// })
 
 
 const cartStore = useCartStore();
@@ -17,18 +14,15 @@ const user = useSupabaseUser();
 
 const login = async () => {
 await supabase.auth.signInWithPassword({
-    // email: email.value,
-    // password: password.value,
-    email: "ulassacli@outlook.com",
-    password: "123123",
-  //    options: {
-  // redirectTo: '/'
-  //    }
+     email: email.value,
+     password: password.value,
+   
+
   });
 
   // if (data) {
   //     window.location.reload();
-    user
+   
     
   // }
 // if (error) {
@@ -69,7 +63,7 @@ const { data, error } = await supabase.auth.signInWithOAuth({
 onMounted(()=>{
   watchEffect(()=> {
     if (user.value) {
-      const user = useSupabaseUser();
+   
       navigateTo("/")
     }
   })
