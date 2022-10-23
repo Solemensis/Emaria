@@ -16,7 +16,7 @@ const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 
 const login = async () => {
-const {data, error} = await supabase.auth.signInWithPassword({
+await supabase.auth.signInWithPassword({
     email: email.value,
     password: password.value,
      options: {
@@ -29,14 +29,13 @@ const {data, error} = await supabase.auth.signInWithPassword({
     user
     
   // }
-if (error) {
+// if (error) {
  
-      show2.value = true;
-      setTimeout(hideModal2, 2000)
-}
+//       show2.value = true;
+//       setTimeout(hideModal2, 2000)
+// }
 
-console.log("data: ", data)
-console.log("error: ", error)
+
 };
 
 const show2 = ref(false);
