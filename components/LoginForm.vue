@@ -19,6 +19,7 @@ await supabase.auth.signInWithPassword({
    
 
   });
+  const { data, error } = await supabase.auth.getSession()
 
   // if (data) {
   //     window.location.reload();
