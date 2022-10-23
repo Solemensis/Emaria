@@ -25,7 +25,7 @@ const { data, error } = await supabase.auth.getSession();
       <li><NuxtLink class="nav-link" to="/contact">Contact</NuxtLink></li>
     </ul>
 
-    <div class="user-logged" v-if="data">
+    <div class="user-logged" v-if="data.session">
       <NuxtLink to="/cart">
         <div class="cart-box">
           <img class="cart-img" src="@/assets/images/shopping-cart.svg" />
