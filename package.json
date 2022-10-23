@@ -8,18 +8,14 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxtjs/supabase": "^0.2.0",
+    "@nuxtjs/supabase": "^0.2.1",
     "nuxt": "^3.0.0-rc.12"
   },
   "dependencies": {
     "@formkit/nuxt": "^1.0.0-beta.11",
     "@pinia/nuxt": "^0.4.3",
-    "@supabase/supabase-js": "^2.0.3",
+    "@supabase/supabase-js": "^2.0.4",
     "aos": "^2.3.4",
-    "nuxt-sweetalert2": "^1.0.0",
-    "ohmyfetch": "^0.4.19",
-    "pinia": "^2.0.23",
-    "sweetalert2": "^11.5.2",
-    "vue-sweetalert2": "^5.0.5"
+    "pinia": "^2.0.23"
   }
 }

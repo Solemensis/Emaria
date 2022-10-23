@@ -46,7 +46,17 @@ const { data, error } = await supabase.auth.signInWithOAuth({
   //  options: {
   //  redirectTo: '/'
   //  }
-})}
+})
+//  if (!error) {
+//     window.location.reload();
+//   }
+// if (error) {
+ 
+//       show2.value = true;
+//       setTimeout(hideModal2, 2000)
+// }
+
+}
 
 // onMounted(()=>{
 //   watchEffect(()=> {
@@ -69,7 +79,7 @@ const { data, error } = await supabase.auth.signInWithOAuth({
       </div>
     </transition>
     
-    <!-- <p @click="oAuth()">signin git oç</p> -->
+   <p @click="oAuth()">signin git oç</p>
     <p>
       Don't have an account?
       <NuxtLink to="/signup" class="register">Register</NuxtLink>

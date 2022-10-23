@@ -22,7 +22,7 @@ export default defineNuxtConfig({
   },
   target: "static",
   ssr: false,
-  router: {
-    base: "/general-e-commerce/",
-  },
+  // router: {
+  //   base: "/general-e-commerce/",
+  // },
 });

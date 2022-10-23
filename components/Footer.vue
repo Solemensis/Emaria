@@ -1,5 +1,3 @@
-<script setup></script>
-
 <template>
   <div>
     <div class="footer-container">
@@ -11,16 +9,16 @@
           <a href="">Shop</a>
           <a href="">Contact</a>
         </div> -->
-        <a href="#"
-          ><img class="logo" src="assets/images/logo2.png" alt=""
-        /></a>
+        <a href="#">
+          <img class="logo" src="@/assets/images/logo2.png" alt="" />
+        </a>
       </div>
 
       <div class="social-container">
         <a href="https://github.com/Solemensis" target="_blank"
-          ><img class="github" src="assets/images/github.png" alt="" /></a
+          ><img class="github" src="@/assets/images/github.png" alt="" /></a
         ><a href="https://www.instagram.com/ulassacli/" target="_blank">
-          <img class="instagram" src="assets/images/instagram.png" alt=""
+          <img class="instagram" src="@/assets/images/instagram.png" alt=""
         /></a>
       </div>
     </div>
@@ -30,6 +28,7 @@
 <style scoped>
 .logo {
   height: 8rem;
+  width: 8rem;
   animation: turn 3s linear infinite;
   cursor: pointer;
 }
