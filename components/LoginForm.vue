@@ -24,11 +24,11 @@ const {data, error} = await supabase.auth.signInWithPassword({
      }
   });
 
-  if (data) {
-      window.location.reload();
+  // if (data) {
+  //     window.location.reload();
+    user
     
-    
-  }
+  // }
 if (error) {
  
       show2.value = true;
