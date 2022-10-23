@@ -27,7 +27,13 @@ let { data: hahha } = await supabase
   .eq("user_id", userId());
 
 if (hahha) {
-  user.value.id = hahha.value;
+  onMounted(() => {
+    watchEffect(() => {
+      if (user.value) {
+        user.value.id = hahha.value;
+      }
+    });
+  });
 }
 
 //   watch(
