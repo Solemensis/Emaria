@@ -50,7 +50,7 @@ const { data, error } = await supabase.auth.signInWithOAuth({
   //  }
 })
   if (!error) {
-     window.location.reload();
+    //  window.location.reload();
   }
 // if (error) {
  
@@ -72,7 +72,7 @@ onMounted(()=>{
 </script>
 
 <template> 
-<h2 v-if="user">{{user}}</h2>
+
 
 
   <div data-aos="zoom-in" data-aos-duration="900" class="container">

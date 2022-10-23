@@ -6,10 +6,8 @@ const supabase = useSupabaseClient();
 const signOut = async () => {
   await supabase.auth.signOut();
 
-  window.location.reload();
+  // window.location.reload();
 };
-
-const { data, error } = await supabase.auth.getSession();
 </script>
 
 <template lang="">
@@ -26,7 +24,6 @@ const { data, error } = await supabase.auth.getSession();
     </ul>
 
     <div class="user-logged" v-if="user">
-      <h2>{{ data }}</h2>
       <NuxtLink to="/cart">
         <div class="cart-box">
           <img class="cart-img" src="@/assets/images/shopping-cart.svg" />
