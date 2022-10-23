@@ -13,7 +13,7 @@ const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 
 const login = async () => {
-const {data error} = await supabase.auth.signInWithPassword({
+const {data, error} = await supabase.auth.signInWithPassword({
      email: email.value,
      password: password.value,
    
