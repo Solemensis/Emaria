@@ -23,7 +23,7 @@ const signOut = async () => {
       <li><NuxtLink class="nav-link" to="/contact">Contact</NuxtLink></li>
     </ul>
 
-    <div class="user-logged" v-if="user">
+    <div class="user-logged" v-if="user.value">
       <NuxtLink to="/cart">
         <div class="cart-box">
           <img class="cart-img" src="@/assets/images/shopping-cart.svg" />

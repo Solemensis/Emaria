@@ -77,7 +77,7 @@ onMounted(()=>{
 </script>
 
 <template> 
-<h2 v-if="user">{{user}}</h2>
+<h2 v-if="user.value">{{user}}</h2>
 
 
   <div data-aos="zoom-in" data-aos-duration="900" class="container">
