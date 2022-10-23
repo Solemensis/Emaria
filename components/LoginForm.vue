@@ -1,7 +1,7 @@
 <script setup>
-definePageMeta({
-  middleware: 'auth'
-})
+// definePageMeta({
+//   middleware: 'auth'
+// })
 
 
 const cartStore = useCartStore();
@@ -19,14 +19,14 @@ const login = async () => {
 const {data, error} = await supabase.auth.signInWithPassword({
     email: email.value,
     password: password.value,
-//      options: {
-//  redirectTo: '/'
-//     }
+     options: {
+  redirectTo: '/'
+     }
   });
 
   if (data) {
-    //  window.location.reload();
-    user = data.user;
+      window.location.reload();
+    
     
   }
 if (error) {
@@ -65,13 +65,14 @@ const { data, error } = await supabase.auth.signInWithOAuth({
 
 }
 
-// onMounted(()=>{
-//   watchEffect(()=> {
-//     if (user.value) {
-//       navigateTo("/")
-//     }
-//   })
-// })
+onMounted(()=>{
+  watchEffect(()=> {
+    if (user.value) {
+      const user = useSupabaseUser();
+      navigateTo("/")
+    }
+  })
+})
 
 </script>
 
