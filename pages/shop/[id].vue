@@ -51,19 +51,10 @@ function showModal(){
 }
 
 
-
-function userIId() {
+function userId() {
   if (user.value) {
     return (user.value.id);
   } else return;
-}
-
-async function userId(){
-const { data, error } = await supabase.auth.getSession();
-
-  if (data.session) {
-    return(data.session.user.id)
-  }
 }
 
 
