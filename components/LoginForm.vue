@@ -22,14 +22,16 @@ const {data, error} = await supabase.auth.signInWithPassword({
   });
 
   if (!error) {
-    window.location.reload();
+    // window.location.reload();
+    
   }
 if (error) {
  
       show2.value = true;
       setTimeout(hideModal2, 2000)
 }
-
+console.log("data: ", data)
+console.log("error: ", error)
 };
 
 const show2 = ref(false);
