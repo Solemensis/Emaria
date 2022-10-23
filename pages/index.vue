@@ -29,7 +29,7 @@ let { data: anann } = await supabase
         class="hero-section page-format"
       >
         <div class="hero-left">
-          <h1>Welcome To <span class="span">Emaria!</span></h1>
+          <h1>Welcome To <span class="span">Emaaaaaaria!</span></h1>
           <p>Our own mini e-commerce store at your service.</p>
           <div class="buttons">
             <NuxtLink to="/shop">
