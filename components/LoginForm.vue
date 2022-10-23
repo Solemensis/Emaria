@@ -49,9 +49,9 @@ const { data, error } = await supabase.auth.signInWithOAuth({
   //  redirectTo: '/'
   //  }
 })
-//  if (!error) {
-//     window.location.reload();
-//   }
+  if (!error) {
+     window.location.reload();
+  }
 // if (error) {
  
 //       show2.value = true;
