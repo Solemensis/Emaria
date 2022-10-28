@@ -58,12 +58,6 @@ if (user.value && anann[0]) {
   transition: opacity 0.2s ease-out;
 }
 
-@media (min-width: 1920px) {
-  html {
-    font-size: 70% !important;
-  }
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -99,17 +93,22 @@ html {
   scroll-behavior: smooth;
   user-select: none;
 }
-@media (orientation: portrait) {
-  html {
-    font-size: 43%;
-  }
-}
+
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden !important;
 }
-
+@media (min-width: 1920px) {
+  html {
+    font-size: 70% !important;
+  }
+}
+@media (orientation: portrait) {
+  html {
+    font-size: 43%;
+  }
+}
 /* scroll bar  */
 ::-webkit-scrollbar {
   width: 1rem;
