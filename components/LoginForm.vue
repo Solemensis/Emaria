@@ -20,16 +20,16 @@ const {data, error} = await supabase.auth.signInWithPassword({
 
   });
  
-  // if (data) {
-  //     window.location.reload();
+ if (data) {
+       window.location.reload();
    
     
-  // }
-// if (error) {
+ }
+ if (error) {
  
-//       show2.value = true;
-//       setTimeout(hideModal2, 2000)
-// }
+      show2.value = true;
+      setTimeout(hideModal2, 2000)
+}
 
 
 };
