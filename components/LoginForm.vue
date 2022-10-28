@@ -1,7 +1,6 @@
 <script setup>
-// definePageMeta({
-//   middleware: ["auth"]
-// })
+
+
 
 const cartStore = useCartStore();
 
@@ -18,14 +17,14 @@ const login = async () => {
 const {data, error} = await supabase.auth.signInWithPassword({
      email: email.value,
      password: password.value,
-     options: {
-   redirectTo: '/'
-   }
+  //    options: {
+  //  redirectTo: '/'
+  //  }
 
   });
  
  if (!error) {
-       window.location.reload();
+        window.location.reload();
    
     
  }

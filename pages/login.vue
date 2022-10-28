@@ -2,12 +2,13 @@
 definePageMeta({
   middleware: "auth",
 });
+// definePageMeta({
+//   middleware: ["auth"]
+// })
 </script>
 
-<template lang="">
+<template>
   <div>
     <LoginForm />
   </div>
 </template>
-
-<style lang=""></style>

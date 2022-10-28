@@ -4,9 +4,10 @@ const user = useSupabaseUser();
 const supabase = useSupabaseClient();
 
 const signOut = async () => {
-  await supabase.auth.signOut();
-
-  // window.location.reload();
+  const { error } = await supabase.auth.signOut();
+  if (!error) {
+    window.location.reload();
+  }
 };
 </script>
 
@@ -25,7 +26,7 @@ const signOut = async () => {
 
     <img src="@/assets/images/big.png" alt="" class="menu-button" />
 
-    <div class="user-logged" v-if="user.id">
+    <div class="user-logged" v-if="user">
       <NuxtLink to="/cart">
         <div class="cart-box">
           <img class="cart-img" src="@/assets/images/shopping-cart.svg" />
