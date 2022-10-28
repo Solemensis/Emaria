@@ -20,7 +20,7 @@ const {data, error} = await supabase.auth.signInWithPassword({
 
   });
  
- if (data) {
+ if (!error) {
        window.location.reload();
    
     
@@ -50,24 +50,24 @@ const { data, error } = await supabase.auth.signInWithOAuth({
   //  }
 })
   if (!error) {
-    //  window.location.reload();
+      window.location.reload();
   }
-// if (error) {
+if (error) {
  
-//       show2.value = true;
-//       setTimeout(hideModal2, 2000)
-// }
+      show2.value = true;
+      setTimeout(hideModal2, 2000)
+}
 
 }
 
-onMounted(()=>{
-  watchEffect(()=> {
-    if (user.value) {
+// onMounted(()=>{
+//   watchEffect(()=> {
+//     if (user.value) {
    
-      navigateTo("/")
-    }
-  })
-})
+//       navigateTo("/")
+//     }
+//   })
+// })
 
 </script>
 
