@@ -23,6 +23,8 @@ const signOut = async () => {
       <li><NuxtLink class="nav-link" to="/contact">Contact</NuxtLink></li>
     </ul>
 
+    <img src="@/assets/images/big.png" alt="" class="menu-button" />
+
     <div class="user-logged" v-if="user">
       <NuxtLink to="/cart">
         <div class="cart-box">
@@ -48,6 +50,10 @@ const signOut = async () => {
 </template>
 
 <style scoped>
+.menu-button {
+  display: none;
+}
+
 .cart-counter {
   position: absolute;
   color: red !important;
@@ -221,5 +227,24 @@ li {
 }
 li:last-child {
   margin-right: 0 !important;
+}
+
+@media (orientation: portrait) {
+  .menu-button {
+    /* display: flex;
+    width: 5rem;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0); */
+    display: none;
+  }
+  ul {
+    /* transform: translateY(-300%); */
+    display: none;
+  }
+  header {
+    width: 100vw !important;
+    padding: 1.5rem 2rem;
+  }
 }
 </style>

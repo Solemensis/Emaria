@@ -73,7 +73,7 @@ if (user.value && anann[0]) {
 }
 @keyframes button-pop {
   0% {
-    transform: scale(0.95);
+    transform: scale(0.94);
   }
   40% {
     transform: scale(1.02);
@@ -99,9 +99,29 @@ html {
   scroll-behavior: smooth;
   user-select: none;
 }
+@media (orientation: portrait) {
+  html {
+    font-size: 43%;
+  }
+}
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden !important;
+}
+
+/* scroll bar  */
+::-webkit-scrollbar {
+  width: 1rem;
+  /* border-radius: 0.5rem; */
+  background-color: hsl(0, 0%, 77%);
+  position: absolute;
+}
+::-webkit-scrollbar-thumb {
+  /* border-radius: 0.5rem; */
+  background-color: hsl(0, 0%, 46%);
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: hsl(0, 0%, 33%);
 }
 </style>

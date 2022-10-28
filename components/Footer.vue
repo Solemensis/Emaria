@@ -73,10 +73,18 @@
 .github {
   height: 4rem !important;
   cursor: pointer;
+  transition: transform 0.2s;
+}
+.github:hover {
+  transform: translateY(-0.35rem);
 }
 .instagram {
   height: 3.5rem;
   margin-top: 0.1rem;
   cursor: pointer;
+  transition: transform 0.2s;
+}
+.instagram:hover {
+  transform: translateY(-0.35rem);
 }
 </style>
