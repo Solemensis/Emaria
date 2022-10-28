@@ -1,5 +1,7 @@
 <script setup>
-
+definePageMeta({
+  middleware: ["auth"]
+})
 
 const cartStore = useCartStore();
 
@@ -16,7 +18,9 @@ const login = async () => {
 const {data, error} = await supabase.auth.signInWithPassword({
      email: email.value,
      password: password.value,
-   
+     options: {
+   redirectTo: '/'
+   }
 
   });
  
@@ -45,9 +49,9 @@ function hideModal2(){
 const oAuth = async () => {
 const { data, error } = await supabase.auth.signInWithOAuth({
   provider: 'github',
-  //  options: {
-  //  redirectTo: '/'
-  //  }
+   options: {
+   redirectTo: '/'
+   }
 })
   if (!error) {
       window.location.reload();
