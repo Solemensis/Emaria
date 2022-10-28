@@ -97,11 +97,13 @@ function handleFilter4() {
 .categories {
   display: flex;
   flex-direction: column;
-
+  gap: 1.5rem;
   align-items: center;
   position: fixed;
-  left: 5rem;
+  left: 5%;
   top: 20rem;
+  border: rgb(198, 198, 198) 2px dashed;
+  padding: 2rem 1rem;
 }
 .categories img {
   width: 6rem;
@@ -112,7 +114,9 @@ function handleFilter4() {
 
 .categories img:hover {
   border: rgb(238, 116, 116) 2px solid;
+  transform: translateY(-0.35rem);
 }
+
 .product-img {
   max-width: 50%;
   position: absolute;
