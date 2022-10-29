@@ -1,5 +1,5 @@
 # [Web App] Emaria
-General e-commerce website - https://emaria.vercel.app/
+Fully functional general e-commerce website - https://emaria.vercel.app/
  
  
 - With fresh & simple ui/ux design.
