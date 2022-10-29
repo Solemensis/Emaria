@@ -5,7 +5,7 @@ Fully functional general e-commerce website - https://emaria.vercel.app/
 - With fresh & simple ui/ux design.
 
 Techs used: Vue3, Nuxt3, Pinia, Supabase, Formkit, Aos.
-- [Vue3 and Nuxt3] as building blocks.
+- [Vue3 & Nuxt3] as building blocks.
 - [Pinia] is used to maintain cart state on client side, and to share fetched products across components.
 - [Supabase] is used to maintain cart state on server side and to build auth/oauth.
 - [Formkit] to build forms with ease.
