@@ -48,12 +48,12 @@ function hideModal2(){
 const oAuth = async () => {
 const { data, error } = await supabase.auth.signInWithOAuth({
   provider: 'github',
-   options: {
-   redirectTo: '/'
-   }
+  //  options: {
+  //  redirectTo: '/'
+  //  }
 })
   if (!error) {
-      window.location.reload();
+      // window.location.reload();
   }
 if (error) {
  
