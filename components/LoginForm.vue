@@ -59,7 +59,7 @@ const { data, error } = await supabase.auth.signInWithOAuth({
 })
   if (!error) {
 
-       window.location.reload();
+      //  window.location.reload();
   }
 if (error) {
  
