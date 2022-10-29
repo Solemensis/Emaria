@@ -20,10 +20,12 @@ const {data, error} = await supabase.auth.signInWithPassword({
   //    options: {
   //  redirectTo: '/'
   //  }
+  
 
-  });
+  }
+  );
  
- if (!error) {
+ if (data) {
         window.location.reload();
    
     
