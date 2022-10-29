@@ -48,7 +48,18 @@ function hideModal2(){
   show2.value = false;
 }
 
-  
+function userId() {
+  if (user.value) {
+    return (user.value.id);
+  } else return;
+}
+let { data: anann } = await supabase
+  .from("anan")
+  .select("item")
+  .eq("user_id", userId());
+
+
+
 
 const oAuth = async () => {
 const { data, error } = await supabase.auth.signInWithOAuth({
@@ -58,7 +69,9 @@ const { data, error } = await supabase.auth.signInWithOAuth({
   //  }
 })
   if (!error) {
-
+    if (user.value && anann[0]) {
+  cartStore.items = anann[0].item;
+}
       //  window.location.reload();
   }
 if (error) {
