@@ -186,6 +186,7 @@ input {
   font-weight: 600;
   color: black;
   user-select: none;
+  background-color: transparent;
 }
 
 input::-webkit-outer-spin-button,
