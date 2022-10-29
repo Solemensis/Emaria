@@ -5,6 +5,7 @@ General e-commerce website - https://emaria.vercel.app/
 - With fresh & simple ui/ux design.
 - Techs used: Vue3, Nuxt3, Pinia, Supabase, Formkit, Aos.
 
+
 Things to be added:
 - Buyouts will be handled with stripe api.
 - Products gonna come from a headless cms rather than a fake-store api.
