@@ -13,6 +13,8 @@ const password = ref("");
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 
+
+
 const login = async () => {
 const {data, error} = await supabase.auth.signInWithPassword({
      email: email.value,
@@ -26,6 +28,7 @@ const {data, error} = await supabase.auth.signInWithPassword({
   );
  
  if (!error) {
+
         window.location.reload();
    
     
@@ -55,7 +58,8 @@ const { data, error } = await supabase.auth.signInWithOAuth({
   //  }
 })
   if (!error) {
-      // window.location.reload();
+
+       window.location.reload();
   }
 if (error) {
  

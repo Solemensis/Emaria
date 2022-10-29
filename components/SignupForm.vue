@@ -9,6 +9,14 @@ const email = ref("");
 const password = ref("");
 
 
+// let { data: anann } = await supabase
+//   .from("anan")
+//   .select("mail");
+//   if(anann.find((e)=>e.mail==email)){}
+  
+
+
+
 const signUp = async () => {
   const {data, error} = await supabase.auth.signUp(
     {
@@ -19,11 +27,14 @@ const signUp = async () => {
         user_name:userName.value,
       }
     }
-    });
+    
+    }
+    );
+   
  
     if (data) {
       show1.value = true;
-      setTimeout(hideModal1, 4000)
+       setTimeout(hideModal1, 4000)
     }
     if(error){
       show2.value = true;
