@@ -57,6 +57,11 @@ function userId() {
   } else return;
 }
 
+function mail(){
+  if (user.value) {
+    return (user.value.email);
+  } else return;
+}
 
 
 async function insert(){
@@ -80,7 +85,8 @@ async function insert(){
       .insert([
      {  user_id:userId(), 
       //  item:cartStore.items[0]
-      item:cartStore.items
+      item:cartStore.items,
+      mail:mail()
      },
    ],
   )}else{

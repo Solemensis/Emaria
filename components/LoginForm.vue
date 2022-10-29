@@ -159,9 +159,10 @@ if (error) {
 .git-box:hover{
   background-color: #24292e;
 }
-.git-box:active{
-  animation: button-pop 0.3s ease-out;
-}
+ .git-box:active{
+  /* animation: button-pop 0.3s ease-out; */
+  background-color: #131517;
+} 
 .formkit-label {
   display: none;
 }
