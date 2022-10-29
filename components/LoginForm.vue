@@ -140,6 +140,7 @@ function hideModal2(){
 
 <style>
 
+
 .git-login{
   color: white;
   margin:0 !important;
@@ -234,6 +235,13 @@ button:active {
 
 <style scoped>
 
+@media (orientation: portrait) {
+  .entity-arrow{
+    top:4rem !important;
+    left:5rem !important;
+    font-size:4rem!important;
+  }
+}
 .entity-arrow{
   font-size:5rem;
   color:rgb(130, 130, 130) ;

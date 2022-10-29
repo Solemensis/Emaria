@@ -214,7 +214,43 @@ span {
 }
 
 .hero-image {
-  width: 40%;
+  width: 54rem;
   margin-top: 0.5rem;
+}
+@media (max-width: 844px) {
+  .shop-button {
+    padding: 1.2rem 3.5rem;
+  }
+  .learn-button {
+    padding: 1.2rem 3.5rem;
+  }
+}
+@media (max-width: 762px) {
+  .shop-button {
+    padding: 1rem 2.8rem;
+  }
+  .learn-button {
+    padding: 1rem 2.8rem;
+  }
+}
+
+@media (orientation: portrait) {
+  .hero-section {
+    /* flex-direction: column-reverse; */
+    justify-content: center;
+  }
+  .hero-image {
+    /* width: 15rem;
+    margin-top: 5rem; */
+    display: none;
+  }
+  .hero-left {
+    width: 100vw;
+    /* margin-top: 5rem; */
+    text-align: center;
+  }
+  .buttons {
+    justify-content: center !important;
+  }
 }
 </style>

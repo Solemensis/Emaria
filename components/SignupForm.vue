@@ -64,6 +64,7 @@ function hideModal2(){
 </script>
 
 <template>
+ 
   <div data-aos="zoom-in" data-aos-duration="900" class="container">
     <transition name="my-transition">
      
@@ -198,6 +199,14 @@ button:active {
 </style>
 
 <style scoped>
+ @media (orientation: portrait) {
+  .entity-arrow{
+    top:3rem !important;
+    left:5rem !important;
+    font-size:4rem!important;
+  }
+}
+
 .entity-arrow{
   font-size:5rem;
   color:rgb(130, 130, 130) ;

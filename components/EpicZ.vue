@@ -1,6 +1,7 @@
 <template lang="">
   <div class="grid page-format">
     <img
+      class="img"
       data-aos="fade-right"
       data-aos-duration="1500"
       data-aos-easing="ease-out-back"
@@ -36,11 +37,12 @@
       data-aos="fade-left"
       data-aos-duration="1500"
       data-aos-easing="ease-out-back"
-      class="second-img"
+      class="second-img img"
       src="@/assets/images/big3.png"
       alt=""
     />
     <img
+      class="img"
       data-aos="fade-right"
       data-aos-duration="1500"
       data-aos-easing="ease-out-back"
@@ -68,11 +70,11 @@
       <h3>Gain Coupons With Every Purchase!</h3>
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae provident
-        earum sit commodi illo aspernatur adipisci non, possimus recusandae
-        similique autem voluptate.
+        earum sit commodi illo aspernatur adipisci non.
       </p>
     </div>
     <img
+      class="img"
       data-aos="fade-left"
       data-aos-duration="1500"
       data-aos-easing="ease-out-back"
@@ -83,6 +85,23 @@
 </template>
 
 <style scoped>
+@media (orientation: portrait) {
+  .container {
+    height: fit-content;
+  }
+  .img {
+    width: 20rem;
+    margin-bottom: 2rem !important;
+  }
+  .flex-column h3 {
+    font-size: 2.1rem;
+  }
+  .flex-column p {
+    font-size: 1.4rem;
+    width: 100%;
+  }
+}
+
 .flex-column {
   display: flex;
   flex-direction: column;

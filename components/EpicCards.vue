@@ -45,6 +45,43 @@
 </template>
 
 <style scoped>
+@media (orientation: portrait) {
+  .container {
+    height: 100rem;
+  }
+  .container h2 {
+    font-size: 3rem;
+    padding: 0 3rem;
+    margin-top: -3rem;
+  }
+  .cards {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    justify-items: center;
+    grid-row-gap: 2.2rem;
+  }
+  .card h3 {
+    font-size: 1.5rem;
+    position: static !important;
+  }
+  .card img {
+    width: 10rem !important;
+    position: static !important;
+    margin-bottom: 2rem;
+  }
+  .card {
+    width: 18rem !important;
+    height: 18rem !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .card3 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+}
+
 .hero-card {
   display: flex;
   align-items: center;

@@ -58,14 +58,34 @@ function handleFilter4() {
     >
       <img
         @click="handleFilter0()"
-        class="endless-cat"
+        class="endless-cat filter"
         src="@/assets/images/cat0.png"
         alt=""
       />
-      <img @click="handleFilter1()" src="@/assets/images/cat1.png" alt="" />
-      <img @click="handleFilter2()" src="@/assets/images/cat2.png" alt="" />
-      <img @click="handleFilter3()" src="@/assets/images/cat3.png" alt="" />
-      <img @click="handleFilter4()" src="@/assets/images/cat4.png" alt="" />
+      <img
+        class="filter"
+        @click="handleFilter1()"
+        src="@/assets/images/cat1.png"
+        alt=""
+      />
+      <img
+        class="filter"
+        @click="handleFilter2()"
+        src="@/assets/images/cat2.png"
+        alt=""
+      />
+      <img
+        class="filter"
+        @click="handleFilter3()"
+        src="@/assets/images/cat3.png"
+        alt=""
+      />
+      <img
+        class="filter"
+        @click="handleFilter4()"
+        src="@/assets/images/cat4.png"
+        alt=""
+      />
     </div>
 
     <div class="grid">
@@ -94,6 +114,43 @@ function handleFilter4() {
 </template>
 
 <style scoped>
+@media (orientation: portrait) {
+  .categories {
+    flex-direction: row !important;
+    position: absolute !important;
+    top: 11rem !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    padding: 1rem 1rem !important;
+  }
+  .categories img {
+    width: 4.5rem !important;
+  }
+  .price-flex {
+    width: 100% !important;
+  }
+  .price {
+    font-size: 1.3rem !important;
+  }
+  .price-flex button {
+    padding: 0.4rem 0.8rem !important;
+    margin: 0.2rem !important;
+    margin-right: 0.5rem !important;
+    font-size: 1rem !important;
+  }
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 12rem)) !important;
+  }
+  .card {
+    width: 14rem !important;
+    height: 21rem !important;
+    padding: 0.4rem 0.4rem !important;
+  }
+  .title {
+    font-size: 1.1rem !important;
+  }
+}
+
 .categories {
   display: flex;
   flex-direction: column;
@@ -105,6 +162,7 @@ function handleFilter4() {
   border: rgb(198, 198, 198) 2px dashed;
   padding: 2rem 1rem;
 }
+
 .categories img {
   width: 6rem;
   border: rgb(186, 186, 186) 2px solid;
@@ -136,7 +194,7 @@ function handleFilter4() {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 21rem;
+  width: 23rem;
   position: absolute;
   bottom: 2%;
   padding-top: 0.5rem;

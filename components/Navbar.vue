@@ -84,8 +84,8 @@ const signOut = async () => {
 .login-signup {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 15rem;
+  justify-content: space-around;
+  width: 16rem;
   z-index: 9999;
 }
 .nav-link {
@@ -192,6 +192,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 16rem;
 }
 
 .logo-container img {
@@ -231,6 +232,14 @@ li:last-child {
 }
 
 @media (orientation: portrait) {
+  .cart-box {
+    position: fixed;
+    top: 12rem;
+    right: -2rem;
+  }
+  .page-format2 {
+    padding: 2rem 0.5rem 2rem 0;
+  }
   .menu-button {
     /* display: flex;
     width: 5rem;

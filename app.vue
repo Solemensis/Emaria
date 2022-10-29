@@ -101,14 +101,53 @@ body {
 }
 @media (min-width: 1920px) {
   html {
-    font-size: 70% !important;
+    font-size: 70%;
   }
 }
+@media (max-width: 1250px) {
+  .page-format {
+    width: 90%;
+  }
+  html {
+    font-size: 60%;
+  }
+}
+@media (max-width: 1120px) {
+  .page-format {
+    width: 95%;
+  }
+}
+
+@media (max-width: 1055px) {
+  html {
+    font-size: 52%;
+  }
+}
+@media (max-width: 912px) {
+  html {
+    font-size: 48%;
+  }
+}
+@media (max-width: 790px) {
+  html {
+    font-size: 44%;
+  }
+}
+
 @media (orientation: portrait) {
   html {
-    font-size: 43%;
+    font-size: 53%;
   }
 }
+@media (max-width: 327px) and (orientation: portrait) {
+  html {
+    font-size: 47%;
+  }
+  h1 {
+    font-size: 5.7rem !important;
+  }
+}
+
 /* scroll bar  */
 ::-webkit-scrollbar {
   width: 1rem;
