@@ -13,8 +13,10 @@ Techs used: Vue3, Nuxt3, Pinia, Supabase, Formkit, Aos.
 
 
 
-Things to be added:
-- Buyouts will be handled with stripe api.
-- Products gonna come from a headless cms rather than a fake-store api.
+Things to be added in order:
 - Content is not responsive on mobile devices for now. Will add the feature soon.
 - Shop ui will be redesigned.
+- Products gonna come from a headless cms rather than a fake-store api.
+- Buyouts will be handled with stripe api.
+- Gonna make "add to fav" button functional.
+
