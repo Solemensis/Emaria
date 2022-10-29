@@ -25,7 +25,7 @@ const {data, error} = await supabase.auth.signInWithPassword({
   }
   );
  
- if (data) {
+ if (!error) {
         window.location.reload();
    
     
