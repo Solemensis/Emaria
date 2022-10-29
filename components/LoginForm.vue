@@ -84,8 +84,10 @@ if (error) {
       <h3 class="modal-text" >Your Info is Incorrect.</h3>
       </div>
     </transition>
-    
-   <p @click="oAuth()">signin git oç</p>
+    <div class="git-box">
+<img src="@/assets/images/github.png" alt="">
+   <p class="git-login" @click="oAuth()">Continue with GitHub</p>
+  </div>
     <p>
       Don't have an account?
       <NuxtLink to="/signup" class="register">Register</NuxtLink>
@@ -131,6 +133,35 @@ if (error) {
 </template>
 
 <style>
+
+.git-login{
+  color: white;
+  margin:0 !important;
+  font-size:1.8rem !important;
+  font-weight:600;
+  
+}
+.git-box img{
+  height:3rem;
+  margin-right:0.2rem;
+}
+.git-box{
+  background-color: #24292eeb;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:1rem 1.5rem;
+  border-radius:0.5rem;
+  margin-bottom:2rem;
+  transition: background-color 0.2s;
+  
+}
+.git-box:hover{
+  background-color: #24292e;
+}
+.git-box:active{
+  animation: button-pop 0.3s ease-out;
+}
 .formkit-label {
   display: none;
 }
