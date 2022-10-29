@@ -146,7 +146,7 @@ if (error) {
   margin-right:0.2rem;
 }
 .git-box{
-  background-color: #24292eeb;
+  background-color: #24292ed1;
   display:flex;
   align-items:center;
   justify-content:center;
