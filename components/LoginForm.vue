@@ -48,39 +48,26 @@ function hideModal2(){
   show2.value = false;
 }
 
-function userId() {
-  if (user.value) {
-    return (user.value.id);
-  } else return;
-}
-let { data: anann } = await supabase
-  .from("anan")
-  .select("item")
-  .eq("user_id", userId());
+  
 
+// const oAuth = async () => {
+// const { data, error } = await supabase.auth.signInWithOAuth({
+//   provider: 'github',
+//   //  options: {
+//   //  redirectTo: '/'
+//   //  }
+// })
+//   if (!error) {
 
-
-
-const oAuth = async () => {
-const { data, error } = await supabase.auth.signInWithOAuth({
-  provider: 'github',
-  //  options: {
-  //  redirectTo: '/'
-  //  }
-})
-  if (!error) {
-    if (user.value && anann[0]) {
-  cartStore.items = anann[0].item;
-}
-      //  window.location.reload();
-  }
-if (error) {
+//       //  window.location.reload();
+//   }
+// if (error) {
  
-      show2.value = true;
-      setTimeout(hideModal2, 2000)
-}
+//       show2.value = true;
+//       setTimeout(hideModal2, 2000)
+// }
 
-}
+// }
 
 // onMounted(()=>{
 //   watchEffect(()=> {
@@ -103,10 +90,10 @@ if (error) {
       <h3 class="modal-text" >Your Info is Incorrect.</h3>
       </div>
     </transition>
-    <div class="git-box">
+    <!-- <div class="git-box">
 <img src="@/assets/images/github.png" alt="">
    <p class="git-login" @click="oAuth()">Continue with GitHub</p>
-  </div>
+  </div> -->
     <p>
       Don't have an account?
       <NuxtLink to="/signup" class="register">Register</NuxtLink>
