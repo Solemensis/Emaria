@@ -16,6 +16,7 @@
     "@pinia/nuxt": "^0.4.3",
     "@supabase/supabase-js": "^2.0.4",
     "aos": "^2.3.4",
+    "nuxt3": "^3.0.0-rc.13-27781436.1f6b3be",
     "pinia": "^2.0.23"
   }
 }
