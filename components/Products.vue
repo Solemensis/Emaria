@@ -5,7 +5,12 @@ let save = null;
 let save2 = null;
 
 // if (useProductStore().items.length < 20) {
-const { data: products } = await useFetch("https://fakestoreapi.com/products/");
+// const { data: products } = await useFetch("https://fakestoreapi.com/products/");
+const { data: products } = await useFetch(
+  "https://9a9bfolc.directus.app/items/products/"
+);
+
+const assetsEndpoint = "https://9a9bfolc.directus.app/assets/";
 useProductStore().items = products.value;
 save2 = products.value;
 // }
@@ -90,16 +95,19 @@ function handleFilter4() {
 
     <div class="grid">
       <div
-        v-for="(product, index) in useProductStore().items"
+        v-for="(product, index) in useProductStore().items.data"
         :key="product.id"
         class="card"
         data-aos="zoom-in"
         data-aos-duration="500"
         data-aos-easing="in-out-sine"
       >
-        <img :class="'product-img product-img-' + index" :src="product.image" />
+        <img
+          :class="'product-img product-img-' + index"
+          :src="assetsEndpoint + product.thumbnail"
+        />
         <p class="title">
-          {{ product.title }}
+          {{ product.name }}
         </p>
 
         <div class="price-flex">
@@ -176,7 +184,7 @@ function handleFilter4() {
 }
 
 .product-img {
-  max-width: 50%;
+  max-width: 71%;
   position: absolute;
   top: 32%;
   transform: translate(0, -50%);
@@ -296,7 +304,7 @@ p {
   max-width: 45%;
 } */
 
-.product-img-4 {
+/* .product-img-4 {
   max-width: 40%;
-}
+} */
 </style>

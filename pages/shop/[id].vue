@@ -15,11 +15,14 @@ const route = useRoute();
 
 if (useProductStore().items.length == 0) {
   const { data: products } = await useFetch(
-    "https://fakestoreapi.com/products/"
+    // "https://fakestoreapi.com/products/"
+     "https://9a9bfolc.directus.app/items/products/"
   );
   useProductStore().items = products;
+  
+  
 }
-
+const assetsEndpoint = "https://9a9bfolc.directus.app/assets/";
 
 
 const cartStore = useCartStore();
@@ -114,7 +117,7 @@ async function insert(){
            data-aos-duration="600"
            data-aos-easing="in-out-sine"
         class="image"
-        :src="useProductStore().items.find((e) => e.id == route.params.id).image"
+        :src="assetsEndpoint+useProductStore().items.data.find((e) => e.id == route.params.id).thumbnail"
         alt=""
       />
       <div data-aos="zoom-out" data-aos-duration="600"
@@ -122,23 +125,23 @@ async function insert(){
            data-aos-delay="50"
        class="text-block">
         <p class="category">
-          - {{useProductStore().items.find((e) => e.id == route.params.id).category }} -
+          - {{useProductStore().items.data.find((e) => e.id == route.params.id).type}} -
         </p>
         <h2 class="title">
-          {{ useProductStore().items.find((e) => e.id == route.params.id).title }}
+          {{ useProductStore().items.data.find((e) => e.id == route.params.id).name }}
         </h2>
 
         <h3 class="price">
           <span  class="dollar-sign">$</span
-          >{{ useProductStore().items.find((e) => e.id == route.params.id).price }}
+          >{{ useProductStore().items.data.find((e) => e.id == route.params.id).price }}
         </h3>
         <p class="description">
-          {{ useProductStore().items.find((e) => e.id == route.params.id).description }}
+          {{ useProductStore().items.data.find((e) => e.id == route.params.id).description }}
         </p>
         <!-- <p>{{ products.find((e) => e.id == route.params.id).rating.rate }}</p> -->
         <div class="buttons">
           <button class="add-to-fav button">❤️</button
-          ><button @click="addToCart(useProductStore().items.find((e) => e.id == route.params.id)), insert(), showModal()" class="add-to-cart button">Add To Cart</button>
+          ><button @click="addToCart(useProductStore().items.data.find((e) => e.id == route.params.id)), insert(), showModal()" class="add-to-cart button">Add To Cart</button>
           <!-- @click="insert()" -->
           
         </div>
@@ -267,7 +270,7 @@ align-items:center;
 
 
 .image {
-  width: 28rem;
+  width: 35rem;
   height: 100%;
   margin-right: 3rem;
 }

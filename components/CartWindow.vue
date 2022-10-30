@@ -3,6 +3,7 @@ const user = useSupabaseUser();
 const supabase = useSupabaseClient();
 
 const cartStore = useCartStore();
+const assetsEndpoint = "https://9a9bfolc.directus.app/assets/";
 
 function subT() {
   return cartStore.subTotal;
@@ -63,7 +64,7 @@ function increase(i) {
           </td>
 
           <td>
-            <img :src="item.item.image" />
+            <img :src="assetsEndpoint + item.item.thumbnail" />
             <!-- <img :src="item.item.item.image" /> -->
           </td>
 
@@ -72,7 +73,7 @@ function increase(i) {
               class="title"
               :to="{ name: 'shop-id', params: { id: item.item.id } }"
             >
-              {{ item.item.title }}</NuxtLink
+              {{ item.item.name }}</NuxtLink
             >
           </td>
           <td class="item-price">
