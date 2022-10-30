@@ -6,7 +6,7 @@ Techs used: Vue3, Nuxt3, Pinia, Supabase, directus, Formkit, Aos.
 - [Vue3 & Nuxt3] as building blocks.
 - [Pinia] to maintain cart state on client side, and to share fetched products across components.
 - [Supabase] to maintain cart/user state on server side and to build auth.
-- [directus] as a headless cms to maintain products-api by using graphical user interface.
+- [directus] as a headless cms to build and maintain products-api by using a graphical user interface that directus provides for us.
 - [Formkit] to build forms with ease.
 - [Aos] to build scroll reveal animations.
 
