@@ -17,15 +17,6 @@ save2 = products.value.data;
 // }
 save = useProductStore().items;
 
-// function handleFilter0() {
-//   save = save2;
-//   useProductStore().items = save;
-//   clicked1.value = false;
-//   clicked2.value = false;
-//   clicked3.value = false;
-//   clicked4.value = false;
-// }
-
 function handleFilter1() {
   if (clicked1.value == false) {
     save = save2;
@@ -33,41 +24,47 @@ function handleFilter1() {
     useProductStore().items = useProductStore().items.filter(
       (e) => e.type == "Desktop"
     );
-    spec1.value = true;
   } else {
     save = save2;
     useProductStore().items = save;
-    spec1.value = false;
   }
   clicked1.value = !clicked1.value;
   clicked2.value = false;
   clicked3.value = false;
   clicked4.value = false;
-  spec2.value = false;
-  spec3.value = false;
-  spec4.value = false;
+  clicked5.value = false;
+
+  specClicked1.value = false;
+  specClicked2.value = false;
+  specClicked3.value = false;
+  specClicked4.value = false;
+  specClicked5.value = false;
 }
 function handleFilter2() {
   if (clicked2.value == false) {
     save = save2;
     useProductStore().items = save;
     useProductStore().items = useProductStore().items.filter(
-      (e) => e.type == "Men's Hoodie" || e.type == "Men's T-shirt"
+      (e) =>
+        e.type == "Men's Hoodie" ||
+        e.type == "Men's T-shirt" ||
+        e.type == "Men's Hat"
     );
-    spec2.value = true;
   } else {
     save = save2;
     useProductStore().items = save;
-    spec2.value = false;
   }
 
   clicked2.value = !clicked2.value;
   clicked1.value = false;
   clicked3.value = false;
   clicked4.value = false;
-  spec1.value = false;
-  spec3.value = false;
-  spec4.value = false;
+  clicked5.value = false;
+
+  specClicked1.value = false;
+  specClicked2.value = false;
+  specClicked3.value = false;
+  specClicked5.value = false;
 }
 function handleFilter3() {
   if (clicked3.value == false) {
@@ -76,89 +73,278 @@ function handleFilter3() {
     useProductStore().items = useProductStore().items.filter(
       (e) => e.type == "Women's Dress" || e.type == "Women's T-shirt"
     );
-    spec3.value = true;
   } else {
     save = save2;
     useProductStore().items = save;
-    spec3.value = false;
   }
 
   clicked3.value = !clicked3.value;
   clicked1.value = false;
   clicked2.value = false;
   clicked4.value = false;
-  spec1.value = false;
-  spec2.value = false;
-  spec4.value = false;
+  clicked5.value = false;
+
+  specClicked1.value = false;
+  specClicked2.value = false;
+  specClicked3.value = false;
+  specClicked4.value = false;
+  specClicked5.value = false;
 }
 function handleFilter4() {
   if (clicked4.value == false) {
     save = save2;
     useProductStore().items = save;
     useProductStore().items = useProductStore().items.filter(
-      (e) => e.type == "Hat"
+      (e) => e.type == "Bag"
     );
-    spec4.value = true;
   } else {
     save = save2;
     useProductStore().items = save;
-    spec4.value = false;
   }
 
   clicked4.value = !clicked4.value;
   clicked1.value = false;
   clicked2.value = false;
   clicked3.value = false;
-  spec1.value = false;
-  spec2.value = false;
-  spec3.value = false;
+  clicked5.value = false;
+
+  specClicked1.value = false;
+  specClicked2.value = false;
+  specClicked3.value = false;
+  specClicked4.value = false;
+  specClicked5.value = false;
 }
-function specificFilter1() {
+function handleFilter5() {
+  if (clicked5.value == false) {
+    save = save2;
+    useProductStore().items = save;
+    useProductStore().items = useProductStore().items.filter(
+      (e) =>
+        e.type == "Alcohol" ||
+        e.type == "Trading Card Game" ||
+        e.type == "Gaming Chair"
+    );
+  } else {
+    save = save2;
+    useProductStore().items = save;
+  }
+
+  clicked5.value = !clicked5.value;
+  clicked1.value = false;
+  clicked2.value = false;
+  clicked3.value = false;
+  clicked4.value = false;
+
+  specClicked1.value = false;
+  specClicked2.value = false;
+  specClicked3.value = false;
+  specClicked4.value = false;
+  specClicked5.value = false;
+}
+function specificFilter1_1() {
+  save = save2;
+  useProductStore().items = save;
+  useProductStore().items = useProductStore().items.filter(
+    (e) => e.type == "Television"
+  );
+  specClicked1.value = !specClicked1.value;
+  specClicked2.value = false;
+  specClicked3.value = false;
+  specClicked4.value = false;
+  specClicked5.value = false;
+}
+function specificFilter1_2() {
   save = save2;
   useProductStore().items = save;
   useProductStore().items = useProductStore().items.filter(
     (e) => e.type == "Desktop"
   );
+  specClicked2.value = !specClicked2.value;
+  specClicked1.value = false;
+  specClicked3.value = false;
+  specClicked4.value = false;
+  specClicked5.value = false;
 }
-function specificFilter2() {
+function specificFilter1_3() {
   save = save2;
   useProductStore().items = save;
   useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "Laptop"
+    (e) => e.type == "Notebook"
   );
+  specClicked3.value = !specClicked3.value;
+  specClicked1.value = false;
+  specClicked2.value = false;
+  specClicked4.value = false;
+  specClicked5.value = false;
 }
-function specificFilter3() {
+function specificFilter1_4() {
   save = save2;
   useProductStore().items = save;
   useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "Men's Hoodie"
+    (e) => e.type == "OEM"
   );
+  specClicked4.value = !specClicked4.value;
+  specClicked1.value = false;
+  specClicked2.value = false;
+  specClicked3.value = false;
+  specClicked5.value = false;
 }
-function specificFilter4() {
+function specificFilter1_5() {
+  save = save2;
+  useProductStore().items = save;
+  useProductStore().items = useProductStore().items.filter(
+    (e) => e.type == "Pc Accessory"
+  );
+  specClicked5.value = !specClicked5.value;
+  specClicked1.value = false;
+  specClicked2.value = false;
+  specClicked3.value = false;
+  specClicked4.value = false;
+}
+function specificFilter2_1() {
   save = save2;
   useProductStore().items = save;
   useProductStore().items = useProductStore().items.filter(
     (e) => e.type == "Men's T-shirt"
   );
+  specClicked1.value = !specClicked1.value;
+  specClicked2.value = false;
+  specClicked3.value = false;
+  specClicked4.value = false;
+  specClicked5.value = false;
+}
+function specificFilter2_2() {
+  save = save2;
+  useProductStore().items = save;
+  useProductStore().items = useProductStore().items.filter(
+    (e) => e.type == "Men's Hoodie"
+  );
+  specClicked2.value = !specClicked2.value;
+  specClicked1.value = false;
+  specClicked3.value = false;
+  specClicked4.value = false;
+  specClicked5.value = false;
+}
+function specificFilter2_3() {
+  save = save2;
+  useProductStore().items = save;
+  useProductStore().items = useProductStore().items.filter(
+    (e) => e.type == "Men's Hat"
+  );
+  specClicked3.value = !specClicked3.value;
+  specClicked1.value = false;
+  specClicked2.value = false;
+  specClicked4.value = false;
+  specClicked5.value = false;
+}
+function specificFilter3_1() {
+  save = save2;
+  useProductStore().items = save;
+  useProductStore().items = useProductStore().items.filter(
+    (e) => e.type == "Women's T-shirt"
+  );
+  specClicked1.value = !specClicked1.value;
+  specClicked2.value = false;
+  specClicked3.value = false;
+  specClicked4.value = false;
+  specClicked5.value = false;
+}
+function specificFilter3_2() {
+  save = save2;
+  useProductStore().items = save;
+  useProductStore().items = useProductStore().items.filter(
+    (e) => e.type == "Women's Dress"
+  );
+  specClicked2.value = !specClicked2.value;
+  specClicked1.value = false;
+  specClicked3.value = false;
+  specClicked4.value = false;
+  specClicked5.value = false;
+}
+function specificFilter3_3() {
+  save = save2;
+  useProductStore().items = save;
+  useProductStore().items = useProductStore().items.filter(
+    (e) => e.type == "Women's Accessory"
+  );
+  specClicked3.value = !specClicked3.value;
+  specClicked1.value = false;
+  specClicked2.value = false;
+  specClicked4.value = false;
+  specClicked5.value = false;
+}
+function specificFilter4_1() {
+  save = save2;
+  useProductStore().items = save;
+  useProductStore().items = useProductStore().items.filter(
+    (e) => e.type == "Shoe"
+  );
+  specClicked1.value = !specClicked1.value;
+  specClicked2.value = false;
+  specClicked3.value = false;
+  specClicked4.value = false;
+  specClicked5.value = false;
+}
+function specificFilter4_2() {
+  save = save2;
+  useProductStore().items = save;
+  useProductStore().items = useProductStore().items.filter(
+    (e) => e.type == "Bag"
+  );
+  specClicked2.value = !specClicked2.value;
+  specClicked1.value = false;
+  specClicked3.value = false;
+  specClicked4.value = false;
+  specClicked5.value = false;
+}
+function specificFilter5_1() {
+  save = save2;
+  useProductStore().items = save;
+  useProductStore().items = useProductStore().items.filter(
+    (e) => e.type == "Gaming Chair"
+  );
+  specClicked1.value = !specClicked1.value;
+  specClicked2.value = false;
+  specClicked3.value = false;
+  specClicked4.value = false;
+  specClicked5.value = false;
+}
+function specificFilter5_2() {
+  save = save2;
+  useProductStore().items = save;
+  useProductStore().items = useProductStore().items.filter(
+    (e) => e.type == "Trading Card Game"
+  );
+  specClicked2.value = !specClicked2.value;
+  specClicked1.value = false;
+  specClicked3.value = false;
+  specClicked4.value = false;
+  specClicked5.value = false;
+}
+function specificFilter5_3() {
+  save = save2;
+  useProductStore().items = save;
+  useProductStore().items = useProductStore().items.filter(
+    (e) => e.type == "Alcohol"
+  );
+  specClicked3.value = !specClicked3.value;
+  specClicked1.value = false;
+  specClicked2.value = false;
+  specClicked4.value = false;
+  specClicked5.value = false;
 }
 
 let clicked1 = ref(false);
 let clicked2 = ref(false);
 let clicked3 = ref(false);
 let clicked4 = ref(false);
-let spec1 = ref(false);
-let spec2 = ref(false);
-let spec3 = ref(false);
-let spec4 = ref(false);
+let clicked5 = ref(false);
 
-// let showCat = ref(false);
-
-// function showFunction() {
-//   showCat.value = !showCat.value;
-// }
-// function hideFunction() {
-//   showCat.value = !showCat.value;
-// }
+let specClicked1 = ref(false);
+let specClicked2 = ref(false);
+let specClicked3 = ref(false);
+let specClicked4 = ref(false);
+let specClicked5 = ref(false);
 </script>
 
 <template>
@@ -169,74 +355,182 @@ let spec4 = ref(false);
       data-aos-easing="in-out-sine"
       class="categories"
     >
-      <!-- <div class="cat-flex">
-        <img
-          @click="handleFilter0()"
-          class="endless-cat filter filter1"
-          src="@/assets/images/cat0.png"
-          alt=""
-        />
-      </div> -->
       <div class="cat-flex">
         <img
-          class="filter filter2"
+          class="filter"
           :class="{ 'get-bigger': clicked1 }"
           @click="handleFilter1()"
           src="@/assets/images/cat1.png"
           alt=""
         /><transition name="my-transition">
-          <div v-show="spec1">
+          <div v-show="clicked1">
             <h2 class="spec-head">Electronic</h2>
-            <p class="specs" @click="specificFilter1()">Desktop</p>
-            <p class="specs" @click="specificFilter2()">Laptop</p>
+            <p
+              :class="{ 'get-red': specClicked1 }"
+              class="specs"
+              @click="specificFilter1_1()"
+            >
+              TV
+            </p>
+            <p
+              :class="{ 'get-red': specClicked2 }"
+              class="specs"
+              @click="specificFilter1_2()"
+            >
+              Desktop
+            </p>
+            <p
+              :class="{ 'get-red': specClicked3 }"
+              class="specs"
+              @click="specificFilter1_3()"
+            >
+              Notebook
+            </p>
+            <p
+              :class="{ 'get-red': specClicked4 }"
+              class="specs"
+              @click="specificFilter1_4()"
+            >
+              OEM
+            </p>
+            <p
+              :class="{ 'get-red': specClicked5 }"
+              class="specs"
+              @click="specificFilter1_5()"
+            >
+              Pc Accessory
+            </p>
           </div></transition
         >
       </div>
       <div class="cat-flex">
         <img
-          class="filter filter3"
+          class="filter"
           :class="{ 'get-bigger': clicked2 }"
           @click="handleFilter2()"
           src="@/assets/images/cat2.png"
           alt=""
         />
         <transition name="my-transition">
-          <div v-show="spec2">
+          <div v-show="clicked2">
             <h2 class="spec-head">Men's</h2>
-            <p class="specs" @click="specificFilter4()">T-shirt</p>
-            <p class="specs" @click="specificFilter3()">Hoodie</p>
+            <p
+              :class="{ 'get-red': specClicked1 }"
+              class="specs"
+              @click="specificFilter2_1()"
+            >
+              T-shirt
+            </p>
+            <p
+              :class="{ 'get-red': specClicked2 }"
+              class="specs"
+              @click="specificFilter2_2()"
+            >
+              Hoodie
+            </p>
+            <p
+              :class="{ 'get-red': specClicked3 }"
+              class="specs"
+              @click="specificFilter2_3()"
+            >
+              Hat
+            </p>
           </div></transition
         >
       </div>
       <div class="cat-flex">
         <img
-          class="filter filter4"
+          class="filter"
           :class="{ 'get-bigger': clicked3 }"
           @click="handleFilter3()"
           src="@/assets/images/cat3.png"
           alt=""
         />
         <transition name="my-transition">
-          <div v-show="spec3">
+          <div v-show="clicked3">
             <h2 class="spec-head">Women's</h2>
-            <p class="specs">T-shirt</p>
-            <p class="specs">Dress</p>
+            <p
+              :class="{ 'get-red': specClicked1 }"
+              class="specs"
+              @click="specificFilter3_1()"
+            >
+              T-shirt
+            </p>
+            <p
+              :class="{ 'get-red': specClicked2 }"
+              class="specs"
+              @click="specificFilter3_2()"
+            >
+              Dress
+            </p>
+            <p
+              :class="{ 'get-red': specClicked3 }"
+              class="specs"
+              @click="specificFilter3_3()"
+            >
+              Accessory
+            </p>
           </div></transition
         >
       </div>
       <div class="cat-flex">
         <img
-          class="filter filter5"
+          class="filter"
           :class="{ 'get-bigger': clicked4 }"
           @click="handleFilter4()"
           src="@/assets/images/cat4.png"
           alt=""
         /><transition name="my-transition">
-          <div v-show="spec4">
+          <div v-show="clicked4">
             <h2 class="spec-head">General</h2>
-            <p class="specs">Shoe</p>
-            <p class="specs">Hat</p>
-            <p class="specs">Accessory</p>
+            <p
+              :class="{ 'get-red': specClicked1 }"
+              class="specs"
+              @click="specificFilter4_1()"
+            >
+              Shoe
+            </p>
+            <p
+              :class="{ 'get-red': specClicked2 }"
+              class="specs"
+              @click="specificFilter4_2()"
+            >
+              Bag
+            </p>
+          </div></transition
+        >
+      </div>
+      <div class="cat-flex">
+        <img
+          class="filter"
+          :class="{ 'get-bigger': clicked5 }"
+          @click="handleFilter5()"
+          src="@/assets/images/cat5.png"
+          alt=""
+        /><transition name="my-transition">
+          <div v-show="clicked5">
+            <h2 class="spec-head">Stuff</h2>
+            <p
+              :class="{ 'get-red': specClicked1 }"
+              class="specs"
+              @click="specificFilter5_1()"
+            >
+              <nobr>Gaming Ch.</nobr>
+            </p>
+            <p
+              :class="{ 'get-red': specClicked2 }"
+              class="specs"
+              @click="specificFilter5_2()"
+            >
+              TCG
+            </p>
+            <p
+              :class="{ 'get-red': specClicked3 }"
+              class="specs"
+              @click="specificFilter5_3()"
+            >
+              Alcohol
+            </p>
           </div></transition
         >
       </div>
@@ -276,15 +570,15 @@ let spec4 = ref(false);
 <style scoped>
 .spec-head {
   color: rgb(108, 108, 108);
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 1.9rem;
+  margin-bottom: 0.5rem;
   border-bottom: 1px solid rgb(179, 179, 179);
 }
 .specs {
   transition: 0.3s;
 }
 .specs:hover {
-  color: red;
+  color: rgb(235, 93, 93);
 }
 .listed-info {
   position: absolute;
@@ -292,8 +586,11 @@ let spec4 = ref(false);
   left: 1rem;
 }
 .get-bigger {
-  padding: 3.5rem 0;
+  padding: 3.7rem 0;
   border: rgb(238, 116, 116) 2px solid !important;
+}
+.get-red {
+  color: rgb(235, 93, 93);
 }
 .cat-flex {
   display: flex;
@@ -308,7 +605,7 @@ let spec4 = ref(false);
   /* height: 8rem; */
 }
 .cat-flex p {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   margin-bottom: 0.2rem;
   font-weight: 600;
   text-align: start;
@@ -371,7 +668,7 @@ let spec4 = ref(false);
   width: 6rem;
   border: rgb(186, 186, 186) 2px solid;
 
-  transition: transform 0.2s, border 0.2s, padding 0.3s;
+  transition: transform 0.3s, border 0.6s, padding 0.6s;
 }
 
 .categories img:hover {
