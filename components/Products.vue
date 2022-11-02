@@ -7,7 +7,7 @@ let save2 = null;
 // if (useProductStore().items.length < 20) {
 // const { data: products } = await useFetch("https://fakestoreapi.com/products/");
 const { data: products } = await useFetch(
-  "https://9a9bfolc.directus.app/items/products/"
+  "https://9a9bfolc.directus.app/items/products?sort=-type&limit=150"
 );
 
 const assetsEndpoint = "https://9a9bfolc.directus.app/assets/";
@@ -22,7 +22,12 @@ function handleFilter1() {
     save = save2;
     useProductStore().items = save;
     useProductStore().items = useProductStore().items.filter(
-      (e) => e.type == "Desktop"
+      (e) =>
+        e.type == "Desktop" ||
+        e.type == "Television" ||
+        e.type == "Notebook" ||
+        e.type == "OEM" ||
+        e.type == "Pc Accessory"
     );
   } else {
     save = save2;
@@ -71,7 +76,10 @@ function handleFilter3() {
     save = save2;
     useProductStore().items = save;
     useProductStore().items = useProductStore().items.filter(
-      (e) => e.type == "Women's Dress" || e.type == "Women's T-shirt"
+      (e) =>
+        e.type == "Women's Dress" ||
+        e.type == "Women's T-shirt" ||
+        e.type == "Women's Accessory"
     );
   } else {
     save = save2;
@@ -95,7 +103,7 @@ function handleFilter4() {
     save = save2;
     useProductStore().items = save;
     useProductStore().items = useProductStore().items.filter(
-      (e) => e.type == "Bag"
+      (e) => e.type == "Bag" || e.type == "Shoes"
     );
   } else {
     save = save2;
@@ -277,7 +285,7 @@ function specificFilter4_1() {
   save = save2;
   useProductStore().items = save;
   useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "Shoe"
+    (e) => e.type == "Shoes"
   );
   specClicked1.value = !specClicked1.value;
   specClicked2.value = false;
@@ -393,13 +401,13 @@ let specClicked5 = ref(false);
             >
               OEM
             </p>
-            <p
+            <!-- <p
               :class="{ 'get-red': specClicked5 }"
               class="specs"
               @click="specificFilter1_5()"
             >
               Pc Accessory
-            </p>
+            </p> -->
           </div></transition
         >
       </div>
@@ -488,7 +496,7 @@ let specClicked5 = ref(false);
               class="specs"
               @click="specificFilter4_1()"
             >
-              Shoe
+              Shoes
             </p>
             <p
               :class="{ 'get-red': specClicked2 }"
