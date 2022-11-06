@@ -2,7 +2,6 @@
 
 
 
-
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 
@@ -16,7 +15,7 @@ const route = useRoute();
 if (useProductStore().items.length == 0) {
   const { data: products } = await useFetch(
     // "https://fakestoreapi.com/products/"
-     "https://9a9bfolc.directus.app/items/products/"
+    `https://9a9bfolc.directus.app/items/products?limit=155`
   );
   useProductStore().items = products.value.data;
   

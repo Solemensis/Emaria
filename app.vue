@@ -153,7 +153,7 @@ body {
   width: 1rem;
   /* border-radius: 0.5rem; */
   background-color: hsl(0, 0%, 77%);
-  position: absolute;
+  /* position: absolute; */
 }
 ::-webkit-scrollbar-thumb {
   /* border-radius: 0.5rem; */

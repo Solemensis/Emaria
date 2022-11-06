@@ -9,13 +9,18 @@
   },
   "devDependencies": {
     "@nuxtjs/supabase": "^0.2.2",
+    "@vueuse/core": "^9.4.0",
+    "@vueuse/nuxt": "^9.4.0",
     "nuxt": "^3.0.0-rc.12"
   },
   "dependencies": {
     "@formkit/nuxt": "^1.0.0-beta.11",
     "@pinia/nuxt": "^0.4.3",
     "@supabase/supabase-js": "^2.0.4",
+    "@vueuse/components": "^9.4.0",
     "aos": "^2.3.4",
-    "pinia": "^2.0.23"
+    "pinia": "^2.0.23",
+    "vue-infinite-loading": "^2.4.5",
+    "vue-infinite-scroll": "^2.0.2"
   }
 }

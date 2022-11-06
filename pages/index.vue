@@ -18,7 +18,7 @@ const cartStore = useCartStore();
 <template lang="">
   <div>
     <Navbar />
-    <div class="container">
+    <div v-once class="container">
       <!-- <div class="arrow-container">
       <img class="arrow" src="@/assets/images/arrow.png" alt="" />
     </div> -->

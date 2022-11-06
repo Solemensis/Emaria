@@ -1,27 +1,111 @@
 <script setup>
 // const { data: products } = await useFetch("https://fakestoreapi.com/products/");
+// import InfiniteLoading from "vue-infinite-loading";
+// import { useIntersectionObserver } from "@vueuse/core";
+import { vIntersectionObserver } from "@vueuse/components";
 
-let save = null;
-let save2 = null;
+const isVisible = ref(false);
+
+// this went
+// function onIntersectionObserver([{ isIntersecting }]) {
+//   if (isIntersecting) {
+//     isVisible.value = isIntersecting;
+
+//     let anan = async () => {
+//       const newUsers = await getUsers(usersToShow, products.value.length);
+
+//       products.value.push(...newUsers);
+//     };
+//     anan();
+//   }
+// }
+
+// to this
+let onIntersectionObserver = async ([{ isIntersecting }]) => {
+  if (isIntersecting) {
+    isVisible.value = isIntersecting;
+
+    const newUsers = await getUsers(
+      usersToShow,
+      // useProductStore().items.length
+      useIsStore().items.length
+    );
+    useIsStore().items.push(...newUsers);
+    // useProductStore().items.push(...newUsers);
+  }
+};
+
+let getUsers = async (limit, skip) => {
+  let { data: products } = await useFetch(
+    `https://9a9bfolc.directus.app/items/products?limit=${limit}&offset=${skip}`,
+    {
+      initialCache: false,
+    }
+  );
+
+  return products.value.data;
+};
+
+const usersToShow = 15;
+
+if (useProductStore().items.length == 0) {
+  let { data: wholeFetch } = await useFetch(
+    `https://9a9bfolc.directus.app/items/products?limit=155`
+  );
+  useProductStore().items = wholeFetch.value.data;
+}
+
+// useProductStore().items = await getUsers(usersToShow, 0);
+
+// const getUsersOnScroll = async () => {
+//   const newUsers = await getUsers(usersToShow, products.value.length);
+
+//   products.value.push(...newUsers);
+// };
+
+// useInfiniteScroll(
+//   listEl,
+//   async () => {
+//     await getUsersOnScroll();
+//   },
+//   {
+//     distance: 10,
+//   }
+// );
+
+// if (useIsStore().items.length === 0) {
+//   useIsStore().items = await getUsers(usersToShow, 0);
+//   save2 = useIsStore().items;
+// } else {
+//   useIsStore().items = save2;
+// }
 
 // if (useProductStore().items.length < 20) {
 // const { data: products } = await useFetch("https://fakestoreapi.com/products/");
-const { data: products } = await useFetch(
-  "https://9a9bfolc.directus.app/items/products?sort=-type&limit=150"
-);
+
+// const { data: products } = await useFetch(
+//   // "https://9a9bfolc.directus.app/items/products?sort=-type&limit=150"
+//   "https://9a9bfolc.directus.app/items/products?sort=-type&limit=2&page=1"
+// );
 
 const assetsEndpoint = "https://9a9bfolc.directus.app/assets/";
-useProductStore().items = products.value.data;
-save2 = products.value.data;
+// useProductStore().items = products;
+// useProductStore().items = products.value.data;
+// save2 = products.value.data;
 
 // }
-save = useProductStore().items;
+
+if (useIsStore().itemsSave1.length === 0) {
+  useIsStore().items = await getUsers(usersToShow, 0);
+  useIsStore().itemsSave1 = useIsStore().items;
+  // } else {
+
+  //    useIsStore().items =useIsStore().itemsSave1
+}
 
 function handleFilter1() {
-  if (clicked1.value == false) {
-    save = save2;
-    useProductStore().items = save;
-    useProductStore().items = useProductStore().items.filter(
+  if (useClickedStore().clicked1 == false) {
+    useIsStore().items = useProductStore().items.filter(
       (e) =>
         e.type == "Desktop" ||
         e.type == "Television" ||
@@ -30,329 +114,437 @@ function handleFilter1() {
         e.type == "Pc Accessory"
     );
   } else {
-    save = save2;
-    useProductStore().items = save;
+    useIsStore().items = useIsStore().itemsSave1;
   }
-  clicked1.value = !clicked1.value;
-  clicked2.value = false;
-  clicked3.value = false;
-  clicked4.value = false;
-  clicked5.value = false;
+  useClickedStore().clicked1 = !useClickedStore().clicked1;
+  useClickedStore().clicked2 = false;
+  useClickedStore().clicked3 = false;
+  useClickedStore().clicked4 = false;
+  useClickedStore().clicked5 = false;
 
-  specClicked1.value = false;
-  specClicked2.value = false;
-  specClicked3.value = false;
-  specClicked4.value = false;
-  specClicked5.value = false;
+  useClickedStore().specClicked1 = false;
+  useClickedStore().specClicked2 = false;
+  useClickedStore().specClicked3 = false;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 function handleFilter2() {
-  if (clicked2.value == false) {
-    save = save2;
-    useProductStore().items = save;
-    useProductStore().items = useProductStore().items.filter(
+  if (useClickedStore().clicked2 == false) {
+    useIsStore().items = useProductStore().items.filter(
       (e) =>
         e.type == "Men's Hoodie" ||
         e.type == "Men's T-shirt" ||
         e.type == "Men's Hat"
     );
   } else {
-    save = save2;
-    useProductStore().items = save;
+    useIsStore().items = useIsStore().itemsSave1;
   }
 
-  clicked2.value = !clicked2.value;
-  clicked1.value = false;
-  clicked3.value = false;
-  clicked4.value = false;
-  clicked5.value = false;
+  useClickedStore().clicked1 = false;
+  useClickedStore().clicked2 = !useClickedStore().clicked2;
+  useClickedStore().clicked3 = false;
+  useClickedStore().clicked4 = false;
+  useClickedStore().clicked5 = false;
 
-  specClicked1.value = false;
-  specClicked2.value = false;
-  specClicked3.value = false;
-  specClicked5.value = false;
+  useClickedStore().specClicked1 = false;
+  useClickedStore().specClicked2 = false;
+  useClickedStore().specClicked3 = false;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 function handleFilter3() {
-  if (clicked3.value == false) {
-    save = save2;
-    useProductStore().items = save;
-    useProductStore().items = useProductStore().items.filter(
+  if (useClickedStore().clicked3 == false) {
+    useIsStore().items = useProductStore().items.filter(
       (e) =>
         e.type == "Women's Dress" ||
         e.type == "Women's T-shirt" ||
         e.type == "Women's Accessory"
     );
   } else {
-    save = save2;
-    useProductStore().items = save;
+    useIsStore().items = useIsStore().itemsSave1;
   }
 
-  clicked3.value = !clicked3.value;
-  clicked1.value = false;
-  clicked2.value = false;
-  clicked4.value = false;
-  clicked5.value = false;
+  useClickedStore().clicked1 = false;
+  useClickedStore().clicked2 = false;
+  useClickedStore().clicked3 = !useClickedStore().clicked3;
+  useClickedStore().clicked4 = false;
+  useClickedStore().clicked5 = false;
 
-  specClicked1.value = false;
-  specClicked2.value = false;
-  specClicked3.value = false;
-  specClicked4.value = false;
-  specClicked5.value = false;
+  useClickedStore().specClicked1 = false;
+  useClickedStore().specClicked2 = false;
+  useClickedStore().specClicked3 = false;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 function handleFilter4() {
-  if (clicked4.value == false) {
-    save = save2;
-    useProductStore().items = save;
-    useProductStore().items = useProductStore().items.filter(
+  if (useClickedStore().clicked4 == false) {
+    useIsStore().items = useProductStore().items.filter(
       (e) => e.type == "Bag" || e.type == "Shoes"
     );
   } else {
-    save = save2;
-    useProductStore().items = save;
+    useIsStore().items = useIsStore().itemsSave1;
   }
 
-  clicked4.value = !clicked4.value;
-  clicked1.value = false;
-  clicked2.value = false;
-  clicked3.value = false;
-  clicked5.value = false;
+  useClickedStore().clicked1 = false;
+  useClickedStore().clicked2 = false;
+  useClickedStore().clicked3 = false;
+  useClickedStore().clicked4 = !useClickedStore().clicked4;
+  useClickedStore().clicked5 = false;
 
-  specClicked1.value = false;
-  specClicked2.value = false;
-  specClicked3.value = false;
-  specClicked4.value = false;
-  specClicked5.value = false;
+  useClickedStore().specClicked1 = false;
+  useClickedStore().specClicked2 = false;
+  useClickedStore().specClicked3 = false;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 function handleFilter5() {
-  if (clicked5.value == false) {
-    save = save2;
-    useProductStore().items = save;
-    useProductStore().items = useProductStore().items.filter(
+  if (useClickedStore().clicked5 == false) {
+    useIsStore().items = useProductStore().items.filter(
       (e) =>
         e.type == "Alcohol" ||
         e.type == "Trading Card Game" ||
         e.type == "Gaming Chair"
     );
   } else {
-    save = save2;
-    useProductStore().items = save;
+    useIsStore().items = useIsStore().itemsSave1;
   }
 
-  clicked5.value = !clicked5.value;
-  clicked1.value = false;
-  clicked2.value = false;
-  clicked3.value = false;
-  clicked4.value = false;
+  useClickedStore().clicked1 = false;
+  useClickedStore().clicked2 = false;
+  useClickedStore().clicked3 = false;
+  useClickedStore().clicked4 = false;
+  useClickedStore().clicked5 = !useClickedStore().clicked5;
 
-  specClicked1.value = false;
-  specClicked2.value = false;
-  specClicked3.value = false;
-  specClicked4.value = false;
-  specClicked5.value = false;
+  useClickedStore().specClicked1 = false;
+  useClickedStore().specClicked2 = false;
+  useClickedStore().specClicked3 = false;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 function specificFilter1_1() {
-  save = save2;
-  useProductStore().items = save;
-  useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "Television"
-  );
-  specClicked1.value = !specClicked1.value;
-  specClicked2.value = false;
-  specClicked3.value = false;
-  specClicked4.value = false;
-  specClicked5.value = false;
+  if (useClickedStore().specClicked1 == false) {
+    useIsStore().items = useProductStore().items.filter(
+      (e) => e.type == "Television"
+    );
+  } else {
+    useIsStore().items = useProductStore().items.filter(
+      (e) =>
+        e.type == "Desktop" ||
+        e.type == "Television" ||
+        e.type == "Notebook" ||
+        e.type == "OEM" ||
+        e.type == "Pc Accessory"
+    );
+  }
+  useClickedStore().specClicked1 = !useClickedStore().specClicked1;
+  useClickedStore().specClicked2 = false;
+  useClickedStore().specClicked3 = false;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 function specificFilter1_2() {
-  save = save2;
-  useProductStore().items = save;
-  useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "Desktop"
-  );
-  specClicked2.value = !specClicked2.value;
-  specClicked1.value = false;
-  specClicked3.value = false;
-  specClicked4.value = false;
-  specClicked5.value = false;
+  if (useClickedStore().specClicked2 == false) {
+    useIsStore().items = useProductStore().items.filter(
+      (e) => e.type == "Desktop"
+    );
+  } else {
+    useIsStore().items = useProductStore().items.filter(
+      (e) =>
+        e.type == "Desktop" ||
+        e.type == "Television" ||
+        e.type == "Notebook" ||
+        e.type == "OEM" ||
+        e.type == "Pc Accessory"
+    );
+  }
+
+  useClickedStore().specClicked1 = false;
+  useClickedStore().specClicked2 = !useClickedStore().specClicked2;
+  useClickedStore().specClicked3 = false;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 function specificFilter1_3() {
-  save = save2;
-  useProductStore().items = save;
-  useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "Notebook"
-  );
-  specClicked3.value = !specClicked3.value;
-  specClicked1.value = false;
-  specClicked2.value = false;
-  specClicked4.value = false;
-  specClicked5.value = false;
+  if (useClickedStore().specClicked3 == false) {
+    useIsStore().items = useProductStore().items.filter(
+      (e) => e.type == "Notebook"
+    );
+  } else {
+    useIsStore().items = useProductStore().items.filter(
+      (e) =>
+        e.type == "Desktop" ||
+        e.type == "Television" ||
+        e.type == "Notebook" ||
+        e.type == "OEM" ||
+        e.type == "Pc Accessory"
+    );
+  }
+
+  useClickedStore().specClicked1 = false;
+  useClickedStore().specClicked2 = false;
+  useClickedStore().specClicked3 = !useClickedStore().specClicked3;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 function specificFilter1_4() {
-  save = save2;
-  useProductStore().items = save;
-  useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "OEM"
-  );
-  specClicked4.value = !specClicked4.value;
-  specClicked1.value = false;
-  specClicked2.value = false;
-  specClicked3.value = false;
-  specClicked5.value = false;
+  if (useClickedStore().specClicked4 == false) {
+    useIsStore().items = useProductStore().items.filter((e) => e.type == "OEM");
+  } else {
+    useIsStore().items = useProductStore().items.filter(
+      (e) =>
+        e.type == "Desktop" ||
+        e.type == "Television" ||
+        e.type == "Notebook" ||
+        e.type == "OEM" ||
+        e.type == "Pc Accessory"
+    );
+  }
+
+  useClickedStore().specClicked1 = false;
+  useClickedStore().specClicked2 = false;
+  useClickedStore().specClicked3 = false;
+  useClickedStore().specClicked4 = !useClickedStore().specClicked4;
+  useClickedStore().specClicked5 = false;
 }
-function specificFilter1_5() {
-  save = save2;
-  useProductStore().items = save;
-  useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "Pc Accessory"
-  );
-  specClicked5.value = !specClicked5.value;
-  specClicked1.value = false;
-  specClicked2.value = false;
-  specClicked3.value = false;
-  specClicked4.value = false;
-}
+// function specificFilter1_5() {
+//   useIsStore().items = useProductStore().items.filter(
+//     (e) => e.type == "Pc Accessory"
+//   );
+//   useClickedStore().specClicked1 = false;
+//   useClickedStore().specClicked2 = false;
+//   useClickedStore().specClicked3 = false;
+//   useClickedStore().specClicked4 = false;
+//   useClickedStore().specClicked5 = !useClickedStore().specClicked5;
+// }
 function specificFilter2_1() {
-  save = save2;
-  useProductStore().items = save;
-  useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "Men's T-shirt"
-  );
-  specClicked1.value = !specClicked1.value;
-  specClicked2.value = false;
-  specClicked3.value = false;
-  specClicked4.value = false;
-  specClicked5.value = false;
+  if (useClickedStore().specClicked1 == false) {
+    useIsStore().items = useProductStore().items.filter(
+      (e) => e.type == "Men's T-shirt"
+    );
+  } else {
+    useIsStore().items = useProductStore().items.filter(
+      (e) =>
+        e.type == "Men's Hoodie" ||
+        e.type == "Men's T-shirt" ||
+        e.type == "Men's Hat"
+    );
+  }
+
+  useClickedStore().specClicked1 = !useClickedStore().specClicked1;
+  useClickedStore().specClicked2 = false;
+  useClickedStore().specClicked3 = false;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 function specificFilter2_2() {
-  save = save2;
-  useProductStore().items = save;
-  useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "Men's Hoodie"
-  );
-  specClicked2.value = !specClicked2.value;
-  specClicked1.value = false;
-  specClicked3.value = false;
-  specClicked4.value = false;
-  specClicked5.value = false;
+  if (useClickedStore().specClicked2 == false) {
+    useIsStore().items = useProductStore().items.filter(
+      (e) => e.type == "Men's Hoodie"
+    );
+  } else {
+    useIsStore().items = useProductStore().items.filter(
+      (e) =>
+        e.type == "Men's Hoodie" ||
+        e.type == "Men's T-shirt" ||
+        e.type == "Men's Hat"
+    );
+  }
+
+  useClickedStore().specClicked1 = false;
+  useClickedStore().specClicked2 = !useClickedStore().specClicked2;
+  useClickedStore().specClicked3 = false;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 function specificFilter2_3() {
-  save = save2;
-  useProductStore().items = save;
-  useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "Men's Hat"
-  );
-  specClicked3.value = !specClicked3.value;
-  specClicked1.value = false;
-  specClicked2.value = false;
-  specClicked4.value = false;
-  specClicked5.value = false;
+  if (useClickedStore().specClicked3 == false) {
+    useIsStore().items = useProductStore().items.filter(
+      (e) => e.type == "Men's Hat"
+    );
+  } else {
+    useIsStore().items = useProductStore().items.filter(
+      (e) =>
+        e.type == "Men's Hoodie" ||
+        e.type == "Men's T-shirt" ||
+        e.type == "Men's Hat"
+    );
+  }
+
+  useClickedStore().specClicked1 = false;
+  useClickedStore().specClicked2 = false;
+  useClickedStore().specClicked3 = !useClickedStore().specClicked3;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 function specificFilter3_1() {
-  save = save2;
-  useProductStore().items = save;
-  useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "Women's T-shirt"
-  );
-  specClicked1.value = !specClicked1.value;
-  specClicked2.value = false;
-  specClicked3.value = false;
-  specClicked4.value = false;
-  specClicked5.value = false;
+  if (useClickedStore().specClicked1 == false) {
+    useIsStore().items = useProductStore().items.filter(
+      (e) => e.type == "Women's T-shirt"
+    );
+  } else {
+    useIsStore().items = useProductStore().items.filter(
+      (e) =>
+        e.type == "Women's Dress" ||
+        e.type == "Women's T-shirt" ||
+        e.type == "Women's Accessory"
+    );
+  }
+
+  useClickedStore().specClicked1 = !useClickedStore().specClicked1;
+  useClickedStore().specClicked2 = false;
+  useClickedStore().specClicked3 = false;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 function specificFilter3_2() {
-  save = save2;
-  useProductStore().items = save;
-  useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "Women's Dress"
-  );
-  specClicked2.value = !specClicked2.value;
-  specClicked1.value = false;
-  specClicked3.value = false;
-  specClicked4.value = false;
-  specClicked5.value = false;
+  if (useClickedStore().specClicked2 == false) {
+    useIsStore().items = useProductStore().items.filter(
+      (e) => e.type == "Women's Dress"
+    );
+  } else {
+    useIsStore().items = useProductStore().items.filter(
+      (e) =>
+        e.type == "Women's Dress" ||
+        e.type == "Women's T-shirt" ||
+        e.type == "Women's Accessory"
+    );
+  }
+
+  useClickedStore().specClicked1 = false;
+  useClickedStore().specClicked2 = !useClickedStore().specClicked2;
+  useClickedStore().specClicked3 = false;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 function specificFilter3_3() {
-  save = save2;
-  useProductStore().items = save;
-  useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "Women's Accessory"
-  );
-  specClicked3.value = !specClicked3.value;
-  specClicked1.value = false;
-  specClicked2.value = false;
-  specClicked4.value = false;
-  specClicked5.value = false;
+  if (useClickedStore().specClicked3 == false) {
+    useIsStore().items = useProductStore().items.filter(
+      (e) => e.type == "Women's Accessory"
+    );
+  } else {
+    useIsStore().items = useProductStore().items.filter(
+      (e) =>
+        e.type == "Women's Dress" ||
+        e.type == "Women's T-shirt" ||
+        e.type == "Women's Accessory"
+    );
+  }
+
+  useClickedStore().specClicked1 = false;
+  useClickedStore().specClicked2 = false;
+  useClickedStore().specClicked3 = !useClickedStore().specClicked3;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 function specificFilter4_1() {
-  save = save2;
-  useProductStore().items = save;
-  useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "Shoes"
-  );
-  specClicked1.value = !specClicked1.value;
-  specClicked2.value = false;
-  specClicked3.value = false;
-  specClicked4.value = false;
-  specClicked5.value = false;
+  if (useClickedStore().specClicked1 == false) {
+    useIsStore().items = useProductStore().items.filter(
+      (e) => e.type == "Shoes"
+    );
+  } else {
+    useIsStore().items = useProductStore().items.filter(
+      (e) => e.type == "Bag" || e.type == "Shoes"
+    );
+  }
+
+  useClickedStore().specClicked1 = !useClickedStore().specClicked1;
+  useClickedStore().specClicked2 = false;
+  useClickedStore().specClicked3 = false;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 function specificFilter4_2() {
-  save = save2;
-  useProductStore().items = save;
-  useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "Bag"
-  );
-  specClicked2.value = !specClicked2.value;
-  specClicked1.value = false;
-  specClicked3.value = false;
-  specClicked4.value = false;
-  specClicked5.value = false;
+  if (useClickedStore().specClicked2 == false) {
+    useIsStore().items = useProductStore().items.filter((e) => e.type == "Bag");
+  } else {
+    useIsStore().items = useProductStore().items.filter(
+      (e) => e.type == "Bag" || e.type == "Shoes"
+    );
+  }
+
+  useClickedStore().specClicked1 = false;
+  useClickedStore().specClicked2 = !useClickedStore().specClicked2;
+  useClickedStore().specClicked3 = false;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 function specificFilter5_1() {
-  save = save2;
-  useProductStore().items = save;
-  useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "Gaming Chair"
-  );
-  specClicked1.value = !specClicked1.value;
-  specClicked2.value = false;
-  specClicked3.value = false;
-  specClicked4.value = false;
-  specClicked5.value = false;
+  if (useClickedStore().specClicked1 == false) {
+    useIsStore().items = useProductStore().items.filter(
+      (e) => e.type == "Gaming Chair"
+    );
+  } else {
+    useIsStore().items = useProductStore().items.filter(
+      (e) =>
+        e.type == "Alcohol" ||
+        e.type == "Trading Card Game" ||
+        e.type == "Gaming Chair"
+    );
+  }
+
+  useClickedStore().specClicked1 = !useClickedStore().specClicked1;
+  useClickedStore().specClicked2 = false;
+  useClickedStore().specClicked3 = false;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 function specificFilter5_2() {
-  save = save2;
-  useProductStore().items = save;
-  useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "Trading Card Game"
-  );
-  specClicked2.value = !specClicked2.value;
-  specClicked1.value = false;
-  specClicked3.value = false;
-  specClicked4.value = false;
-  specClicked5.value = false;
+  if (useClickedStore().specClicked2 == false) {
+    useIsStore().items = useProductStore().items.filter(
+      (e) => e.type == "Trading Card Game"
+    );
+  } else {
+    useIsStore().items = useProductStore().items.filter(
+      (e) =>
+        e.type == "Alcohol" ||
+        e.type == "Trading Card Game" ||
+        e.type == "Gaming Chair"
+    );
+  }
+
+  useClickedStore().specClicked1 = false;
+  useClickedStore().specClicked2 = !useClickedStore().specClicked2;
+  useClickedStore().specClicked3 = false;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 function specificFilter5_3() {
-  save = save2;
-  useProductStore().items = save;
-  useProductStore().items = useProductStore().items.filter(
-    (e) => e.type == "Alcohol"
-  );
-  specClicked3.value = !specClicked3.value;
-  specClicked1.value = false;
-  specClicked2.value = false;
-  specClicked4.value = false;
-  specClicked5.value = false;
+  if (useClickedStore().specClicked3 == false) {
+    useIsStore().items = useProductStore().items.filter(
+      (e) => e.type == "Alcohol"
+    );
+  } else {
+    useIsStore().items = useProductStore().items.filter(
+      (e) =>
+        e.type == "Alcohol" ||
+        e.type == "Trading Card Game" ||
+        e.type == "Gaming Chair"
+    );
+  }
+
+  useClickedStore().specClicked1 = false;
+  useClickedStore().specClicked2 = false;
+  useClickedStore().specClicked3 = !useClickedStore().specClicked3;
+  useClickedStore().specClicked4 = false;
+  useClickedStore().specClicked5 = false;
 }
 
-let clicked1 = ref(false);
-let clicked2 = ref(false);
-let clicked3 = ref(false);
-let clicked4 = ref(false);
-let clicked5 = ref(false);
-
-let specClicked1 = ref(false);
-let specClicked2 = ref(false);
-let specClicked3 = ref(false);
-let specClicked4 = ref(false);
-let specClicked5 = ref(false);
+function allClickedFalse() {
+  if (
+    useClickedStore().clicked1 == false &&
+    useClickedStore().clicked2 == false &&
+    useClickedStore().clicked3 == false &&
+    useClickedStore().clicked4 == false &&
+    useClickedStore().clicked5 == false &&
+    useClickedStore().specClicked1 == false &&
+    useClickedStore().specClicked2 == false &&
+    useClickedStore().specClicked3 == false &&
+    useClickedStore().specClicked4 == false &&
+    useClickedStore().specClicked5 == false
+  ) {
+    return true;
+  }
+}
 </script>
 
 <template>
@@ -366,36 +558,38 @@ let specClicked5 = ref(false);
       <div class="cat-flex">
         <img
           class="filter"
-          :class="{ 'get-bigger': clicked1 }"
+          :class="{ 'get-bigger': useClickedStore().clicked1 }"
           @click="handleFilter1()"
           src="@/assets/images/cat1.png"
           alt=""
-        /><transition name="my-transition">
-          <div v-show="clicked1">
+        />
+
+        <transition name="my-transition">
+          <div class="absText" v-show="useClickedStore().clicked1">
             <h2 class="spec-head">Electronic</h2>
             <p
-              :class="{ 'get-red': specClicked1 }"
+              :class="{ 'get-red': useClickedStore().specClicked1 }"
               class="specs"
               @click="specificFilter1_1()"
             >
               TV
             </p>
             <p
-              :class="{ 'get-red': specClicked2 }"
+              :class="{ 'get-red': useClickedStore().specClicked2 }"
               class="specs"
               @click="specificFilter1_2()"
             >
               Desktop
             </p>
             <p
-              :class="{ 'get-red': specClicked3 }"
+              :class="{ 'get-red': useClickedStore().specClicked3 }"
               class="specs"
               @click="specificFilter1_3()"
             >
               Notebook
             </p>
             <p
-              :class="{ 'get-red': specClicked4 }"
+              :class="{ 'get-red': useClickedStore().specClicked4 }"
               class="specs"
               @click="specificFilter1_4()"
             >
@@ -408,36 +602,36 @@ let specClicked5 = ref(false);
             >
               Pc Accessory
             </p> -->
-          </div></transition
-        >
+          </div>
+        </transition>
       </div>
       <div class="cat-flex">
         <img
           class="filter"
-          :class="{ 'get-bigger': clicked2 }"
+          :class="{ 'get-bigger': useClickedStore().clicked2 }"
           @click="handleFilter2()"
           src="@/assets/images/cat2.png"
           alt=""
         />
         <transition name="my-transition">
-          <div v-show="clicked2">
+          <div class="absText" v-show="useClickedStore().clicked2">
             <h2 class="spec-head">Men's</h2>
             <p
-              :class="{ 'get-red': specClicked1 }"
+              :class="{ 'get-red': useClickedStore().specClicked1 }"
               class="specs"
               @click="specificFilter2_1()"
             >
               T-shirt
             </p>
             <p
-              :class="{ 'get-red': specClicked2 }"
+              :class="{ 'get-red': useClickedStore().specClicked2 }"
               class="specs"
               @click="specificFilter2_2()"
             >
               Hoodie
             </p>
             <p
-              :class="{ 'get-red': specClicked3 }"
+              :class="{ 'get-red': useClickedStore().specClicked3 }"
               class="specs"
               @click="specificFilter2_3()"
             >
@@ -449,30 +643,30 @@ let specClicked5 = ref(false);
       <div class="cat-flex">
         <img
           class="filter"
-          :class="{ 'get-bigger': clicked3 }"
+          :class="{ 'get-bigger': useClickedStore().clicked3 }"
           @click="handleFilter3()"
           src="@/assets/images/cat3.png"
           alt=""
         />
         <transition name="my-transition">
-          <div v-show="clicked3">
+          <div class="absText" v-show="useClickedStore().clicked3">
             <h2 class="spec-head">Women's</h2>
             <p
-              :class="{ 'get-red': specClicked1 }"
+              :class="{ 'get-red': useClickedStore().specClicked1 }"
               class="specs"
               @click="specificFilter3_1()"
             >
               T-shirt
             </p>
             <p
-              :class="{ 'get-red': specClicked2 }"
+              :class="{ 'get-red': useClickedStore().specClicked2 }"
               class="specs"
               @click="specificFilter3_2()"
             >
               Dress
             </p>
             <p
-              :class="{ 'get-red': specClicked3 }"
+              :class="{ 'get-red': useClickedStore().specClicked3 }"
               class="specs"
               @click="specificFilter3_3()"
             >
@@ -484,22 +678,22 @@ let specClicked5 = ref(false);
       <div class="cat-flex">
         <img
           class="filter"
-          :class="{ 'get-bigger': clicked4 }"
+          :class="{ 'get-bigger': useClickedStore().clicked4 }"
           @click="handleFilter4()"
           src="@/assets/images/cat4.png"
           alt=""
         /><transition name="my-transition">
-          <div v-show="clicked4">
+          <div class="absText" v-show="useClickedStore().clicked4">
             <h2 class="spec-head">General</h2>
             <p
-              :class="{ 'get-red': specClicked1 }"
+              :class="{ 'get-red': useClickedStore().specClicked1 }"
               class="specs"
               @click="specificFilter4_1()"
             >
               Shoes
             </p>
             <p
-              :class="{ 'get-red': specClicked2 }"
+              :class="{ 'get-red': useClickedStore().specClicked2 }"
               class="specs"
               @click="specificFilter4_2()"
             >
@@ -511,29 +705,29 @@ let specClicked5 = ref(false);
       <div class="cat-flex">
         <img
           class="filter"
-          :class="{ 'get-bigger': clicked5 }"
+          :class="{ 'get-bigger': useClickedStore().clicked5 }"
           @click="handleFilter5()"
           src="@/assets/images/cat5.png"
           alt=""
         /><transition name="my-transition">
-          <div v-show="clicked5">
+          <div class="absText" v-show="useClickedStore().clicked5">
             <h2 class="spec-head">Stuff</h2>
             <p
-              :class="{ 'get-red': specClicked1 }"
-              class="specs"
+              :class="{ 'get-red': useClickedStore().specClicked1 }"
+              class="specs gaming-ch"
               @click="specificFilter5_1()"
             >
-              <nobr>Gaming Ch.</nobr>
+              Gaming Ch.
             </p>
             <p
-              :class="{ 'get-red': specClicked2 }"
+              :class="{ 'get-red': useClickedStore().specClicked2 }"
               class="specs"
               @click="specificFilter5_2()"
             >
               TCG
             </p>
             <p
-              :class="{ 'get-red': specClicked3 }"
+              :class="{ 'get-red': useClickedStore().specClicked3 }"
               class="specs"
               @click="specificFilter5_3()"
             >
@@ -542,19 +736,17 @@ let specClicked5 = ref(false);
           </div></transition
         >
       </div>
-      <h2 class="listed-info">
-        {{ useProductStore().items.length }} items listed.
-      </h2>
+      <h2 class="listed-info">{{ useIsStore().items.length }} items listed.</h2>
     </div>
 
     <div class="grid">
       <div
-        v-for="(product, index) in useProductStore().items"
-        :key="product.id"
-        class="card"
         data-aos="zoom-in"
         data-aos-duration="500"
         data-aos-easing="in-out-sine"
+        v-for="(product, index) in useIsStore().items"
+        :key="product.id"
+        class="card"
       >
         <img
           :class="'product-img product-img-' + index"
@@ -572,10 +764,88 @@ let specClicked5 = ref(false);
         </div>
       </div>
     </div>
+    <div
+      class="loading-ico"
+      v-if="useIsStore().items.length && allClickedFalse()"
+      v-show="useIsStore().items.length != useProductStore().items.length"
+      v-intersection-observer="onIntersectionObserver"
+    >
+      <div class="loadingio-spinner-eclipse-3nrzga94szj">
+        <div class="ldio-j4mceyzrqbg">
+          <div></div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
+.loading-ico {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
+@keyframes ldio-j4mceyzrqbg {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.ldio-j4mceyzrqbg div {
+  position: absolute;
+  animation: ldio-j4mceyzrqbg 1s linear infinite;
+  width: 160px;
+  height: 160px;
+  top: 20px;
+  left: 20px;
+  border-radius: 50%;
+  box-shadow: 0 4px 0 0 #e15b64;
+  transform-origin: 80px 82px;
+}
+.loadingio-spinner-eclipse-3nrzga94szj {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+  background: #ffffff;
+}
+.ldio-j4mceyzrqbg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-j4mceyzrqbg div {
+  box-sizing: content-box;
+}
+
+.absText {
+  position: absolute;
+  left: 70%;
+}
+.grid {
+  display: grid;
+  grid-row-gap: 4rem;
+  grid-column-gap: 2.5rem;
+  width: 70%;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  margin: 10rem auto;
+
+  /* grid-template-columns: repeat(auto-fit, minmax(30rem, 1rem)); */
+  grid-template-columns: repeat(auto-fit, minmax(27rem, 1rem));
+  /* grid-template-columns: 1fr 1fr 1fr; */
+}
+
 .spec-head {
   color: rgb(108, 108, 108);
   font-size: 1.9rem;
@@ -584,6 +854,9 @@ let specClicked5 = ref(false);
 }
 .specs {
   transition: 0.3s;
+}
+.gaming-ch {
+  width: 150%;
 }
 .specs:hover {
   color: rgb(235, 93, 93);
@@ -751,21 +1024,6 @@ button:hover {
   padding-top: 15rem;
 }
 
-.grid {
-  display: grid;
-  grid-row-gap: 4rem;
-  grid-column-gap: 2.5rem;
-  width: 70%;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  margin: 10rem auto;
-
-  /* grid-template-columns: repeat(auto-fit, minmax(30rem, 1rem)); */
-  grid-template-columns: repeat(auto-fit, minmax(27rem, 1rem));
-
-  /* grid-template-columns: 1fr 1fr 1fr; */
-}
 .card {
   position: relative;
 
