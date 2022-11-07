@@ -10,15 +10,15 @@
           <a href="">Contact</a>
         </div> -->
         <a href="#">
-          <img class="logo" src="@/assets/images/logo2.png" alt="" />
+          <img class="logo" src="@/assets/images/logo2.webp" alt="" />
         </a>
       </div>
 
       <div class="social-container">
         <a href="https://github.com/Solemensis" target="_blank"
-          ><img class="github" src="@/assets/images/github.png" alt="" /></a
+          ><img class="github" src="@/assets/images/github.webp" alt="" /></a
         ><a href="https://www.instagram.com/ulassacli/" target="_blank">
-          <img class="instagram" src="@/assets/images/instagram.png" alt=""
+          <img class="instagram" src="@/assets/images/instagram.webp" alt=""
         /></a>
       </div>
     </div>

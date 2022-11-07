@@ -14,7 +14,7 @@ const signOut = async () => {
 <template lang="">
   <header class="page-format2">
     <div class="logo-container">
-      <img class="logo" src="@/assets/images/logo2.png" alt="" />
+      <img class="logo" src="@/assets/images/logo2.webp" alt="" />
       <NuxtLink to="/"> <h2>Emaria</h2></NuxtLink>
     </div>
 
@@ -24,7 +24,7 @@ const signOut = async () => {
       <li><NuxtLink class="nav-link" to="/contact">Contact</NuxtLink></li>
     </ul>
 
-    <img src="@/assets/images/big.png" alt="" class="menu-button" />
+    <img src="@/assets/images/big.webp" alt="" class="menu-button" />
 
     <div class="user-logged" v-if="user">
       <NuxtLink to="/cart">

@@ -560,7 +560,7 @@ function allClickedFalse() {
           class="filter"
           :class="{ 'get-bigger': useClickedStore().clicked1 }"
           @click="handleFilter1()"
-          src="@/assets/images/cat1.png"
+          src="@/assets/images/cat1.webp"
           alt=""
         />
 
@@ -610,7 +610,7 @@ function allClickedFalse() {
           class="filter"
           :class="{ 'get-bigger': useClickedStore().clicked2 }"
           @click="handleFilter2()"
-          src="@/assets/images/cat2.png"
+          src="@/assets/images/cat2.webp"
           alt=""
         />
         <transition name="my-transition">
@@ -645,7 +645,7 @@ function allClickedFalse() {
           class="filter"
           :class="{ 'get-bigger': useClickedStore().clicked3 }"
           @click="handleFilter3()"
-          src="@/assets/images/cat3.png"
+          src="@/assets/images/cat3.webp"
           alt=""
         />
         <transition name="my-transition">
@@ -680,7 +680,7 @@ function allClickedFalse() {
           class="filter"
           :class="{ 'get-bigger': useClickedStore().clicked4 }"
           @click="handleFilter4()"
-          src="@/assets/images/cat4.png"
+          src="@/assets/images/cat4.webp"
           alt=""
         /><transition name="my-transition">
           <div class="absText" v-show="useClickedStore().clicked4">
@@ -707,7 +707,7 @@ function allClickedFalse() {
           class="filter"
           :class="{ 'get-bigger': useClickedStore().clicked5 }"
           @click="handleFilter5()"
-          src="@/assets/images/cat5.png"
+          src="@/assets/images/cat5.webp"
           alt=""
         /><transition name="my-transition">
           <div class="absText" v-show="useClickedStore().clicked5">

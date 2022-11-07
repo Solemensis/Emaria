@@ -44,7 +44,7 @@ const cartStore = useCartStore();
           <p id="dest" class="ghost-content">ghost content</p>
         </div>
 
-        <img class="hero-image" src="@/assets/images/hero-scene5.png" alt="" />
+        <img class="hero-image" src="@/assets/images/hero-scene5.webp" alt="" />
       </div>
     </div>
     <!-- <img class="line-border" src="@/assets/images/lineborder.png" alt="" /> -->

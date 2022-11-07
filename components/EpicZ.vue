@@ -5,7 +5,7 @@
       data-aos="fade-right"
       data-aos-duration="1500"
       data-aos-easing="ease-out-back"
-      src="@/assets/images/big2.png"
+      src="@/assets/images/big2.webp"
       alt=""
     />
     <div
@@ -38,7 +38,7 @@
       data-aos-duration="1500"
       data-aos-easing="ease-out-back"
       class="second-img img"
-      src="@/assets/images/big3.png"
+      src="@/assets/images/big3.webp"
       alt=""
     />
     <img
@@ -46,7 +46,7 @@
       data-aos="fade-right"
       data-aos-duration="1500"
       data-aos-easing="ease-out-back"
-      src="@/assets/images/big4.png"
+      src="@/assets/images/big4.webp"
       alt=""
     />
     <div
@@ -78,7 +78,7 @@
       data-aos="fade-left"
       data-aos-duration="1500"
       data-aos-easing="ease-out-back"
-      src="@/assets/images/big.png"
+      src="@/assets/images/big.webp"
       alt=""
     />
   </div>

@@ -10,7 +10,7 @@
         data-aos-easing="ease-out-back"
         class="card1 card"
       >
-        <img src="@/assets/images/epic1.png" alt="" />
+        <img src="@/assets/images/epic1.webp" alt="" />
         <h3>Free Shipping</h3>
       </div>
       <div
@@ -20,7 +20,7 @@
         data-aos-delay="300"
         class="card2 card"
       >
-        <img src="@/assets/images/epic2.png" alt="" />
+        <img src="@/assets/images/epic2.webp" alt="" />
         <h3>24/7 Hour Support</h3>
       </div>
       <div
@@ -30,7 +30,7 @@
         data-aos-delay="600"
         class="card3 card"
       >
-        <img src="@/assets/images/epic3.png" alt="" />
+        <img src="@/assets/images/epic3.webp" alt="" />
         <h3>100% Moneyback</h3>
       </div>
     </div>
