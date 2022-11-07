@@ -19,8 +19,6 @@
     "@supabase/supabase-js": "^2.0.4",
     "@vueuse/components": "^9.4.0",
     "aos": "^2.3.4",
-    "pinia": "^2.0.23",
-    "vue-infinite-loading": "^2.4.5",
-    "vue-infinite-scroll": "^2.0.2"
+    "pinia": "^2.0.23"
   }
 }
