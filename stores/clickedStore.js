@@ -20,3 +20,6 @@ export const useClickedStore = defineStore("clicked-store", {
   //     },
   //   },
 });
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useClickedStore, import.meta.hot));
+}

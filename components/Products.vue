@@ -46,7 +46,7 @@ let getUsers = async (limit, skip) => {
   return products.value.data;
 };
 
-const usersToShow = 15;
+const usersToShow = 12;
 
 if (useProductStore().items.length == 0) {
   let { data: wholeFetch } = await useFetch(

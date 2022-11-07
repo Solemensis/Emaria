@@ -20,3 +20,6 @@ export const useIsStore = defineStore("is-store", {
 
   //   },
 });
+if (import.meta.hot) {
+  import.meta.hot.accept(acceptHMRUpdate(useIsStore, import.meta.hot));
+}
