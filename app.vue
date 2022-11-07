@@ -65,6 +65,9 @@ if (user.value && anann[0]) {
   font-family: "Quicksand";
   user-select: none;
 }
+button {
+  border: none;
+}
 @keyframes button-pop {
   0% {
     transform: scale(0.94);
@@ -137,11 +140,13 @@ body {
 @media (orientation: portrait) {
   html {
     font-size: 53%;
+    overflow-x: hidden !important;
   }
 }
 @media (max-width: 327px) and (orientation: portrait) {
   html {
     font-size: 47%;
+    overflow-x: hidden !important;
   }
   h1 {
     font-size: 5.7rem !important;

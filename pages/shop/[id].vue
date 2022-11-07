@@ -269,7 +269,7 @@ align-items:center;
 
 
 .image {
-  width: 35rem;
+  width: 38rem;
   height: 100%;
   margin-right: 3rem;
 }

@@ -748,19 +748,22 @@ function allClickedFalse() {
         :key="product.id"
         class="card"
       >
+        <NuxtLink :to="{ name: 'shop-id', params: { id: product.id } }"
+          ><div class="ghost-link"></div>
+        </NuxtLink>
         <img
           :class="'product-img product-img-' + index"
           :src="assetsEndpoint + product.thumbnail"
         />
+
         <p class="title">
           {{ product.name }}
         </p>
 
         <div class="price-flex">
           <p class="price">${{ product.price }}</p>
-          <NuxtLink :to="{ name: 'shop-id', params: { id: product.id } }"
-            ><button>View Item</button>
-          </NuxtLink>
+
+          <button>View Item</button>
         </div>
       </div>
     </div>
@@ -780,6 +783,10 @@ function allClickedFalse() {
 </template>
 
 <style scoped>
+.absolute-ghost {
+  width: 100%;
+  height: 100%;
+}
 .loading-ico {
   display: flex;
   width: 100vw;
@@ -962,6 +969,7 @@ function allClickedFalse() {
   position: absolute;
   top: 34%;
   transform: translate(0, -50%);
+  transition: 0.4s;
 }
 
 .title {
@@ -998,7 +1006,7 @@ button {
   padding: 5px 15px;
   text-align: center;
   text-transform: uppercase;
-  transition: 0.4s;
+  transition: background-position 0.4s, color 0.4s;
   background-size: 200% auto;
   color: white;
   box-shadow: 0 0 20px #eee;
@@ -1010,11 +1018,11 @@ button:active {
   animation: button-pop 0.3s ease-out;
 }
 
-button:hover {
-  background-position: right center; /* change the direction of the change here */
+/* button:hover {
+background-position: right center; 
   color: #fff;
   text-decoration: none;
-}
+} */
 
 .shop-heading {
   margin-bottom: 3rem;
@@ -1038,7 +1046,32 @@ button:hover {
   border-radius: 1rem;
   box-shadow: rgba(60, 64, 67, 0.12) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.12) 0px 2px 6px 2px;
-  border: rgb(179, 179, 179) 2px solid;
+  border: rgb(218, 218, 218) 2px solid;
+  transition: 0.2s;
+}
+.ghost-link {
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+/* .card:hover button {
+  background-position: right center; 
+  color: #fff;
+  text-decoration: none;
+} */
+.card:active button {
+  animation: button-pop 0.3s ease-out;
 }
 
 p {
