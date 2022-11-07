@@ -11,12 +11,12 @@
     "@nuxtjs/supabase": "^0.2.2",
     "@vueuse/core": "^9.4.0",
     "@vueuse/nuxt": "^9.4.0",
-    "nuxt": "^3.0.0-rc.12"
+    "nuxt": "^3.0.0-rc.13"
   },
   "dependencies": {
     "@formkit/nuxt": "^1.0.0-beta.11",
     "@pinia/nuxt": "^0.4.3",
-    "@supabase/supabase-js": "^2.0.4",
+    "@supabase/supabase-js": "^2.0.5",
     "@vueuse/components": "^9.4.0",
     "aos": "^2.3.4",
     "pinia": "^2.0.23"
