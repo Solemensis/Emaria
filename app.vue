@@ -139,12 +139,12 @@ body {
   }
 }
 
-@media (orientation: portrait) {
+/* @media (orientation: portrait) {
   html {
     font-size: 53%;
     overflow-x: hidden !important;
   }
-}
+} */
 @media (max-width: 327px) and (orientation: portrait) {
   html {
     font-size: 47%;

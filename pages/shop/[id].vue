@@ -122,6 +122,7 @@ async function insert(){
       <div data-aos="zoom-out" data-aos-duration="600"
            data-aos-easing="in-out-sine" 
            data-aos-delay="50"
+           data-aos-offset="-500"
        class="text-block">
         <p class="category">
           - {{useProductStore().items.find((e) => e.id == route.params.id).type}} -
@@ -252,7 +253,7 @@ align-items:center;
   padding: 15px 45px;
   text-align: center;
   text-transform: uppercase;
-  transition: 0.5s;
+  transition: background-position 0.5s, color 0.5s, text-decoration 0.5s;
   background-size: 200% auto;
   color: white;
   box-shadow: 0 0 20px #eee;
