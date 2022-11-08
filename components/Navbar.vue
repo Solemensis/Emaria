@@ -92,12 +92,32 @@ const signOut = async () => {
   color: #000000;
   cursor: pointer;
   text-decoration: none;
+  font-family: "Barlow Condensed";
+  font-size: 2.5rem;
 }
 
 .nav-link.router-link-active {
-  border-bottom: 1px solid red;
+  border-bottom: 3px solid rgb(255, 106, 255);
   padding-bottom: 2px;
 }
+li:after,
+.login-button:after,
+.logout-button:after {
+  content: "";
+  position: absolute;
+  background-color: rgb(255, 106, 255);
+  height: 2px;
+  width: 0%;
+  left: 0;
+  bottom: -0.5rem;
+  transition: 0.2s;
+}
+li:hover:after,
+.login-button:hover:after,
+.logout-button:hover:after {
+  width: 100%;
+}
+
 .logo-container h2 {
   font-size: 2.6rem;
   font-family: "Abel";
@@ -177,10 +197,20 @@ button {
   cursor: pointer;
   padding: 0;
   font-size: 1.5rem;
+  position: relative;
+}
+
+.login-button,
+.register-button {
+  font-family: "Barlow Condensed";
+  font-size: 2rem;
+  font-weight: 500;
 }
 .logout-button {
   cursor: pointer;
   z-index: 999;
+  margin: 1rem 2rem;
+  padding: 0;
 }
 .logout-button:hover {
   background: transparent;
@@ -215,6 +245,7 @@ ul {
   display: flex;
   list-style: none;
   z-index: 900;
+
   /* position: absolute;
   left: 50%;
   top: 50%;
@@ -226,6 +257,7 @@ li {
   font-size: 2rem;
   font-weight: 500;
   margin-right: 5rem;
+  position: relative;
 }
 li:last-child {
   margin-right: 0 !important;
@@ -254,7 +286,7 @@ li:last-child {
   }
   header {
     width: 100vw !important;
-    padding: 1.5rem 2rem;
+    padding: 0.6rem 2rem !important;
   }
 }
 </style>

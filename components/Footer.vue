@@ -64,6 +64,22 @@
   align-items: center;
   margin-top: 10rem;
 }
+@media (orientation: portrait) {
+  .footer-container {
+    height: 10rem;
+    padding: 0 1rem;
+  }
+  .logo {
+    height: 7rem;
+    width: 7rem;
+  }
+  .github {
+    height: 3.5rem !important;
+  }
+  .instagram {
+    height: 3rem !important;
+  }
+}
 .social-container {
   display: flex;
   align-items: center;
@@ -71,7 +87,7 @@
   width: 12rem;
 }
 .github {
-  height: 4rem !important;
+  height: 4rem;
   cursor: pointer;
   transition: transform 0.2s;
 }

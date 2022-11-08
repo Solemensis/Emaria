@@ -320,4 +320,7 @@ align-items:center;
   align-items: center;
   width: 70%;
 }
+@media (orientation: portrait) {
+  
+}
 </style>

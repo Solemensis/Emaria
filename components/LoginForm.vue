@@ -281,9 +281,21 @@ p {
   color: #ca14ca;
   cursor: pointer;
   text-decoration: none;
+  position:relative;
 }
-.register:hover {
-  border-bottom: 1px solid #ca14ca;
+
+.register:after {
+  content: "";
+  position: absolute;
+  background-color: rgb(255, 106, 255);
+  height: 2px;
+  width: 0%;
+  left: 0;
+  bottom: -0.5rem;
+  transition: 0.2s;
+}
+.register:hover:after {
+  width: 100%;
 }
 .forgot-pass {
   font-size: 1.8rem;

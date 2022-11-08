@@ -91,7 +91,7 @@
   }
   .img {
     width: 20rem;
-    margin-bottom: 2rem !important;
+    /* margin-bottom: 2rem !important; */
   }
   .flex-column h3 {
     font-size: 2.1rem;
@@ -99,6 +99,9 @@
   .flex-column p {
     font-size: 1.4rem;
     width: 100%;
+  }
+  .grid {
+    grid-row-gap: 3rem;
   }
 }
 
@@ -109,7 +112,7 @@
 }
 img {
   width: 40rem;
-  margin-bottom: 5rem;
+  /* margin-bottom: 5rem; */
 }
 
 h3 {
@@ -132,5 +135,6 @@ p {
   grid-template-columns: 1fr 1fr;
   justify-items: center;
   align-items: center;
+  grid-row-gap: 1rem;
 }
 </style>

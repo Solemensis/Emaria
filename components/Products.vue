@@ -940,11 +940,13 @@ function allClickedFalse() {
     font-size: 1rem !important;
   }
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 12rem)) !important;
+    /* grid-template-columns: repeat(auto-fit, minmax(10rem, 12rem)) !important; */
+    grid-template-columns: 1fr 1fr 1fr !important;
+    grid-gap: 1.5rem;
   }
   .card {
-    width: 14rem !important;
-    height: 21rem !important;
+    width: 12rem !important;
+    height: 18rem !important;
     padding: 0.4rem 0.4rem !important;
   }
   .title {
