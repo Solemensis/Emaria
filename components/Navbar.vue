@@ -30,8 +30,9 @@ const signOut = async () => {
       <NuxtLink to="/cart">
         <div class="cart-box">
           <img class="cart-img" src="@/assets/images/shopping-cart.svg" />
-          <p class="cart-counter">
-            {{ useCartStore().totalCount }}
+          <p v-if="useCartStore().totalCount" class="cart-counter">
+            <!-- {{ useCartStore().totalCount }} -->
+            &#9679;
           </p>
         </div>
       </NuxtLink>
@@ -264,10 +265,27 @@ li:last-child {
 }
 
 @media (orientation: portrait) {
+  .user-logged p {
+    margin-top: -0.8rem;
+  }
+
+  .user-logged button {
+    padding-bottom: 0.5rem;
+  }
   .cart-box {
     position: fixed;
-    top: 12rem;
-    right: -2rem;
+    bottom: 2.9rem;
+    right: -1rem;
+    background-color: rgb(203, 255, 189);
+    padding: 1.3rem;
+    border-radius: 20rem;
+    z-index: 9999;
+  }
+  .cart-counter {
+    z-index: 999;
+    font-size: 2.1rem !important;
+    top: -0.4rem;
+    font-weight: 600 !important;
   }
   .page-format2 {
     padding: 2rem 0.5rem 2rem 0;

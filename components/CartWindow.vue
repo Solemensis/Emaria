@@ -51,7 +51,7 @@ function increase(i) {
           <th class="image-head">Image</th>
           <th>Title</th>
           <th class="price-head">Price</th>
-          <th>Amount</th>
+          <th class="bulk">Bulk</th>
         </tr>
         <div class="div"></div>
         <tr v-for="(item, index) in cartStore.items">
@@ -208,9 +208,61 @@ input[type="number"] {
   cursor: pointer;
 }
 
+@media (orientation: portrait) {
+  .flex {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .price-box {
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    padding: 1rem;
+  }
+  .price-box ul {
+    display: flex;
+  }
+  .price-box ul li {
+    margin: 0;
+    display: none;
+  }
+  .total {
+    margin: 0;
+    font-size: 2.3rem;
+    border: none;
+    padding: 0;
+    display: inline-block !important;
+  }
+  table {
+    margin: 0 !important;
+  }
+  .title-table {
+    padding-right: 2.5rem;
+  }
+  .price-head {
+    padding-right: 1.5rem;
+  }
+  .bulk {
+    text-align: center;
+  }
+  .delete-button {
+    text-align: center;
+  }
+  .inputum {
+    width: 3rem;
+  }
+  .input-box {
+    justify-content: center;
+  }
+  .input-box button {
+    padding: 0 0.6rem;
+  }
+}
+
 table {
   width: 70%;
   margin-right: 2rem;
+  border-collapse: collapse;
 }
 th {
   text-align: start;
@@ -260,6 +312,13 @@ td img {
   border: 1px rgb(105, 105, 105) solid;
 
   padding: 3rem 5rem;
+}
+@media (orientation: portrait) {
+  .heading2 {
+    width: 90%;
+    text-align: center;
+    font-size: 3rem;
+  }
 }
 .item-price {
   font-weight: 600;

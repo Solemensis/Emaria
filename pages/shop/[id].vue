@@ -321,6 +321,35 @@ align-items:center;
   width: 70%;
 }
 @media (orientation: portrait) {
+  .alert1, .alert2 {
+  left:50%;
+  bottom:3rem;
+  transform:translateX(-50%);
+ 
+}
+
+  .flex{
+    flex-direction:column;
+    width:95%;
+    gap:1.5rem;
+  }
+  .image{
+    width: 28rem;
+  height: 100%;
+  margin-right:0;
+  margin-bottom:3rem;
+  }
+  .text-block{
+    width:75%;
+   
+  }
+  .title{
+    margin-bottom:2.5rem;
+  }
+  .description{
+    margin-bottom:3rem;
+  }
   
+
 }
 </style>

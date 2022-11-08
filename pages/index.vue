@@ -45,6 +45,11 @@ const cartStore = useCartStore();
         </div>
 
         <img class="hero-image" src="@/assets/images/hero-scene5.webp" alt="" />
+        <img
+          src="@/assets/images/logo2.webp"
+          alt=""
+          class="mobile-hero-image"
+        />
       </div>
     </div>
     <!-- <img class="line-border" src="@/assets/images/lineborder.png" alt="" /> -->
@@ -217,7 +222,29 @@ span {
   width: 54rem;
   margin-top: 0.5rem;
 }
+.mobile-hero-image {
+  display: none;
+}
 @media (max-width: 844px) {
+  .mobile-hero-image {
+    width: 13rem;
+    height: 13rem;
+    display: inline-block;
+    position: absolute;
+    top: -12%;
+    left: 50%;
+
+    animation: turn 4.5s linear infinite;
+  }
+
+  @keyframes turn {
+    0% {
+      transform: translateX(-50%) rotate(0deg);
+    }
+    100% {
+      transform: translateX(-50%) rotate(360deg);
+    }
+  }
   .shop-button {
     padding: 1.2rem 3.5rem;
   }

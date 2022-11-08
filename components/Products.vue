@@ -558,7 +558,9 @@ function allClickedFalse() {
       <div class="cat-flex">
         <img
           class="filter"
-          :class="{ 'get-bigger': useClickedStore().clicked1 }"
+          :class="{
+            'get-bigger': useClickedStore().clicked1,
+          }"
           @click="handleFilter1()"
           src="@/assets/images/cat1.webp"
           alt=""
@@ -838,20 +840,6 @@ function allClickedFalse() {
   position: absolute;
   left: 70%;
 }
-.grid {
-  display: grid;
-  grid-row-gap: 4rem;
-  grid-column-gap: 2.5rem;
-  width: 70%;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  margin: 10rem auto;
-
-  /* grid-template-columns: repeat(auto-fit, minmax(30rem, 1rem)); */
-  grid-template-columns: repeat(auto-fit, minmax(27rem, 1rem));
-  /* grid-template-columns: 1fr 1fr 1fr; */
-}
 
 .spec-head {
   color: rgb(108, 108, 108);
@@ -915,42 +903,81 @@ function allClickedFalse() {
   padding: 2rem 1rem;
 }
 
+.grid {
+  display: grid;
+  grid-row-gap: 4rem;
+  grid-column-gap: 2.5rem;
+  width: 70%;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  margin: 10rem auto;
+
+  /* grid-template-columns: repeat(auto-fit, minmax(30rem, 1rem)); */
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 28rem));
+  /* grid-template-columns: 1fr 1fr 1fr; */
+}
+
 @media (orientation: portrait) {
-  .categories {
-    flex-direction: row !important;
-    position: absolute !important;
-    top: 11rem !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    padding: 1rem 1rem !important;
+  .cat-flex {
+    position: relative;
   }
-  .categories img {
-    width: 4.5rem !important;
+  .absText {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 6.5rem;
+  }
+
+  .get-bigger {
+    padding: 0 !important;
+  }
+
+  .listed-info {
+    display: none;
   }
   .price-flex {
-    width: 100% !important;
+    width: 85% !important;
   }
   .price {
-    font-size: 1.3rem !important;
+    font-size: 1.5rem !important;
   }
   .price-flex button {
-    padding: 0.4rem 0.8rem !important;
-    margin: 0.2rem !important;
-    margin-right: 0.5rem !important;
+    padding: 0.3rem 0.8rem !important;
+    margin-top: 0.6rem;
+    margin-bottom: 0.3rem;
     font-size: 1rem !important;
-  }
-  .grid {
-    /* grid-template-columns: repeat(auto-fit, minmax(10rem, 12rem)) !important; */
-    grid-template-columns: 1fr 1fr 1fr !important;
-    grid-gap: 1.5rem;
-  }
-  .card {
-    width: 12rem !important;
-    height: 18rem !important;
-    padding: 0.4rem 0.4rem !important;
+    border-radius: 5px;
   }
   .title {
-    font-size: 1.1rem !important;
+    font-size: 1.2rem !important;
+  }
+  .card {
+    width: 18rem !important;
+    height: 24rem !important;
+    padding: 1rem !important;
+  }
+  .categories {
+    flex-direction: row !important;
+    position: relative;
+    top: 4rem !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    padding: 1rem 3rem !important;
+    justify-content: center;
+  }
+  .categories img {
+    width: 6rem !important;
+    margin: 0 !important;
+  }
+  .cat-flex {
+    flex-direction: column;
+  }
+
+  .grid {
+    margin-top: 17rem;
+    width: 95%;
+    grid-gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(6rem, 20rem));
   }
 }
 
@@ -969,7 +996,7 @@ function allClickedFalse() {
 .product-img {
   max-width: 70%;
   position: absolute;
-  top: 34%;
+  top: 36%;
   transform: translate(0, -50%);
   transition: 0.4s;
 }
@@ -979,7 +1006,8 @@ function allClickedFalse() {
   bottom: 19%;
   font-weight: bold;
   width: 80%;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
+  white-space: nowrap;
 }
 .price-flex {
   border-top: 1px solid black;
@@ -993,7 +1021,7 @@ function allClickedFalse() {
 }
 .price {
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 2.1rem;
   margin-left: 1rem;
 }
 
@@ -1004,8 +1032,9 @@ button {
     #ffc837 51%,
     #ff8008 100%
   );
-  margin: 10px;
-  padding: 5px 15px;
+  margin: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1.5rem;
   text-align: center;
   text-transform: uppercase;
   transition: background-position 0.4s, color 0.4s;
@@ -1020,30 +1049,16 @@ button:active {
   animation: button-pop 0.3s ease-out;
 }
 
-/* button:hover {
-background-position: right center; 
-  color: #fff;
-  text-decoration: none;
-} */
-
-.shop-heading {
-  margin-bottom: 3rem;
-  text-align: center;
-  font-size: 5rem;
-  font-weight: 700;
-  padding-top: 15rem;
-}
-
 .card {
   position: relative;
-
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 28rem;
   height: 36rem;
-  padding: 2rem;
+
   background-color: white;
   border-radius: 1rem;
   box-shadow: rgba(60, 64, 67, 0.12) 0px 1px 2px 0px,
