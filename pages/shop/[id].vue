@@ -380,7 +380,7 @@ async function insert() {
     width: 28rem;
     height: 100%;
     margin-right: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
   }
   .text-block {
     width: 75%;

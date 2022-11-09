@@ -971,7 +971,7 @@ function allClickedFalse() {
   .categories {
     flex-direction: row !important;
     position: relative;
-    top: 7rem !important;
+    top: 6.5rem !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     padding: 1rem 3rem !important;
@@ -986,7 +986,7 @@ function allClickedFalse() {
   }
 
   .grid {
-    margin-top: 17rem;
+    margin-top: 18rem;
     width: 95%;
     grid-gap: 1.5rem;
     grid-template-columns: repeat(auto-fit, minmax(6rem, 20rem));
