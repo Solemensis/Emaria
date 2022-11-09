@@ -1,95 +1,76 @@
 <script setup>
-
-
 const supabase = useSupabaseClient();
-
 
 const userName = ref("");
 const email = ref("");
 const password = ref("");
 
-
 // let { data: anann } = await supabase
 //   .from("anan")
 //   .select("mail");
 //   if(anann.find((e)=>e.mail==email)){}
-  
-
-
 
 const signUp = async () => {
-  const {data, error} = await supabase.auth.signUp(
-    {
-      email: email.value,
-      password: password.value,
-      options: {
+  const { data, error } = await supabase.auth.signUp({
+    email: email.value,
+    password: password.value,
+    options: {
       data: {
-        user_name:userName.value,
-      }
-    }
-    
-    }
-    );
-   
- 
-    if (data) {
-      show1.value = true;
-       setTimeout(hideModal1, 4000)
-    }
-    if(error){
-      show2.value = true;
-      setTimeout(hideModal2, 4000)
-    }
+        user_name: userName.value,
+      },
+    },
+  });
+
+  if (data) {
+    show1.value = true;
+    setTimeout(hideModal1, 4000);
+  }
+  if (error) {
+    show2.value = true;
+    setTimeout(hideModal2, 4000);
+  }
 };
 
 const show1 = ref(false);
 const show2 = ref(false);
 
-function hideModal1(){
-  if(show1.value==true)
-  show1.value = false;
+function hideModal1() {
+  if (show1.value == true) show1.value = false;
 }
-function hideModal2(){
-  if(show2.value==true)
-  show2.value = false;
+function hideModal2() {
+  if (show2.value == true) show2.value = false;
 }
-
-
-
-
-
-
-
-
 </script>
 
 <template>
- 
   <div data-aos="zoom-in" data-aos-duration="900" class="container">
     <transition name="my-transition">
-     
-    <div v-show="show1"   class="alert1">
-        <h3 class="modal-text" >Confirm Your E-mail.</h3>
-      </div>
-      
-    </transition>
-      <transition name="my-transition">
-      <div v-show="show2"  class="alert2">
-      <h3 class="modal-text" >There was an Error.</h3>
+      <div v-show="show1" class="alert1">
+        <h3 class="modal-text">Confirm Your E-mail.</h3>
       </div>
     </transition>
-    
+    <transition name="my-transition">
+      <div v-show="show2" class="alert2">
+        <h3 class="modal-text">There was an Error.</h3>
+      </div>
+    </transition>
+
     <p>
       Already have an account?
       <NuxtLink to="/login" class="login">Login</NuxtLink>
     </p>
-  
+
     <h2>
       Create Your <br />
       <span>Emaria</span> Account
     </h2>
 
-    <FormKit messages-class="messages" type="form" submit-label="Sign Up" @submit="() => signUp()">
+    <FormKit
+      messages-class="messages"
+      type="form"
+      submit-label="Sign Up"
+      @submit="() => signUp()"
+    >
       <FormKit
         :classes="{ input: 'input4', messages: 'messages' }"
         v-model="userName"
@@ -123,14 +104,13 @@ function hideModal2(){
 
       <p><NuxtLink class="forgot-pass">Forgot Your Password?</NuxtLink></p>
     </FormKit>
-    <teleport to='body' >
+    <!-- <teleport to='body' >
       <NuxtLink to="/"> <p class="entity-arrow">	&#8592</p></NuxtLink>
-  </teleport>
+  </teleport> -->
   </div>
 </template>
 
 <style>
-
 .formkit-label {
   display: none;
 }
@@ -199,24 +179,24 @@ button:active {
 </style>
 
 <style scoped>
- @media (orientation: portrait) {
-  .entity-arrow{
-    top:3rem !important;
-    left:5rem !important;
-    font-size:4rem!important;
+@media (orientation: portrait) {
+  .entity-arrow {
+    top: 3rem !important;
+    left: 5rem !important;
+    font-size: 4rem !important;
   }
 }
 
-.entity-arrow{
-  font-size:5rem;
-  color:rgb(130, 130, 130) ;
- border-right:1px rgb(177, 177, 177) solid;
- display:inline-block;
- padding-bottom:1rem;
- position:absolute;
- left:5%;
- top:25%;
- cursor: pointer;
+.entity-arrow {
+  font-size: 5rem;
+  color: rgb(130, 130, 130);
+  border-right: 1px rgb(177, 177, 177) solid;
+  display: inline-block;
+  padding-bottom: 1rem;
+  position: absolute;
+  left: 5%;
+  top: 25%;
+  cursor: pointer;
 }
 * {
   text-align: center;
@@ -246,7 +226,7 @@ p {
   color: #ca14ca;
   cursor: pointer;
   text-decoration: none;
-  position:relative;
+  position: relative;
 }
 .login:after {
   content: "";
@@ -272,34 +252,33 @@ p {
 }
 
 .alert1 {
-  width:25rem;
- height:5rem;
-  padding:0.5rem 1rem;
-  background-color:rgba(123, 248, 123, 0.859);
-  border-radius:1.5rem;
-  position:absolute;
-  right:2.5rem;
-  bottom:-7rem;
+  width: 25rem;
+  height: 5rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(123, 248, 123, 0.859);
+  border-radius: 1.5rem;
+  position: absolute;
+  right: 2.5rem;
+  bottom: -7rem;
 }
-.alert2{
-  width:25rem;
- height:5rem;
-  padding:0.5rem 1rem;
-  background-color:rgba(255, 112, 112, 0.859);
-  border-radius:1.5rem;
-  position:absolute;
-  right:2.5rem;
-  bottom:-7rem;
-}
-
-.modal-text{
-  color:rgb(52, 52, 52);
-  font-size:1.8rem;
-  font-weight:600;
-height:100%;
-display:flex;
-justify-content:center;
-align-items:center;
+.alert2 {
+  width: 25rem;
+  height: 5rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 112, 112, 0.859);
+  border-radius: 1.5rem;
+  position: absolute;
+  right: 2.5rem;
+  bottom: -7rem;
 }
 
+.modal-text {
+  color: rgb(52, 52, 52);
+  font-size: 1.8rem;
+  font-weight: 600;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>

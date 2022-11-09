@@ -1,54 +1,34 @@
 <script setup>
-
-
-
 const cartStore = useCartStore();
-
-
 
 const email = ref("");
 const password = ref("");
 
-
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 
-
-
 const login = async () => {
-const {data, error} = await supabase.auth.signInWithPassword({
-     email: email.value,
-     password: password.value,
-  //    options: {
-  //  redirectTo: '/'
-  //  }
-  
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: email.value,
+    password: password.value,
+    //    options: {
+    //  redirectTo: '/'
+    //  }
+  });
 
+  if (!error) {
+    window.location.reload();
   }
-  );
- 
- if (!error) {
-
-        window.location.reload();
-   
-    
- }
- if (error) {
- 
-      show2.value = true;
-      setTimeout(hideModal2, 2000)
-}
-
-
+  if (error) {
+    show2.value = true;
+    setTimeout(hideModal2, 2000);
+  }
 };
 
 const show2 = ref(false);
-function hideModal2(){
-  if(show2.value==true)
-  show2.value = false;
+function hideModal2() {
+  if (show2.value == true) show2.value = false;
 }
-
-  
 
 // const oAuth = async () => {
 // const { data, error } = await supabase.auth.signInWithOAuth({
@@ -62,7 +42,7 @@ function hideModal2(){
 //       //  window.location.reload();
 //   }
 // if (error) {
- 
+
 //       show2.value = true;
 //       setTimeout(hideModal2, 2000)
 // }
@@ -72,22 +52,18 @@ function hideModal2(){
 // onMounted(()=>{
 //   watchEffect(()=> {
 //     if (user.value) {
-   
+
 //       navigateTo("/")
 //     }
 //   })
 // })
-
 </script>
 
-<template> 
-
-
-
+<template>
   <div data-aos="zoom-in" data-aos-duration="900" class="container">
     <transition name="my-transition">
-      <div v-show="show2"  class="alert2">
-      <h3 class="modal-text" >Your Info is Incorrect.</h3>
+      <div v-show="show2" class="alert2">
+        <h3 class="modal-text">Your Info is Incorrect.</h3>
       </div>
     </transition>
     <!-- <div class="git-box">
@@ -102,11 +78,12 @@ function hideModal2(){
       Login to
       <span>Emaria</span>
     </h2>
-      <FormKit
+    <FormKit
       messages-class="messages"
       type="form"
       submit-label="Sign In"
-      @submit=" login()">
+      @submit="login()"
+    >
       <FormKit
         :classes="{
           input: 'input1',
@@ -132,44 +109,40 @@ function hideModal2(){
 
       <p><NuxtLink class="forgot-pass">Forgot Your Password?</NuxtLink></p>
     </FormKit>
-    <teleport to='body' >
+    <!-- <teleport to='body' >
    <NuxtLink to="/"> <p class="entity-arrow">	&#8592</p></NuxtLink>
-  </teleport>
+  </teleport> -->
   </div>
 </template>
 
 <style>
-
-
-.git-login{
+.git-login {
   color: white;
-  margin:0 !important;
-  font-size:1.8rem !important;
-  font-weight:600;
-  
+  margin: 0 !important;
+  font-size: 1.8rem !important;
+  font-weight: 600;
 }
-.git-box img{
-  height:3rem;
-  margin-right:0.2rem;
+.git-box img {
+  height: 3rem;
+  margin-right: 0.2rem;
 }
-.git-box{
+.git-box {
   background-color: #24292ed1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:1rem 1.5rem;
-  border-radius:0.5rem;
-  margin-bottom:2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
   transition: background-color 0.2s;
-  
 }
-.git-box:hover{
+.git-box:hover {
   background-color: #24292e;
 }
- .git-box:active{
+.git-box:active {
   /* animation: button-pop 0.3s ease-out; */
   background-color: #131517;
-} 
+}
 .formkit-label {
   display: none;
 }
@@ -234,24 +207,23 @@ button:active {
 </style>
 
 <style scoped>
-
 @media (orientation: portrait) {
-  .entity-arrow{
-    top:4rem !important;
-    left:5rem !important;
-    font-size:4rem!important;
+  .entity-arrow {
+    top: 4rem !important;
+    left: 5rem !important;
+    font-size: 4rem !important;
   }
 }
-.entity-arrow{
-  font-size:5rem;
-  color:rgb(130, 130, 130) ;
- border-right:1px rgb(177, 177, 177) solid;
- display:inline-block;
- padding-bottom:1rem;
- position:absolute;
- left:5%;
- top:25%;
- cursor: pointer;
+.entity-arrow {
+  font-size: 5rem;
+  color: rgb(130, 130, 130);
+  border-right: 1px rgb(177, 177, 177) solid;
+  display: inline-block;
+  padding-bottom: 1rem;
+  position: absolute;
+  left: 5%;
+  top: 25%;
+  cursor: pointer;
 }
 * {
   text-align: center;
@@ -281,7 +253,7 @@ p {
   color: #ca14ca;
   cursor: pointer;
   text-decoration: none;
-  position:relative;
+  position: relative;
 }
 
 .register:after {
@@ -307,24 +279,24 @@ p {
   border-bottom: 1px solid #2e2b2b;
 }
 
-.alert2{
-  width:25rem;
- height:5rem;
-  padding:0.5rem 1rem;
-  background-color:rgba(255, 112, 112, 0.859);
-  border-radius:1.5rem;
-  position:absolute;
-  right:2.5rem;
-  bottom:-7rem;
+.alert2 {
+  width: 25rem;
+  height: 5rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 112, 112, 0.859);
+  border-radius: 1.5rem;
+  position: absolute;
+  right: 2.5rem;
+  bottom: -7rem;
 }
 
-.modal-text{
-  color:rgb(52, 52, 52);
-  font-size:1.8rem;
-  font-weight:600;
-height:100%;
-display:flex;
-justify-content:center;
-align-items:center;
+.modal-text {
+  color: rgb(52, 52, 52);
+  font-size: 1.8rem;
+  font-weight: 600;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

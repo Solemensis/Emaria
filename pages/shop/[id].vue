@@ -1,16 +1,10 @@
 <script setup>
-
-
-
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 
 const route = useRoute();
 
-
-
 // const { data: products } = await useFetch("https://fakestoreapi.com/products/");
-
 
 if (useProductStore().items.length == 0) {
   const { data: products } = await useFetch(
@@ -18,183 +12,189 @@ if (useProductStore().items.length == 0) {
     `https://9a9bfolc.directus.app/items/products?limit=155`
   );
   useProductStore().items = products.value.data;
-  
-  
 }
 const assetsEndpoint = "https://9a9bfolc.directus.app/assets/";
-
 
 const cartStore = useCartStore();
 
 const show = ref(false);
 
-function hideModal(){
-  if(show.value==true)
-  show.value = false;
+function hideModal() {
+  if (show.value == true) show.value = false;
 }
 
-function showModal(){
+function showModal() {
   show.value = true;
 
-  setTimeout(hideModal, 2000)
+  setTimeout(hideModal, 2000);
 }
 
-
-
 // function product() {
-   //çalışmıyor niye anlayamadım
+//çalışmıyor niye anlayamadım
 //   return products.find((e) => e.id == route.params.id);
 // }
 
- function addToCart(product) {
-  if(user.value){
- cartStore.addToCart(product)
+function addToCart(product) {
+  if (user.value) {
+    cartStore.addToCart(product);
+  }
 }
-}
-
-
 
 function userId() {
   if (user.value) {
-    return (user.value.id);
+    return user.value.id;
   } else return;
 }
 
-function mail(){
+function mail() {
   if (user.value) {
-    return (user.value.email);
+    return user.value.email;
   } else return;
 }
 
-
-async function insert(){
-  let { data: anann} =await supabase
-  .from('anan')
-  .select("item")
-  .eq('user_id', userId())
+async function insert() {
+  let { data: anann } = await supabase
+    .from("anan")
+    .select("item")
+    .eq("user_id", userId());
 
   // let { data: anannn} =await supabase
   // .from('anan')
   // .select("user_id")
   // .eq('user_id', userId())
 
-  // if( anann.length===0 && anannn.value) 
+  // if( anann.length===0 && anannn.value)
 
+  if (anann.length === 0) {
+    await supabase.from("anan").insert([
+      {
+        user_id: userId(),
+        //  item:cartStore.items[0]
+        item: cartStore.items,
+        mail: mail(),
+      },
+    ]);
+  } else {
+    await supabase
+      .from("anan")
 
-
- 
-   if( anann.length===0) { await supabase
-   .from('anan')
-      .insert([
-     {  user_id:userId(), 
-      //  item:cartStore.items[0]
-      item:cartStore.items,
-      mail:mail()
-     },
-   ],
-  )}else{
-  await supabase
-     .from("anan")
-
-     .update({ item:cartStore.items})
-     .eq('user_id', userId());
-    }
+      .update({ item: cartStore.items })
+      .eq("user_id", userId());
   }
- 
-  
+}
 </script>
 
 <template>
-  
-<div >
-
+  <div>
     <Navbar />
- 
-    
-    <div  class="flex">
-      <img data-aos="zoom-out"
-           data-aos-duration="600"
-           data-aos-easing="in-out-sine"
+
+    <div class="flex">
+      <img
+        data-aos="zoom-out"
+        data-aos-duration="600"
+        data-aos-easing="in-out-sine"
         class="image"
-        :src="assetsEndpoint+useProductStore().items.find((e) => e.id == route.params.id).thumbnail"
+        :src="
+          assetsEndpoint +
+          useProductStore().items.find((e) => e.id == route.params.id).thumbnail
+        "
         alt=""
       />
-      <div data-aos="zoom-out" data-aos-duration="600"
-           data-aos-easing="in-out-sine" 
-           data-aos-delay="50"
-           data-aos-offset="-500"
-       class="text-block">
+      <div
+        data-aos="zoom-out"
+        data-aos-duration="600"
+        data-aos-easing="in-out-sine"
+        data-aos-delay="50"
+        data-aos-offset="-500"
+        class="text-block"
+      >
         <p class="category">
-          - {{useProductStore().items.find((e) => e.id == route.params.id).type}} -
+          -
+          {{
+            useProductStore().items.find((e) => e.id == route.params.id).type
+          }}
+          -
         </p>
         <h2 class="title">
-          {{ useProductStore().items.find((e) => e.id == route.params.id).name }}
+          {{
+            useProductStore().items.find((e) => e.id == route.params.id).name
+          }}
         </h2>
 
         <h3 class="price">
-          <span  class="dollar-sign">$</span
-          >{{ useProductStore().items.find((e) => e.id == route.params.id).price }}
+          <span class="dollar-sign">$</span
+          >{{
+            useProductStore().items.find((e) => e.id == route.params.id).price
+          }}
         </h3>
         <p class="description">
-          {{ useProductStore().items.find((e) => e.id == route.params.id).description }}
+          {{
+            useProductStore().items.find((e) => e.id == route.params.id)
+              .description
+          }}
         </p>
         <!-- <p>{{ products.find((e) => e.id == route.params.id).rating.rate }}</p> -->
         <div class="buttons">
           <button class="add-to-fav button">❤️</button
-          ><button @click="addToCart(useProductStore().items.find((e) => e.id == route.params.id)), insert(), showModal()" class="add-to-cart button">Add To Cart</button>
+          ><button
+            @click="
+              addToCart(
+                useProductStore().items.find((e) => e.id == route.params.id)
+              ),
+                insert(),
+                showModal()
+            "
+            class="add-to-cart button"
+          >
+            Add To Cart
+          </button>
           <!-- @click="insert()" -->
-          
         </div>
       </div>
     </div>
     <transition name="my-transition">
-      <div v-show="show" v-if="user"  class="alert1">
-        <h3 class="modal-text" >Item added to the cart!</h3>
+      <div v-show="show" v-if="user" class="alert1">
+        <h3 class="modal-text">Item added to the cart!</h3>
       </div>
-    <div v-show="show" v-else  class="alert2">
-      <h3 class="modal-text" >You need to login.</h3>
+      <div v-show="show" v-else class="alert2">
+        <h3 class="modal-text">You need to login.</h3>
       </div>
-  </transition>
-    <NuxtLink to="/shop"
-      >
+    </transition>
+    <!-- <NuxtLink to="/shop">
       <p class="entity-arrow">	&#8592</p>
-    </NuxtLink>
- 
-
-  </div> 
+    </NuxtLink> -->
+  </div>
 </template>
 
 <style scoped>
-
-
 .alert1 {
-  width:25rem;
- height:5rem;
-  padding:0.5rem 1rem;
-  background-color:rgba(123, 248, 123, 0.859);
-  border-radius:1.5rem;
-  position:absolute;
-  right:2rem;
-  bottom:2rem;
+  width: 25rem;
+  height: 5rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(123, 248, 123, 0.859);
+  border-radius: 1.5rem;
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
 }
-.alert2{
-  width:25rem;
- height:5rem;
-  padding:0.5rem 1rem;
-  background-color:rgba(255, 112, 112, 0.859);
-  border-radius:1.5rem;
-  position:absolute;
-  right:2rem;
-  bottom:2rem;
+.alert2 {
+  width: 25rem;
+  height: 5rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 112, 112, 0.859);
+  border-radius: 1.5rem;
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
 }
-.modal-text{
-  color:rgb(52, 52, 52);
-  font-size:1.8rem;
-  font-weight:600;
-height:100%;
-display:flex;
-justify-content:center;
-align-items:center;
+.modal-text {
+  color: rgb(52, 52, 52);
+  font-size: 1.8rem;
+  font-weight: 600;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .back-arrow {
@@ -209,16 +209,16 @@ align-items:center;
   cursor: pointer;
 }
 
-.entity-arrow{
-  font-size:5rem;
-  color:rgb(130, 130, 130) ;
- border-right:1px rgb(177, 177, 177) solid;
- display:inline-block;
- padding-bottom:1rem;
- position:absolute;
- left:5%;
- top:25%;
- cursor: pointer;
+.entity-arrow {
+  font-size: 5rem;
+  color: rgb(130, 130, 130);
+  border-right: 1px rgb(177, 177, 177) solid;
+  display: inline-block;
+  padding-bottom: 1rem;
+  position: absolute;
+  left: 5%;
+  top: 25%;
+  cursor: pointer;
 }
 .buttons {
   display: flex;
@@ -250,7 +250,7 @@ align-items:center;
     #ff512f 100%
   );
   margin: 10px;
-  padding: 15px 45px;
+  padding: 1.5rem 4.5rem;
   text-align: center;
   text-transform: uppercase;
   transition: background-position 0.5s, color 0.5s, text-decoration 0.5s;
@@ -266,8 +266,6 @@ align-items:center;
   color: #fff;
   text-decoration: none;
 }
-
-
 
 .image {
   width: 38rem;
@@ -322,86 +320,81 @@ align-items:center;
   width: 70%;
 }
 
-@media (min-width: 768px) and (orientation: portrait){
-  .flex{
-   
-    width:90% !important;
+@media (min-width: 768px) and (orientation: portrait) {
+  .flex {
+    width: 90% !important;
   }
-  .image{
-    
-    width:47rem !important;
-    margin-bottom:5rem !important;
+  .image {
+    width: 47rem !important;
+    margin-bottom: 5rem !important;
   }
-  .category{
-    margin-bottom:1rem !important;
-font-size:3rem !important;
+  .category {
+    margin-bottom: 1rem !important;
+    font-size: 3rem !important;
   }
-  .title{
-    margin-bottom:3rem !important;
-font-size:5rem !important;
+  .title {
+    margin-bottom: 3rem !important;
+    font-size: 5rem !important;
   }
-  .price{
-    margin-bottom:3rem !important;
+  .price {
+    margin-bottom: 3rem !important;
   }
-  .description{
-    margin-bottom:3rem !important;
-    font-size:2.5rem !important;
-
+  .description {
+    margin-bottom: 3rem !important;
+    font-size: 2.5rem !important;
   }
-  .add-to-cart{
-    padding:1rem 2.3rem !important;
-    font-size:3rem !important;
+  .add-to-cart {
+    padding: 1rem 2.3rem !important;
+    font-size: 3rem !important;
   }
-  .add-to-fav{
-    font-size:2.5rem !important;
+  .add-to-fav {
+    font-size: 2.5rem !important;
   }
-  .buttons{
-    align-items:center !important;
+  .buttons {
+    align-items: center !important;
   }
-  }
-
-@media (orientation: portrait) {
-  .add-to-cart{
-    padding:0.8rem 1.3rem;
-  }
-  
-  .alert1, .alert2 {
-  left:50%;
-  bottom:3rem;
-  transform:translateX(-50%);
- 
 }
 
-  .flex{
-    flex-direction:column;
-    width:95%;
-    gap:1.5rem;
+@media (orientation: portrait) {
+  .add-to-cart {
+    padding: 1rem 1.3rem;
+    border-radius: 0.8rem;
   }
-  .image{
-    width: 28rem;
-  height: 100%;
-  margin-right:0;
-  margin-bottom:2rem;
-  }
-  .text-block{
-    width:75%;
-   
-  }
-  .title{
-    margin-bottom:1.5rem;
-    font-size:3rem;
-  }
-  .price{
-    margin-bottom:1.5rem;
-  }
-  .category{
-    margin-bottom:0.3rem;
-  }
-  .description{
-    margin-bottom:2rem;
-    font-size:1.5rem;
-  }
-  
 
+  .alert1,
+  .alert2 {
+    left: 50%;
+    bottom: 3rem;
+    transform: translateX(-50%);
+  }
+
+  .flex {
+    flex-direction: column;
+    width: 95%;
+    gap: 1.5rem;
+  }
+  .image {
+    width: 28rem;
+    height: 100%;
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+  .text-block {
+    width: 75%;
+  }
+  .title {
+    margin-bottom: 1.5rem;
+    font-size: 3rem;
+  }
+  .price {
+    margin-bottom: 1.5rem;
+  }
+  .category {
+    margin-bottom: 0.3rem;
+  }
+  .description {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+  }
 }
 </style>
