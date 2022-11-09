@@ -282,6 +282,9 @@ li:last-child {
 }
 
 @media (orientation: portrait) {
+  .nav-link {
+    font-size: 2rem;
+  }
   .register-button,
   .login-button {
     font-size: 1.5rem;
@@ -328,7 +331,7 @@ li:last-child {
   ul {
     top: 7.5rem;
     left: 50%;
-    transform: translate(-50%, -400%);
+    transform: translate(-50%, -450%);
     position: absolute;
     /* display: none; */
     transition: transform 0.2s;

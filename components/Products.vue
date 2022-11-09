@@ -924,13 +924,12 @@ function allClickedFalse() {
     border: rgb(238, 116, 116) 2px solid;
     transform: translateY(-0.35rem);
   }
-  .card:hover {
-    transform: translateY(-0.3rem);
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-  }
 }
-
+.card:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
 @media (orientation: portrait) {
   .cat-flex {
     position: relative;
@@ -972,7 +971,7 @@ function allClickedFalse() {
   .categories {
     flex-direction: row !important;
     position: relative;
-    top: 4rem !important;
+    top: 7rem !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     padding: 1rem 3rem !important;
