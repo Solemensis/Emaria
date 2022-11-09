@@ -1,5 +1,5 @@
 # [Web App] Emaria
-Fully functional general e-commerce website - https://emaria.vercel.app/
+Fully functional responsive general e-commerce website - https://emaria.vercel.app/
  
 
 Techs used: Vue3, Nuxt3, Pinia, Supabase, directus, Formkit, VueUse, Aos.
