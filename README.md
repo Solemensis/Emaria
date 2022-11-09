@@ -1,5 +1,5 @@
 # [Web App] Emaria
-Fully functional general e-commerce website - https://emaria.vercel.app/
+Fully functional responsive general e-commerce website - https://emaria.vercel.app/
  
 
 Techs used: Vue3, Nuxt3, Pinia, Supabase, directus, Formkit, VueUse, Aos.
@@ -13,9 +13,7 @@ Techs used: Vue3, Nuxt3, Pinia, Supabase, directus, Formkit, VueUse, Aos.
 
 
 
-Things to be added in order:
-- Content is not responsive on mobile devices for now. Will add the feature soon.
-- Shop ui will be redesigned.
-- Buyouts will be handled with stripe api.
+
+- I would handle buyouts with Stripe api or similar if it was a real world e-commerce.
 - Gonna make "add to fav" button functional.
 
