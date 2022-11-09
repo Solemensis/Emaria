@@ -322,6 +322,10 @@ align-items:center;
   width: 70%;
 }
 @media (orientation: portrait) {
+  .add-to-cart{
+    padding:0.8rem 1.3rem;
+  }
+  
   .alert1, .alert2 {
   left:50%;
   bottom:3rem;
@@ -338,17 +342,25 @@ align-items:center;
     width: 28rem;
   height: 100%;
   margin-right:0;
-  margin-bottom:3rem;
+  margin-bottom:2rem;
   }
   .text-block{
     width:75%;
    
   }
   .title{
-    margin-bottom:2.5rem;
+    margin-bottom:1.5rem;
+    font-size:3rem;
+  }
+  .price{
+    margin-bottom:1.5rem;
+  }
+  .category{
+    margin-bottom:0.3rem;
   }
   .description{
-    margin-bottom:3rem;
+    margin-bottom:2rem;
+    font-size:1.5rem;
   }
   
 
