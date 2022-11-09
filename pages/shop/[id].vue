@@ -321,6 +321,45 @@ align-items:center;
   align-items: center;
   width: 70%;
 }
+
+@media (min-width: 768px) and (orientation: portrait){
+  .flex{
+   
+    width:90% !important;
+  }
+  .image{
+    
+    width:47rem !important;
+    margin-bottom:5rem !important;
+  }
+  .category{
+    margin-bottom:1rem !important;
+font-size:3rem !important;
+  }
+  .title{
+    margin-bottom:3rem !important;
+font-size:5rem !important;
+  }
+  .price{
+    margin-bottom:3rem !important;
+  }
+  .description{
+    margin-bottom:3rem !important;
+    font-size:2.5rem !important;
+
+  }
+  .add-to-cart{
+    padding:1rem 2.3rem !important;
+    font-size:3rem !important;
+  }
+  .add-to-fav{
+    font-size:2.5rem !important;
+  }
+  .buttons{
+    align-items:center !important;
+  }
+  }
+
 @media (orientation: portrait) {
   .add-to-cart{
     padding:0.8rem 1.3rem;

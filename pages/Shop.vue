@@ -1,6 +1,6 @@
 <script setup></script>
 <template lang="">
-  <div class="general">
+  <div>
     <Navbar />
     <!-- <Suspense> -->
     <Products />
