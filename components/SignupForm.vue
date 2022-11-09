@@ -104,9 +104,11 @@ function hideModal2() {
 
       <p><NuxtLink class="forgot-pass">Forgot Your Password?</NuxtLink></p>
     </FormKit>
-    <!-- <teleport to='body' >
-      <NuxtLink to="/"> <p class="entity-arrow">	&#8592</p></NuxtLink>
-  </teleport> -->
+    <teleport to="body">
+      <NuxtLink to="/">
+        <img src="@/assets/images/arrow.svg" alt="" class="entity-arrow" />
+      </NuxtLink>
+    </teleport>
   </div>
 </template>
 
@@ -181,22 +183,22 @@ button:active {
 <style scoped>
 @media (orientation: portrait) {
   .entity-arrow {
-    top: 3rem !important;
+    top: 4rem !important;
     left: 5rem !important;
-    font-size: 4rem !important;
+    width: 5.5rem !important;
   }
 }
-
 .entity-arrow {
-  font-size: 5rem;
-  color: rgb(130, 130, 130);
-  border-right: 1px rgb(177, 177, 177) solid;
-  display: inline-block;
-  padding-bottom: 1rem;
+  width: 6rem;
+  opacity: 0.8;
+  /* border-left: 3px rgb(143, 143, 143) solid; */
   position: absolute;
   left: 5%;
   top: 25%;
   cursor: pointer;
+}
+.entity-arrow:active {
+  animation: button-pop 0.3s ease-out;
 }
 * {
   text-align: center;

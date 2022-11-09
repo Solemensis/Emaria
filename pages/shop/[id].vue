@@ -160,9 +160,9 @@ async function insert() {
         <h3 class="modal-text">You need to login.</h3>
       </div>
     </transition>
-    <!-- <NuxtLink to="/shop">
-      <p class="entity-arrow">	&#8592</p>
-    </NuxtLink> -->
+    <NuxtLink to="/shop">
+      <img src="@/assets/images/arrow.svg" alt="" class="entity-arrow" />
+    </NuxtLink>
   </div>
 </template>
 
@@ -210,15 +210,16 @@ async function insert() {
 }
 
 .entity-arrow {
-  font-size: 5rem;
-  color: rgb(130, 130, 130);
-  border-right: 1px rgb(177, 177, 177) solid;
-  display: inline-block;
-  padding-bottom: 1rem;
+  width: 6rem;
+  opacity: 0.8;
+  /* border-left: 3px rgb(143, 143, 143) solid; */
   position: absolute;
   left: 5%;
   top: 25%;
   cursor: pointer;
+}
+.entity-arrow:active {
+  animation: button-pop 0.3s ease-out;
 }
 .buttons {
   display: flex;
