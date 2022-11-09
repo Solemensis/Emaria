@@ -285,9 +285,12 @@ li:last-child {
   .nav-link {
     font-size: 2rem;
   }
-  .register-button,
+
   .login-button {
     font-size: 1.5rem;
+  }
+  .register-button {
+    font-size: 1.6rem;
   }
   .login-signup,
   .logo-container {

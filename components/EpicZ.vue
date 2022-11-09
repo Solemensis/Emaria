@@ -101,7 +101,7 @@
     width: 100%;
   }
   .grid {
-    grid-row-gap: 3rem;
+    grid-row-gap: 5rem !important;
   }
 }
 
