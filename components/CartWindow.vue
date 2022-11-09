@@ -41,69 +41,77 @@ function increase(i) {
 </script>
 
 <template>
-  <div class="wrapper page-format" data-aos="zoom-in" data-aos-duration="1500">
-    <h2 v-if="cartStore.items.length" class="heading">Your Cart</h2>
-    <h2 v-else class="heading2">Your cart is empty.</h2>
-    <div class="flex">
-      <table v-if="cartStore.items.length">
-        <tr>
-          <th class="delete-head"></th>
-          <th class="image-head">Image</th>
-          <th>Title</th>
-          <th class="price-head">Price</th>
-          <th class="bulk">Bulk</th>
-        </tr>
-        <div class="div"></div>
-        <tr v-for="(item, index) in cartStore.items">
-          <td class="delete-button">
-            <span
-              @click="removeFromCart(item), inputChange()"
-              class="delete-button-ico"
-              >&#10006;</span
-            >
-          </td>
+  <div style="height: 100vh; width: 100vh">
+    <div
+      class="wrapper page-format"
+      data-aos="zoom-in"
+      data-aos-duration="1500"
+    >
+      <h2 v-if="cartStore.items.length" class="heading">Your Cart</h2>
+      <h2 v-else class="heading2">Your cart is empty.</h2>
+      <div class="flex">
+        <table v-if="cartStore.items.length">
+          <tr>
+            <th class="delete-head"></th>
+            <th class="image-head">Image</th>
+            <th>Title</th>
+            <th class="price-head">Price</th>
+            <th class="bulk">Bulk</th>
+          </tr>
+          <div class="div"></div>
+          <tr v-for="(item, index) in cartStore.items">
+            <td class="delete-button">
+              <span
+                @click="removeFromCart(item), inputChange()"
+                class="delete-button-ico"
+                >&#10006;</span
+              >
+            </td>
 
-          <td>
-            <img :src="assetsEndpoint + item.item.thumbnail" />
-            <!-- <img :src="item.item.item.image" /> -->
-          </td>
+            <td>
+              <img :src="assetsEndpoint + item.item.thumbnail" />
+              <!-- <img :src="item.item.item.image" /> -->
+            </td>
 
-          <td class="title-table">
-            <NuxtLink
-              class="title"
-              :to="{ name: 'shop-id', params: { id: item.item.id } }"
-            >
-              {{ item.item.name }}</NuxtLink
-            >
-          </td>
-          <td class="item-price">
-            ${{ (item.item.price * item.amount).toFixed(2) }}
-          </td>
+            <td class="title-table">
+              <NuxtLink
+                class="title"
+                :to="{ name: 'shop-id', params: { id: item.item.id } }"
+              >
+                {{ item.item.name }}</NuxtLink
+              >
+            </td>
+            <td class="item-price">
+              ${{ (item.item.price * item.amount).toFixed(2) }}
+            </td>
 
-          <td class="amount-table">
-            <div class="input-box">
-              <button @click="decrease(item), inputChange()">&#8249;</button>
-              <input
-                class="inputum"
-                disabled
-                min="1"
-                type="number"
-                v-model="cartStore.items[index].amount"
-              /><button @click="increase(item), inputChange()">&#8250;</button>
-            </div>
-          </td>
-        </tr>
-      </table>
+            <td class="amount-table">
+              <div class="input-box">
+                <button @click="decrease(item), inputChange()">&#8249;</button>
+                <input
+                  class="inputum"
+                  disabled
+                  min="1"
+                  type="number"
+                  v-model="cartStore.items[index].amount"
+                /><button @click="increase(item), inputChange()">
+                  &#8250;
+                </button>
+              </div>
+            </td>
+          </tr>
+        </table>
 
-      <div v-if="cartStore.items.length" class="price-box">
-        <ul>
-          <li>Subtotal: ${{ subT().toFixed(2) }}</li>
-          <li>Taxes: ${{ (subT() * 0.1).toFixed(2) }}</li>
-          <li class="total">
-            Total: ${{ (subT() + subT() * 0.1).toFixed(2) }}
-          </li>
-        </ul>
-        <button class="checkout">checkout</button>
+        <div v-if="cartStore.items.length" class="price-box">
+          <ul>
+            <li>Subtotal: ${{ subT().toFixed(2) }}</li>
+            <li>Taxes: ${{ (subT() * 0.1).toFixed(2) }}</li>
+            <li class="total">
+              Total: ${{ (subT() + subT() * 0.1).toFixed(2) }}
+            </li>
+          </ul>
+          <button class="checkout">checkout</button>
+        </div>
       </div>
     </div>
   </div>
@@ -175,9 +183,6 @@ ul li {
   padding-top: 0;
   border-radius: 0.7rem;
 }
-.input-box button:hover {
-  background-color: rgba(245, 98, 53, 0.721);
-}
 
 input {
   text-align: center;
@@ -208,7 +213,29 @@ input[type="number"] {
   cursor: pointer;
 }
 
+.checkout:active {
+  animation: button-pop 0.3s ease-out;
+}
+@media (hover: hover) {
+  .input-box button:hover {
+    background-color: rgba(245, 98, 53, 0.721);
+  }
+  .checkout:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+}
 @media (orientation: portrait) {
+  .input-box button:active {
+    background-color: rgba(245, 98, 53, 0.721);
+  }
+  tr th {
+    /* font-size: 2.3rem; */
+  }
+  tr td {
+    font-size: 1.6rem;
+  }
   .flex {
     flex-direction: column;
     gap: 3rem;
@@ -228,10 +255,11 @@ input[type="number"] {
   }
   .total {
     margin: 0;
-    font-size: 2.3rem;
+    font-size: 2.1rem;
     border: none;
     padding: 0;
     display: inline-block !important;
+    margin: 10px auto !important;
   }
   table {
     margin: 0 !important;
@@ -255,7 +283,8 @@ input[type="number"] {
     justify-content: center;
   }
   .input-box button {
-    padding: 0 0.6rem;
+    padding: 0 0.5rem;
+    margin-bottom: 0.1rem;
   }
 }
 
@@ -342,11 +371,5 @@ td img {
   font-weight: 700;
   border-radius: 10px;
   display: block;
-}
-
-.checkout:hover {
-  background-position: right center; /* change the direction of the change here */
-  color: #fff;
-  text-decoration: none;
 }
 </style>

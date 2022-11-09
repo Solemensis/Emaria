@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div>
+  <div style="height: 100vh; width: 100vw">
     <Navbar />
     <div data-aos="zoom-in" data-aos-duration="1500" class="contact">
       <h2>This is a contact page</h2>

@@ -853,9 +853,7 @@ function allClickedFalse() {
 .gaming-ch {
   width: 150%;
 }
-.specs:hover {
-  color: rgb(235, 93, 93);
-}
+
 .listed-info {
   position: absolute;
   bottom: -2rem;
@@ -916,6 +914,21 @@ function allClickedFalse() {
   /* grid-template-columns: repeat(auto-fit, minmax(30rem, 1rem)); */
   grid-template-columns: repeat(auto-fit, minmax(14rem, 28rem));
   /* grid-template-columns: 1fr 1fr 1fr; */
+}
+
+@media (hover: hover) {
+  .specs:hover {
+    color: rgb(235, 93, 93);
+  }
+  .categories img:hover {
+    border: rgb(238, 116, 116) 2px solid;
+    transform: translateY(-0.35rem);
+  }
+  .card:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  }
 }
 
 @media (orientation: portrait) {
@@ -986,11 +999,6 @@ function allClickedFalse() {
   border: rgb(186, 186, 186) 2px solid;
 
   transition: transform 0.3s, border 0.6s, padding 0.6s;
-}
-
-.categories img:hover {
-  border: rgb(238, 116, 116) 2px solid;
-  transform: translateY(-0.35rem);
 }
 
 .product-img {
@@ -1076,17 +1084,6 @@ button:active {
   transform: translate(-50%, -50%);
 }
 
-.card:hover {
-  transform: translateY(-0.3rem);
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-}
-
-/* .card:hover button {
-  background-position: right center; 
-  color: #fff;
-  text-decoration: none;
-} */
 .card:active button {
   animation: button-pop 0.3s ease-out;
 }

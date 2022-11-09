@@ -90,11 +90,6 @@ const cartStore = useCartStore();
   border-radius: 10px;
   display: block;
 }
-.learn-button:hover {
-  background-position: right center; /* change the direction of the change here */
-  color: black;
-  text-decoration: none;
-}
 
 .learn-button:active {
   background-image: linear-gradient(
@@ -105,11 +100,6 @@ const cartStore = useCartStore();
   );
 
   animation: button-pop 0.3s ease-out;
-}
-.shop-button:hover {
-  background-position: right center; /* change the direction of the change here */
-  color: #fff;
-  text-decoration: none;
 }
 
 .shop-button:active {
@@ -224,6 +214,19 @@ span {
 }
 .mobile-hero-image {
   display: none;
+}
+
+@media (hover: hover) {
+  .learn-button:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: black;
+    text-decoration: none;
+  }
+  .shop-button:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
 }
 @media (max-width: 844px) {
   .mobile-hero-image {

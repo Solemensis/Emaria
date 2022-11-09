@@ -9,6 +9,8 @@ const signOut = async () => {
     window.location.reload();
   }
 };
+
+const slide = ref(false);
 </script>
 
 <template lang="">
@@ -18,13 +20,22 @@ const signOut = async () => {
       <NuxtLink to="/"> <h2>Emaria</h2></NuxtLink>
     </div>
 
-    <ul>
+    <ul
+      :class="{
+        slide: slide,
+      }"
+    >
       <li><NuxtLink class="nav-link" to="/">Home</NuxtLink></li>
       <li><NuxtLink class="nav-link" to="/shop">Shop</NuxtLink></li>
       <li><NuxtLink class="nav-link" to="/contact">Contact</NuxtLink></li>
     </ul>
 
-    <img src="@/assets/images/big.webp" alt="" class="menu-button" />
+    <img
+      @click="slide = !slide"
+      src="@/assets/images/menu.svg"
+      alt=""
+      class="menu-button"
+    />
 
     <div class="user-logged" v-if="user">
       <NuxtLink to="/cart">
@@ -74,9 +85,6 @@ const signOut = async () => {
   cursor: pointer;
   position: relative;
 }
-.cart-box:hover {
-  transform: scale(0.95);
-}
 
 .cart-img {
   width: 3rem;
@@ -85,7 +93,7 @@ const signOut = async () => {
 .login-signup {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 16rem;
   z-index: 9999;
 }
@@ -112,11 +120,6 @@ li:after,
   left: 0;
   bottom: -0.5rem;
   transition: 0.2s;
-}
-li:hover:after,
-.login-button:hover:after,
-.logout-button:hover:after {
-  width: 100%;
 }
 
 .logo-container h2 {
@@ -190,10 +193,7 @@ button {
 
   animation: button-pop 0.3s ease-out;
 }
-.register-button:hover {
-  background-position: right center;
-  box-shadow: 0 0 20px #eee;
-}
+
 .login-button {
   cursor: pointer;
   padding: 0;
@@ -213,12 +213,7 @@ button {
   margin: 1rem 2rem;
   padding: 0;
 }
-.logout-button:hover {
-  background: transparent;
-}
-.login-button:hover {
-  background-color: transparent;
-}
+
 .logo-container {
   display: flex;
   justify-content: center;
@@ -264,7 +259,38 @@ li:last-child {
   margin-right: 0 !important;
 }
 
+@media (hover: hover) {
+  .cart-box:hover {
+    transform: scale(0.95);
+  }
+  li:hover:after,
+  .login-button:hover:after,
+  .logout-button:hover:after {
+    width: 100%;
+  }
+
+  .register-button:hover {
+    background-position: right center;
+    box-shadow: 0 0 20px #eee;
+  }
+  .logout-button:hover {
+    background: transparent;
+  }
+  .login-button:hover {
+    background-color: transparent;
+  }
+}
+
 @media (orientation: portrait) {
+  .register-button,
+  .login-button {
+    font-size: 1.5rem;
+  }
+  .login-signup,
+  .logo-container {
+    width: 12rem;
+  }
+
   .user-logged p {
     margin-top: -0.8rem;
   }
@@ -291,20 +317,30 @@ li:last-child {
     padding: 2rem 0.5rem 2rem 0;
   }
   .menu-button {
-    /* display: flex;
-    width: 5rem;
+    display: flex;
+    width: 2.5rem;
+
     position: absolute;
     left: 50%;
-    transform: translate(-50%, 0); */
-    display: none;
+    transform: translate(-50%, 0);
+    /* display: none; */
   }
   ul {
-    /* transform: translateY(-300%); */
-    display: none;
+    top: 7.5rem;
+    left: 50%;
+    transform: translate(-50%, -400%);
+    position: absolute;
+    /* display: none; */
+    transition: transform 0.2s;
   }
+  .slide {
+    transform: translate(-50%, 0);
+  }
+
   header {
     width: 100vw !important;
-    padding: 0.6rem 2rem !important;
+    padding: 0.6rem 1rem !important;
+    z-index: 9999;
   }
 }
 </style>

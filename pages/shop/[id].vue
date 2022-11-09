@@ -85,7 +85,7 @@ async function insert() {
 </script>
 
 <template>
-  <div>
+  <div style="width: 100vw; height: 100vh">
     <Navbar />
 
     <div class="flex">
@@ -238,9 +238,6 @@ async function insert() {
   border-radius: 1rem;
   transition: 0.2s;
 }
-.add-to-fav:hover {
-  background-color: rgb(255, 187, 187) !important;
-}
 .add-to-cart {
   margin-left: 2rem !important;
   background-image: linear-gradient(
@@ -259,12 +256,6 @@ async function insert() {
   box-shadow: 0 0 20px #eee;
   border-radius: 10px;
   display: block;
-}
-
-.add-to-cart:hover {
-  background-position: right center; /* change the direction of the change here */
-  color: #fff;
-  text-decoration: none;
 }
 
 .image {
@@ -318,6 +309,18 @@ async function insert() {
   justify-content: space-evenly;
   align-items: center;
   width: 70%;
+}
+
+@media (hover: hover) {
+  .add-to-cart:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .add-to-fav:hover {
+    background-color: rgb(255, 187, 187) !important;
+  }
 }
 
 @media (min-width: 768px) and (orientation: portrait) {

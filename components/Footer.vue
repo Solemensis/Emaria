@@ -64,6 +64,15 @@
   align-items: center;
   margin-top: 10rem;
 }
+
+@media (hover: hover) {
+  .github:hover {
+    transform: translateY(-0.35rem);
+  }
+  .instagram:hover {
+    transform: translateY(-0.35rem);
+  }
+}
 @media (orientation: portrait) {
   .footer-container {
     height: 10rem;
@@ -91,16 +100,11 @@
   cursor: pointer;
   transition: transform 0.2s;
 }
-.github:hover {
-  transform: translateY(-0.35rem);
-}
+
 .instagram {
   height: 3.5rem;
   margin-top: 0.1rem;
   cursor: pointer;
   transition: transform 0.2s;
-}
-.instagram:hover {
-  transform: translateY(-0.35rem);
 }
 </style>
