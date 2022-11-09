@@ -231,7 +231,7 @@ span {
     height: 13rem;
     display: inline-block;
     position: absolute;
-    top: -12%;
+    top: -4%;
     left: 50%;
 
     animation: turn 4.5s linear infinite;
