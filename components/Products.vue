@@ -942,10 +942,10 @@ function allClickedFalse() {
     font-size: 1.5rem !important;
   }
   .price-flex button {
-    padding: 0.4rem 1rem !important;
+    padding: 0.5rem 1rem !important;
     margin-top: 0.6rem;
     margin-bottom: 0.3rem;
-    font-size: 1.1rem !important;
+    font-size: 1rem !important;
     border-radius: 5px;
   }
   .title {
