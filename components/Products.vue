@@ -1007,7 +1007,7 @@ function allClickedFalse() {
   font-weight: bold;
   width: 80%;
   font-size: 1.7rem;
-  white-space: nowrap;
+  /* white-space: nowrap; */
 }
 .price-flex {
   border-top: 1px solid black;
