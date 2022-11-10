@@ -138,6 +138,11 @@ body {
     font-size: 44%;
   }
 }
+@media (max-width: 669px) {
+  html {
+    font-size: 40%;
+  }
+}
 
 @media (orientation: portrait) {
   html {

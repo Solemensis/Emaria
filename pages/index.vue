@@ -253,6 +253,11 @@ span {
     padding: 1rem 2.7rem;
   }
 }
+@media (max-width: 669px) {
+  .hero-image {
+    width: 50rem;
+  }
+}
 
 @media (orientation: portrait) {
   .hero-section {
