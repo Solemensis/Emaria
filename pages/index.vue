@@ -19,15 +19,16 @@ const cartStore = useCartStore();
   <div>
     <Navbar />
     <div v-once class="container">
-      <!-- <div class="arrow-container">
-      <img class="arrow" src="@/assets/images/arrow.png" alt="" />
-    </div> -->
-
       <div
         data-aos="zoom-in"
         data-aos-duration="1700"
         class="hero-section page-format"
       >
+        <img
+          class="mobile-hero-image"
+          src="@/assets/images/hero-scene-mobile.png"
+          alt=""
+        />
         <div class="hero-left">
           <h1>Welcome To <br /><span class="span">Emaria!</span></h1>
           <p>Our own mini e-commerce store at your service.</p>
@@ -45,11 +46,11 @@ const cartStore = useCartStore();
         </div>
 
         <img class="hero-image" src="@/assets/images/hero-scene5.webp" alt="" />
-        <img
+        <!-- <img
           src="@/assets/images/logo2.webp"
           alt=""
           class="mobile-hero-image"
-        />
+        /> -->
       </div>
     </div>
     <!-- <img class="line-border" src="@/assets/images/lineborder.png" alt="" /> -->
@@ -229,17 +230,6 @@ span {
   }
 }
 @media (max-width: 844px) {
-  .mobile-hero-image {
-    width: 13rem;
-    height: 13rem;
-    display: inline-block;
-    position: absolute;
-    top: -4%;
-    left: 50%;
-
-    animation: turn 4.5s linear infinite;
-  }
-
   @keyframes turn {
     0% {
       transform: translateX(-50%) rotate(0deg);
@@ -257,14 +247,30 @@ span {
 }
 @media (max-width: 762px) {
   .shop-button {
-    padding: 1rem 2.8rem;
+    padding: 1rem 2.7rem;
   }
   .learn-button {
-    padding: 1rem 2.8rem;
+    padding: 1rem 2.7rem;
   }
 }
 
 @media (orientation: portrait) {
+  .hero-section {
+    flex-direction: column;
+  }
+  .hero-left {
+    margin-top: 2rem;
+  }
+  .mobile-hero-image {
+    width: 18vh;
+
+    display: inline-block;
+    /* position: absolute;
+    top: -4%;
+    left: 50%;
+    transform: translateX(-50%); */
+    /* animation: turn 4.5s linear infinite; */
+  }
   .hero-section {
     /* flex-direction: column-reverse; */
     justify-content: center;

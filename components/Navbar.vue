@@ -338,6 +338,7 @@ li:last-child {
     position: absolute;
     /* display: none; */
     transition: transform 0.2s;
+    margin-left: 1rem;
   }
   .slide {
     transform: translate(-50%, 0);

@@ -987,8 +987,9 @@ function allClickedFalse() {
 
   .grid {
     margin-top: 18rem;
-    width: 95%;
-    grid-gap: 1.5rem;
+    width: 100%;
+    grid-column-gap: 0;
+    grid-row-gap: 2.5rem;
     grid-template-columns: repeat(auto-fit, minmax(6rem, 20rem));
   }
 }
