@@ -19,6 +19,7 @@
     "@supabase/supabase-js": "^2.0.5",
     "@vueuse/components": "^9.4.0",
     "aos": "^2.3.4",
+    "nuxt3": "^3.0.0-rc.14-27802701.2f53495",
     "pinia": "^2.0.23"
   }
 }

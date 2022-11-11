@@ -26,7 +26,7 @@ const cartStore = useCartStore();
       >
         <img
           class="mobile-hero-image"
-          src="@/assets/images/hero-scene-mobile.png"
+          src="@/assets/images/hero-scene-mobile.webp"
           alt=""
         />
         <div class="hero-left">
