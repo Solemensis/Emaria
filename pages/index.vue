@@ -166,7 +166,7 @@ const cartStore = useCartStore();
 
   position: absolute;
   left: 50%;
-  top: 55%;
+  top: 56%;
   transform: translate(-50%, -50%) !important;
 }
 .hero-left {
@@ -262,7 +262,7 @@ span {
 @media (orientation: portrait) {
   .hero-section {
     flex-direction: column;
-    top: 57% !important;
+    top: 58% !important;
   }
   .hero-left {
     margin-top: 2rem;

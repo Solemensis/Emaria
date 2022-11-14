@@ -3,14 +3,14 @@
     <img
       class="img"
       data-aos="fade-right"
-      data-aos-duration="1900"
+      data-aos-duration="1750"
       data-aos-easing="ease-out-back"
       src="@/assets/images/big2.webp"
       alt=""
     />
     <div
       data-aos="fade-right"
-      data-aos-duration="1900"
+      data-aos-duration="1750"
       data-aos-easing="ease-out-back"
       data-aos-delay="250"
       class="flex-column"
@@ -24,7 +24,7 @@
 
     <div
       data-aos="fade-left"
-      data-aos-duration="1900"
+      data-aos-duration="1750"
       data-aos-easing="ease-out-back"
       data-aos-delay="250"
       class="flex-column"
@@ -37,7 +37,7 @@
     </div>
     <img
       data-aos="fade-left"
-      data-aos-duration="1900"
+      data-aos-duration="1750"
       data-aos-easing="ease-out-back"
       class="second-img img"
       src="@/assets/images/big3.webp"
@@ -46,14 +46,14 @@
     <img
       class="img"
       data-aos="fade-right"
-      data-aos-duration="1900"
+      data-aos-duration="1750"
       data-aos-easing="ease-out-back"
       src="@/assets/images/big4.webp"
       alt=""
     />
     <div
       data-aos="fade-right"
-      data-aos-duration="1900"
+      data-aos-duration="1750"
       data-aos-easing="ease-out-back"
       data-aos-delay="250"
       class="flex-column"
@@ -66,7 +66,7 @@
     </div>
     <div
       data-aos="fade-left"
-      data-aos-duration="1900"
+      data-aos-duration="1750"
       data-aos-easing="ease-out-back"
       data-aos-delay="250"
       class="flex-column"
@@ -80,7 +80,7 @@
     <img
       class="img"
       data-aos="fade-left"
-      data-aos-duration="1900"
+      data-aos-duration="1750"
       data-aos-easing="ease-out-back"
       src="@/assets/images/big.webp"
       alt=""
