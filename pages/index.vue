@@ -83,7 +83,7 @@ const cartStore = useCartStore();
   font-size: 1.6rem;
   padding: 1.5rem 4.5rem;
   text-align: center;
-
+  margin-top: 0 !important;
   transition: 0.5s;
   background-size: 200% auto;
   color: black;
@@ -115,7 +115,7 @@ const cartStore = useCartStore();
 }
 .shop-button {
   margin-right: 2rem;
-
+  margin-top: 0 !important;
   font-size: 1.7rem;
   font-weight: 600;
   background-image: linear-gradient(
@@ -166,7 +166,7 @@ const cartStore = useCartStore();
 
   position: absolute;
   left: 50%;
-  top: 53%;
+  top: 55%;
   transform: translate(-50%, -50%) !important;
 }
 .hero-left {
@@ -204,7 +204,7 @@ span {
 }
 .hero-left p {
   font-size: 2rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 5rem;
   color: rgb(123, 123, 123);
   line-height: 1.4;
 }
@@ -262,6 +262,7 @@ span {
 @media (orientation: portrait) {
   .hero-section {
     flex-direction: column;
+    top: 57% !important;
   }
   .hero-left {
     margin-top: 2rem;

@@ -3,15 +3,16 @@
     <img
       class="img"
       data-aos="fade-right"
-      data-aos-duration="1500"
+      data-aos-duration="1900"
       data-aos-easing="ease-out-back"
       src="@/assets/images/big2.webp"
       alt=""
     />
     <div
       data-aos="fade-right"
-      data-aos-duration="1500"
+      data-aos-duration="1900"
       data-aos-easing="ease-out-back"
+      data-aos-delay="250"
       class="flex-column"
     >
       <h3>Visit Shops To Get Coupons!</h3>
@@ -23,8 +24,9 @@
 
     <div
       data-aos="fade-left"
-      data-aos-duration="1500"
+      data-aos-duration="1900"
       data-aos-easing="ease-out-back"
+      data-aos-delay="250"
       class="flex-column"
     >
       <h3>Exchange Like a Boss!</h3>
@@ -35,7 +37,7 @@
     </div>
     <img
       data-aos="fade-left"
-      data-aos-duration="1500"
+      data-aos-duration="1900"
       data-aos-easing="ease-out-back"
       class="second-img img"
       src="@/assets/images/big3.webp"
@@ -44,15 +46,16 @@
     <img
       class="img"
       data-aos="fade-right"
-      data-aos-duration="1500"
+      data-aos-duration="1900"
       data-aos-easing="ease-out-back"
       src="@/assets/images/big4.webp"
       alt=""
     />
     <div
       data-aos="fade-right"
-      data-aos-duration="1500"
+      data-aos-duration="1900"
       data-aos-easing="ease-out-back"
+      data-aos-delay="250"
       class="flex-column"
     >
       <h3>Earn Points In Monthly Events!</h3>
@@ -63,8 +66,9 @@
     </div>
     <div
       data-aos="fade-left"
-      data-aos-duration="1500"
+      data-aos-duration="1900"
       data-aos-easing="ease-out-back"
+      data-aos-delay="250"
       class="flex-column"
     >
       <h3>Gain Coupons With Every Purchase!</h3>
@@ -76,7 +80,7 @@
     <img
       class="img"
       data-aos="fade-left"
-      data-aos-duration="1500"
+      data-aos-duration="1900"
       data-aos-easing="ease-out-back"
       src="@/assets/images/big.webp"
       alt=""
@@ -109,6 +113,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
+  justify-content: center;
 }
 img {
   width: 40rem;
