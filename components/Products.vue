@@ -31,6 +31,7 @@ let onIntersectionObserver = async ([{ isIntersecting }]) => {
       useIsStore().items.length
     );
     useIsStore().items.push(...newUsers);
+
     // useProductStore().items.push(...newUsers);
   }
 };

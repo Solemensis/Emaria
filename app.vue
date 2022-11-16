@@ -70,6 +70,7 @@ if (user.value && anann[0]) {
 button {
   border: none;
 }
+ 
 @keyframes button-pop {
   0% {
     transform: scale(0.94);

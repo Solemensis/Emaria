@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     "@formkit/nuxt",
     "@nuxtjs/supabase",
     "@vueuse/nuxt",
+    "@nuxtjs/gtm",
 
     [
       "@pinia/nuxt",
@@ -23,6 +24,9 @@ export default defineNuxtConfig({
       },
     ],
   ],
+  gtm: {
+    id: "GTM-PBVMBQW",
+  },
 
   imports: {
     dirs: ["stores"],
