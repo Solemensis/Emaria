@@ -26,7 +26,7 @@ export default defineNuxtConfig({
   ],
   gtm: {
     id: "GTM-PBVMBQW",
-    enabled: true,
+    // enabled: true,
   },
 
   imports: {
