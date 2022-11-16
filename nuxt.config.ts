@@ -25,7 +25,7 @@ export default defineNuxtConfig({
   ],
   app: {
     head: {
-      title: "titlePageZa",
+      title: "Emaria Shop",
       script: [
         {
           hid: "gtm",
