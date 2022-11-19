@@ -19,6 +19,13 @@ if (user.value && anann[0]) {
   cartStore.items = anann[0].item;
 }
 
+if (useProductStore().items.length == 0) {
+  let { data: wholeFetch } = await useFetch(
+    `https://9a9bfolc.directus.app/items/products?limit=155`
+  );
+  useProductStore().items = wholeFetch.value.data;
+}
+
 //   watch(
 //   useCartStore().items,
 //   () => {
@@ -70,7 +77,7 @@ if (user.value && anann[0]) {
 button {
   border: none;
 }
- 
+
 @keyframes button-pop {
   0% {
     transform: scale(0.94);

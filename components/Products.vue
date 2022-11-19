@@ -49,13 +49,6 @@ let getUsers = async (limit, skip) => {
 
 const usersToShow = 12;
 
-if (useProductStore().items.length == 0) {
-  let { data: wholeFetch } = await useFetch(
-    `https://9a9bfolc.directus.app/items/products?limit=155`
-  );
-  useProductStore().items = wholeFetch.value.data;
-}
-
 // useProductStore().items = await getUsers(usersToShow, 0);
 
 // const getUsersOnScroll = async () => {
