@@ -3,16 +3,16 @@
     <img
       class="img"
       data-aos="fade-right"
-      data-aos-duration="1750"
-      data-aos-easing="ease-out-back"
+      data-aos-duration="750"
+      data-aos-easing="ease-out"
       src="@/assets/images/big2.webp"
       alt=""
     />
     <div
       data-aos="fade-right"
-      data-aos-duration="1750"
-      data-aos-easing="ease-out-back"
-      data-aos-delay="250"
+      data-aos-duration="750"
+      data-aos-easing="ease-out"
+      data-aos-delay="200"
       class="flex-column"
     >
       <h3>Visit Shops To Get Coupons!</h3>
@@ -24,9 +24,9 @@
 
     <div
       data-aos="fade-left"
-      data-aos-duration="1750"
-      data-aos-easing="ease-out-back"
-      data-aos-delay="250"
+      data-aos-duration="750"
+      data-aos-easing="ease-out"
+      data-aos-delay="200"
       class="flex-column"
     >
       <h3>Exchange Like a Boss!</h3>
@@ -37,8 +37,8 @@
     </div>
     <img
       data-aos="fade-left"
-      data-aos-duration="1750"
-      data-aos-easing="ease-out-back"
+      data-aos-duration="750"
+      data-aos-easing="ease-out"
       class="second-img img"
       src="@/assets/images/big3.webp"
       alt=""
@@ -46,16 +46,16 @@
     <img
       class="img"
       data-aos="fade-right"
-      data-aos-duration="1750"
-      data-aos-easing="ease-out-back"
+      data-aos-duration="750"
+      data-aos-easing="ease-out"
       src="@/assets/images/big4.webp"
       alt=""
     />
     <div
       data-aos="fade-right"
-      data-aos-duration="1750"
-      data-aos-easing="ease-out-back"
-      data-aos-delay="250"
+      data-aos-duration="750"
+      data-aos-easing="ease-out"
+      data-aos-delay="200"
       class="flex-column"
     >
       <h3>Earn Points In Monthly Events!</h3>
@@ -66,9 +66,9 @@
     </div>
     <div
       data-aos="fade-left"
-      data-aos-duration="1750"
-      data-aos-easing="ease-out-back"
-      data-aos-delay="250"
+      data-aos-duration="750"
+      data-aos-easing="ease-out"
+      data-aos-delay="200"
       class="flex-column"
     >
       <h3>Gain Coupons With Every Purchase!</h3>
@@ -80,8 +80,8 @@
     <img
       class="img"
       data-aos="fade-left"
-      data-aos-duration="1750"
-      data-aos-easing="ease-out-back"
+      data-aos-duration="750"
+      data-aos-easing="ease-out"
       src="@/assets/images/big.webp"
       alt=""
     />
@@ -98,10 +98,10 @@
     /* margin-bottom: 2rem !important; */
   }
   .flex-column h3 {
-    font-size: 2.1rem;
+    font-size: 1.6rem;
   }
   .flex-column p {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
     width: 100%;
   }
   .grid {
@@ -122,7 +122,7 @@ img {
 }
 
 h3 {
-  font-size: 4rem;
+  font-size: 3rem;
   margin-bottom: 2rem;
   text-align: center;
   padding: 0 1rem;
@@ -133,8 +133,10 @@ p {
   font-size: 2.2rem;
   text-align: center;
   padding: 0 1rem;
-  width: 60%;
-  line-height: 1.43;
+  width: 70%;
+  line-height: 1.35;
+  color: #555;
+  font-weight: 500;
 }
 .grid {
   display: grid;

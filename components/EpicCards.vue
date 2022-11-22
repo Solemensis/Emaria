@@ -27,7 +27,7 @@
         data-aos="fade-down"
         data-aos-duration="1800"
         data-aos-easing="ease-out-back"
-        data-aos-delay="600"
+        data-aos-delay="450"
         class="card3 card"
       >
         <img src="@/assets/images/epic3.webp" alt="" />
