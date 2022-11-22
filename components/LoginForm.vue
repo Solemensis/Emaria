@@ -7,7 +7,7 @@ const password = ref("");
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 
-const client = useSupabaseAuthClient();
+// const client = useSupabaseAuthClient();
 
 const login = async () => {
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -32,37 +32,37 @@ function hideModal2() {
   if (show2.value == true) show2.value = false;
 }
 
-const oAuthGit = async () => {
-  const { data, error } = await client.auth.signInWithOAuth({
-    provider: "github",
-    //  options: {
-    //  redirectTo: '/'
-    //  }
-  });
-  if (!error) {
-    //  window.location.reload();
-  }
-  if (error) {
-    show2.value = true;
-    setTimeout(hideModal2, 2000);
-  }
-};
+// const oAuthGit = async () => {
+//   const { data, error } = await client.auth.signInWithOAuth({
+//     provider: "github",
+//     //  options: {
+//     //  redirectTo: '/'
+//     //  }
+//   });
+//   if (!error) {
+//     //  window.location.reload();
+//   }
+//   if (error) {
+//     show2.value = true;
+//     setTimeout(hideModal2, 2000);
+//   }
+// };
 
-const oAuthGoogle = async () => {
-  const { data, error } = await client.auth.signInWithOAuth({
-    provider: "google",
-    //  options: {
-    //  redirectTo: '/'
-    //  }
-  });
-  if (!error) {
-    //  window.location.reload();
-  }
-  if (error) {
-    show2.value = true;
-    setTimeout(hideModal2, 2000);
-  }
-};
+// const oAuthGoogle = async () => {
+//   const { data, error } = await client.auth.signInWithOAuth({
+//     provider: "google",
+//     //  options: {
+//     //  redirectTo: '/'
+//     //  }
+//   });
+//   if (!error) {
+//     //  window.location.reload();
+//   }
+//   if (error) {
+//     show2.value = true;
+//     setTimeout(hideModal2, 2000);
+//   }
+// };
 
 // onMounted(()=>{
 //   watchEffect(()=> {
