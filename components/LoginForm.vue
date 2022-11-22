@@ -7,6 +7,8 @@ const password = ref("");
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 
+const client = useSupabaseAuthClient();
+
 const login = async () => {
   const { data, error } = await supabase.auth.signInWithPassword({
     email: email.value,
@@ -30,24 +32,37 @@ function hideModal2() {
   if (show2.value == true) show2.value = false;
 }
 
-// const oAuth = async () => {
-// const { data, error } = await supabase.auth.signInWithOAuth({
-//   provider: 'github',
-//   //  options: {
-//   //  redirectTo: '/'
-//   //  }
-// })
-//   if (!error) {
+const oAuthGit = async () => {
+  const { data, error } = await client.auth.signInWithOAuth({
+    provider: "github",
+    //  options: {
+    //  redirectTo: '/'
+    //  }
+  });
+  if (!error) {
+    //  window.location.reload();
+  }
+  if (error) {
+    show2.value = true;
+    setTimeout(hideModal2, 2000);
+  }
+};
 
-//       //  window.location.reload();
-//   }
-// if (error) {
-
-//       show2.value = true;
-//       setTimeout(hideModal2, 2000)
-// }
-
-// }
+const oAuthGoogle = async () => {
+  const { data, error } = await client.auth.signInWithOAuth({
+    provider: "google",
+    //  options: {
+    //  redirectTo: '/'
+    //  }
+  });
+  if (!error) {
+    //  window.location.reload();
+  }
+  if (error) {
+    show2.value = true;
+    setTimeout(hideModal2, 2000);
+  }
+};
 
 // onMounted(()=>{
 //   watchEffect(()=> {
@@ -66,10 +81,14 @@ function hideModal2() {
         <h3 class="modal-text">Your Info is Incorrect.</h3>
       </div>
     </transition>
-    <!-- <div class="git-box">
-<img src="@/assets/images/github.png" alt="">
-   <p class="git-login" @click="oAuth()">Continue with GitHub</p>
-  </div> -->
+    <div class="git-box">
+      <img src="@/assets/images/github.svg" alt="" />
+      <p class="git-login" @click="oAuthGit()">Continue with GitHub</p>
+    </div>
+    <div class="google-box">
+      <img src="@/assets/images/google.svg" alt="" />
+      <p class="google-login" @click="oAuthGoogle()">Continue with Google</p>
+    </div>
     <p>
       Don't have an account?
       <NuxtLink to="/signup" class="register">Register</NuxtLink>
@@ -118,15 +137,43 @@ function hideModal2() {
 </template>
 
 <style>
+.google-login {
+  color: black;
+  margin: 0 !important;
+  font-size: 1.8rem !important;
+  font-weight: 600;
+}
+.google-box img {
+  height: 3rem;
+  margin-right: 0.7rem;
+}
+.google-box {
+  background-color: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+.google-box:hover {
+  background-color: #ccc;
+}
+
 .git-login {
   color: white;
   margin: 0 !important;
   font-size: 1.8rem !important;
   font-weight: 600;
 }
+
 .git-box img {
   height: 3rem;
-  margin-right: 0.2rem;
+  margin-right: 0.7rem;
+  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(123deg)
+    brightness(109%) contrast(110%);
 }
 .git-box {
   background-color: #24292ed1;
@@ -135,16 +182,14 @@ function hideModal2() {
   justify-content: center;
   padding: 1rem 1.5rem;
   border-radius: 0.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   transition: background-color 0.2s;
+  cursor: pointer;
 }
 .git-box:hover {
-  background-color: #24292e;
+  background-color: #24292ee8;
 }
-.git-box:active {
-  /* animation: button-pop 0.3s ease-out; */
-  background-color: #131517;
-}
+
 .formkit-label {
   display: none;
 }
