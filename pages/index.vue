@@ -1,6 +1,6 @@
 <script setup>
-const user = useSupabaseUser();
-const supabase = useSupabaseClient();
+// const user = useSupabaseUser();
+// const supabase = useSupabaseClient();
 
 const cartStore = useCartStore();
 

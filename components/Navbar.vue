@@ -1,7 +1,8 @@
 <script setup>
-const user = useSupabaseUser();
+// import { user, supabase } from "@/composables/use-supabase.js";
 
-const supabase = useSupabaseClient();
+// const user = useSupabaseUser();
+// const supabase = useSupabaseClient();
 
 const signOut = async () => {
   const { error } = await supabase.auth.signOut();

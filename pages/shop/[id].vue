@@ -1,6 +1,6 @@
 <script setup>
-const supabase = useSupabaseClient();
-const user = useSupabaseUser();
+// const supabase = useSupabaseClient();
+// const user = useSupabaseUser();
 
 const route = useRoute();
 

@@ -4,8 +4,8 @@ const cartStore = useCartStore();
 const email = ref("");
 const password = ref("");
 
-const supabase = useSupabaseClient();
-const user = useSupabaseUser();
+// const supabase = useSupabaseClient();
+// const user = useSupabaseUser();
 
 // const client = useSupabaseAuthClient();
 
