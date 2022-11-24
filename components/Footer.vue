@@ -2,13 +2,7 @@
   <div>
     <div class="footer-container">
       <h2 class="copyright">2022 @Solemensis</h2>
-
       <div>
-        <!-- <div class="links">
-          <a href="">Home</a>
-          <a href="">Shop</a>
-          <a href="">Contact</a>
-        </div> -->
         <a href="#">
           <img class="logo" src="@/assets/images/logo2.webp" alt="" />
         </a>
@@ -42,15 +36,6 @@
   }
 }
 
-.links {
-  display: flex;
-  justify-content: space-between;
-  width: 20rem;
-}
-.links a {
-  color: white;
-  font-size: 1.4rem;
-}
 .copyright {
   color: #ededed;
 }

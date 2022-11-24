@@ -1,14 +1,7 @@
 <script setup>
-// const supabase = useSupabaseClient();
-
 const userName = ref("");
 const email = ref("");
 const password = ref("");
-
-// let { data: anann } = await supabase
-//   .from("anan")
-//   .select("mail");
-//   if(anann.find((e)=>e.mail==email)){}
 
 const signUp = async () => {
   const { data, error } = await supabase.auth.signUp({
@@ -20,7 +13,6 @@ const signUp = async () => {
       },
     },
   });
-
   if (data) {
     show1.value = true;
     setTimeout(hideModal1, 4000);
@@ -33,7 +25,6 @@ const signUp = async () => {
 
 const show1 = ref(false);
 const show2 = ref(false);
-
 function hideModal1() {
   if (show1.value == true) show1.value = false;
 }
@@ -41,7 +32,6 @@ function hideModal2() {
   if (show2.value == true) show2.value = false;
 }
 </script>
-
 <template>
   <div data-aos="zoom-in" data-aos-duration="900" class="container">
     <transition name="my-transition">
@@ -54,17 +44,14 @@ function hideModal2() {
         <h3 class="modal-text">There was an Error.</h3>
       </div>
     </transition>
-
     <p>
       Already have an account?
       <NuxtLink to="/login" class="login">Login</NuxtLink>
     </p>
-
     <h2>
       Create Your <br />
       <span>Emaria</span> Account
     </h2>
-
     <FormKit
       messages-class="messages"
       type="form"
@@ -101,7 +88,6 @@ function hideModal2() {
         type="password"
         placeholder="⛓ Password"
       />
-
       <p><NuxtLink class="forgot-pass">Forgot Your Password?</NuxtLink></p>
     </FormKit>
     <teleport to="body">
@@ -111,12 +97,10 @@ function hideModal2() {
     </teleport>
   </div>
 </template>
-
 <style>
 .formkit-label {
   display: none;
 }
-
 .input4,
 .input5,
 .input6 {
@@ -132,16 +116,13 @@ function hideModal2() {
   outline: none;
   transition: 0.3s;
 }
-
 .input6 {
   margin-bottom: 2rem !important;
 }
-
 .messages {
   position: absolute;
   display: none !important;
 }
-
 button {
   padding: 1rem 3rem;
   background-color: rgb(203, 23, 137);
@@ -153,33 +134,28 @@ button {
   outline: none !important;
   border: none !important;
 }
-
 .input4:focus,
 .input5:focus,
 .input6:focus {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-
 button:hover {
   background-color: rgb(161, 21, 110);
 }
 button:active {
   background-color: rgb(134, 16, 91);
 }
-
 [data-invalid] .input4,
 [data-invalid] .input5,
 [data-invalid] .input6 {
   border: 2px solid rgb(251, 126, 126);
 }
-
 [data-complete] .input4,
 [data-complete] .input5,
 [data-complete] .input6 {
   border: 2px solid rgb(87, 220, 87);
 }
 </style>
-
 <style scoped>
 @media (orientation: portrait) {
   .entity-arrow {
@@ -209,17 +185,14 @@ button:active {
   top: 50%;
   transform: translate(-50%, -50%) !important;
 }
-
 h2 {
   font-weight: 700;
   font-size: 4rem;
   margin-bottom: 3rem;
 }
-
 span {
   color: rgb(15, 185, 12);
 }
-
 p {
   margin-bottom: 3rem;
   font-size: 2rem;
@@ -252,7 +225,6 @@ p {
 .forgot-pass:hover {
   border-bottom: 1px solid #2e2b2b;
 }
-
 .alert1 {
   width: 25rem;
   height: 5rem;
@@ -273,7 +245,6 @@ p {
   right: 2.5rem;
   bottom: -7rem;
 }
-
 .modal-text {
   color: rgb(52, 52, 52);
   font-size: 1.8rem;

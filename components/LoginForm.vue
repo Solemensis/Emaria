@@ -6,16 +6,12 @@ const password = ref("");
 
 // const supabase = useSupabaseClient();
 // const user = useSupabaseUser();
-
 // const client = useSupabaseAuthClient();
 
 const login = async () => {
   const { data, error } = await supabase.auth.signInWithPassword({
     email: email.value,
     password: password.value,
-    //    options: {
-    //  redirectTo: '/'
-    //  }
   });
 
   if (!error) {
@@ -35,13 +31,7 @@ function hideModal2() {
 const oAuthGit = async () => {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "github",
-    //  options: {
-    //  redirectTo: '/'
-    //  }
   });
-  if (!error) {
-    //  window.location.reload();
-  }
   if (error) {
     show2.value = true;
     setTimeout(hideModal2, 2000);
@@ -51,29 +41,13 @@ const oAuthGit = async () => {
 const oAuthGoogle = async () => {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
-    //  options: {
-    //  redirectTo: '/'
-    //  }
   });
-  if (!error) {
-    //  window.location.reload();
-  }
   if (error) {
     show2.value = true;
     setTimeout(hideModal2, 2000);
   }
 };
-
-// onMounted(()=>{
-//   watchEffect(()=> {
-//     if (user.value) {
-
-//       navigateTo("/")
-//     }
-//   })
-// })
 </script>
-
 <template>
   <div data-aos="zoom-in" data-aos-duration="900" class="container">
     <transition name="my-transition">
@@ -125,7 +99,6 @@ const oAuthGoogle = async () => {
         type="password"
         placeholder="⛓ Password"
       />
-
       <p><NuxtLink class="forgot-pass">Forgot Your Password?</NuxtLink></p>
     </FormKit>
     <teleport to="body">
@@ -161,14 +134,12 @@ const oAuthGoogle = async () => {
 .google-box:hover {
   background-color: #ccc;
 }
-
 .git-login {
   color: white;
   margin: 0 !important;
   font-size: 1.8rem !important;
   font-weight: 600;
 }
-
 .git-box img {
   height: 3rem;
   margin-right: 0.7rem;
@@ -193,7 +164,6 @@ const oAuthGoogle = async () => {
 .formkit-label {
   display: none;
 }
-
 .input1,
 .input2 {
   height: 4rem;
@@ -208,16 +178,13 @@ const oAuthGoogle = async () => {
   outline: none;
   transition: 0.3s;
 }
-
 .input2 {
   margin-bottom: 2rem !important;
 }
-
 .messages {
   position: absolute;
   display: none;
 }
-
 button {
   padding: 1rem 3rem;
   background-color: rgb(203, 23, 137);
@@ -229,30 +196,25 @@ button {
   outline: none !important;
   border: none !important;
 }
-
 .input1:focus,
 .input2:focus {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-
 button:hover {
   background-color: rgb(161, 21, 110);
 }
 button:active {
   background-color: rgb(134, 16, 91);
 }
-
 [data-invalid] .input1,
 [data-invalid] .input2 {
   border: 2px solid rgb(251, 126, 126);
 }
-
 [data-complete] .input1,
 [data-complete] .input2 {
   border: 2px solid rgb(87, 220, 87);
 }
 </style>
-
 <style scoped>
 @media (orientation: portrait) {
   .entity-arrow {
@@ -337,7 +299,6 @@ p {
   right: 2.5rem;
   bottom: -7rem;
 }
-
 .modal-text {
   color: rgb(52, 52, 52);
   font-size: 1.8rem;

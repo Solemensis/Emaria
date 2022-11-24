@@ -1,29 +1,11 @@
 <script setup>
-// const { data: products } = await useFetch("https://fakestoreapi.com/products/");
-// import { useIntersectionObserver } from "@vueuse/core";
 import { vIntersectionObserver } from "@vueuse/components";
 
 const isVisible = ref(false);
 
-// this went
-// function onIntersectionObserver([{ isIntersecting }]) {
-//   if (isIntersecting) {
-//     isVisible.value = isIntersecting;
-
-//     let anan = async () => {
-//       const newProducts = await fetchNewProducts(productsToShow, products.value.length);
-
-//       products.value.push(...newProducts);
-//     };
-//     anan();
-//   }
-// }
-
-// to this
 let onIntersectionObserver = async ([{ isIntersecting }]) => {
   if (isIntersecting) {
     isVisible.value = isIntersecting;
-
     const newProducts = await fetchNewProducts(
       productsToShow,
       useIsStore().items.length
@@ -68,13 +50,13 @@ function handleFilter1() {
   useClickedStore().clicked3 = false;
   useClickedStore().clicked4 = false;
   useClickedStore().clicked5 = false;
-
   useClickedStore().specClicked1 = false;
   useClickedStore().specClicked2 = false;
   useClickedStore().specClicked3 = false;
   useClickedStore().specClicked4 = false;
   useClickedStore().specClicked5 = false;
 }
+
 function handleFilter2() {
   if (useClickedStore().clicked2 == false) {
     useIsStore().items = useProductStore().items.filter(
@@ -86,19 +68,18 @@ function handleFilter2() {
   } else {
     useIsStore().items = useIsStore().itemsSave1;
   }
-
   useClickedStore().clicked1 = false;
   useClickedStore().clicked2 = !useClickedStore().clicked2;
   useClickedStore().clicked3 = false;
   useClickedStore().clicked4 = false;
   useClickedStore().clicked5 = false;
-
   useClickedStore().specClicked1 = false;
   useClickedStore().specClicked2 = false;
   useClickedStore().specClicked3 = false;
   useClickedStore().specClicked4 = false;
   useClickedStore().specClicked5 = false;
 }
+
 function handleFilter3() {
   if (useClickedStore().clicked3 == false) {
     useIsStore().items = useProductStore().items.filter(
@@ -110,19 +91,18 @@ function handleFilter3() {
   } else {
     useIsStore().items = useIsStore().itemsSave1;
   }
-
   useClickedStore().clicked1 = false;
   useClickedStore().clicked2 = false;
   useClickedStore().clicked3 = !useClickedStore().clicked3;
   useClickedStore().clicked4 = false;
   useClickedStore().clicked5 = false;
-
   useClickedStore().specClicked1 = false;
   useClickedStore().specClicked2 = false;
   useClickedStore().specClicked3 = false;
   useClickedStore().specClicked4 = false;
   useClickedStore().specClicked5 = false;
 }
+
 function handleFilter4() {
   if (useClickedStore().clicked4 == false) {
     useIsStore().items = useProductStore().items.filter(
@@ -131,19 +111,18 @@ function handleFilter4() {
   } else {
     useIsStore().items = useIsStore().itemsSave1;
   }
-
   useClickedStore().clicked1 = false;
   useClickedStore().clicked2 = false;
   useClickedStore().clicked3 = false;
   useClickedStore().clicked4 = !useClickedStore().clicked4;
   useClickedStore().clicked5 = false;
-
   useClickedStore().specClicked1 = false;
   useClickedStore().specClicked2 = false;
   useClickedStore().specClicked3 = false;
   useClickedStore().specClicked4 = false;
   useClickedStore().specClicked5 = false;
 }
+
 function handleFilter5() {
   if (useClickedStore().clicked5 == false) {
     useIsStore().items = useProductStore().items.filter(
@@ -155,19 +134,18 @@ function handleFilter5() {
   } else {
     useIsStore().items = useIsStore().itemsSave1;
   }
-
   useClickedStore().clicked1 = false;
   useClickedStore().clicked2 = false;
   useClickedStore().clicked3 = false;
   useClickedStore().clicked4 = false;
   useClickedStore().clicked5 = !useClickedStore().clicked5;
-
   useClickedStore().specClicked1 = false;
   useClickedStore().specClicked2 = false;
   useClickedStore().specClicked3 = false;
   useClickedStore().specClicked4 = false;
   useClickedStore().specClicked5 = false;
 }
+
 function specificFilter1_1() {
   if (useClickedStore().specClicked1 == false) {
     useIsStore().items = useProductStore().items.filter(
@@ -189,6 +167,7 @@ function specificFilter1_1() {
   useClickedStore().specClicked4 = false;
   useClickedStore().specClicked5 = false;
 }
+
 function specificFilter1_2() {
   if (useClickedStore().specClicked2 == false) {
     useIsStore().items = useProductStore().items.filter(
@@ -204,13 +183,13 @@ function specificFilter1_2() {
         e.type == "Pc Accessory"
     );
   }
-
   useClickedStore().specClicked1 = false;
   useClickedStore().specClicked2 = !useClickedStore().specClicked2;
   useClickedStore().specClicked3 = false;
   useClickedStore().specClicked4 = false;
   useClickedStore().specClicked5 = false;
 }
+
 function specificFilter1_3() {
   if (useClickedStore().specClicked3 == false) {
     useIsStore().items = useProductStore().items.filter(
@@ -226,13 +205,13 @@ function specificFilter1_3() {
         e.type == "Pc Accessory"
     );
   }
-
   useClickedStore().specClicked1 = false;
   useClickedStore().specClicked2 = false;
   useClickedStore().specClicked3 = !useClickedStore().specClicked3;
   useClickedStore().specClicked4 = false;
   useClickedStore().specClicked5 = false;
 }
+
 function specificFilter1_4() {
   if (useClickedStore().specClicked4 == false) {
     useIsStore().items = useProductStore().items.filter((e) => e.type == "OEM");
@@ -246,23 +225,13 @@ function specificFilter1_4() {
         e.type == "Pc Accessory"
     );
   }
-
   useClickedStore().specClicked1 = false;
   useClickedStore().specClicked2 = false;
   useClickedStore().specClicked3 = false;
   useClickedStore().specClicked4 = !useClickedStore().specClicked4;
   useClickedStore().specClicked5 = false;
 }
-// function specificFilter1_5() {
-//   useIsStore().items = useProductStore().items.filter(
-//     (e) => e.type == "Pc Accessory"
-//   );
-//   useClickedStore().specClicked1 = false;
-//   useClickedStore().specClicked2 = false;
-//   useClickedStore().specClicked3 = false;
-//   useClickedStore().specClicked4 = false;
-//   useClickedStore().specClicked5 = !useClickedStore().specClicked5;
-// }
+
 function specificFilter2_1() {
   if (useClickedStore().specClicked1 == false) {
     useIsStore().items = useProductStore().items.filter(
@@ -276,13 +245,13 @@ function specificFilter2_1() {
         e.type == "Men's Hat"
     );
   }
-
   useClickedStore().specClicked1 = !useClickedStore().specClicked1;
   useClickedStore().specClicked2 = false;
   useClickedStore().specClicked3 = false;
   useClickedStore().specClicked4 = false;
   useClickedStore().specClicked5 = false;
 }
+
 function specificFilter2_2() {
   if (useClickedStore().specClicked2 == false) {
     useIsStore().items = useProductStore().items.filter(
@@ -296,13 +265,13 @@ function specificFilter2_2() {
         e.type == "Men's Hat"
     );
   }
-
   useClickedStore().specClicked1 = false;
   useClickedStore().specClicked2 = !useClickedStore().specClicked2;
   useClickedStore().specClicked3 = false;
   useClickedStore().specClicked4 = false;
   useClickedStore().specClicked5 = false;
 }
+
 function specificFilter2_3() {
   if (useClickedStore().specClicked3 == false) {
     useIsStore().items = useProductStore().items.filter(
@@ -316,13 +285,13 @@ function specificFilter2_3() {
         e.type == "Men's Hat"
     );
   }
-
   useClickedStore().specClicked1 = false;
   useClickedStore().specClicked2 = false;
   useClickedStore().specClicked3 = !useClickedStore().specClicked3;
   useClickedStore().specClicked4 = false;
   useClickedStore().specClicked5 = false;
 }
+
 function specificFilter3_1() {
   if (useClickedStore().specClicked1 == false) {
     useIsStore().items = useProductStore().items.filter(
@@ -336,13 +305,13 @@ function specificFilter3_1() {
         e.type == "Women's Accessory"
     );
   }
-
   useClickedStore().specClicked1 = !useClickedStore().specClicked1;
   useClickedStore().specClicked2 = false;
   useClickedStore().specClicked3 = false;
   useClickedStore().specClicked4 = false;
   useClickedStore().specClicked5 = false;
 }
+
 function specificFilter3_2() {
   if (useClickedStore().specClicked2 == false) {
     useIsStore().items = useProductStore().items.filter(
@@ -356,13 +325,13 @@ function specificFilter3_2() {
         e.type == "Women's Accessory"
     );
   }
-
   useClickedStore().specClicked1 = false;
   useClickedStore().specClicked2 = !useClickedStore().specClicked2;
   useClickedStore().specClicked3 = false;
   useClickedStore().specClicked4 = false;
   useClickedStore().specClicked5 = false;
 }
+
 function specificFilter3_3() {
   if (useClickedStore().specClicked3 == false) {
     useIsStore().items = useProductStore().items.filter(
@@ -376,13 +345,13 @@ function specificFilter3_3() {
         e.type == "Women's Accessory"
     );
   }
-
   useClickedStore().specClicked1 = false;
   useClickedStore().specClicked2 = false;
   useClickedStore().specClicked3 = !useClickedStore().specClicked3;
   useClickedStore().specClicked4 = false;
   useClickedStore().specClicked5 = false;
 }
+
 function specificFilter4_1() {
   if (useClickedStore().specClicked1 == false) {
     useIsStore().items = useProductStore().items.filter(
@@ -393,13 +362,13 @@ function specificFilter4_1() {
       (e) => e.type == "Bag" || e.type == "Shoes"
     );
   }
-
   useClickedStore().specClicked1 = !useClickedStore().specClicked1;
   useClickedStore().specClicked2 = false;
   useClickedStore().specClicked3 = false;
   useClickedStore().specClicked4 = false;
   useClickedStore().specClicked5 = false;
 }
+
 function specificFilter4_2() {
   if (useClickedStore().specClicked2 == false) {
     useIsStore().items = useProductStore().items.filter((e) => e.type == "Bag");
@@ -408,13 +377,13 @@ function specificFilter4_2() {
       (e) => e.type == "Bag" || e.type == "Shoes"
     );
   }
-
   useClickedStore().specClicked1 = false;
   useClickedStore().specClicked2 = !useClickedStore().specClicked2;
   useClickedStore().specClicked3 = false;
   useClickedStore().specClicked4 = false;
   useClickedStore().specClicked5 = false;
 }
+
 function specificFilter5_1() {
   if (useClickedStore().specClicked1 == false) {
     useIsStore().items = useProductStore().items.filter(
@@ -428,13 +397,13 @@ function specificFilter5_1() {
         e.type == "Gaming Chair"
     );
   }
-
   useClickedStore().specClicked1 = !useClickedStore().specClicked1;
   useClickedStore().specClicked2 = false;
   useClickedStore().specClicked3 = false;
   useClickedStore().specClicked4 = false;
   useClickedStore().specClicked5 = false;
 }
+
 function specificFilter5_2() {
   if (useClickedStore().specClicked2 == false) {
     useIsStore().items = useProductStore().items.filter(
@@ -448,13 +417,13 @@ function specificFilter5_2() {
         e.type == "Gaming Chair"
     );
   }
-
   useClickedStore().specClicked1 = false;
   useClickedStore().specClicked2 = !useClickedStore().specClicked2;
   useClickedStore().specClicked3 = false;
   useClickedStore().specClicked4 = false;
   useClickedStore().specClicked5 = false;
 }
+
 function specificFilter5_3() {
   if (useClickedStore().specClicked3 == false) {
     useIsStore().items = useProductStore().items.filter(
@@ -468,7 +437,6 @@ function specificFilter5_3() {
         e.type == "Gaming Chair"
     );
   }
-
   useClickedStore().specClicked1 = false;
   useClickedStore().specClicked2 = false;
   useClickedStore().specClicked3 = !useClickedStore().specClicked3;
@@ -542,13 +510,6 @@ function allClickedFalse() {
             >
               OEM
             </p>
-            <!-- <p
-              :class="{ 'get-red': specClicked5 }"
-              class="specs"
-              @click="specificFilter1_5()"
-            >
-              Pc Accessory
-            </p> -->
           </div>
         </transition>
       </div>
@@ -776,12 +737,10 @@ function allClickedFalse() {
 .ldio-j4mceyzrqbg div {
   box-sizing: content-box;
 }
-
 .absText {
   position: absolute;
   left: 70%;
 }
-
 .spec-head {
   color: rgb(108, 108, 108);
   font-size: 1.9rem;
@@ -794,7 +753,6 @@ function allClickedFalse() {
 .gaming-ch {
   width: 150%;
 }
-
 .listed-info {
   position: absolute;
   bottom: -2rem;
@@ -826,7 +784,6 @@ function allClickedFalse() {
 .filter {
   margin-right: 1rem;
 }
-
 .categories {
   display: flex;
   flex-direction: column;
@@ -838,7 +795,6 @@ function allClickedFalse() {
   top: 18rem;
   padding: 2rem 1rem;
 }
-
 .grid {
   display: grid;
   grid-row-gap: 4rem;

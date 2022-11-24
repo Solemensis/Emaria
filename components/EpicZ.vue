@@ -1,3 +1,4 @@
+<script setup></script>
 <template lang="">
   <div class="grid page-format">
     <img
@@ -21,7 +22,6 @@
         discount and product coupons!
       </p>
     </div>
-
     <div
       data-aos="fade-left"
       data-aos-duration="750"
@@ -87,7 +87,6 @@
     />
   </div>
 </template>
-
 <style scoped>
 @media (orientation: portrait) {
   .container {
@@ -108,7 +107,6 @@
     grid-row-gap: 5rem !important;
   }
 }
-
 .flex-column {
   display: flex;
   flex-direction: column;
@@ -118,9 +116,7 @@
 }
 img {
   width: 40rem;
-  /* margin-bottom: 5rem; */
 }
-
 h3 {
   font-size: 3rem;
   margin-bottom: 2rem;

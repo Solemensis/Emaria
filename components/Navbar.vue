@@ -1,6 +1,4 @@
 <script setup>
-// import { user, supabase } from "@/composables/use-supabase.js";
-
 // const user = useSupabaseUser();
 // const supabase = useSupabaseClient();
 
@@ -10,17 +8,14 @@ const signOut = async () => {
     window.location.reload();
   }
 };
-
 const slide = ref(false);
 </script>
-
 <template lang="">
   <header class="page-format2">
     <div class="logo-container">
       <img class="logo" src="@/assets/images/logo2.webp" alt="" />
       <NuxtLink to="/"> <h2>Emaria</h2></NuxtLink>
     </div>
-
     <ul
       :class="{
         slide: slide,
@@ -30,14 +25,12 @@ const slide = ref(false);
       <li><NuxtLink class="nav-link" to="/shop">Shop</NuxtLink></li>
       <li><NuxtLink class="nav-link" to="/contact">Contact</NuxtLink></li>
     </ul>
-
     <img
       @click="slide = !slide"
       src="@/assets/images/menu.svg"
       alt=""
       class="menu-button"
     />
-
     <div class="user-logged" v-if="user">
       <NuxtLink to="/cart">
         <div class="cart-box">
@@ -48,7 +41,6 @@ const slide = ref(false);
           </p>
         </div>
       </NuxtLink>
-
       <p>Hello, {{ user.user_metadata.user_name }}!</p>
       <button class="logout-button" @click="signOut()">Logout</button>
     </div>
@@ -62,12 +54,10 @@ const slide = ref(false);
     </div>
   </header>
 </template>
-
 <style scoped>
 .menu-button {
   display: none;
 }
-
 .cart-counter {
   position: absolute;
   color: red !important;
@@ -86,7 +76,6 @@ const slide = ref(false);
   cursor: pointer;
   position: relative;
 }
-
 .cart-img {
   width: 3rem;
   margin-top: 0.2rem;
@@ -105,7 +94,6 @@ const slide = ref(false);
   font-family: "Barlow Condensed";
   font-size: 2.5rem;
 }
-
 .nav-link.router-link-active {
   border-bottom: 3px solid rgb(255, 106, 255);
   padding-bottom: 2px;
@@ -122,7 +110,6 @@ li:after,
   bottom: -0.5rem;
   transition: 0.2s;
 }
-
 .logo-container h2 {
   font-size: 2.6rem;
   font-family: "Abel";
@@ -130,10 +117,8 @@ li:after,
   color: black;
   cursor: pointer;
 }
-
 button {
   margin-top: 0;
-
   padding: 1rem 2rem;
   border: none;
   background-color: transparent;
@@ -144,7 +129,6 @@ button {
 .user-logged p {
   margin-right: 1rem;
   font-size: 2rem;
-
   color: rgb(43, 185, 50);
   padding: 1rem 2rem;
   font-weight: 600;
@@ -168,7 +152,6 @@ button {
   margin-top: 0.2rem;
   padding: 0.7rem 1.5rem;
   border: none;
-
   background-image: linear-gradient(
     to right,
     #da22ff 0%,
@@ -177,13 +160,11 @@ button {
   );
   background-size: 200% auto;
   transition: 0.5s;
-
   color: white;
   font-size: 1.6rem;
   font-weight: 600;
   transition: 0.3s;
 }
-
 .register-button:active {
   background-image: linear-gradient(
     to right,
@@ -191,17 +172,14 @@ button {
     #832dcd 51%,
     #b41fd1 100%
   );
-
   animation: button-pop 0.3s ease-out;
 }
-
 .login-button {
   cursor: pointer;
   padding: 0;
   font-size: 1.5rem;
   position: relative;
 }
-
 .login-button,
 .register-button {
   font-family: "Barlow Condensed";
@@ -214,19 +192,16 @@ button {
   margin: 1rem 2rem;
   padding: 0;
 }
-
 .logo-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 16rem;
 }
-
 .logo-container img {
   height: 5.5rem;
   margin-right: 0.3rem;
 }
-
 header {
   display: flex;
   justify-content: space-between;
@@ -234,19 +209,11 @@ header {
   padding: 1.5rem 5rem;
   position: relative;
   border-bottom: rgb(197, 197, 197) 1px solid;
-  /* background-color: #f8d8bc;
-  border-bottom-left-radius: 3rem;
-  border-bottom-right-radius: 3rem; */
 }
 ul {
   display: flex;
   list-style: none;
   z-index: 900;
-
-  /* position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%); */
 }
 li {
   text-decoration: none;
@@ -259,7 +226,6 @@ li {
 li:last-child {
   margin-right: 0 !important;
 }
-
 @media (hover: hover) {
   .cart-box:hover {
     transform: scale(0.95);
@@ -269,7 +235,6 @@ li:last-child {
   .logout-button:hover:after {
     width: 100%;
   }
-
   .register-button:hover {
     background-position: right center;
     box-shadow: 0 0 20px #eee;
@@ -281,12 +246,10 @@ li:last-child {
     background-color: transparent;
   }
 }
-
 @media (orientation: portrait) {
   .nav-link {
     font-size: 2rem;
   }
-
   .login-button {
     font-size: 1.5rem;
   }
@@ -297,11 +260,9 @@ li:last-child {
   .logo-container {
     width: 12rem;
   }
-
   .user-logged p {
     margin-top: -0.8rem;
   }
-
   .user-logged button {
     padding-bottom: 0.5rem;
   }
@@ -326,18 +287,15 @@ li:last-child {
   .menu-button {
     display: flex;
     width: 2.5rem;
-
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
-    /* display: none; */
   }
   ul {
     top: 7.5rem;
     left: 50%;
     transform: translate(-50%, -450%);
     position: absolute;
-    /* display: none; */
     transition: transform 0.2s;
     margin-left: 1rem;
   }

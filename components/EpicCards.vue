@@ -2,7 +2,6 @@
 <template lang="">
   <div class="container">
     <h2>Thousands of people use our store!</h2>
-
     <div class="cards page-format">
       <div
         data-aos="fade-down"
@@ -34,16 +33,8 @@
         <h3>100% Moneyback</h3>
       </div>
     </div>
-    <!-- <div class="hero-card page-format">
-      <img src="@/assets/images/epic3.png" alt="" />
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum, unde
-        facilis quisquam illo at incidunt commodi ratione magnam.
-      </p>
-    </div> -->
   </div>
 </template>
-
 <style scoped>
 @media (orientation: portrait) {
   .container {
@@ -81,22 +72,6 @@
     grid-column-end: 3;
   }
 }
-
-.hero-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: rgba(214, 30, 6, 0.24);
-  border-radius: 1.3rem;
-  width: 66.5%;
-}
-.hero-card img {
-  width: 15rem;
-  margin-right: 1.5rem;
-}
-.hero-card p {
-  font-size: 2rem;
-}
 h2 {
   font-weight: 500;
   font-size: 4.5rem;
@@ -114,7 +89,6 @@ h2 {
   justify-content: space-evenly;
   margin-bottom: 5rem;
 }
-
 .card {
   display: flex;
   flex-direction: column;
@@ -128,7 +102,6 @@ h2 {
   border-radius: 1.3rem;
   position: relative;
 }
-
 .cards img {
   width: 15rem;
   position: absolute;
