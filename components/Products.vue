@@ -1,6 +1,5 @@
 <script setup>
 // const { data: products } = await useFetch("https://fakestoreapi.com/products/");
-// import InfiniteLoading from "vue-infinite-loading";
 // import { useIntersectionObserver } from "@vueuse/core";
 import { vIntersectionObserver } from "@vueuse/components";
 
@@ -12,9 +11,9 @@ const isVisible = ref(false);
 //     isVisible.value = isIntersecting;
 
 //     let anan = async () => {
-//       const newUsers = await getUsers(usersToShow, products.value.length);
+//       const newProducts = await fetchNewProducts(productsToShow, products.value.length);
 
-//       products.value.push(...newUsers);
+//       products.value.push(...newProducts);
 //     };
 //     anan();
 //   }
@@ -25,76 +24,30 @@ let onIntersectionObserver = async ([{ isIntersecting }]) => {
   if (isIntersecting) {
     isVisible.value = isIntersecting;
 
-    const newUsers = await getUsers(
-      usersToShow,
-      // useProductStore().items.length
+    const newProducts = await fetchNewProducts(
+      productsToShow,
       useIsStore().items.length
     );
-    useIsStore().items.push(...newUsers);
-
-    // useProductStore().items.push(...newUsers);
+    useIsStore().items.push(...newProducts);
   }
 };
 
-let getUsers = async (limit, skip) => {
+let fetchNewProducts = async (limit, skip) => {
   let { data: products } = await useFetch(
     `https://9a9bfolc.directus.app/items/products?limit=${limit}&offset=${skip}`,
     {
       initialCache: false,
     }
   );
-
   return products.value.data;
 };
 
-const usersToShow = 12;
-
-// useProductStore().items = await getUsers(usersToShow, 0);
-
-// const getUsersOnScroll = async () => {
-//   const newUsers = await getUsers(usersToShow, products.value.length);
-
-//   products.value.push(...newUsers);
-// };
-
-// useInfiniteScroll(
-//   listEl,
-//   async () => {
-//     await getUsersOnScroll();
-//   },
-//   {
-//     distance: 10,
-//   }
-// );
-
-// if (useIsStore().items.length === 0) {
-//   useIsStore().items = await getUsers(usersToShow, 0);
-//   save2 = useIsStore().items;
-// } else {
-//   useIsStore().items = save2;
-// }
-
-// if (useProductStore().items.length < 20) {
-// const { data: products } = await useFetch("https://fakestoreapi.com/products/");
-
-// const { data: products } = await useFetch(
-//   // "https://9a9bfolc.directus.app/items/products?sort=-type&limit=150"
-//   "https://9a9bfolc.directus.app/items/products?sort=-type&limit=2&page=1"
-// );
-
+const productsToShow = 12;
 const assetsEndpoint = "https://9a9bfolc.directus.app/assets/";
-// useProductStore().items = products;
-// useProductStore().items = products.value.data;
-// save2 = products.value.data;
-
-// }
 
 if (useIsStore().itemsSave1.length === 0) {
-  useIsStore().items = await getUsers(usersToShow, 0);
+  useIsStore().items = await fetchNewProducts(productsToShow, 0);
   useIsStore().itemsSave1 = useIsStore().items;
-  // } else {
-
-  //    useIsStore().items =useIsStore().itemsSave1
 }
 
 function handleFilter1() {
@@ -540,7 +493,6 @@ function allClickedFalse() {
   }
 }
 </script>
-
 <template>
   <div>
     <div
@@ -559,7 +511,6 @@ function allClickedFalse() {
           src="@/assets/images/cat1.webp"
           alt=""
         />
-
         <transition name="my-transition">
           <div class="absText" v-show="useClickedStore().clicked1">
             <h2 class="spec-head">Electronic</h2>
@@ -734,7 +685,6 @@ function allClickedFalse() {
       </div>
       <h2 class="listed-info">{{ useIsStore().items.length }} items listed.</h2>
     </div>
-
     <div class="grid">
       <div
         data-aos="zoom-in"
@@ -751,14 +701,11 @@ function allClickedFalse() {
           :class="'product-img product-img-' + index"
           :src="assetsEndpoint + product.thumbnail"
         />
-
         <p class="title">
           {{ product.name }}
         </p>
-
         <div class="price-flex">
           <p class="price">${{ product.price }}</p>
-
           <button>View Item</button>
         </div>
       </div>
@@ -824,7 +771,7 @@ function allClickedFalse() {
   position: relative;
   transform: translateZ(0) scale(1);
   backface-visibility: hidden;
-  transform-origin: 0 0; /* see note above */
+  transform-origin: 0 0;
 }
 .ldio-j4mceyzrqbg div {
   box-sizing: content-box;
@@ -869,8 +816,6 @@ function allClickedFalse() {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-
-  /* height: 8rem; */
 }
 .cat-flex p {
   font-size: 1.4rem;
@@ -891,7 +836,6 @@ function allClickedFalse() {
   position: fixed;
   left: 2.5%;
   top: 18rem;
-  /* border: rgb(198, 198, 198) 2px dashed; */
   padding: 2rem 1rem;
 }
 
@@ -904,12 +848,10 @@ function allClickedFalse() {
   justify-items: center;
   align-items: center;
   margin: 10rem auto;
-
+  /* grid-template-columns: 1fr 1fr 1fr; */
   /* grid-template-columns: repeat(auto-fit, minmax(30rem, 1rem)); */
   grid-template-columns: repeat(auto-fit, minmax(14rem, 28rem));
-  /* grid-template-columns: 1fr 1fr 1fr; */
 }
-
 @media (hover: hover) {
   .specs:hover {
     color: rgb(235, 93, 93);
@@ -933,11 +875,9 @@ function allClickedFalse() {
     transform: translateX(-50%);
     top: 6.5rem;
   }
-
   .get-bigger {
     padding: 0 !important;
   }
-
   .listed-info {
     display: none;
   }
@@ -978,7 +918,6 @@ function allClickedFalse() {
   .cat-flex {
     flex-direction: column;
   }
-
   .grid {
     margin-top: 18rem;
     width: 100%;
@@ -987,14 +926,11 @@ function allClickedFalse() {
     grid-template-columns: repeat(auto-fit, minmax(6rem, 20rem));
   }
 }
-
 .categories img {
   width: 6rem;
   border: rgb(186, 186, 186) 2px solid;
-
   transition: transform 0.3s, border 0.6s, padding 0.6s;
 }
-
 .product-img {
   max-width: 70%;
   position: absolute;
@@ -1002,14 +938,12 @@ function allClickedFalse() {
   transform: translate(0, -50%);
   transition: 0.4s;
 }
-
 .title {
   position: absolute;
   bottom: 19%;
   font-weight: bold;
   width: 80%;
   font-size: 1.7rem;
-  /* white-space: nowrap; */
 }
 .price-flex {
   border-top: 1px solid black;
@@ -1026,7 +960,6 @@ function allClickedFalse() {
   font-size: 2.1rem;
   margin-left: 1rem;
 }
-
 button {
   background-image: linear-gradient(
     to right,
@@ -1046,11 +979,9 @@ button {
   border-radius: 10px;
   display: block;
 }
-
 button:active {
   animation: button-pop 0.3s ease-out;
 }
-
 .card {
   position: relative;
   padding: 1rem;
@@ -1060,7 +991,6 @@ button:active {
   align-items: center;
   width: 28rem;
   height: 36rem;
-
   background-color: white;
   border-radius: 1rem;
   box-shadow: rgba(60, 64, 67, 0.12) 0px 1px 2px 0px,
@@ -1077,11 +1007,9 @@ button:active {
   top: 50%;
   transform: translate(-50%, -50%);
 }
-
 .card:active button {
   animation: button-pop 0.3s ease-out;
 }
-
 p {
   text-align: center;
 }
