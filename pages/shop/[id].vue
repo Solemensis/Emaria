@@ -85,9 +85,7 @@ async function insert() {
 </script>
 
 <template>
-  <div style="width: 100vw; height: 100vh">
-    <Navbar />
-
+  <div style="height: 50vh">
     <div class="flex">
       <img
         data-aos="zoom-out"
@@ -160,9 +158,9 @@ async function insert() {
         <h3 class="modal-text">You need to login.</h3>
       </div>
     </transition>
-    <NuxtLink to="/shop">
+    <!-- <NuxtLink to="/shop">
       <img src="@/assets/images/arrow.svg" alt="" class="entity-arrow" />
-    </NuxtLink>
+    </NuxtLink> -->
   </div>
 </template>
 

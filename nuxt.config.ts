@@ -1,16 +1,4 @@
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  // head: {
-  //   script: [
-  //     {
-  //       src: "https://unpkg.com/vue-infinite-loading@^2/dist/vue-infinite-loading.js",
-  //     },
-  //   ],
-  // },
-  transition: {
-    name: "my-transition",
-  },
-
   modules: [
     "@formkit/nuxt",
     "@nuxtjs/supabase",
@@ -24,6 +12,7 @@ export default defineNuxtConfig({
     ],
   ],
   app: {
+    pageTransition: { name: "my-transition", mode: "out-in" },
     head: {
       title: "Emaria Shop",
       script: [
@@ -39,14 +28,11 @@ export default defineNuxtConfig({
       ],
     },
   },
-
   imports: {
     dirs: ["stores"],
   },
-
-  // target: "static",
   ssr: false,
-
+  // target: "static",
   // router: {
   //   base: "/general-e-commerce/",
   // },

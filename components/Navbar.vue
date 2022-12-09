@@ -1,14 +1,20 @@
 <script setup>
-// const user = useSupabaseUser();
-// const supabase = useSupabaseClient();
-
 const signOut = async () => {
   const { error } = await supabase.auth.signOut();
   if (!error) {
     window.location.reload();
   }
 };
+
+const supabase = useSupabaseClient();
+const user = useSupabaseUser();
+
 const slide = ref(false);
+const showList = ref(false);
+
+const hideList = function () {
+  showList.value = !showList.value;
+};
 </script>
 <template lang="">
   <header class="page-format2">
@@ -17,13 +23,18 @@ const slide = ref(false);
       <NuxtLink to="/"> <h2>Emaria</h2></NuxtLink>
     </div>
     <ul
+      class="nav-ul"
       :class="{
         slide: slide,
       }"
     >
-      <li><NuxtLink class="nav-link" to="/">Home</NuxtLink></li>
-      <li><NuxtLink class="nav-link" to="/shop">Shop</NuxtLink></li>
-      <li><NuxtLink class="nav-link" to="/contact">Contact</NuxtLink></li>
+      <li class="nav-li"><NuxtLink class="nav-link" to="/">Home</NuxtLink></li>
+      <li class="nav-li">
+        <NuxtLink class="nav-link" to="/shop">Shop</NuxtLink>
+      </li>
+      <li class="nav-li">
+        <NuxtLink class="nav-link" to="/contact">Contact</NuxtLink>
+      </li>
     </ul>
     <img
       @click="slide = !slide"
@@ -35,14 +46,28 @@ const slide = ref(false);
       <NuxtLink to="/cart">
         <div class="cart-box">
           <img class="cart-img" src="@/assets/images/shopping-cart.svg" />
-          <p v-if="useCartStore().totalCount" class="cart-counter">
-            <!-- {{ useCartStore().totalCount }} -->
-            &#9679;
-          </p>
+          <p v-if="useCartStore().totalCount" class="cart-counter">&#9679;</p>
         </div>
       </NuxtLink>
-      <p>Hello, {{ user.user_metadata.user_name }}!</p>
-      <button class="logout-button" @click="signOut()">Logout</button>
+      <img
+        @click="hideList()"
+        class="user-profile-button"
+        src="@/assets/images/user-icon.png"
+        alt=""
+      />
+      <transition name="my-transition-2">
+        <ul v-show="showList" class="user-profile-list">
+          <p class="username">{{ user.user_metadata.user_name }}</p>
+          <NuxtLink @click="hideList()" class="nav-link" to="/cart"
+            ><li class="user-profile-link">Cart</li>
+          </NuxtLink>
+          <NuxtLink @click="hideList()" class="nav-link" to="/profile">
+            <li class="user-profile-link">Profile</li>
+          </NuxtLink>
+
+          <li @click="signOut()" class="user-profile-link">Logout</li>
+        </ul>
+      </transition>
     </div>
     <div v-else class="login-signup">
       <NuxtLink class="li" to="/login"
@@ -55,14 +80,12 @@ const slide = ref(false);
   </header>
 </template>
 <style scoped>
-.menu-button {
-  display: none;
-}
 .cart-counter {
   position: absolute;
   color: red !important;
   font-size: 1.5rem !important;
-  top: -0.5rem;
+  top: -0.8rem;
+  right: 0;
   font-weight: 800 !important;
   z-index: 999;
 }
@@ -74,12 +97,66 @@ const slide = ref(false);
   border-radius: 1rem;
   transition: 0.1s;
   cursor: pointer;
-  position: relative;
+  position: absolute;
+  right: 5rem;
+  bottom: 0.5rem;
 }
 .cart-img {
-  width: 3rem;
+  width: 2.7rem;
   margin-top: 0.2rem;
 }
+.username {
+  min-width: 7rem;
+  font-size: 2rem;
+  color: orangered;
+  text-align: center;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+.user-profile-button {
+  width: 4rem;
+  margin-left: 1rem;
+  border: 2px solid #2d2d2d5c;
+  border-radius: 0.7rem;
+  transition: 0.2s;
+}
+.user-profile-button:hover {
+  background-color: #ff00440b;
+}
+.user-profile-list {
+  position: absolute;
+  top: 7rem;
+  right: 0;
+  flex-direction: column;
+  background-color: #ff004413;
+  border-radius: 0.5rem;
+  padding: 1rem 1rem;
+  list-style: none;
+  text-align: center;
+  z-index: 999;
+  border: 2px solid #ddd;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.user-logged {
+  position: relative;
+  padding-left: 10rem;
+}
+.user-profile-link {
+  font-size: 1.8rem;
+  margin-bottom: -0.1rem;
+  cursor: pointer;
+  transition: 0.2s;
+  font-family: "Barlow Condensed";
+  color: black;
+}
+.user-profile-link:hover {
+  color: orangered;
+}
+
+.menu-button {
+  display: none;
+}
+
 .login-signup {
   display: flex;
   align-items: center;
@@ -98,9 +175,8 @@ const slide = ref(false);
   border-bottom: 3px solid rgb(255, 106, 255);
   padding-bottom: 2px;
 }
-li:after,
-.login-button:after,
-.logout-button:after {
+.nav-li:after,
+.login-button:after {
   content: "";
   position: absolute;
   background-color: rgb(255, 106, 255);
@@ -126,27 +202,7 @@ button {
   font-size: 1.5rem;
   font-weight: 600;
 }
-.user-logged p {
-  margin-right: 1rem;
-  font-size: 2rem;
-  color: rgb(43, 185, 50);
-  padding: 1rem 2rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  margin-top: -1.5rem;
-}
-.user-logged {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-}
-.user-logged button {
-  position: absolute;
-  right: 1rem;
-  bottom: -1.5rem;
-  cursor: pointer;
-}
+
 .register-button {
   cursor: pointer;
   margin-top: 0.2rem;
@@ -206,16 +262,16 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 5rem;
+  padding: 0.8rem 4rem;
   position: relative;
   border-bottom: rgb(197, 197, 197) 1px solid;
 }
-ul {
+.nav-ul {
   display: flex;
   list-style: none;
   z-index: 900;
 }
-li {
+.nav-li {
   text-decoration: none;
   color: black;
   font-size: 2rem;
@@ -223,14 +279,11 @@ li {
   margin-right: 5rem;
   position: relative;
 }
-li:last-child {
+.nav-li:last-child {
   margin-right: 0 !important;
 }
 @media (hover: hover) {
-  .cart-box:hover {
-    transform: scale(0.95);
-  }
-  li:hover:after,
+  .nav-li:hover:after,
   .login-button:hover:after,
   .logout-button:hover:after {
     width: 100%;
@@ -260,27 +313,7 @@ li:last-child {
   .logo-container {
     width: 12rem;
   }
-  .user-logged p {
-    margin-top: -0.8rem;
-  }
-  .user-logged button {
-    padding-bottom: 0.5rem;
-  }
-  .cart-box {
-    position: fixed;
-    bottom: 2.9rem;
-    right: -1rem;
-    background-color: rgb(203, 255, 189);
-    padding: 1.3rem;
-    border-radius: 20rem;
-    z-index: 9999;
-  }
-  .cart-counter {
-    z-index: 999;
-    font-size: 2.1rem !important;
-    top: -0.4rem;
-    font-weight: 600 !important;
-  }
+
   .page-format2 {
     padding: 2rem 0.5rem 2rem 0;
   }
@@ -291,7 +324,7 @@ li:last-child {
     left: 50%;
     transform: translate(-50%, 0);
   }
-  ul {
+  .nav-ul {
     top: 7.5rem;
     left: 50%;
     transform: translate(-50%, -450%);

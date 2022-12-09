@@ -1,8 +1,7 @@
 <script setup>
+const cartStore = useCartStore();
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
-
-const cartStore = useCartStore();
 
 function userId() {
   if (user.value) {
@@ -25,19 +24,10 @@ if (useProductStore().items.length == 0) {
   );
   useProductStore().items = wholeFetch.value.data;
 }
-
-//   watch(
-//   useCartStore().items,
-//   () => {
-//    anann =  useCartStore().items;
-//   },
-//   {
-//     deep: true,
-//   }
-// );
 </script>
 <template>
   <div>
+    <Navbar />
     <NuxtPage />
   </div>
 </template>
@@ -46,17 +36,7 @@ if (useProductStore().items.length == 0) {
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abel&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poor+Story&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500&display=swap");
-
-/* .page-enter-from,
-.page-leave-to {
-  opacity: 0;
-}
-.page-enter-active,
-.page-leave-active {
-  transition: opacity 0.2s ease-out;
-} */
 
 .my-transition-enter-from,
 .my-transition-leave-to {
@@ -64,6 +44,15 @@ if (useProductStore().items.length == 0) {
 }
 .my-transition-enter-active,
 .my-transition-leave-active {
+  transition: opacity 0.35s ease-out;
+}
+
+.my-transition-2-enter-from,
+.my-transition-2-leave-to {
+  opacity: 0;
+}
+.my-transition-2-enter-active,
+.my-transition-2-leave-active {
   transition: opacity 0.2s ease-out;
 }
 

@@ -42,11 +42,7 @@ function increase(i) {
 
 <template>
   <div style="height: 100vh; width: 100vh">
-    <div
-      class="wrapper page-format"
-      data-aos="zoom-in"
-      data-aos-duration="1500"
-    >
+    <div class="wrapper page-format">
       <h2 v-if="cartStore.items.length" class="heading">Your Cart</h2>
       <h2 v-else class="heading2">Your cart is empty.</h2>
       <div class="flex">
@@ -118,7 +114,7 @@ function increase(i) {
 </template>
 <style scoped>
 .total {
-  font-size: 3rem;
+  font-size: 2.8rem;
   margin-top: 3rem;
   border-top: 1px black solid;
   padding-top: 2rem;
@@ -333,14 +329,11 @@ td img {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 4rem;
-  background-color: rgba(255, 255, 0, 0.648);
+  transform: translate(-50%, -50%) !important;
+  background-color: rgba(136, 255, 0, 0.64);
+  padding: 5rem 10rem;
   border-radius: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  border: 1px rgb(105, 105, 105) solid;
-
-  padding: 3rem 5rem;
+  font-size: 3rem;
 }
 @media (orientation: portrait) {
   .heading2 {

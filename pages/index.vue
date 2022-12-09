@@ -1,27 +1,12 @@
 <script setup>
-// const user = useSupabaseUser();
-// const supabase = useSupabaseClient();
-
 const cartStore = useCartStore();
-
-// function userId() {
-//   if (user.value) {
-//     return user.value.id;
-//   } else return;
-// }
-
-// let { data: anann } = await supabase
-//   .from("anan")
-//   .select("item")
-//   .eq("user_id", userId());
 </script>
 <template lang="">
   <div>
-    <Navbar />
     <div v-once class="container">
       <div
-        data-aos="zoom-in"
-        data-aos-duration="1700"
+        data-aos="zoom-out"
+        data-aos-duration="1200"
         class="hero-section page-format"
       >
         <img
@@ -44,19 +29,10 @@ const cartStore = useCartStore();
           </p>
           <p id="dest" class="ghost-content">ghost content</p>
         </div>
-
         <img class="hero-image" src="@/assets/images/hero-scene5.webp" alt="" />
-        <!-- <img
-          src="@/assets/images/logo2.webp"
-          alt=""
-          class="mobile-hero-image"
-        /> -->
       </div>
     </div>
-    <!-- <img class="line-border" src="@/assets/images/lineborder.png" alt="" /> -->
-
     <EpicCards />
-
     <EpicZ />
     <Footer />
   </div>

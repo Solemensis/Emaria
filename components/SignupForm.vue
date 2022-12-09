@@ -33,7 +33,7 @@ function hideModal2() {
 }
 </script>
 <template>
-  <div data-aos="zoom-in" data-aos-duration="900" class="container">
+  <div class="container">
     <transition name="my-transition">
       <div v-show="show1" class="alert1">
         <h3 class="modal-text">Confirm Your E-mail.</h3>
@@ -90,11 +90,11 @@ function hideModal2() {
       />
       <p><NuxtLink class="forgot-pass">Forgot Your Password?</NuxtLink></p>
     </FormKit>
-    <teleport to="body">
+    <!-- <teleport to="body">
       <NuxtLink to="/">
         <img src="@/assets/images/arrow.svg" alt="" class="entity-arrow" />
       </NuxtLink>
-    </teleport>
+    </teleport> -->
   </div>
 </template>
 <style>
