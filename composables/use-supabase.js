@@ -1,2 +1,2 @@
-export const supabase = useSupabaseClient();
+export const supabase = useSupabaseAuthClient();
 export const user = useSupabaseUser();

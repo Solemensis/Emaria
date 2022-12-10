@@ -6,7 +6,7 @@ const signOut = async () => {
   }
 };
 
-const supabase = useSupabaseClient();
+const supabase = useSupabaseAuthClient();
 const user = useSupabaseUser();
 
 const slide = ref(false);
