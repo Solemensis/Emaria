@@ -257,6 +257,7 @@ input[type="number"] {
   }
   table {
     width: 95% !important;
+
     margin: 0 !important;
   }
 
@@ -310,6 +311,8 @@ td img {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* height: 60vh !important;
+  overflow: scroll; */
 }
 .wrapper {
   position: absolute;
