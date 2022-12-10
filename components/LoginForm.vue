@@ -6,7 +6,7 @@ const password = ref("");
 
 // const supabase = useSupabaseClient();
 // const user = useSupabaseUser();
-// const client = useSupabaseAuthClient();
+// const client = useSupabaseClient();
 
 const login = async () => {
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -60,10 +60,10 @@ const oAuthGoogle = async () => {
         <img src="@/assets/images/github.svg" alt="" />
         <p class="git-login">Continue with GitHub</p>
       </div> -->
-      <div @click="oAuthGoogle()" class="google-box">
+      <!-- <div @click="oAuthGoogle()" class="google-box">
         <img src="@/assets/images/google.svg" alt="" />
         <p class="google-login">Continue with Google</p>
-      </div>
+      </div> -->
       <p>
         Don't have an account?
         <NuxtLink to="/signup" class="register">Register</NuxtLink>

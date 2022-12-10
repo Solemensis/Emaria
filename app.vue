@@ -1,6 +1,6 @@
 <script setup>
 const cartStore = useCartStore();
-const supabase = useSupabaseAuthClient();
+const supabase = useSupabaseClient();
 const user = useSupabaseUser();
 
 function userId() {
