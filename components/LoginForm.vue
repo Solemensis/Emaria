@@ -49,13 +49,14 @@ const oAuthGoogle = async () => {
 };
 </script>
 <template>
-  <div class="container">
-    <transition name="my-transition">
-      <div v-show="show2" class="alert2">
-        <h3 class="modal-text">Your Info is Incorrect.</h3>
-      </div>
-    </transition>
-    <!-- <div class="git-box">
+  <div style="height: 50vh">
+    <div class="container">
+      <transition name="my-transition">
+        <div v-show="show2" class="alert2">
+          <h3 class="modal-text">Your Info is Incorrect.</h3>
+        </div>
+      </transition>
+      <!-- <div class="git-box">
       <img src="@/assets/images/github.svg" alt="" />
       <p class="git-login" @click="oAuthGit()">Continue with GitHub</p>
     </div>
@@ -63,49 +64,50 @@ const oAuthGoogle = async () => {
       <img src="@/assets/images/google.svg" alt="" />
       <p class="google-login" @click="oAuthGoogle()">Continue with Google</p>
     </div> -->
-    <p>
-      Don't have an account?
-      <NuxtLink to="/signup" class="register">Register</NuxtLink>
-    </p>
-    <h2>
-      Login to
-      <span>Emaria</span>
-    </h2>
-    <FormKit
-      messages-class="messages"
-      type="form"
-      submit-label="Sign In"
-      @submit="login()"
-    >
+      <p>
+        Don't have an account?
+        <NuxtLink to="/signup" class="register">Register</NuxtLink>
+      </p>
+      <h2>
+        Login to
+        <span>Emaria</span>
+      </h2>
       <FormKit
-        :classes="{
-          input: 'input1',
-          messages: 'messages',
-        }"
-        v-model="email"
-        label="Email address"
-        validation="required|email"
-        type="email"
-        placeholder="✉ Email"
-      />
-      <FormKit
-        :classes="{
-          input: 'input2',
-          messages: 'messages',
-        }"
-        v-model="password"
-        label="Password"
-        validation="required|length:6"
-        type="password"
-        placeholder="⛓ Password"
-      />
-      <p><NuxtLink class="forgot-pass">Forgot Your Password?</NuxtLink></p>
-    </FormKit>
-    <!-- <teleport to="body">
+        messages-class="messages"
+        type="form"
+        submit-label="Sign In"
+        @submit="login()"
+      >
+        <FormKit
+          :classes="{
+            input: 'input1',
+            messages: 'messages',
+          }"
+          v-model="email"
+          label="Email address"
+          validation="required|email"
+          type="email"
+          placeholder="✉ Email"
+        />
+        <FormKit
+          :classes="{
+            input: 'input2',
+            messages: 'messages',
+          }"
+          v-model="password"
+          label="Password"
+          validation="required|length:6"
+          type="password"
+          placeholder="⛓ Password"
+        />
+        <p><NuxtLink class="forgot-pass">Forgot Your Password?</NuxtLink></p>
+      </FormKit>
+      <!-- <teleport to="body">
       <NuxtLink to="/">
         <img src="@/assets/images/arrow.svg" alt="" class="entity-arrow" />
       </NuxtLink>
     </teleport> -->
+    </div>
   </div>
 </template>
 

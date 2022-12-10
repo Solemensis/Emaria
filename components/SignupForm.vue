@@ -33,68 +33,70 @@ function hideModal2() {
 }
 </script>
 <template>
-  <div class="container">
-    <transition name="my-transition">
-      <div v-show="show1" class="alert1">
-        <h3 class="modal-text">Confirm Your E-mail.</h3>
-      </div>
-    </transition>
-    <transition name="my-transition">
-      <div v-show="show2" class="alert2">
-        <h3 class="modal-text">There was an Error.</h3>
-      </div>
-    </transition>
-    <p>
-      Already have an account?
-      <NuxtLink to="/login" class="login">Login</NuxtLink>
-    </p>
-    <h2>
-      Create Your <br />
-      <span>Emaria</span> Account
-    </h2>
-    <FormKit
-      messages-class="messages"
-      type="form"
-      submit-label="Sign Up"
-      @submit="() => signUp()"
-    >
+  <div style="height: 50vh">
+    <div class="container">
+      <transition name="my-transition">
+        <div v-show="show1" class="alert1">
+          <h3 class="modal-text">Confirm Your E-mail.</h3>
+        </div>
+      </transition>
+      <transition name="my-transition">
+        <div v-show="show2" class="alert2">
+          <h3 class="modal-text">There was an Error.</h3>
+        </div>
+      </transition>
+      <p>
+        Already have an account?
+        <NuxtLink to="/login" class="login">Login</NuxtLink>
+      </p>
+      <h2>
+        Create Your <br />
+        <span>Emaria</span> Account
+      </h2>
       <FormKit
-        :classes="{ input: 'input4', messages: 'messages' }"
-        v-model="userName"
-        label="Username"
-        validation="required|length:3"
-        type="text"
-        placeholder="☺️ Username"
-      />
-      <FormKit
-        :classes="{
-          input: 'input5',
-          messages: 'messages',
-        }"
-        v-model="email"
-        label="Email address"
-        validation="required|email"
-        type="email"
-        placeholder="✉ Email"
-      />
-      <FormKit
-        :classes="{
-          input: 'input6',
-          messages: 'messages',
-        }"
-        v-model="password"
-        label="Password"
-        validation="required|length:6"
-        type="password"
-        placeholder="⛓ Password"
-      />
-      <p><NuxtLink class="forgot-pass">Forgot Your Password?</NuxtLink></p>
-    </FormKit>
-    <!-- <teleport to="body">
+        messages-class="messages"
+        type="form"
+        submit-label="Sign Up"
+        @submit="() => signUp()"
+      >
+        <FormKit
+          :classes="{ input: 'input4', messages: 'messages' }"
+          v-model="userName"
+          label="Username"
+          validation="required|length:3"
+          type="text"
+          placeholder="☺️ Username"
+        />
+        <FormKit
+          :classes="{
+            input: 'input5',
+            messages: 'messages',
+          }"
+          v-model="email"
+          label="Email address"
+          validation="required|email"
+          type="email"
+          placeholder="✉ Email"
+        />
+        <FormKit
+          :classes="{
+            input: 'input6',
+            messages: 'messages',
+          }"
+          v-model="password"
+          label="Password"
+          validation="required|length:6"
+          type="password"
+          placeholder="⛓ Password"
+        />
+        <p><NuxtLink class="forgot-pass">Forgot Your Password?</NuxtLink></p>
+      </FormKit>
+      <!-- <teleport to="body">
       <NuxtLink to="/">
         <img src="@/assets/images/arrow.svg" alt="" class="entity-arrow" />
       </NuxtLink>
     </teleport> -->
+    </div>
   </div>
 </template>
 <style>

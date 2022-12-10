@@ -294,6 +294,7 @@ async function insert() {
 .description {
   font-size: 1.7rem;
   margin-bottom: 2.5rem;
+  color: #444;
 }
 
 .text-block {
@@ -376,10 +377,10 @@ async function insert() {
     gap: 1.5rem;
   }
   .image {
-    width: 28rem;
+    width: 20rem;
     height: 100%;
     margin-right: 0;
-    margin-bottom: 4rem;
+    margin-bottom: 2.5rem;
   }
   .text-block {
     width: 75%;

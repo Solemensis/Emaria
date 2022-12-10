@@ -11,7 +11,8 @@
 <style scoped>
 @media (orientation: portrait) {
   .contact h2 {
-    font-size: 2.5rem;
+    font-size: 1.8rem;
+    text-align: center;
   }
   .contact {
     width: 85% !important;

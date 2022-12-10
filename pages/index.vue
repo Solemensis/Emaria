@@ -233,6 +233,9 @@ span {
   .hero-image {
     width: 50rem;
   }
+  h1 {
+    font-size: 5rem;
+  }
 }
 
 @media (orientation: portrait) {

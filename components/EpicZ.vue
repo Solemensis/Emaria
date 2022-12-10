@@ -29,7 +29,7 @@
       <h3>Exchange Like a Boss!</h3>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, ullam.
-        At aspernatur nobis numquam error tempora non!
+        At!
       </p>
     </div>
     <img

@@ -295,19 +295,25 @@ header {
   .logout-button:hover {
     background: transparent;
   }
-  .login-button:hover {
-    background-color: transparent;
+  .login-button:hover,
+  .login-button:active {
+    background-color: transparent !important;
   }
 }
 @media (orientation: portrait) {
+  .login-button:hover,
+  .login-button:active {
+    background-color: transparent !important;
+  }
   .nav-link {
     font-size: 2rem;
   }
   .login-button {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
   .register-button {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
+    padding: 0.6rem 0.9rem;
   }
   .login-signup,
   .logo-container {
