@@ -24,6 +24,21 @@ if (useProductStore().items.length == 0) {
   );
   useProductStore().items = wholeFetch.value.data;
 }
+
+//garanti
+async function garanti() {
+  if (user.value && anann[0]) {
+    cartStore.items = anann[0].item;
+  }
+
+  if (useProductStore().items.length == 0) {
+    let { data: wholeFetch } = await useFetch(
+      `https://9a9bfolc.directus.app/items/products?limit=155`
+    );
+    useProductStore().items = wholeFetch.value.data;
+  }
+}
+setTimeout(garanti, 1000);
 </script>
 <template>
   <div>
@@ -103,7 +118,7 @@ body {
 }
 @media (min-width: 1920px) {
   html {
-    font-size: 70%;
+    font-size: 75%;
   }
 }
 @media (max-width: 1250px) {

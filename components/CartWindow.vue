@@ -201,7 +201,15 @@ input[type="number"] {
   width: 50%;
   padding-right: 10rem;
 }
-
+.title {
+  font-weight: 500;
+  color: black;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.title:hover {
+  color: rgb(93, 147, 255);
+}
 .checkout:active {
   animation: button-pop 0.3s ease-out;
 }

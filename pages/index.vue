@@ -142,7 +142,7 @@ const cartStore = useCartStore();
 
   position: absolute;
   left: 50%;
-  top: 56%;
+  top: 54%;
   transform: translate(-50%, -50%) !important;
 }
 .hero-left {
