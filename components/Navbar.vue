@@ -28,7 +28,9 @@ const hideList = function () {
         slide: slide,
       }"
     >
-      <li class="nav-li"><NuxtLink class="nav-link" to="/">Home</NuxtLink></li>
+      <li class="nav-li">
+        <NuxtLink class="nav-link" to="/">Home</NuxtLink>
+      </li>
       <li class="nav-li">
         <NuxtLink class="nav-link" to="/shop">Shop</NuxtLink>
       </li>
