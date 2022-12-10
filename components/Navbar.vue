@@ -59,7 +59,10 @@ const hideList = function () {
       />
       <transition name="my-transition-2">
         <ul v-show="showList" class="user-profile-list">
-          <p class="username">{{ user.user_metadata.user_name }}</p>
+          <p class="username" v-if="user.user_metadata.user_name">
+            {{ user.user_metadata.user_name }}
+          </p>
+          <p class="usermail" v-else>{{ user.email }}</p>
           <NuxtLink @click="hideList()" class="nav-link" to="/cart"
             ><li class="user-profile-link">Cart</li>
           </NuxtLink>
@@ -110,7 +113,15 @@ const hideList = function () {
 .username {
   min-width: 7rem;
   font-size: 2rem;
-  color: orangered;
+  color: #1faf24;
+  text-align: center;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+.usermail {
+  min-width: 7rem;
+  font-size: 1.4rem;
+  color: #1faf24;
   text-align: center;
   margin-bottom: 0.8rem;
   font-weight: 600;

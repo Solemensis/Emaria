@@ -38,7 +38,7 @@ async function garanti() {
     useProductStore().items = wholeFetch.value.data;
   }
 }
-setTimeout(garanti, 1000);
+setTimeout(garanti, 800);
 </script>
 <template>
   <div>

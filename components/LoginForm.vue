@@ -56,14 +56,14 @@ const oAuthGoogle = async () => {
           <h3 class="modal-text">Your Info is Incorrect.</h3>
         </div>
       </transition>
-      <!-- <div class="git-box">
-      <img src="@/assets/images/github.svg" alt="" />
-      <p class="git-login" @click="oAuthGit()">Continue with GitHub</p>
-    </div>
-    <div class="google-box">
-      <img src="@/assets/images/google.svg" alt="" />
-      <p class="google-login" @click="oAuthGoogle()">Continue with Google</p>
-    </div> -->
+      <div class="git-box">
+        <img src="@/assets/images/github.svg" alt="" />
+        <p class="git-login" @click="oAuthGit()">Continue with GitHub</p>
+      </div>
+      <div class="google-box">
+        <img src="@/assets/images/google.svg" alt="" />
+        <p class="google-login" @click="oAuthGoogle()">Continue with Google</p>
+      </div>
       <p>
         Don't have an account?
         <NuxtLink to="/signup" class="register">Register</NuxtLink>
