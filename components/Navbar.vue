@@ -98,8 +98,8 @@ const hideList = function () {
   transition: 0.1s;
   cursor: pointer;
   position: absolute;
-  right: 5rem;
-  bottom: 0.5rem;
+  right: 4rem;
+  bottom: 0.4rem;
 }
 .cart-img {
   width: 2.7rem;
@@ -301,6 +301,9 @@ header {
   }
 }
 @media (orientation: portrait) {
+  .cart-box {
+    right: 2rem !important;
+  }
   .login-button:hover,
   .login-button:active {
     background-color: transparent !important;

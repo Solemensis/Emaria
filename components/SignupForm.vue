@@ -160,6 +160,9 @@ button:active {
 </style>
 <style scoped>
 @media (orientation: portrait) {
+  h2 {
+    font-size: 3.4rem !important;
+  }
   .entity-arrow {
     top: 4rem !important;
     left: 5rem !important;

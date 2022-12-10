@@ -304,7 +304,7 @@ async function insert() {
   display: flex;
   position: absolute;
   left: 50%;
-  top: 52%;
+  top: 55%;
   transform: translate(-50%, -50%);
   justify-content: space-evenly;
   align-items: center;
@@ -367,7 +367,7 @@ async function insert() {
   .alert1,
   .alert2 {
     left: 50%;
-    bottom: 3rem;
+    bottom: 2rem;
     transform: translateX(-50%);
   }
 

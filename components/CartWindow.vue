@@ -83,16 +83,14 @@ function increase(i) {
 
             <td class="amount-table">
               <div class="input-box">
-                <button @click="decrease(item), inputChange()">&#8249;</button>
+                <button @click="decrease(item), inputChange()">&#8211;</button>
                 <input
                   class="inputum"
                   disabled
                   min="1"
                   type="number"
                   v-model="cartStore.items[index].amount"
-                /><button @click="increase(item), inputChange()">
-                  &#8250;
-                </button>
+                /><button @click="increase(item), inputChange()">+</button>
               </div>
             </td>
           </tr>
@@ -120,6 +118,7 @@ function increase(i) {
   padding-top: 2rem;
   margin-bottom: 5rem;
 }
+
 .price-box {
   font-size: 2rem;
   font-weight: 700;
@@ -174,9 +173,8 @@ ul li {
   padding: 0.3rem 0.8rem;
   background-color: transparent;
   color: black;
-  border: rgba(245, 98, 53, 0.721) 2px solid !important;
+  border: #f56235b8 2px solid !important;
   font-size: 2.1rem;
-  padding-top: 0;
   border-radius: 0.7rem;
 }
 
@@ -203,11 +201,6 @@ input[type="number"] {
   width: 50%;
   padding-right: 10rem;
 }
-.title {
-  font-weight: 600;
-  color: black;
-  cursor: pointer;
-}
 
 .checkout:active {
   animation: button-pop 0.3s ease-out;
@@ -227,20 +220,25 @@ input[type="number"] {
     background-color: rgba(245, 98, 53, 0.721);
   }
   tr th {
-    /* font-size: 2.3rem; */
+    font-size: 2.2rem;
+    height: 5rem !important;
   }
   tr td {
     font-size: 1.6rem;
+    height: 7rem !important;
+  }
+  tr {
+    height: 8rem !important;
   }
   .flex {
     flex-direction: column;
-    gap: 3rem;
+    gap: 1rem;
   }
   .price-box {
     flex-direction: row;
     width: 100%;
     justify-content: space-around;
-    padding: 1rem;
+    padding: 0.3rem;
   }
   .price-box ul {
     display: flex;
@@ -258,10 +256,15 @@ input[type="number"] {
     margin: 10px auto !important;
   }
   table {
+    width: 95% !important;
     margin: 0 !important;
   }
+
   .title-table {
-    padding-right: 2.5rem;
+    padding-right: 1rem !important;
+  }
+  .title {
+    font-size: 1.4rem !important;
   }
   .price-head {
     padding-right: 1.5rem;
@@ -274,30 +277,30 @@ input[type="number"] {
   }
   .inputum {
     width: 3rem;
+    font-size: 1.6rem;
   }
   .input-box {
     justify-content: center;
   }
   .input-box button {
-    padding: 0 0.5rem;
-    margin-bottom: 0.1rem;
+    padding: 0 0.3rem;
   }
 }
 
 table {
-  width: 70%;
+  width: 65%;
   margin-right: 2rem;
   border-collapse: collapse;
 }
 th {
   text-align: start;
   font-size: 2.5rem;
-  height: 10rem;
+  height: 6rem;
   border-bottom: pink 2px solid;
 }
 td {
   font-size: 2rem;
-  height: 10rem;
+  height: 9rem;
 }
 td img {
   width: 6rem;
@@ -322,7 +325,6 @@ td img {
   display: inline-block;
   padding: 0.7rem 2.5rem;
   border-radius: 1rem;
-
   display: none;
 }
 .heading2 {
@@ -343,9 +345,8 @@ td img {
   }
 }
 .item-price {
-  font-weight: 600;
+  font-weight: 500;
 }
-
 .checkout {
   background-image: linear-gradient(
     to right,

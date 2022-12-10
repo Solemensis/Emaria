@@ -59,19 +59,25 @@
   }
 }
 @media (orientation: portrait) {
+  .copyright {
+    font-size: 1.2rem;
+  }
+  .social-container {
+    width: 10rem !important;
+  }
   .footer-container {
     height: 10rem;
     padding: 0 1rem;
   }
   .logo {
-    height: 7rem;
-    width: 7rem;
+    height: 5rem;
+    width: 5rem;
   }
   .github {
-    height: 3.5rem !important;
+    height: 3rem !important;
   }
   .instagram {
-    height: 3rem !important;
+    height: 2.5rem !important;
   }
 }
 .social-container {

@@ -3,13 +3,13 @@
   <div class="grid page-format">
     <img
       class="img"
-      data-aos="fade-right"
+      data-aos="zoom-out"
       data-aos-duration="700"
       src="@/assets/images/big2.webp"
       alt=""
     />
     <div
-      data-aos="fade-right"
+      data-aos="zoom-out"
       data-aos-duration="700"
       data-aos-delay="200"
       class="flex-column"
@@ -21,7 +21,7 @@
       </p>
     </div>
     <div
-      data-aos="fade-left"
+      data-aos="zoom-out"
       data-aos-duration="700"
       data-aos-delay="200"
       class="flex-column"
@@ -33,7 +33,7 @@
       </p>
     </div>
     <img
-      data-aos="fade-left"
+      data-aos="zoom-out"
       data-aos-duration="700"
       class="second-img img"
       src="@/assets/images/big3.webp"
@@ -41,13 +41,13 @@
     />
     <img
       class="img"
-      data-aos="fade-right"
+      data-aos="zoom-out"
       data-aos-duration="700"
       src="@/assets/images/big4.webp"
       alt=""
     />
     <div
-      data-aos="fade-right"
+      data-aos="zoom-out"
       data-aos-duration="700"
       data-aos-delay="200"
       class="flex-column"
@@ -59,7 +59,7 @@
       </p>
     </div>
     <div
-      data-aos="fade-left"
+      data-aos="zoom-out"
       data-aos-duration="700"
       data-aos-delay="200"
       class="flex-column"
@@ -72,7 +72,7 @@
     </div>
     <img
       class="img"
-      data-aos="fade-left"
+      data-aos="zoom-out"
       data-aos-duration="700"
       src="@/assets/images/big.webp"
       alt=""
@@ -92,8 +92,8 @@
     font-size: 1.6rem;
   }
   .flex-column p {
-    font-size: 1.25rem;
-    width: 100%;
+    font-size: 1.2rem;
+    width: 97%;
   }
   .grid {
     grid-row-gap: 5rem !important;
@@ -123,7 +123,7 @@ p {
   padding: 0 1rem;
   width: 70%;
   line-height: 1.35;
-  color: #555;
+  color: #666;
   font-weight: 500;
 }
 .grid {
