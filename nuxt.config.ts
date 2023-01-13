@@ -1,4 +1,11 @@
 export default defineNuxtConfig({
+  runtimeConfig: {
+    DS_EP: process.env.DS_EP,
+    public: {
+      DS_EP: process.env.DS_EP,
+    },
+  },
+
   modules: [
     "@formkit/nuxt",
     "@nuxtjs/supabase",

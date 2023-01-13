@@ -5,15 +5,16 @@
 const route = useRoute();
 
 // const { data: products } = await useFetch("https://fakestoreapi.com/products/");
+const config = useRuntimeConfig();
 
 if (useProductStore().items.length == 0) {
   const { data: products } = await useFetch(
     // "https://fakestoreapi.com/products/"
-    `https://9a9bfolc.directus.app/items/products?limit=155`
+    `${config.DS_EP}/items/products?limit=155`
   );
   useProductStore().items = products.value.data;
 }
-const assetsEndpoint = "https://9a9bfolc.directus.app/assets/";
+const assetsEndpoint = `${config.DS_EP}/assets/`;
 
 const cartStore = useCartStore();
 

@@ -13,10 +13,11 @@ let onIntersectionObserver = async ([{ isIntersecting }]) => {
     useIsStore().items.push(...newProducts);
   }
 };
+const config = useRuntimeConfig();
 
 let fetchNewProducts = async (limit, skip) => {
   let { data: products } = await useFetch(
-    `https://9a9bfolc.directus.app/items/products?limit=${limit}&offset=${skip}`,
+    `${config.DS_EP}/items/products?limit=${limit}&offset=${skip}`,
     {
       initialCache: false,
     }
@@ -25,7 +26,7 @@ let fetchNewProducts = async (limit, skip) => {
 };
 
 const productsToShow = 12;
-const assetsEndpoint = "https://9a9bfolc.directus.app/assets/";
+const assetsEndpoint = `${config.DS_EP}/assets/`;
 
 if (useIsStore().itemsSave1.length === 0) {
   useIsStore().items = await fetchNewProducts(productsToShow, 0);
@@ -662,6 +663,7 @@ function allClickedFalse() {
           :class="'product-img product-img-' + index"
           :src="assetsEndpoint + product.thumbnail"
         />
+
         <p class="title">
           {{ product.name }}
         </p>

@@ -18,9 +18,11 @@ if (user.value && anann[0]) {
   cartStore.items = anann[0].item;
 }
 
+const config = useRuntimeConfig();
+
 if (useProductStore().items.length == 0) {
   let { data: wholeFetch } = await useFetch(
-    `https://9a9bfolc.directus.app/items/products?limit=155`
+    `${config.DS_EP}/items/products?limit=155`
   );
   useProductStore().items = wholeFetch.value.data;
 }
@@ -33,7 +35,7 @@ async function garanti() {
 
   if (useProductStore().items.length == 0) {
     let { data: wholeFetch } = await useFetch(
-      `https://9a9bfolc.directus.app/items/products?limit=155`
+      `${config.DS_EP}/items/products?limit=155`
     );
     useProductStore().items = wholeFetch.value.data;
   }

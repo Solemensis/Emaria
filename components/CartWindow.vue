@@ -1,9 +1,10 @@
 <script setup>
 // const user = useSupabaseUser();
 // const supabase = useSupabaseClient();
+const config = useRuntimeConfig();
 
 const cartStore = useCartStore();
-const assetsEndpoint = "https://9a9bfolc.directus.app/assets/";
+const assetsEndpoint = `${config.DS_EP}/assets/`;
 
 function subT() {
   return cartStore.subTotal;
