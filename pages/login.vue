@@ -1,14 +1,11 @@
 <script setup>
 definePageMeta({
-  middleware: "auth",
+	middleware: 'auth'
 });
-// definePageMeta({
-//   middleware: ["auth"]
-// })
 </script>
 
 <template>
-  <div>
-    <LoginForm />
-  </div>
+	<div>
+		<LoginForm />
+	</div>
 </template>
