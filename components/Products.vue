@@ -35,6 +35,12 @@ function clickedCategory(category) {
 	useClickedStore().category = useClickedStore().category == category ? '' : category;
 }
 
+//specific category filtering ui animation handler function
+function clickedSpecificCategory(category) {
+	useClickedStore().specificCategory =
+		useClickedStore().specificCategory == category ? '' : category;
+}
+
 //handle the filtering
 function handleFilter(products, category) {
 	//filter items
@@ -47,246 +53,16 @@ function handleFilter(products, category) {
 	clickedCategory(category);
 }
 
-function specificFilter1_1() {
-	if (useClickedStore().specClicked1 == false) {
-		useIsStore().items = useProductStore().items.filter((e) => e.type == 'Television');
-	} else {
-		useIsStore().items = useProductStore().items.filter((e) =>
-			['Desktop', 'Television', 'Notebook', 'OEM', 'Pc Accessory'].includes(e.type)
-		);
-	}
-	useClickedStore().specClicked1 = !useClickedStore().specClicked1;
-	useClickedStore().specClicked2 = false;
-	useClickedStore().specClicked3 = false;
-	useClickedStore().specClicked4 = false;
-	useClickedStore().specClicked5 = false;
-}
+//handle the specific filtering
+function handleSpecificFilter(products, product) {
+	//filter items
+	useIsStore().items =
+		useClickedStore().specificCategory !== product
+			? useProductStore().items.filter((e) => product.includes(e.type))
+			: useProductStore().items.filter((e) => products.includes(e.type));
 
-function specificFilter1_2() {
-	if (useClickedStore().specClicked2 == false) {
-		useIsStore().items = useProductStore().items.filter((e) => e.type == 'Desktop');
-	} else {
-		useIsStore().items = useProductStore().items.filter((e) =>
-			['Desktop', 'Television', 'Notebook', 'OEM', 'Pc Accessory'].includes(e.type)
-		);
-	}
-	useClickedStore().specClicked1 = false;
-	useClickedStore().specClicked2 = !useClickedStore().specClicked2;
-	useClickedStore().specClicked3 = false;
-	useClickedStore().specClicked4 = false;
-	useClickedStore().specClicked5 = false;
-}
-
-function specificFilter1_3() {
-	if (useClickedStore().specClicked3 == false) {
-		useIsStore().items = useProductStore().items.filter((e) => e.type == 'Notebook');
-	} else {
-		useIsStore().items = useProductStore().items.filter((e) =>
-			['Desktop', 'Television', 'Notebook', 'OEM', 'Pc Accessory'].includes(e.type)
-		);
-	}
-	useClickedStore().specClicked1 = false;
-	useClickedStore().specClicked2 = false;
-	useClickedStore().specClicked3 = !useClickedStore().specClicked3;
-	useClickedStore().specClicked4 = false;
-	useClickedStore().specClicked5 = false;
-}
-
-function specificFilter1_4() {
-	if (useClickedStore().specClicked4 == false) {
-		useIsStore().items = useProductStore().items.filter((e) => e.type == 'OEM');
-	} else {
-		useIsStore().items = useProductStore().items.filter((e) =>
-			['Desktop', 'Television', 'Notebook', 'OEM', 'Pc Accessory'].includes(e.type)
-		);
-	}
-	useClickedStore().specClicked1 = false;
-	useClickedStore().specClicked2 = false;
-	useClickedStore().specClicked3 = false;
-	useClickedStore().specClicked4 = !useClickedStore().specClicked4;
-	useClickedStore().specClicked5 = false;
-}
-
-function specificFilter2_1() {
-	if (useClickedStore().specClicked1 == false) {
-		useIsStore().items = useProductStore().items.filter((e) => e.type == "Men's T-shirt");
-	} else {
-		useIsStore().items = useProductStore().items.filter((e) =>
-			["Men's Hoodie", "Men's T-shirt", "Men's Hat"].includes(e.type)
-		);
-	}
-	useClickedStore().specClicked1 = !useClickedStore().specClicked1;
-	useClickedStore().specClicked2 = false;
-	useClickedStore().specClicked3 = false;
-	useClickedStore().specClicked4 = false;
-	useClickedStore().specClicked5 = false;
-}
-
-function specificFilter2_2() {
-	if (useClickedStore().specClicked2 == false) {
-		useIsStore().items = useProductStore().items.filter((e) => e.type == "Men's Hoodie");
-	} else {
-		useIsStore().items = useProductStore().items.filter((e) =>
-			["Men's Hoodie", "Men's T-shirt", "Men's Hat"].includes(e.type)
-		);
-	}
-	useClickedStore().specClicked1 = false;
-	useClickedStore().specClicked2 = !useClickedStore().specClicked2;
-	useClickedStore().specClicked3 = false;
-	useClickedStore().specClicked4 = false;
-	useClickedStore().specClicked5 = false;
-}
-
-function specificFilter2_3() {
-	if (useClickedStore().specClicked3 == false) {
-		useIsStore().items = useProductStore().items.filter((e) => e.type == "Men's Hat");
-	} else {
-		useIsStore().items = useProductStore().items.filter((e) =>
-			["Men's Hoodie", "Men's T-shirt", "Men's Hat"].includes(e.type)
-		);
-	}
-	useClickedStore().specClicked1 = false;
-	useClickedStore().specClicked2 = false;
-	useClickedStore().specClicked3 = !useClickedStore().specClicked3;
-	useClickedStore().specClicked4 = false;
-	useClickedStore().specClicked5 = false;
-}
-
-function specificFilter3_1() {
-	if (useClickedStore().specClicked1 == false) {
-		useIsStore().items = useProductStore().items.filter((e) => e.type == "Women's T-shirt");
-	} else {
-		useIsStore().items = useProductStore().items.filter((e) =>
-			["Women's Dress", "Women's T-shirt", "Women's Accessory"].includes(e.type)
-		);
-	}
-	useClickedStore().specClicked1 = !useClickedStore().specClicked1;
-	useClickedStore().specClicked2 = false;
-	useClickedStore().specClicked3 = false;
-	useClickedStore().specClicked4 = false;
-	useClickedStore().specClicked5 = false;
-}
-
-function specificFilter3_2() {
-	if (useClickedStore().specClicked2 == false) {
-		useIsStore().items = useProductStore().items.filter((e) => e.type == "Women's Dress");
-	} else {
-		useIsStore().items = useProductStore().items.filter((e) =>
-			["Women's Dress", "Women's T-shirt", "Women's Accessory"].includes(e.type)
-		);
-	}
-	useClickedStore().specClicked1 = false;
-	useClickedStore().specClicked2 = !useClickedStore().specClicked2;
-	useClickedStore().specClicked3 = false;
-	useClickedStore().specClicked4 = false;
-	useClickedStore().specClicked5 = false;
-}
-
-function specificFilter3_3() {
-	if (useClickedStore().specClicked3 == false) {
-		useIsStore().items = useProductStore().items.filter((e) => e.type == "Women's Accessory");
-	} else {
-		useIsStore().items = useProductStore().items.filter((e) =>
-			["Women's Dress", "Women's T-shirt", "Women's Accessory"].includes(e.type)
-		);
-	}
-	useClickedStore().specClicked1 = false;
-	useClickedStore().specClicked2 = false;
-	useClickedStore().specClicked3 = !useClickedStore().specClicked3;
-	useClickedStore().specClicked4 = false;
-	useClickedStore().specClicked5 = false;
-}
-
-function specificFilter4_1() {
-	if (useClickedStore().specClicked1 == false) {
-		useIsStore().items = useProductStore().items.filter((e) => e.type == 'Shoes');
-	} else {
-		useIsStore().items = useProductStore().items.filter(
-			(e) => e.type == 'Bag' || e.type == 'Shoes'
-		);
-	}
-	useClickedStore().specClicked1 = !useClickedStore().specClicked1;
-	useClickedStore().specClicked2 = false;
-	useClickedStore().specClicked3 = false;
-	useClickedStore().specClicked4 = false;
-	useClickedStore().specClicked5 = false;
-}
-
-function specificFilter4_2() {
-	if (useClickedStore().specClicked2 == false) {
-		useIsStore().items = useProductStore().items.filter((e) => e.type == 'Bag');
-	} else {
-		useIsStore().items = useProductStore().items.filter(
-			(e) => e.type == 'Bag' || e.type == 'Shoes'
-		);
-	}
-	useClickedStore().specClicked1 = false;
-	useClickedStore().specClicked2 = !useClickedStore().specClicked2;
-	useClickedStore().specClicked3 = false;
-	useClickedStore().specClicked4 = false;
-	useClickedStore().specClicked5 = false;
-}
-
-function specificFilter5_1() {
-	if (useClickedStore().specClicked1 == false) {
-		useIsStore().items = useProductStore().items.filter((e) => e.type == 'Gaming Chair');
-	} else {
-		useIsStore().items = useProductStore().items.filter((e) =>
-			['Alcohol', 'Trading Card Game', 'Gaming Chair'].includes(e.type)
-		);
-	}
-	useClickedStore().specClicked1 = !useClickedStore().specClicked1;
-	useClickedStore().specClicked2 = false;
-	useClickedStore().specClicked3 = false;
-	useClickedStore().specClicked4 = false;
-	useClickedStore().specClicked5 = false;
-}
-
-function specificFilter5_2() {
-	if (useClickedStore().specClicked2 == false) {
-		useIsStore().items = useProductStore().items.filter((e) => e.type == 'Trading Card Game');
-	} else {
-		useIsStore().items = useProductStore().items.filter((e) =>
-			['Alcohol', 'Trading Card Game', 'Gaming Chair'].includes(e.type)
-		);
-	}
-	useClickedStore().specClicked1 = false;
-	useClickedStore().specClicked2 = !useClickedStore().specClicked2;
-	useClickedStore().specClicked3 = false;
-	useClickedStore().specClicked4 = false;
-	useClickedStore().specClicked5 = false;
-}
-
-function specificFilter5_3() {
-	if (useClickedStore().specClicked3 == false) {
-		useIsStore().items = useProductStore().items.filter((e) => e.type == 'Alcohol');
-	} else {
-		useIsStore().items = useProductStore().items.filter((e) =>
-			['Alcohol', 'Trading Card Game', 'Gaming Chair'].includes(e.type)
-		);
-	}
-	useClickedStore().specClicked1 = false;
-	useClickedStore().specClicked2 = false;
-	useClickedStore().specClicked3 = !useClickedStore().specClicked3;
-	useClickedStore().specClicked4 = false;
-	useClickedStore().specClicked5 = false;
-}
-
-function allClickedFalse() {
-	if (
-		useClickedStore().clicked1 == false &&
-		useClickedStore().clicked2 == false &&
-		useClickedStore().clicked3 == false &&
-		useClickedStore().clicked4 == false &&
-		useClickedStore().clicked5 == false &&
-		useClickedStore().specClicked1 == false &&
-		useClickedStore().specClicked2 == false &&
-		useClickedStore().specClicked3 == false &&
-		useClickedStore().specClicked4 == false &&
-		useClickedStore().specClicked5 == false
-	) {
-		return true;
-	}
+	//category filtering ui animation handling
+	clickedSpecificCategory(product);
 }
 </script>
 <template>
@@ -316,30 +92,52 @@ function allClickedFalse() {
 					<div class="absText" v-show="useClickedStore().category == `Tech`">
 						<h2 class="spec-head">Electronic</h2>
 						<p
-							:class="{ 'get-red': useClickedStore().specClicked1 }"
+							:class="{
+								'get-red': useClickedStore().specificCategory == `Television`
+							}"
 							class="specs"
-							@click="specificFilter1_1()"
+							@click="
+								handleSpecificFilter(
+									['Desktop', 'Television', 'Notebook', 'OEM', 'Pc Accessory'],
+									`Television`
+								)
+							"
 						>
 							TV
 						</p>
 						<p
-							:class="{ 'get-red': useClickedStore().specClicked2 }"
+							:class="{ 'get-red': useClickedStore().specificCategory == `Desktop` }"
 							class="specs"
-							@click="specificFilter1_2()"
+							@click="
+								handleSpecificFilter(
+									['Desktop', 'Television', 'Notebook', 'OEM', 'Pc Accessory'],
+									`Desktop`
+								)
+							"
 						>
 							Desktop
 						</p>
 						<p
-							:class="{ 'get-red': useClickedStore().specClicked3 }"
+							:class="{ 'get-red': useClickedStore().specificCategory == `Notebook` }"
 							class="specs"
-							@click="specificFilter1_3()"
+							@click="
+								handleSpecificFilter(
+									['Desktop', 'Television', 'Notebook', 'OEM', 'Pc Accessory'],
+									`Notebook`
+								)
+							"
 						>
 							Notebook
 						</p>
 						<p
-							:class="{ 'get-red': useClickedStore().specClicked4 }"
+							:class="{ 'get-red': useClickedStore().specificCategory == `OEM` }"
 							class="specs"
-							@click="specificFilter1_4()"
+							@click="
+								handleSpecificFilter(
+									['Desktop', 'Television', 'Notebook', 'OEM', 'Pc Accessory'],
+									`OEM`
+								)
+							"
 						>
 							OEM
 						</p>
@@ -358,23 +156,44 @@ function allClickedFalse() {
 					<div class="absText" v-show="useClickedStore().category == `Men's`">
 						<h2 class="spec-head">Men's</h2>
 						<p
-							:class="{ 'get-red': useClickedStore().specClicked1 }"
+							:class="{
+								'get-red': useClickedStore().specificCategory == `Men's T-shirt`
+							}"
 							class="specs"
-							@click="specificFilter2_1()"
+							@click="
+								handleSpecificFilter(
+									[`Men's Hoodie`, `Men's T-shirt`, `Men's Hat`],
+									`Men's T-shirt`
+								)
+							"
 						>
 							T-shirt
 						</p>
 						<p
-							:class="{ 'get-red': useClickedStore().specClicked2 }"
+							:class="{
+								'get-red': useClickedStore().specificCategory == `Men's Hoodie`
+							}"
 							class="specs"
-							@click="specificFilter2_2()"
+							@click="
+								handleSpecificFilter(
+									[`Men's Hoodie`, `Men's T-shirt`, `Men's Hat`],
+									`Men's Hoodie`
+								)
+							"
 						>
 							Hoodie
 						</p>
 						<p
-							:class="{ 'get-red': useClickedStore().specClicked3 }"
+							:class="{
+								'get-red': useClickedStore().specificCategory == `Men's Hat`
+							}"
 							class="specs"
-							@click="specificFilter2_3()"
+							@click="
+								handleSpecificFilter(
+									[`Men's Hoodie`, `Men's T-shirt`, `Men's Hat`],
+									`Men's Hat`
+								)
+							"
 						>
 							Hat
 						</p>
@@ -398,23 +217,44 @@ function allClickedFalse() {
 					<div class="absText" v-show="useClickedStore().category == `Women's`">
 						<h2 class="spec-head">Women's</h2>
 						<p
-							:class="{ 'get-red': useClickedStore().specClicked1 }"
+							:class="{
+								'get-red': useClickedStore().specificCategory == `Women's T-shirt`
+							}"
 							class="specs"
-							@click="specificFilter3_1()"
+							@click="
+								handleSpecificFilter(
+									[`Women's Dress`, `Women's T-shirt`, `Women's Accessory`],
+									`Women's T-shirt`
+								)
+							"
 						>
 							T-shirt
 						</p>
 						<p
-							:class="{ 'get-red': useClickedStore().specClicked2 }"
+							:class="{
+								'get-red': useClickedStore().specificCategory == `Women's Dress`
+							}"
 							class="specs"
-							@click="specificFilter3_2()"
+							@click="
+								handleSpecificFilter(
+									[`Women's Dress`, `Women's T-shirt`, `Women's Accessory`],
+									`Women's Dress`
+								)
+							"
 						>
 							Dress
 						</p>
 						<p
-							:class="{ 'get-red': useClickedStore().specClicked3 }"
+							:class="{
+								'get-red': useClickedStore().specificCategory == `Women's Accessory`
+							}"
 							class="specs"
-							@click="specificFilter3_3()"
+							@click="
+								handleSpecificFilter(
+									[`Women's Dress`, `Women's T-shirt`, `Women's Accessory`],
+									`Women's Accessory`
+								)
+							"
 						>
 							Accessory
 						</p>
@@ -432,16 +272,18 @@ function allClickedFalse() {
 					<div class="absText" v-show="useClickedStore().category == `General`">
 						<h2 class="spec-head">General</h2>
 						<p
-							:class="{ 'get-red': useClickedStore().specClicked1 }"
+							:class="{
+								'get-red': useClickedStore().specificCategory == `Shoes`
+							}"
 							class="specs"
-							@click="specificFilter4_1()"
+							@click="handleSpecificFilter([`Shoes`, `Bag`], `Shoes`)"
 						>
 							Shoes
 						</p>
 						<p
-							:class="{ 'get-red': useClickedStore().specClicked2 }"
+							:class="{ 'get-red': useClickedStore().specificCategory == `Bag` }"
 							class="specs"
-							@click="specificFilter4_2()"
+							@click="handleSpecificFilter([`Shoes`, `Bag`], `Bag`)"
 						>
 							Bag
 						</p>
@@ -459,23 +301,42 @@ function allClickedFalse() {
 					<div class="absText" v-show="useClickedStore().category == `Stuff`">
 						<h2 class="spec-head">Stuff</h2>
 						<p
-							:class="{ 'get-red': useClickedStore().specClicked1 }"
+							:class="{
+								'get-red': useClickedStore().specificCategory == `Gaming Chair`
+							}"
 							class="specs gaming-ch"
-							@click="specificFilter5_1()"
+							@click="
+								handleSpecificFilter(
+									['Alcohol', 'Trading Card Game', 'Gaming Chair'],
+									`Gaming Chair`
+								)
+							"
 						>
 							Gaming Ch.
 						</p>
 						<p
-							:class="{ 'get-red': useClickedStore().specClicked2 }"
+							:class="{
+								'get-red': useClickedStore().specificCategory == `Trading Card Game`
+							}"
 							class="specs"
-							@click="specificFilter5_2()"
+							@click="
+								handleSpecificFilter(
+									['Alcohol', 'Trading Card Game', 'Gaming Chair'],
+									`Trading Card Game`
+								)
+							"
 						>
 							TCG
 						</p>
 						<p
-							:class="{ 'get-red': useClickedStore().specClicked3 }"
+							:class="{ 'get-red': useClickedStore().specificCategory == `Alcohol` }"
 							class="specs"
-							@click="specificFilter5_3()"
+							@click="
+								handleSpecificFilter(
+									['Alcohol', 'Trading Card Game', 'Gaming Chair'],
+									`Alcohol`
+								)
+							"
 						>
 							Alcohol
 						</p>
@@ -512,7 +373,7 @@ function allClickedFalse() {
 		</div>
 		<div
 			class="loading-ico"
-			v-if="useIsStore().items.length && allClickedFalse()"
+			v-if="useIsStore().items.length && !useClickedStore().category"
 			v-show="useIsStore().items.length != useProductStore().items.length"
 			v-intersection-observer="onIntersectionObserver"
 		>
