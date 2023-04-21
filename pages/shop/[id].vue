@@ -40,11 +40,12 @@ function mail() {
 	} else return;
 }
 
+//insert item
 async function insert() {
-	let { data: anann } = await supabase.from('anan').select('item').eq('user_id', userId());
+	let { data: userCart } = await supabase.from('Carts').select('item').eq('user_id', userId());
 
-	if (anann.length === 0) {
-		await supabase.from('anan').insert([
+	if (userCart.length === 0) {
+		await supabase.from('Carts').insert([
 			{
 				user_id: userId(),
 				item: cartStore.items,
@@ -53,7 +54,7 @@ async function insert() {
 		]);
 	} else {
 		await supabase
-			.from('anan')
+			.from('Carts')
 
 			.update({ item: cartStore.items })
 			.eq('user_id', userId());

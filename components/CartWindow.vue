@@ -22,7 +22,7 @@ function userId() {
 
 async function inputChange() {
   await supabase
-    .from("anan")
+    .from("Carts")
 
     .update({ item: cartStore.items })
     .eq("user_id", userId());
