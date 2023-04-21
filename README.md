@@ -1,17 +1,15 @@
 # Fully functional general e-commerce website
 - Working demo: https://emaria.vercel.app/ 
 
-### Shop UI can be seen on top picture.
+## Shop UI:
 <img src="https://wjfywtvnvjbposklgxzj.supabase.co/storage/v1/object/public/readme/shop.jpg" alt="UI of the Shop" width="600">
 
- After choosing an item, page will leed the user to that item's page:
-
+- After choosing an item, page will lead the user to that item's page:
 
 <img src="https://wjfywtvnvjbposklgxzj.supabase.co/storage/v1/object/public/readme/product.jpg" alt="UI of the Product" width="600">
 
-- And, if user is logged and wants to add the item to the card, it'll be added to his/her cart and all this will be happening on an sql database.
+- If user is logged and wants to add the item to the card, it'll be added to his/her cart and all this will be happening on an sql database.
 - Cart UI can be seen on bottom:
-
 
 <img src="https://wjfywtvnvjbposklgxzj.supabase.co/storage/v1/object/public/readme/cart.jpg" alt="UI of the Cart" width="600">
 
