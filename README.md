@@ -4,12 +4,16 @@
 ## Some footages
 
 <img src="https://wjfywtvnvjbposklgxzj.supabase.co/storage/v1/object/public/readme/shop.jpg" alt="UI of the Shop" width="600">
+
 - Shop UI can be seen on top picture. After choosing an item, page will leed the user to that item's page:
-- 
+
+
 <img src="https://wjfywtvnvjbposklgxzj.supabase.co/storage/v1/object/public/readme/product.jpg" alt="UI of the Product" width="600">
+
 - And, if user is logged and wants to add the item to the card, it'll be added to his/her cart and all this will be happening on an sql database.
 - Cart UI can be seen on bottom:
-- 
+
+
 <img src="https://wjfywtvnvjbposklgxzj.supabase.co/storage/v1/object/public/readme/cart.jpg" alt="UI of the Cart" width="600">
 
 ## Techs used: Vue3, Nuxt3, Pinia, Supabase, directus, Formkit, VueUse, Aos.
