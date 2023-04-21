@@ -1,11 +1,10 @@
 # Fully functional general e-commerce website
 - Working demo: https://emaria.vercel.app/ 
 
-## Some footages
-
+### Shop UI can be seen on top picture.
 <img src="https://wjfywtvnvjbposklgxzj.supabase.co/storage/v1/object/public/readme/shop.jpg" alt="UI of the Shop" width="600">
 
-- Shop UI can be seen on top picture. After choosing an item, page will leed the user to that item's page:
+ After choosing an item, page will leed the user to that item's page:
 
 
 <img src="https://wjfywtvnvjbposklgxzj.supabase.co/storage/v1/object/public/readme/product.jpg" alt="UI of the Product" width="600">
