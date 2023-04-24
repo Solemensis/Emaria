@@ -25,8 +25,8 @@ const cartStore = useCartStore();
 				<img class="hero-image" src="@/assets/images/hero-scene5.webp" alt="" />
 			</div>
 		</div>
-		<Cards />
-		<Zpattern />
+		<EpicCards />
+		<EpicZ />
 		<Footer />
 	</div>
 </template>
