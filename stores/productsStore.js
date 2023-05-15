@@ -4,5 +4,5 @@ export const useProductsStore = defineStore("products-store", {
   }),
 });
 if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useIsStore, import.meta.hot));
+  import.meta.hot.accept(acceptHMRUpdate(useProductsStore, import.meta.hot));
 }

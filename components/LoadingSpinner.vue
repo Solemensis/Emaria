@@ -48,7 +48,8 @@ let onIntersectionObserver = async ([{ isIntersecting }]) => {
     v-if="
       useProductsStore() &&
       useProductsStore().products &&
-      useProductsStore().products.length
+      useProductsStore().products.length &&
+      isVisible == false
     "
     class="loading-ico"
     v-intersection-observer="onIntersectionObserver"

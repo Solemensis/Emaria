@@ -18,13 +18,6 @@ async function decrementAmount(product) {
   if (product.amount <= 1) return;
   product.amount--;
 
-  //find the index of the product in the cart
-  const index = cartStore.items.findIndex((item) => item.sku === product.sku);
-  //if an index (so the product) found with the given condition (sku equality), change amount.
-  if (index !== -1) {
-    cartStore.items[index].amount = product.amount;
-  }
-
   const { data, error } = await useFetch("/api/changeItemAmount", {
     method: "post",
     body: {
@@ -36,13 +29,6 @@ async function decrementAmount(product) {
 
 async function incrementAmount(product) {
   product.amount++;
-
-  //find the index of the product in the cart
-  const index = cartStore.items.findIndex((item) => item.sku === product.sku);
-  //if an index (so the product) found with the given condition (sku equality), change amount.
-  if (index !== -1) {
-    cartStore.items[index].amount = product.amount;
-  }
 
   const { data, error } = await useFetch("/api/changeItemAmount", {
     method: "post",
@@ -80,7 +66,10 @@ const taxes = computed(() => {
             <th class="bulk">Bulk</th>
           </tr>
           <div class="div"></div>
-          <tr v-for="(item, index) in cartStore">
+          <tr
+            v-if="cartStore.items && cartStore.items.length"
+            v-for="(item, index) in cartStore.items"
+          >
             <td class="delete-button">
               <span @click="removeFromCart(item)" class="delete-button-ico"
                 >&#10006;</span

@@ -41,14 +41,7 @@ function hideModal2() {
           <h3 class="modal-text">Your Info is Incorrect.</h3>
         </div>
       </transition>
-      <div @click="oauthLogin('github')" class="git-box">
-        <img src="@/assets/images/github.svg" alt="" />
-        <p class="git-login">Continue with GitHub</p>
-      </div>
-      <div @click="oauthLogin('google')" class="google-box">
-        <img src="@/assets/images/google.svg" alt="" />
-        <p class="google-login">Continue with Google</p>
-      </div>
+
       <p>
         Don't have an account?
         <NuxtLink to="/signup" class="register">Register</NuxtLink>
@@ -87,20 +80,31 @@ function hideModal2() {
         />
         <p><NuxtLink class="forgot-pass">Forgot Your Password?</NuxtLink></p>
       </FormKit>
-      <!-- <teleport to="body">
-      <NuxtLink to="/">
-        <img src="@/assets/images/arrow.svg" alt="" class="entity-arrow" />
-      </NuxtLink>
-    </teleport> -->
+      <div class="oauth-box">
+        <div @click="oauthLogin('github')" class="git-box">
+          <img src="@/assets/images/github.svg" alt="" />
+          <p class="git-login">Continue with GitHub</p>
+        </div>
+        <div @click="oauthLogin('google')" class="google-box">
+          <img src="@/assets/images/google.svg" alt="" />
+          <p class="google-login">Continue with Google</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <style>
+.oauth-box {
+  position: absolute;
+  display: flex;
+  gap: 1rem;
+  bottom: -10rem;
+}
 .google-login {
   color: black;
   margin: 0 !important;
-  font-size: 1.8rem !important;
+  font-size: 1.5rem !important;
   font-weight: 600;
 }
 .google-box img {
@@ -112,9 +116,8 @@ function hideModal2() {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 1.5rem;
+  padding: 0.7rem 1rem;
   border-radius: 0.5rem;
-  margin-bottom: 2rem;
   transition: background-color 0.2s;
   cursor: pointer;
 }
@@ -124,7 +127,7 @@ function hideModal2() {
 .git-login {
   color: white;
   margin: 0 !important;
-  font-size: 1.8rem !important;
+  font-size: 1.5rem !important;
   font-weight: 600;
 }
 .git-box img {
@@ -138,9 +141,8 @@ function hideModal2() {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 1.5rem;
+  padding: 0.7rem 1rem;
   border-radius: 0.5rem;
-  margin-bottom: 1rem;
   transition: background-color 0.2s;
   cursor: pointer;
 }
@@ -211,6 +213,10 @@ button:active {
     top: 4rem !important;
     left: 5rem !important;
     width: 5.5rem !important;
+  }
+  .google-login,
+  .git-login {
+    font-size: 1.3rem;
   }
 }
 .entity-arrow {
