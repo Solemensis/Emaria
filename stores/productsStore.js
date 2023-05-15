@@ -1,7 +1,6 @@
-export const useIsStore = defineStore("is-store", {
+export const useProductsStore = defineStore("products-store", {
   state: () => ({
-    items: [],
-    itemsSave1: [],
+    products: [],
   }),
 });
 if (import.meta.hot) {

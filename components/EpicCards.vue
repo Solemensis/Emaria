@@ -1,4 +1,3 @@
-<script setup></script>
 <template lang="">
   <div class="container">
     <h2>Thousands of people use our store!</h2>

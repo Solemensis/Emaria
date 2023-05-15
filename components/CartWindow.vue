@@ -1,53 +1,71 @@
 <script setup>
-// const user = useSupabaseUser();
-// const supabase = useSupabaseClient();
-const config = useRuntimeConfig();
+const user = useSupabaseUser();
 
-const cartStore = useCartStore();
-const assetsEndpoint = `${config.DS_EP}/assets/`;
+async function removeFromCart(product) {
+  useCartStore().items = useCartStore().items.filter(
+    (i) => i.sku !== product.sku
+  );
 
-function subT() {
-  return cartStore.subTotal;
+  const { data, error } = await useFetch("/api/removeFromCart", {
+    method: "post",
+    body: {
+      newCart: useCartStore().items,
+      userId: user.value.id,
+    },
+  });
 }
 
-function removeFromCart(item) {
-  cartStore.items = cartStore.items.filter((i) => i !== item);
-}
+async function decrementAmount(product) {
+  if (product.amount <= 1) return;
+  product.amount--;
 
-function userId() {
-  if (user.value) {
-    return user.value.id;
-  } else return;
-}
-
-async function inputChange() {
-  await supabase
-    .from("Carts")
-
-    .update({ item: cartStore.items })
-    .eq("user_id", userId());
-}
-
-function decrease(i) {
-  if (i.amount > 1) {
-    i.amount--;
+  //find the index of the product in the cart
+  const index = useCartStore().items.findIndex(
+    (item) => item.sku === product.sku
+  );
+  //if an index (so the product) found with the given condition (sku equality), change amount.
+  if (index !== -1) {
+    useCartStore().items[index].amount = product.amount;
   }
+
+  const { data, error } = await useFetch("/api/changeItemAmount", {
+    method: "post",
+    body: {
+      newCart: useCartStore().items,
+      userId: user.value.id,
+    },
+  });
 }
-function increase(i) {
-  // if (i.amount < 10)
-  {
-    i.amount++;
+
+async function incrementAmount(product) {
+  product.amount++;
+
+  //find the index of the product in the cart
+  const index = useCartStore().items.findIndex(
+    (item) => item.sku === product.sku
+  );
+  //if an index (so the product) found with the given condition (sku equality), change amount.
+  if (index !== -1) {
+    useCartStore().items[index].amount = product.amount;
   }
+
+  const { data, error } = await useFetch("/api/changeItemAmount", {
+    method: "post",
+    body: {
+      newCart: useCartStore().items,
+      userId: user.value.id,
+    },
+  });
 }
 </script>
 
 <template>
   <div style="height: 100vh; width: 100vh">
     <div class="wrapper page-format">
-      <h2 v-if="cartStore.items.length" class="heading">Your Cart</h2>
-      <h2 v-else class="heading2">Your cart is empty.</h2>
+      <h2 class="heading">Your Cart</h2>
+      <!-- <h2 class="heading2">Your cart is empty.</h2> -->
       <div class="flex">
-        <table v-if="cartStore.items.length">
+        <table>
           <tr>
             <th class="delete-head"></th>
             <th class="image-head">Image</th>
@@ -56,48 +74,51 @@ function increase(i) {
             <th class="bulk">Bulk</th>
           </tr>
           <div class="div"></div>
-          <tr v-for="(item, index) in cartStore.items">
+          <tr v-for="(item, index) in useCartStore().items">
             <td class="delete-button">
-              <span
-                @click="removeFromCart(item), inputChange()"
-                class="delete-button-ico"
+              <span @click="removeFromCart(item)" class="delete-button-ico"
                 >&#10006;</span
               >
             </td>
 
             <td>
-              <img :src="assetsEndpoint + item.item.thumbnail" />
-              <!-- <img :src="item.item.item.image" /> -->
+              <img
+                :src="
+                  `https://cdn.sanity.io/images/vsiu2eyv/production/` +
+                  removePrefix(item.image) +
+                  `.webp`
+                "
+              />
             </td>
 
             <td class="title-table">
               <NuxtLink
                 class="title"
-                :to="{ name: 'shop-id', params: { id: item.item.id } }"
+                :to="{ name: 'shop-id', params: { id: item.productId } }"
               >
-                {{ item.item.name }}</NuxtLink
+                {{ item.name }}</NuxtLink
               >
             </td>
             <td class="item-price">
-              ${{ (item.item.price * item.amount).toFixed(2) }}
+              ${{ (item.price * item.amount).toFixed(2) }}
             </td>
 
             <td class="amount-table">
               <div class="input-box">
-                <button @click="decrease(item), inputChange()">&#8211;</button>
+                <button @click="decrementAmount(item)">&#8211;</button>
                 <input
                   class="inputum"
                   disabled
                   min="1"
                   type="number"
-                  v-model="cartStore.items[index].amount"
-                /><button @click="increase(item), inputChange()">+</button>
+                  v-model="item.amount"
+                /><button @click="incrementAmount(item)">+</button>
               </div>
             </td>
           </tr>
         </table>
 
-        <div v-if="cartStore.items.length" class="price-box">
+        <!-- <div  class="price-box">
           <ul>
             <li>Subtotal: ${{ subT().toFixed(2) }}</li>
             <li>Taxes: ${{ (subT() * 0.1).toFixed(2) }}</li>
@@ -106,7 +127,7 @@ function increase(i) {
             </li>
           </ul>
           <button class="checkout">checkout</button>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

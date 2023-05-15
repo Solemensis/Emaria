@@ -3,15 +3,12 @@ const userName = ref("");
 const email = ref("");
 const password = ref("");
 
+const client = useSupabaseAuthClient();
+
 const signUp = async () => {
-  const { data, error } = await supabase.auth.signUp({
+  const { data, error } = await client.auth.signUp({
     email: email.value,
     password: password.value,
-    options: {
-      data: {
-        user_name: userName.value,
-      },
-    },
   });
   if (data) {
     show1.value = true;

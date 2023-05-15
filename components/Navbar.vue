@@ -15,6 +15,8 @@ const showList = ref(false);
 const hideList = function () {
   showList.value = !showList.value;
 };
+
+const cartStore = useCartStore();
 </script>
 <template lang="">
   <header class="page-format2">
@@ -48,7 +50,7 @@ const hideList = function () {
       <NuxtLink to="/cart">
         <div class="cart-box">
           <img class="cart-img" src="@/assets/images/shopping-cart.svg" />
-          <p v-if="useCartStore().totalCount" class="cart-counter">&#9679;</p>
+          <p v-if="cartStore.items.length" class="cart-counter">&#9679;</p>
         </div>
       </NuxtLink>
       <img

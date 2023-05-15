@@ -5,21 +5,24 @@ export const useCartStore = defineStore("cart-store", {
 
   actions: {
     addToCart(item: any) {
-      const existingItem = this.items.find((i) => i.item.id == item.id);
-      if (existingItem) {
-        existingItem.amount++;
-      } else {
-        this.items.push({ item, amount: 1 });
+      const existingItem = this.items.find((i) => {
+        if (i.sku == item.sku) {
+          i.amount++;
+          return i;
+        }
+      });
+      if (!existingItem) {
+        this.items.push(item);
       }
     },
   },
 
-  getters: {
-    totalCount: (state) =>
-      state.items.reduce((acc, item) => acc + item.amount, 0),
-    subTotal: (state) =>
-      state.items.reduce((acc, item) => acc + item.item.price * item.amount, 0),
-  },
+  // getters: {
+  //   totalCount: (state) =>
+  //     state.items.reduce((acc, item) => acc + item.amount, 0),
+  //   subTotal: (state) =>
+  //     state.items.reduce((acc, item) => acc + item.item.price * item.amount, 0),
+  // },
 });
 
 if (import.meta.hot) {
