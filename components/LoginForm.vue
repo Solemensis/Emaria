@@ -10,7 +10,7 @@ async function login() {
     password: password.value,
   });
   if (!error) {
-    !navigateTo("/");
+    navigateTo("/");
   }
   // if (error) {
   //   errorMessage.value = error;

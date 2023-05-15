@@ -57,6 +57,17 @@ async function incrementAmount(product) {
     },
   });
 }
+
+//shopping totals
+const subTotal = computed(() => {
+  return useCartStore().subTotal.toFixed(2);
+});
+const total = computed(() => {
+  return (useCartStore().subTotal + useCartStore().subTotal * 0.1).toFixed(2);
+});
+const taxes = computed(() => {
+  return (subTotal.value * 0.1).toFixed(2);
+});
 </script>
 
 <template>
@@ -118,16 +129,14 @@ async function incrementAmount(product) {
           </tr>
         </table>
 
-        <!-- <div  class="price-box">
+        <div class="price-box">
           <ul>
-            <li>Subtotal: ${{ subT().toFixed(2) }}</li>
-            <li>Taxes: ${{ (subT() * 0.1).toFixed(2) }}</li>
-            <li class="total">
-              Total: ${{ (subT() + subT() * 0.1).toFixed(2) }}
-            </li>
+            <li>Subtotal: ${{ subTotal }}</li>
+            <li>Taxes: ${{ taxes }}</li>
+            <li class="total">Total: ${{ total }}</li>
           </ul>
           <button class="checkout">checkout</button>
-        </div> -->
+        </div>
       </div>
     </div>
   </div>

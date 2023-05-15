@@ -1,12 +1,11 @@
 <script setup>
 const signOut = async () => {
-  const { error } = await supabase.auth.signOut();
-  if (!error) {
-    window.location.reload();
-  }
+  const { error } = await client.auth.signOut();
+
+  navigateTo("/");
 };
 
-const supabase = useSupabaseClient();
+const client = useSupabaseAuthClient();
 const user = useSupabaseUser();
 
 const slide = ref(false);
@@ -61,10 +60,7 @@ const cartStore = useCartStore();
       />
       <transition name="my-transition-2">
         <ul v-show="showList" class="user-profile-list">
-          <p class="username" v-if="user.user_metadata.user_name">
-            {{ user.user_metadata.user_name }}
-          </p>
-          <p class="usermail" v-else>{{ user.email }}</p>
+          <p class="usermail">{{ user.email }}</p>
           <NuxtLink @click="hideList()" class="nav-link" to="/cart"
             ><li class="user-profile-link">Cart</li>
           </NuxtLink>

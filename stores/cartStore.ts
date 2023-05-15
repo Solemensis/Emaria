@@ -17,12 +17,10 @@ export const useCartStore = defineStore("cart-store", {
     },
   },
 
-  // getters: {
-  //   totalCount: (state) =>
-  //     state.items.reduce((acc, item) => acc + item.amount, 0),
-  //   subTotal: (state) =>
-  //     state.items.reduce((acc, item) => acc + item.item.price * item.amount, 0),
-  // },
+  getters: {
+    subTotal: (state) =>
+      state.items.reduce((acc, item) => acc + item.price * item.amount, 0),
+  },
 });
 
 if (import.meta.hot) {

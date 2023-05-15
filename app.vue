@@ -6,7 +6,7 @@ const user = useSupabaseUser();
 //get the cart state of the user from db and put it to the store
 onMounted(() => {
   setTimeout(async () => {
-    if (!user.value.id) return;
+    if (!user.value) return;
     if (useCartStore().items.length) return;
 
     const { data: products, error } = await useFetch("/api/queryCart", {

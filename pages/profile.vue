@@ -1,3 +1,9 @@
+<script setup>
+definePageMeta({
+  middleware: "no-auth",
+});
+</script>
+
 <template lang="">
   <div style="height: 60vh">
     <div class="texts-div">
