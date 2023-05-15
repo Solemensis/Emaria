@@ -1,8 +1,6 @@
 <script setup>
 const user = useSupabaseUser();
 
-const cartStore = useCartStore();
-
 const show = ref(false);
 </script>
 

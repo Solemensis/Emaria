@@ -1,5 +1,6 @@
 <script setup>
 const user = useSupabaseUser();
+const cartStore = useCartStore();
 
 // new code
 
@@ -7,7 +8,7 @@ const user = useSupabaseUser();
 onMounted(() => {
   setTimeout(async () => {
     if (!user.value) return;
-    if (useCartStore().items.length) return;
+    if (cartStore.items.length) return;
 
     const { data: products, error } = await useFetch("/api/queryCart", {
       method: "post",
@@ -15,7 +16,7 @@ onMounted(() => {
     });
 
     if (products.value) {
-      useCartStore().items = products.value.cart;
+      cartStore.items = products.value.cart;
     }
   }, 0);
 });

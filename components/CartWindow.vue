@@ -1,15 +1,14 @@
 <script setup>
 const user = useSupabaseUser();
+const cartStore = useCartStore();
 
 async function removeFromCart(product) {
-  useCartStore().items = useCartStore().items.filter(
-    (i) => i.sku !== product.sku
-  );
+  cartStore.items = cartStore.items.filter((i) => i.sku !== product.sku);
 
   const { data, error } = await useFetch("/api/removeFromCart", {
     method: "post",
     body: {
-      newCart: useCartStore().items,
+      newCart: cartStore.items,
       userId: user.value.id,
     },
   });
@@ -20,18 +19,16 @@ async function decrementAmount(product) {
   product.amount--;
 
   //find the index of the product in the cart
-  const index = useCartStore().items.findIndex(
-    (item) => item.sku === product.sku
-  );
+  const index = cartStore.items.findIndex((item) => item.sku === product.sku);
   //if an index (so the product) found with the given condition (sku equality), change amount.
   if (index !== -1) {
-    useCartStore().items[index].amount = product.amount;
+    cartStore.items[index].amount = product.amount;
   }
 
   const { data, error } = await useFetch("/api/changeItemAmount", {
     method: "post",
     body: {
-      newCart: useCartStore().items,
+      newCart: cartStore.items,
       userId: user.value.id,
     },
   });
@@ -41,18 +38,16 @@ async function incrementAmount(product) {
   product.amount++;
 
   //find the index of the product in the cart
-  const index = useCartStore().items.findIndex(
-    (item) => item.sku === product.sku
-  );
+  const index = cartStore.items.findIndex((item) => item.sku === product.sku);
   //if an index (so the product) found with the given condition (sku equality), change amount.
   if (index !== -1) {
-    useCartStore().items[index].amount = product.amount;
+    cartStore.items[index].amount = product.amount;
   }
 
   const { data, error } = await useFetch("/api/changeItemAmount", {
     method: "post",
     body: {
-      newCart: useCartStore().items,
+      newCart: cartStore.items,
       userId: user.value.id,
     },
   });
@@ -60,10 +55,10 @@ async function incrementAmount(product) {
 
 //shopping totals
 const subTotal = computed(() => {
-  return useCartStore().subTotal.toFixed(2);
+  return cartStore.subTotal.toFixed(2);
 });
 const total = computed(() => {
-  return (useCartStore().subTotal + useCartStore().subTotal * 0.1).toFixed(2);
+  return (cartStore.subTotal + cartStore.subTotal * 0.1).toFixed(2);
 });
 const taxes = computed(() => {
   return (subTotal.value * 0.1).toFixed(2);
@@ -85,7 +80,7 @@ const taxes = computed(() => {
             <th class="bulk">Bulk</th>
           </tr>
           <div class="div"></div>
-          <tr v-for="(item, index) in useCartStore().items">
+          <tr v-for="(item, index) in cartStore">
             <td class="delete-button">
               <span @click="removeFromCart(item)" class="delete-button-ico"
                 >&#10006;</span
