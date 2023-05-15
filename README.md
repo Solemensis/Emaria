@@ -14,9 +14,8 @@
 
 ## The Sanity Headless Cms:
 
-- Products api can be maintained with a no-code, user-friendly headless frustructure by the shop owner. A view from the ui of the Sanity CMS:
+- Products api can be maintained from a no-code, user-friendly headless frustructure by the shop owner. A view from the ui of the Sanity CMS:
 <img src="https://wjfywtvnvjbposklgxzj.supabase.co/storage/v1/object/public/readme/sanityui.jpg" alt="UI of the Sanity" width="600">
-
 
 ## Shop UI:
 <img src="https://wjfywtvnvjbposklgxzj.supabase.co/storage/v1/object/public/readme/shop.jpg" alt="UI of the Shop" width="600">
