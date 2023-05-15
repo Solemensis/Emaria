@@ -3,21 +3,23 @@ const cartStore = useCartStore();
 const user = useSupabaseUser();
 
 //fetch user cart on login relocate
-onUnmounted(() => {
-  setTimeout(async () => {
-    //get the cart state of the user from db and put it to the store
+onMounted(() => {
+  setTimeout(() => {
+    //get the cart state of the user from db and put it to the cartStore
     if (!user.value) return console.log("no user");
-    if (cartStore.items.length) return console.log("no item in user cart");
+    if (!cartStore.items.length) return console.log("no item in user cart");
 
-    const { data: products } = await useFetch("/api/queryCart", {
-      method: "post",
-      body: user.value.id,
-    });
+    setTimeout(async () => {
+      const { data: products } = await useFetch("/api/queryCart", {
+        method: "post",
+        body: user.value.id,
+      });
 
-    if (products.value) {
-      cartStore.items = products.value.cart;
-    }
-  }, 0);
+      if (products.value) {
+        cartStore.items = products.value.cart;
+      }
+    }, 200);
+  }, 500);
 });
 </script>
 <template lang="">

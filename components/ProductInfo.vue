@@ -1,19 +1,6 @@
 <script setup>
 const route = useRoute();
-
 const user = useSupabaseUser();
-
-const show = ref(false);
-
-function hideModal() {
-  if (show.value == true) show.value = false;
-}
-
-function showModal() {
-  show.value = true;
-
-  setTimeout(hideModal, 2000);
-}
 
 //newcode:
 
@@ -30,6 +17,10 @@ onMounted(() => {
 });
 
 async function addToCart(item) {
+  if (!user.value) return uiMessageHandler("", "You need to login.");
+
+  uiMessageHandler("Item added to the cart.", "");
+
   cartStore.addToCart({
     sku: item.sku,
     name: item.name,
@@ -46,6 +37,17 @@ async function addToCart(item) {
       userId: user.value.id,
     },
   });
+}
+
+const uiMessage = ref("");
+const errMessage = ref("");
+function uiMessageHandler(ui, err) {
+  uiMessage.value = ui;
+  errMessage.value = err;
+  setTimeout(() => {
+    uiMessage.value = "";
+    errMessage.value = "";
+  }, 2000);
 }
 </script>
 
@@ -91,25 +93,48 @@ async function addToCart(item) {
         </button>
       </div>
     </div>
+    <teleport to="body">
+      <transition name="page">
+        <div class="alert-boxes">
+          <div v-if="uiMessage" class="alert1">
+            <h3 class="modal-text">{{ uiMessage }}</h3>
+          </div>
+          <div v-if="errMessage" class="alert2">
+            <h3 class="modal-text">{{ errMessage }}</h3>
+          </div>
+        </div>
+      </transition></teleport
+    >
   </div>
 </template>
 
 <style scoped>
-.back-arrow {
-  width: 7rem;
+.modal-text {
+  color: rgb(52, 52, 52);
+  font-size: 1.8rem;
+  font-weight: 600;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.alert-boxes {
   position: absolute;
-  left: 5%;
-  top: 30%;
-  transform: translate(0, -50%);
-  padding: 1rem 0;
-  padding-right: 1rem;
-  border-right: rgb(216, 216, 216) 3px solid;
-  cursor: pointer;
+  right: 2rem;
+  bottom: 2rem;
+}
+.alert1,
+.alert2 {
+  width: 25rem;
+  height: 5rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(123, 248, 123, 0.859);
+  border-radius: 1.5rem;
+}
+.alert2 {
+  background-color: rgba(255, 112, 112, 0.859);
 }
 
-.entity-arrow:active {
-  animation: button-pop 0.3s ease-out;
-}
 .buttons {
   display: flex;
   align-items: center;
