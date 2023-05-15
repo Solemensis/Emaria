@@ -1,4 +1,4 @@
-# Fully functional general e-commerce website
+# Fully functional general e-commerce WebApp
 - Working demo: https://emaria.vercel.app/ 
 
 
