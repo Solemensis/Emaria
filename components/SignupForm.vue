@@ -56,14 +56,14 @@ function hideModal2() {
         submit-label="Sign Up"
         @submit="() => signUp()"
       >
-        <FormKit
+        <!-- <FormKit
           :classes="{ input: 'input4', messages: 'messages' }"
           v-model="userName"
           label="Username"
           validation="required|length:3"
           type="text"
           placeholder="☺️ Username"
-        />
+        /> -->
         <FormKit
           :classes="{
             input: 'input5',
