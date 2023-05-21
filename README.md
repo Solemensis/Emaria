@@ -5,7 +5,7 @@
 ## Techs used: Vue3, Nuxt3, Pinia, Supabase, Sanity, Formkit, VueUse, Aos.
 - [Vue3 & Nuxt3] as building blocks.
 - [Pinia] to maintain cart state on client side, to share fetched products & some globally needed boolean values across components.
-- [Supabase] to save cart/user data, and to build auth.
+- [Supabase] to save cart/user data, and to build auth/oauth.
 - [sanity] as a headless cms to build and maintain products-api by using a user-friendly gui which sanity provides us.
 - [Formkit] to build easily maintainable forms.
 - [VueUse-IntersectionObserver] to implement infinite scroll.
