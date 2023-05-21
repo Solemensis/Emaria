@@ -34,3 +34,4 @@
 ## What would i do next?
 - I would handle buyouts with Stripe api or using similar on Nuxt server routes if it was a real world e-commerce.
 - Could make "add to fav" button functional.
+- Could add product variant categories (color, size) to the Sanity cms.
