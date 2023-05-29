@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
 
   //database event
 
-  const checkCart = await prisma.Carts.findUnique({
+  const checkCart = await prisma.Carts.findFirst({
     where: {
       user_id: userId,
     },
