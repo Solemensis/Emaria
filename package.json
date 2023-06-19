@@ -20,6 +20,7 @@
     "@vueuse/components": "^10.1.2",
     "@vueuse/nuxt": "^10.1.2",
     "aos": "^2.3.4",
+    "nuxt-storage": "^1.2.2",
     "pinia": "^2.0.36"
   },
   "overrides": {

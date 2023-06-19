@@ -70,7 +70,8 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 23rem;
+  /* width: 23rem; */
+  width: 90%;
   position: absolute;
   bottom: 2%;
   padding-top: 0.2rem;

@@ -1,11 +1,10 @@
 <script setup>
+import nuxtStorage from "nuxt-storage";
+
 const route = useRoute();
 const user = useSupabaseUser();
 
-//newcode:
-
 const product = reactive({});
-
 const cartStore = useCartStore();
 
 onMounted(() => {
@@ -13,6 +12,35 @@ onMounted(() => {
     const query = groq`*[_id == "${route.params.id}"]`;
     const { data: fetchedProduct } = await useSanityQuery(query);
     product.value = fetchedProduct.value;
+
+    // LOCALSTORAGE:
+
+    //push item count to localStorage on pageload
+    // const vcStorage = ref(nuxtStorage.localStorage.getData("viewedCategories"));
+    // if (!vcStorage.value) {
+    //   nuxtStorage.localStorage.setData(
+    //     "viewedCategories",
+    //     {
+    //       [product.value[0].subCategory]: 1,
+    //     },
+    //     240,
+    //     "h"
+    //   );
+    // } else {
+    //   nuxtStorage.localStorage.setData(
+    //     "viewedCategories",
+    //     {
+    //       ...vcStorage.value,
+    //       [product.value[0].subCategory]: vcStorage.value[
+    //         product.value[0].subCategory
+    //       ]
+    //         ? vcStorage.value[product.value[0].subCategory] + 1
+    //         : 1,
+    //     },
+    //     240,
+    //     "h"
+    //   );
+    // }
   }, 0);
 });
 

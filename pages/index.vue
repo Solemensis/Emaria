@@ -30,6 +30,9 @@ onMounted(() => {
         data-aos-duration="1200"
         class="hero-section page-format"
       >
+        <!-- <div style="position: absolute; top: -3rem; left: 0">
+          <PreferredProducts />
+        </div> -->
         <img
           class="mobile-hero-image"
           src="@/assets/images/hero-scene-mobile.webp"

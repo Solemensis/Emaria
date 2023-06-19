@@ -391,7 +391,7 @@ async function handleSpecificFilter(category, subCategory) {
     display: none;
   }
   .price-flex {
-    width: 85% !important;
+    width: 65% !important;
   }
   .categories {
     flex-direction: row !important;
