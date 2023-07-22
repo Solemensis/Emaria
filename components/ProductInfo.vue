@@ -1,5 +1,5 @@
 <script setup>
-import nuxtStorage from "nuxt-storage";
+// import nuxtStorage from "nuxt-storage";
 
 const route = useRoute();
 const user = useSupabaseUser();

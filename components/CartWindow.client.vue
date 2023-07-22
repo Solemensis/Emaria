@@ -333,15 +333,16 @@ td img {
 .flex {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   /* height: 60vh !important;
   overflow: scroll; */
 }
 .wrapper {
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) !important;
+  top: 30%;
+  transform: translateX(-50%) !important;
+  /* transform: translate(-50%, -50%) !important; */
 }
 
 .heading {
