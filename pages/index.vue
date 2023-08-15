@@ -2,6 +2,10 @@
 const cartStore = useCartStore();
 const user = useSupabaseUser();
 
+// import productImg2 from "../assets/red.png";
+// import productImg3 from "../assets/magic.png";
+// import productImg4 from "../assets/kafein.png";
+
 //fetch user cart on login relocate
 onMounted(() => {
   setTimeout(() => {
@@ -56,7 +60,14 @@ onMounted(() => {
         <img class="hero-image" src="@/assets/images/hero-scene5.webp" alt="" />
       </div>
     </div>
-    <EpicCards />
+    <SquareCard
+      card_heading="Free Shipping"
+      card_img="SquareCard"
+      card_2_heading="24/7 Hour Support"
+      card_2_img="anan"
+      card_3_heading="100% Moneyback"
+      card_3_img="anan"
+    />
     <EpicZ />
     <Footer />
   </div>

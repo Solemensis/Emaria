@@ -1,6 +1,13 @@
+<script setup>
+const props = defineProps({
+  card_heading: String,
+  card_img: String,
+});
+</script>
+
 <template lang="">
   <div class="container">
-    <h2>Thousands of people use our store!</h2>
+    <!-- <h2>Thousands of people use our store!</h2> -->
     <div class="cards page-format">
       <div
         data-aos="fade-down"
@@ -8,10 +15,10 @@
         data-aos-easing="ease-out-back"
         class="card1 card"
       >
-        <img src="@/assets/images/epic1.webp" alt="" />
-        <h3>Free Shipping</h3>
+        <img :src="'@/assets/images/epic1.webp'" alt="" />
+        <h3>{{ card_heading }}</h3>
       </div>
-      <div
+      <!-- <div
         data-aos="fade-down"
         data-aos-duration="1800"
         data-aos-easing="ease-out-back"
@@ -30,7 +37,7 @@
       >
         <img src="@/assets/images/epic3.webp" alt="" />
         <h3>100% Moneyback</h3>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
