@@ -11,7 +11,7 @@ onMounted(() => {
 
 <template>
   <div class="grid">
-    <ProductCard
+    <ShopProductCard
       v-if="useProductsStore().products && useProductsStore().products.length"
       v-for="(product, index) in useProductsStore().products"
       :product="product"

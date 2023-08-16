@@ -6,6 +6,6 @@ definePageMeta({
 
 <template>
   <div>
-    <LoginForm />
+    <LoginLoginForm />
   </div>
 </template>

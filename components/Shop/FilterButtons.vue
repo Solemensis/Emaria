@@ -102,7 +102,7 @@ async function handleSpecificFilter(category, subCategory) {
         }"
         @click="handleFilter(`Tech`)"
         src="@/assets/images/cat1.webp"
-        alt=""
+        alt="computer icon"
       />
       <transition name="my-transition">
         <div class="absText" v-show="filters.category == `Tech`">
@@ -150,7 +150,7 @@ async function handleSpecificFilter(category, subCategory) {
         :class="{ 'get-bigger': filters.category == `Men's` }"
         @click="handleFilter(`Men's`)"
         src="@/assets/images/cat2.webp"
-        alt=""
+        alt="cloth icon"
       />
       <transition name="my-transition">
         <div class="absText" v-show="filters.category == `Men's`">
@@ -191,7 +191,7 @@ async function handleSpecificFilter(category, subCategory) {
         :class="{ 'get-bigger': filters.category == `Women's` }"
         @click="handleFilter(`Women's`)"
         src="@/assets/images/cat3.webp"
-        alt=""
+        alt="cloth icon"
       />
       <transition name="my-transition">
         <div class="absText" v-show="filters.category == `Women's`">
@@ -232,7 +232,7 @@ async function handleSpecificFilter(category, subCategory) {
         :class="{ 'get-bigger': filters.category == `General` }"
         @click="handleFilter(`General`)"
         src="@/assets/images/cat4.webp"
-        alt=""
+        alt="shoe icon"
       /><transition name="my-transition">
         <div class="absText" v-show="filters.category == `General`">
           <h2 class="spec-head">General</h2>
@@ -261,7 +261,7 @@ async function handleSpecificFilter(category, subCategory) {
         :class="{ 'get-bigger': filters.category == `Stuff` }"
         @click="handleFilter(`Stuff`)"
         src="@/assets/images/cat5.webp"
-        alt=""
+        alt="balloon icon"
       /><transition name="my-transition">
         <div class="absText" v-show="filters.category == `Stuff`">
           <h2 class="spec-head">Stuff</h2>

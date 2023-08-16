@@ -89,7 +89,7 @@ function uiMessageHandler(ui, err) {
         removePrefix(product.value[0].image.asset._ref) +
         `.webp`
       "
-      alt=""
+      alt="product image"
     />
     <div
       data-aos="zoom-out"

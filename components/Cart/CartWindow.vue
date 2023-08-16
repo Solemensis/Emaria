@@ -96,6 +96,7 @@ const taxes = computed(() => {
                   removePrefix(item.image) +
                   `.webp`
                 "
+                alt="product image"
               />
             </td>
 

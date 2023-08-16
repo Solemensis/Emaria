@@ -80,11 +80,11 @@ function hideModal2() {
       </FormKit>
       <div class="oauth-box">
         <div @click="oauthLogin('github')" class="git-box">
-          <img src="@/assets/images/github.svg" alt="" />
+          <img src="@/assets/images/github.svg" alt="github logo" />
           <p class="git-login">Continue with GitHub</p>
         </div>
         <div @click="oauthLogin('google')" class="google-box">
-          <img src="@/assets/images/google.svg" alt="" />
+          <img src="@/assets/images/google.svg" alt="google logo" />
           <p class="google-login">Continue with Google</p>
         </div>
       </div>

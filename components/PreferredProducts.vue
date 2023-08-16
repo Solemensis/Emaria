@@ -58,7 +58,7 @@ onMounted(() => {
             removePrefix(product.image.asset._ref) +
             `.webp`
           "
-          alt=""
+          alt="product image"
         />
 
         <h4>{{ product.name }}</h4>

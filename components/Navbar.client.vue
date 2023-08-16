@@ -1,6 +1,4 @@
 <script setup>
-
-
 const slideClassBind = ref(false);
 const userPanelVisible = ref(false);
 
@@ -16,7 +14,7 @@ const signOut = async () => {
 <template>
   <header class="page-format-wide">
     <div class="logo-container">
-      <img class="logo" src="@/assets/images/logo2.webp" alt="" />
+      <img class="logo" src="@/assets/images/logo2.webp" alt="emaria logo" />
       <NuxtLink to="/"> <h2>Emaria</h2></NuxtLink>
     </div>
     <ul
@@ -38,13 +36,17 @@ const signOut = async () => {
     <img
       @click="slideClassBind = !slideClassBind"
       src="@/assets/images/menu.svg"
-      alt=""
+      alt="menu icon"
       class="mobile-nav-button"
     />
     <div class="logged-user-ui" v-if="user().value">
       <NuxtLink to="/cart">
         <div class="cart-box">
-          <img class="cart-img" src="@/assets/images/shopping-cart.svg" />
+          <img
+            class="cart-img"
+            src="@/assets/images/shopping-cart.svg"
+            alt="cart icon"
+          />
           <p v-if="cartStore()?.items?.length" class="cart-counter">&#9679;</p>
         </div>
       </NuxtLink>
@@ -52,7 +54,7 @@ const signOut = async () => {
         @click="showUserPanel"
         class="show-user-panel"
         src="@/assets/images/user-icon.png"
-        alt=""
+        alt="user icon"
       />
       <transition name="my-transition-2">
         <ul v-show="userPanelVisible" class="user-panel">

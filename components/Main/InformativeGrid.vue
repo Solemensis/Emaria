@@ -19,7 +19,7 @@ function isNumberEven(number) {
       data-aos="zoom-out"
       data-aos-duration="700"
       :src="gridElement.image"
-      alt=""
+      alt="informative image"
     />
     <div
       v-if="isNumberEven(index)"
@@ -52,7 +52,7 @@ function isNumberEven(number) {
       data-aos="zoom-out"
       data-aos-duration="700"
       :src="gridElement.image"
-      alt=""
+      alt="informative image"
     />
   </div>
 </template>

@@ -44,7 +44,7 @@ const gridElements = [
         <img
           class="mobile-hero-image"
           src="@/assets/images/hero-scene-mobile.webp"
-          alt=""
+          alt="snow globe image"
         />
         <div class="hero-left">
           <h1>Welcome To <br /><span class="span">Emaria!</span></h1>
@@ -61,13 +61,17 @@ const gridElements = [
           </p>
           <div id="cards"></div>
         </div>
-        <img class="hero-image" src="@/assets/images/hero-scene5.webp" alt="" />
+        <img
+          class="hero-image"
+          src="@/assets/images/hero-scene5.webp"
+          alt="e-commerce image"
+        />
       </div>
     </div>
     <section class="page-format-normal square-cards-section">
       <h2 class="square-cards-heading">Thousands of people use our store!</h2>
       <div class="square-cards">
-        <SquareCard
+        <MainSquareCard
           data-aos="fade-down"
           data-aos-duration="1800"
           data-aos-easing="ease-out-back"
@@ -75,7 +79,7 @@ const gridElements = [
           card-heading="Free Shipping"
           card-img="https://res.cloudinary.com/dyur9xfhi/image/upload/v1692133990/Emaria_assets/card_image_1_io2t0x.webp"
         />
-        <SquareCard
+        <MainSquareCard
           data-aos="fade-down"
           data-aos-duration="1800"
           data-aos-easing="ease-out-back"
@@ -84,7 +88,7 @@ const gridElements = [
           card-heading="24/7 Hour Support"
           card-img="https://res.cloudinary.com/dyur9xfhi/image/upload/v1692134307/Emaria_assets/card_image_2_t84nfe.webp"
         />
-        <SquareCard
+        <MainSquareCard
           class="card-3"
           data-aos="fade-down"
           data-aos-duration="1800"
@@ -96,7 +100,7 @@ const gridElements = [
         />
       </div>
     </section>
-    <InformativeGrid :grid-elements="[...gridElements]" />
+    <MainInformativeGrid :grid-elements="[...gridElements]" />
     <Footer />
   </div>
 </template>

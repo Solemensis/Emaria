@@ -23,6 +23,7 @@ const props = defineProps({
         removePrefix(product.image.asset._ref) +
         `.webp`
       "
+      alt="product image"
     />
 
     <p class="title">

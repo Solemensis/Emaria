@@ -8,7 +8,7 @@ const props = defineProps({
 
 <template lang="">
   <div :style="`background-color:${cardColor}`" class="card">
-    <nuxt-img :src="cardImg" alt="" />
+    <nuxt-img :src="cardImg" alt="informative image" />
     <h3>{{ cardHeading }}</h3>
   </div>
 </template>

@@ -3,15 +3,21 @@
     <h2 class="copyright">2022 @Solemensis</h2>
     <div>
       <a href="#">
-        <img class="logo" src="@/assets/images/logo2.webp" alt="" />
+        <img class="logo" src="@/assets/images/logo2.webp" alt="emaria logo" />
       </a>
     </div>
 
     <div class="socials-container">
       <a href="https://github.com/Solemensis" target="_blank"
-        ><img class="github-img" src="@/assets/images/github.webp" alt="" /></a
+        ><img
+          class="github-img"
+          src="@/assets/images/github.webp"
+          alt="github logo" /></a
       ><a href="https://www.instagram.com/ulassacli/" target="_blank">
-        <img class="instagram-img" src="@/assets/images/instagram.webp" alt=""
+        <img
+          class="instagram-img"
+          src="@/assets/images/instagram.webp"
+          alt="instagram logo"
       /></a>
     </div>
   </div>
