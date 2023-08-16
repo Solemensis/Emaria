@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 
 export default defineEventHandler(async (event) => {
   const userId = await readBody(event);
-
+  console.log(userId);
   const userCartProducts = await prisma.Carts.findFirst({
     where: {
       user_id: userId,

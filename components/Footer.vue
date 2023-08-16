@@ -1,44 +1,23 @@
 <template>
-  <div>
-    <div class="footer-container">
-      <h2 class="copyright">2022 @Solemensis</h2>
-      <div>
-        <a href="#">
-          <img class="logo" src="@/assets/images/logo2.webp" alt="" />
-        </a>
-      </div>
+  <div class="footer-container">
+    <h2 class="copyright">2022 @Solemensis</h2>
+    <div>
+      <a href="#">
+        <img class="logo" src="@/assets/images/logo2.webp" alt="" />
+      </a>
+    </div>
 
-      <div class="social-container">
-        <a href="https://github.com/Solemensis" target="_blank"
-          ><img class="github" src="@/assets/images/github.webp" alt="" /></a
-        ><a href="https://www.instagram.com/ulassacli/" target="_blank">
-          <img class="instagram" src="@/assets/images/instagram.webp" alt=""
-        /></a>
-      </div>
+    <div class="socials-container">
+      <a href="https://github.com/Solemensis" target="_blank"
+        ><img class="github-img" src="@/assets/images/github.webp" alt="" /></a
+      ><a href="https://www.instagram.com/ulassacli/" target="_blank">
+        <img class="instagram-img" src="@/assets/images/instagram.webp" alt=""
+      /></a>
     </div>
   </div>
 </template>
 
 <style scoped>
-.logo {
-  height: 8rem;
-  width: 8rem;
-  animation: turn 3s linear infinite;
-  cursor: pointer;
-}
-
-@keyframes turn {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.copyright {
-  color: #ededed;
-}
 .footer-container {
   background-color: #000000;
   background-image: linear-gradient(315deg, #212121 0%, #313131 74%);
@@ -50,11 +29,49 @@
   margin-top: 10rem;
 }
 
+.copyright {
+  color: #ededed;
+}
+
+.logo {
+  height: 8rem;
+  width: 8rem;
+  animation: turn 3s linear infinite;
+  cursor: pointer;
+}
+
+.socials-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 12rem;
+}
+.github-img {
+  height: 4rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.instagram-img {
+  height: 3.5rem;
+  margin-top: 0.1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+@keyframes turn {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @media (hover: hover) {
-  .github:hover {
+  .github-img:hover {
     transform: translateY(-0.35rem);
   }
-  .instagram:hover {
+  .instagram-img:hover {
     transform: translateY(-0.35rem);
   }
 }
@@ -62,7 +79,7 @@
   .copyright {
     font-size: 1.2rem;
   }
-  .social-container {
+  .socials-container {
     width: 10rem !important;
   }
   .footer-container {
@@ -73,29 +90,11 @@
     height: 5rem;
     width: 5rem;
   }
-  .github {
+  .github-img {
     height: 3rem !important;
   }
-  .instagram {
+  .instagram-img {
     height: 2.5rem !important;
   }
-}
-.social-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 12rem;
-}
-.github {
-  height: 4rem;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.instagram {
-  height: 3.5rem;
-  margin-top: 0.1rem;
-  cursor: pointer;
-  transition: transform 0.2s;
 }
 </style>

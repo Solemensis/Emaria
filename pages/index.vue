@@ -1,30 +1,34 @@
 <script setup>
-const cartStore = useCartStore();
-const user = useSupabaseUser();
-
-// import productImg2 from "../assets/red.png";
-// import productImg3 from "../assets/magic.png";
-// import productImg4 from "../assets/kafein.png";
-
-//fetch user cart on login relocate
-onMounted(() => {
-  setTimeout(() => {
-    //get the cart state of the user from db and put it to the cartStore
-    if (!user.value) return console.log("no user");
-    if (!cartStore.items.length) return console.log("no item in user cart");
-
-    setTimeout(async () => {
-      const { data: products } = await useFetch("/api/queryCart", {
-        method: "post",
-        body: user.value.id,
-      });
-
-      if (products.value) {
-        cartStore.items = products.value.cart;
-      }
-    }, 200);
-  }, 500);
-});
+const gridElements = [
+  {
+    image:
+      "https://res.cloudinary.com/dyur9xfhi/image/upload/v1692171097/Emaria_assets/grid_image_1_ijexvm.webp",
+    heading: "Visit Shops To Get Coupons!",
+    description:
+      "Come to our place, share your location on social media via GPS to get discount and product coupons!",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dyur9xfhi/image/upload/v1692171115/Emaria_assets/grid_image_2_iemq3i.webp",
+    heading: "Earn Points In Monthly Events!",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, ullam. At!",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dyur9xfhi/image/upload/v1692171122/Emaria_assets/grid_image_3_r6hetm.webp",
+    heading: "Exchange Like a Boss!",
+    description:
+      "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet sunt numquam accusamus.",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dyur9xfhi/image/upload/v1692171131/Emaria_assets/grid_image_4_tofydu.webp",
+    heading: "Gain Coupons With Every Purchase!",
+    description:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae provident earum sit commodi illo aspernatur adipisci non.",
+  },
+];
 </script>
 <template lang="">
   <div>
@@ -32,7 +36,7 @@ onMounted(() => {
       <div
         data-aos="zoom-out"
         data-aos-duration="1200"
-        class="hero-section page-format"
+        class="hero-section page-format-normal"
       >
         <!-- <div style="position: absolute; top: -3rem; left: 0">
           <PreferredProducts />
@@ -48,37 +52,57 @@ onMounted(() => {
           <div class="buttons">
             <NuxtLink to="/shop">
               <button class="shop-button">Go Shop</button></NuxtLink
-            ><a href="#dest"
+            ><a href="#cards"
               ><button class="learn-button">Learn More ⬇</button></a
             >
           </div>
           <p class="extra-content">
             Up to <span class="span2">20%</span> off on weekends!
           </p>
-          <p id="dest" class="ghost-content">ghost content</p>
+          <div id="cards"></div>
         </div>
         <img class="hero-image" src="@/assets/images/hero-scene5.webp" alt="" />
       </div>
     </div>
-    <SquareCard
-      card_heading="Free Shipping"
-      card_img="SquareCard"
-      card_2_heading="24/7 Hour Support"
-      card_2_img="anan"
-      card_3_heading="100% Moneyback"
-      card_3_img="anan"
-    />
-    <EpicZ />
+    <section class="page-format-normal square-cards-section">
+      <h2 class="square-cards-heading">Thousands of people use our store!</h2>
+      <div class="square-cards">
+        <SquareCard
+          data-aos="fade-down"
+          data-aos-duration="1800"
+          data-aos-easing="ease-out-back"
+          card-color="#38c59f38"
+          card-heading="Free Shipping"
+          card-img="https://res.cloudinary.com/dyur9xfhi/image/upload/v1692133990/Emaria_assets/card_image_1_io2t0x.webp"
+        />
+        <SquareCard
+          data-aos="fade-down"
+          data-aos-duration="1800"
+          data-aos-easing="ease-out-back"
+          data-aos-delay="300"
+          card-color="#38c59f38"
+          card-heading="24/7 Hour Support"
+          card-img="https://res.cloudinary.com/dyur9xfhi/image/upload/v1692134307/Emaria_assets/card_image_2_t84nfe.webp"
+        />
+        <SquareCard
+          class="card-3"
+          data-aos="fade-down"
+          data-aos-duration="1800"
+          data-aos-easing="ease-out-back"
+          data-aos-delay="450"
+          card-color="#38c59f38"
+          card-heading="100% Moneyback"
+          card-img="https://res.cloudinary.com/dyur9xfhi/image/upload/v1692134306/Emaria_assets/card_image_3_pdupma.webp"
+        />
+      </div>
+    </section>
+    <InformativeGrid :grid-elements="[...gridElements]" />
     <Footer />
   </div>
 </template>
 
 <style scoped>
-.ghost-content {
-  position: absolute;
-  margin-top: -3.4rem;
-  opacity: 0;
-}
+/* Hero section */
 .buttons {
   display: flex;
   align-items: center;
@@ -309,4 +333,42 @@ span {
     justify-content: center !important;
   }
 }
+/* Hero section ends */
+
+/* SquareCards section */
+#cards {
+  position: absolute;
+  margin-top: -3.4rem;
+  opacity: 0;
+}
+.square-cards-section {
+  margin-top: 5rem;
+  margin-bottom: 17rem;
+}
+.square-cards {
+  display: flex;
+  justify-content: space-evenly;
+}
+.square-cards-heading {
+  font-weight: 500;
+  font-size: 4.5rem;
+  text-align: center;
+  margin-bottom: 6rem;
+  color: rgb(36, 36, 36);
+}
+@media (orientation: portrait) {
+  .square-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    grid-row-gap: 2.2rem;
+  }
+  .square-cards-heading {
+    font-size: 3.5rem;
+  }
+  .card-3 {
+    grid-column: 1 / 3;
+  }
+}
+/* SquareCards section ends */
 </style>

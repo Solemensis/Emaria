@@ -1,15 +1,28 @@
 <script setup>
-const user = useSupabaseUser();
-const cartStore = useCartStore();
+//fetch user cart after component mount
+onMounted(async () => {
+  //if user, get the cart state of the user from db and put it to the cartStore
+  if (!user().value) return;
+  if (cartStore().items?.length) return;
+
+  const { data: products } = await useFetch("/api/queryCart", {
+    method: "post",
+    body: user().value.id,
+  });
+
+  if (products.value) {
+    cartStore().items = products.value.cart;
+  }
+});
 
 async function removeFromCart(product) {
-  cartStore.items = cartStore.items.filter((i) => i.sku !== product.sku);
+  cartStore().items = cartStore().items.filter((i) => i.sku !== product.sku);
 
   const { data, error } = await useFetch("/api/removeFromCart", {
     method: "post",
     body: {
-      newCart: cartStore.items,
-      userId: user.value.id,
+      newCart: cartStore().items,
+      userId: user().value.id,
     },
   });
 }
@@ -21,8 +34,8 @@ async function decrementAmount(product) {
   const { data, error } = await useFetch("/api/changeItemAmount", {
     method: "post",
     body: {
-      newCart: cartStore.items,
-      userId: user.value.id,
+      newCart: cartStore().items,
+      userId: user().value.id,
     },
   });
 }
@@ -33,18 +46,18 @@ async function incrementAmount(product) {
   const { data, error } = await useFetch("/api/changeItemAmount", {
     method: "post",
     body: {
-      newCart: cartStore.items,
-      userId: user.value.id,
+      newCart: cartStore().items,
+      userId: user().value.id,
     },
   });
 }
 
 //shopping totals
 const subTotal = computed(() => {
-  return cartStore.subTotal.toFixed(2);
+  return cartStore().subTotal.toFixed(2);
 });
 const total = computed(() => {
-  return (cartStore.subTotal + cartStore.subTotal * 0.1).toFixed(2);
+  return (cartStore().subTotal + cartStore().subTotal * 0.1).toFixed(2);
 });
 const taxes = computed(() => {
   return (subTotal.value * 0.1).toFixed(2);
@@ -53,7 +66,7 @@ const taxes = computed(() => {
 
 <template>
   <div style="height: 100vh; width: 100vh">
-    <div class="wrapper page-format">
+    <div class="wrapper page-format-normal">
       <h2 class="heading">Your Cart</h2>
       <!-- <h2 class="heading2">Your cart is empty.</h2> -->
       <div class="flex">
@@ -67,8 +80,8 @@ const taxes = computed(() => {
           </tr>
           <div class="div"></div>
           <tr
-            v-if="cartStore.items && cartStore.items.length"
-            v-for="(item, index) in cartStore.items"
+            v-if="cartStore().items && cartStore().items.length"
+            v-for="(item, index) in cartStore().items"
           >
             <td class="delete-button">
               <span @click="removeFromCart(item)" class="delete-button-ico"

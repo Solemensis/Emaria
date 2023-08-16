@@ -3,10 +3,8 @@ const userName = ref("");
 const email = ref("");
 const password = ref("");
 
-const client = useSupabaseAuthClient();
-
 const signUp = async () => {
-  const { data, error } = await client.auth.signUp({
+  const { data, error } = await client().auth.signUp({
     email: email.value,
     password: password.value,
   });

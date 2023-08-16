@@ -1,24 +1,18 @@
 <script setup>
-const signOut = async () => {
-  const { error } = await client.auth.signOut();
+const slideClassBind = ref(false);
+const userPanelVisible = ref(false);
 
+function showUserPanel() {
+  userPanelVisible.value = !userPanelVisible.value;
+}
+
+const signOut = async () => {
+  const { error } = await client().auth.signOut();
   navigateTo("/");
 };
-
-const client = useSupabaseAuthClient();
-const user = useSupabaseUser();
-
-const slide = ref(false);
-const showList = ref(false);
-
-const hideList = function () {
-  showList.value = !showList.value;
-};
-
-const cartStore = useCartStore();
 </script>
-<template lang="">
-  <header class="page-format2">
+<template>
+  <header class="page-format-wide">
     <div class="logo-container">
       <img class="logo" src="@/assets/images/logo2.webp" alt="" />
       <NuxtLink to="/"> <h2>Emaria</h2></NuxtLink>
@@ -26,7 +20,7 @@ const cartStore = useCartStore();
     <ul
       class="nav-ul"
       :class="{
-        slide: slide,
+        slide: slideClassBind,
       }"
     >
       <li class="nav-li">
@@ -40,39 +34,41 @@ const cartStore = useCartStore();
       </li>
     </ul>
     <img
-      @click="slide = !slide"
+      @click="slideClassBind = !slideClassBind"
       src="@/assets/images/menu.svg"
       alt=""
-      class="menu-button"
+      class="mobile-nav-button"
     />
-    <div class="user-logged" v-if="user">
+    <div class="logged-user-ui" v-if="user().value">
       <NuxtLink to="/cart">
         <div class="cart-box">
           <img class="cart-img" src="@/assets/images/shopping-cart.svg" />
-          <p v-if="cartStore.items.length" class="cart-counter">&#9679;</p>
+          <p v-if="cartStore()?.items?.length ?? false" class="cart-counter">
+            &#9679;
+          </p>
         </div>
       </NuxtLink>
       <img
-        @click="hideList()"
-        class="user-profile-button"
+        @click="showUserPanel"
+        class="show-user-panel"
         src="@/assets/images/user-icon.png"
         alt=""
       />
       <transition name="my-transition-2">
-        <ul v-show="showList" class="user-profile-list">
-          <p class="usermail">{{ user.email }}</p>
-          <NuxtLink @click="hideList()" class="nav-link" to="/cart"
-            ><li class="user-profile-link">Cart</li>
+        <ul v-show="userPanelVisible" class="user-panel">
+          <p class="user-mail">{{ user().value?.email }}</p>
+          <NuxtLink @click="showUserPanel" class="nav-link" to="/cart"
+            ><li class="user-panel-links">Cart</li>
           </NuxtLink>
-          <NuxtLink @click="hideList()" class="nav-link" to="/profile">
-            <li class="user-profile-link">Profile</li>
+          <NuxtLink @click="showUserPanel" class="nav-link" to="/profile">
+            <li class="user-panel-links">Profile</li>
           </NuxtLink>
 
-          <li @click="signOut()" class="user-profile-link">Logout</li>
+          <li @click="signOut()" class="user-panel-links">Logout</li>
         </ul>
       </transition>
     </div>
-    <div v-else class="login-signup">
+    <div v-else class="not-logged-user-ui">
       <NuxtLink class="li" to="/login"
         ><button class="login-button">Login</button></NuxtLink
       >
@@ -83,15 +79,67 @@ const cartStore = useCartStore();
   </header>
 </template>
 <style scoped>
-.cart-counter {
-  position: absolute;
-  color: red !important;
-  font-size: 1.5rem !important;
-  top: -0.8rem;
-  right: 0;
-  font-weight: 800 !important;
-  z-index: 999;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 4rem;
+  position: relative;
+  border-bottom: rgb(197, 197, 197) 1px solid;
 }
+
+/* Logo container */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16rem;
+}
+.logo-container img {
+  height: 5.5rem;
+  margin-right: 0.3rem;
+}
+.logo-container h2 {
+  font-size: 2.6rem;
+  font-family: "Abel";
+  font-weight: 800;
+  color: black;
+  cursor: pointer;
+}
+/* Logo container ends */
+
+/* Navigation links */
+.nav-link {
+  color: #000000;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: "Barlow Condensed";
+  font-size: 2.5rem;
+}
+.nav-link.router-link-active {
+  border-bottom: 3px solid rgb(255, 106, 255);
+  padding-bottom: 2px;
+}
+.nav-li:after,
+.nav-ul {
+  display: flex;
+  list-style: none;
+  z-index: 900;
+}
+.nav-li {
+  text-decoration: none;
+  color: black;
+  font-size: 2rem;
+  font-weight: 500;
+  margin-right: 5rem;
+  position: relative;
+}
+.nav-li:last-child {
+  margin-right: 0 !important;
+}
+/* Navigation links ends */
+
+/* Cart and user parts */
 .cart-box {
   z-index: 999;
   /* border: 3px solid rgb(255, 156, 255); */
@@ -108,33 +156,18 @@ const cartStore = useCartStore();
   width: 2.7rem;
   margin-top: 0.2rem;
 }
-.username {
-  min-width: 7rem;
-  font-size: 2rem;
-  color: #1faf24;
-  text-align: center;
-  margin-bottom: 0.8rem;
-  font-weight: 600;
+
+.cart-counter {
+  position: absolute;
+  color: red !important;
+  font-size: 1.5rem !important;
+  top: -0.8rem;
+  right: 0;
+  font-weight: 800 !important;
+  z-index: 999;
 }
-.usermail {
-  min-width: 7rem;
-  font-size: 1.4rem;
-  color: #1faf24;
-  text-align: center;
-  margin-bottom: 0.8rem;
-  font-weight: 600;
-}
-.user-profile-button {
-  width: 4rem;
-  margin-left: 1rem;
-  border: 2px solid #2d2d2d5c;
-  border-radius: 0.7rem;
-  transition: 0.2s;
-}
-.user-profile-button:hover {
-  background-color: #ff00440b;
-}
-.user-profile-list {
+
+.user-panel {
   position: absolute;
   top: 7rem;
   right: 0;
@@ -148,11 +181,26 @@ const cartStore = useCartStore();
   border: 2px solid #ddd;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-.user-logged {
-  position: relative;
-  padding-left: 10rem;
+.show-user-panel {
+  width: 4rem;
+  margin-left: 1rem;
+  border: 2px solid #2d2d2d5c;
+  border-radius: 0.7rem;
+  transition: 0.2s;
 }
-.user-profile-link {
+.show-user-panel:hover {
+  background-color: #ff00440b;
+}
+.user-mail {
+  min-width: 7rem;
+  font-size: 1.4rem;
+  color: #1faf24;
+  text-align: center;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.user-panel-links {
   font-size: 1.8rem;
   margin-bottom: -0.1rem;
   cursor: pointer;
@@ -160,50 +208,26 @@ const cartStore = useCartStore();
   font-family: "Barlow Condensed";
   color: black;
 }
-.user-profile-link:hover {
+
+.user-panel-links:hover {
   color: orangered;
 }
 
-.menu-button {
+.logged-user-ui {
+  position: relative;
+  padding-left: 10rem;
+}
+.mobile-nav-button {
   display: none;
 }
-
-.login-signup {
+.not-logged-user-ui {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   width: 16rem;
   z-index: 9999;
 }
-.nav-link {
-  color: #000000;
-  cursor: pointer;
-  text-decoration: none;
-  font-family: "Barlow Condensed";
-  font-size: 2.5rem;
-}
-.nav-link.router-link-active {
-  border-bottom: 3px solid rgb(255, 106, 255);
-  padding-bottom: 2px;
-}
-.nav-li:after,
-.login-button:after {
-  content: "";
-  position: absolute;
-  background-color: rgb(255, 106, 255);
-  height: 2px;
-  width: 0%;
-  left: 0;
-  bottom: -0.5rem;
-  transition: 0.2s;
-}
-.logo-container h2 {
-  font-size: 2.6rem;
-  font-family: "Abel";
-  font-weight: 800;
-  color: black;
-  cursor: pointer;
-}
+
 button {
   margin-top: 0;
   padding: 1rem 2rem;
@@ -214,6 +238,36 @@ button {
   font-weight: 600;
 }
 
+.login-button,
+.register-button {
+  font-family: "Barlow Condensed";
+  font-size: 2rem;
+  font-weight: 500;
+}
+.logout-button {
+  cursor: pointer;
+  z-index: 999;
+  margin: 1rem 2rem;
+  padding: 0;
+}
+
+.login-button {
+  cursor: pointer;
+  padding: 0;
+  font-size: 1.5rem;
+  position: relative;
+}
+
+.login-button:after {
+  content: "";
+  position: absolute;
+  background-color: rgb(255, 106, 255);
+  height: 2px;
+  width: 0%;
+  left: 0;
+  bottom: -0.5rem;
+  transition: 0.2s;
+}
 .register-button {
   cursor: pointer;
   margin-top: 0.2rem;
@@ -241,58 +295,8 @@ button {
   );
   animation: button-pop 0.3s ease-out;
 }
-.login-button {
-  cursor: pointer;
-  padding: 0;
-  font-size: 1.5rem;
-  position: relative;
-}
-.login-button,
-.register-button {
-  font-family: "Barlow Condensed";
-  font-size: 2rem;
-  font-weight: 500;
-}
-.logout-button {
-  cursor: pointer;
-  z-index: 999;
-  margin: 1rem 2rem;
-  padding: 0;
-}
-.logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 16rem;
-}
-.logo-container img {
-  height: 5.5rem;
-  margin-right: 0.3rem;
-}
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.8rem 4rem;
-  position: relative;
-  border-bottom: rgb(197, 197, 197) 1px solid;
-}
-.nav-ul {
-  display: flex;
-  list-style: none;
-  z-index: 900;
-}
-.nav-li {
-  text-decoration: none;
-  color: black;
-  font-size: 2rem;
-  font-weight: 500;
-  margin-right: 5rem;
-  position: relative;
-}
-.nav-li:last-child {
-  margin-right: 0 !important;
-}
+/* Cart and user parts done */
+
 @media (hover: hover) {
   .nav-li:hover:after,
   .login-button:hover:after,
@@ -303,46 +307,32 @@ header {
     background-position: right center;
     box-shadow: 0 0 20px #eee;
   }
+  .login-button:hover,
+  .login-button:active {
+    background-color: transparent !important;
+  }
   .logout-button:hover {
     background: transparent;
   }
-  .login-button:hover,
-  .login-button:active {
-    background-color: transparent !important;
-  }
 }
 @media (orientation: portrait) {
-  .cart-box {
-    right: 2rem !important;
+  header {
+    width: 100vw !important;
+    padding: 0.6rem 1rem !important;
+    z-index: 9999;
   }
-  .login-button:hover,
-  .login-button:active {
-    background-color: transparent !important;
-  }
-  .nav-link {
-    font-size: 2rem;
-  }
-  .login-button {
-    font-size: 1.6rem;
-  }
-  .register-button {
-    font-size: 1.7rem;
-    padding: 0.6rem 0.9rem;
-  }
-  .login-signup,
   .logo-container {
     width: 12rem;
   }
-
-  .page-format2 {
-    padding: 2rem 0.5rem 2rem 0;
-  }
-  .menu-button {
+  .mobile-nav-button {
     display: flex;
     width: 2.5rem;
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
+  }
+  .nav-link {
+    font-size: 2rem;
   }
   .nav-ul {
     top: 7.5rem;
@@ -353,13 +343,26 @@ header {
     margin-left: 1rem;
   }
   .slide {
-    transform: translate(-50%, 0);
+    transform: translate(-50%, 30%);
   }
 
-  header {
-    width: 100vw !important;
-    padding: 0.6rem 1rem !important;
-    z-index: 9999;
+  .cart-box {
+    right: 2rem !important;
+  }
+  .login-button {
+    font-size: 1.6rem;
+  }
+  .register-button {
+    font-size: 1.7rem;
+    padding: 0.6rem 0.9rem;
+  }
+  .login-button:hover,
+  .login-button:active {
+    background-color: transparent !important;
+  }
+  .not-logged-user-ui {
+    justify-content: flex-end;
+    gap: 1rem;
   }
 }
 </style>

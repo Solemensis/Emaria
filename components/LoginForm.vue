@@ -2,10 +2,8 @@
 const email = ref("");
 const password = ref("");
 
-const client = useSupabaseAuthClient();
-
 async function login() {
-  const { data, error } = await client.auth.signInWithPassword({
+  const { data, error } = await client().auth.signInWithPassword({
     email: email.value,
     password: password.value,
   });
@@ -23,7 +21,7 @@ async function login() {
 }
 
 async function oauthLogin(provider) {
-  const { data, error } = await client.auth.signInWithOAuth({
+  const { data, error } = await client().auth.signInWithOAuth({
     provider: provider,
   });
 }

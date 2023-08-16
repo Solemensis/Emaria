@@ -2,10 +2,8 @@
 // import nuxtStorage from "nuxt-storage";
 
 const route = useRoute();
-const user = useSupabaseUser();
 
 const product = reactive({});
-const cartStore = useCartStore();
 
 onMounted(() => {
   setTimeout(async () => {
@@ -45,11 +43,11 @@ onMounted(() => {
 });
 
 async function addToCart(item) {
-  if (!user.value) return uiMessageHandler("", "You need to login.");
+  if (!user().value) return uiMessageHandler("", "You need to login.");
 
   uiMessageHandler("Item added to the cart.", "");
 
-  cartStore.addToCart({
+  cartStore().addToCart({
     sku: item.sku,
     name: item.name,
     image: item.image.asset._ref,
@@ -61,8 +59,8 @@ async function addToCart(item) {
   const { error } = await useFetch("/api/addToCart", {
     method: "post",
     body: {
-      cart: cartStore.items,
-      userId: user.value.id,
+      cart: cartStore().items,
+      userId: user().value.id,
     },
   });
 }

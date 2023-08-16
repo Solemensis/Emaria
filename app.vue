@@ -1,22 +1,19 @@
 <script setup>
-const user = useSupabaseUser();
-const cartStore = useCartStore();
-
 // new code
 
 //get the cart state of the user from db and put it to the store
 onMounted(() => {
   setTimeout(async () => {
-    if (!user.value) return;
-    if (cartStore.items.length) return;
+    if (!user().value) return;
+    if (cartStore().items.length) return;
 
     const { data: products, error } = await useFetch("/api/queryCart", {
       method: "post",
-      body: user.value.id,
+      body: user().value.id,
     });
 
     if (products.value) {
-      cartStore.items = products.value.cart;
+      cartStore().items = products.value.cart;
     }
   }, 0);
 });
@@ -33,6 +30,54 @@ onMounted(() => {
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abel&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500&display=swap");
+
+/* Global styles */
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  user-select: none;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden !important;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand";
+  user-select: none;
+}
+button {
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: default;
+}
+.page-format-normal {
+  width: 85%;
+  margin: 0 auto;
+}
+.page-format-wide {
+  width: 95%;
+  margin: 0 auto;
+}
+
+@keyframes button-pop {
+  0% {
+    transform: scale(0.94);
+  }
+  40% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 .my-transition-enter-from,
 .my-transition-leave-to {
@@ -52,58 +97,16 @@ onMounted(() => {
   transition: opacity 0.2s ease-out;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Quicksand";
-  user-select: none;
-}
-button {
-  border: none;
-}
+/* Global styles ends */
 
-@keyframes button-pop {
-  0% {
-    transform: scale(0.94);
-  }
-  40% {
-    transform: scale(1.02);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-a {
-  text-decoration: none;
-  cursor: default;
-}
-.page-format {
-  width: 85%;
-  margin: 0 auto;
-}
-.page-format2 {
-  width: 95%;
-  margin: 0 auto;
-}
-html {
-  font-size: 62.5%;
-  scroll-behavior: smooth;
-  user-select: none;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden !important;
-}
+/* Global media queries */
 @media (min-width: 1920px) {
   html {
     font-size: 75%;
   }
 }
 @media (max-width: 1250px) {
-  .page-format {
+  .page-format-normal {
     width: 90%;
   }
   html {
@@ -111,7 +114,7 @@ body {
   }
 }
 @media (max-width: 1120px) {
-  .page-format {
+  .page-format-normal {
     width: 95%;
   }
 }
@@ -152,8 +155,9 @@ body {
     font-size: 5.7rem !important;
   }
 }
+/* Global media queries ends */
 
-/* scroll bar  */
+/* Scroll bar  */
 ::-webkit-scrollbar {
   width: 1rem;
   /* border-radius: 0.5rem; */
@@ -167,4 +171,5 @@ body {
 ::-webkit-scrollbar-thumb:active {
   background-color: hsl(0, 0%, 33%);
 }
+/* Scroll bar ends */
 </style>
