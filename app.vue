@@ -1,23 +1,4 @@
-<script setup>
-// new code
-
-//get the cart state of the user from db and put it to the store
-onMounted(() => {
-  setTimeout(async () => {
-    if (!user().value) return;
-    if (cartStore().items.length) return;
-
-    const { data: products, error } = await useFetch("/api/queryCart", {
-      method: "post",
-      body: user().value.id,
-    });
-
-    if (products.value) {
-      cartStore().items = products.value.cart;
-    }
-  }, 0);
-});
-</script>
+<script setup></script>
 <template>
   <div>
     <Navbar />

@@ -1,11 +1,7 @@
 <script setup>
-onMounted(() => {
-  setTimeout(async () => {
-    const query = groq`*[_type == "product"][0...12]`;
-    const { data: fetchedProducts } = await useSanityQuery(query);
-
-    useProductsStore().products = fetchedProducts.value;
-  }, 0);
+const props = defineProps({
+  product: Object,
+  index: Number,
 });
 </script>
 
@@ -14,8 +10,6 @@ onMounted(() => {
     data-aos="zoom-in"
     data-aos-duration="500"
     data-aos-easing="in-out-sine"
-    v-if="useProductsStore().products && useProductsStore().products.length"
-    v-for="(product, index) in useProductsStore().products"
     :key="product._id"
     class="card"
   >

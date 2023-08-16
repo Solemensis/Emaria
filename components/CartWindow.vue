@@ -1,15 +1,12 @@
 <script setup>
-//fetch user cart after component mount
+//if user, fetch user cart
 onMounted(async () => {
-  //if user, get the cart state of the user from db and put it to the cartStore
   if (!user().value) return;
   if (cartStore().items?.length) return;
-
   const { data: products } = await useFetch("/api/queryCart", {
     method: "post",
-    body: user().value.id,
+    body: { userId: user().value.id },
   });
-
   if (products.value) {
     cartStore().items = products.value.cart;
   }
@@ -28,8 +25,9 @@ async function removeFromCart(product) {
 }
 
 async function decrementAmount(product) {
-  if (product.amount <= 1) return;
-  product.amount--;
+  if (!product.amount <= 1) {
+    product.amount--;
+  }
 
   const { data, error } = await useFetch("/api/changeItemAmount", {
     method: "post",
@@ -66,9 +64,11 @@ const taxes = computed(() => {
 
 <template>
   <div style="height: 100vh; width: 100vh">
-    <div class="wrapper page-format-normal">
+    <h2 v-if="!cartStore().items?.length" class="your-cart-empty">
+      Your cart is empty.
+    </h2>
+    <div v-else class="wrapper page-format-normal">
       <h2 class="heading">Your Cart</h2>
-      <!-- <h2 class="heading2">Your cart is empty.</h2> -->
       <div class="flex">
         <table>
           <tr>
@@ -80,7 +80,7 @@ const taxes = computed(() => {
           </tr>
           <div class="div"></div>
           <tr
-            v-if="cartStore().items && cartStore().items.length"
+            v-if="cartStore().items?.length"
             v-for="(item, index) in cartStore().items"
           >
             <td class="delete-button">
@@ -146,7 +146,6 @@ const taxes = computed(() => {
   padding-top: 2rem;
   margin-bottom: 5rem;
 }
-
 .price-box {
   font-size: 2rem;
   font-weight: 700;
@@ -367,7 +366,7 @@ td img {
   border-radius: 1rem;
   display: none;
 }
-.heading2 {
+.your-cart-empty {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -378,7 +377,7 @@ td img {
   font-size: 3rem;
 }
 @media (orientation: portrait) {
-  .heading2 {
+  .your-cart-empty {
     width: 90%;
     text-align: center;
     font-size: 3rem;

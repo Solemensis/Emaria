@@ -1,8 +1,22 @@
+<script setup>
+onMounted(() => {
+  setTimeout(async () => {
+    const query = groq`*[_type == "product"][0...12]`;
+    const { data: fetchedProducts } = await useSanityQuery(query);
+
+    useProductsStore().products = fetchedProducts.value;
+  }, 0);
+});
+</script>
+
 <template>
-  <div>
-    <div class="grid">
-      <ProductCard />
-    </div>
+  <div class="grid">
+    <ProductCard
+      v-if="useProductsStore().products && useProductsStore().products.length"
+      v-for="(product, index) in useProductsStore().products"
+      :product="product"
+      :index="index"
+    />
     <LoadingSpinner />
   </div>
 </template>

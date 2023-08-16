@@ -7,7 +7,7 @@ export const user = () => {
 };
 
 export const client = () => {
-  return useSupabaseAuthClient();
+  return useSupabaseClient();
 };
 
 export const cartStore = () => {

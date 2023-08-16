@@ -9,22 +9,19 @@
   },
   "devDependencies": {
     "@nuxt/image": "^1.0.0-rc.1",
-    "@pinia/nuxt": "^0.4.10",
-    "nuxt": "^3.4.3",
-    "prisma": "^4.14.0"
+    "@pinia/nuxt": "^0.4.11",
+    "nuxt": "^3.6.5",
+    "prisma": "^5.1.1"
   },
   "dependencies": {
-    "@formkit/nuxt": "^0.17.0",
-    "@nuxtjs/sanity": "^1.7.2",
-    "@nuxtjs/supabase": "^0.3.5",
-    "@prisma/client": "^4.14.0",
-    "@vueuse/components": "^10.1.2",
-    "@vueuse/nuxt": "^10.1.2",
+    "@formkit/nuxt": "^0.18.1",
+    "@nuxtjs/sanity": "^1.8.1",
+    "@nuxtjs/supabase": "^1.0.2",
+    "@prisma/client": "^5.1.1",
+    "@vueuse/components": "^10.3.0",
+    "@vueuse/nuxt": "^10.3.0",
     "aos": "^2.3.4",
     "nuxt-storage": "^1.2.2",
-    "pinia": "^2.0.36"
-  },
-  "overrides": {
-    "vue": "latest"
+    "pinia": "^2.0.0"
   }
 }

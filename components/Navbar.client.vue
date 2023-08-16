@@ -1,4 +1,6 @@
 <script setup>
+
+
 const slideClassBind = ref(false);
 const userPanelVisible = ref(false);
 
@@ -43,9 +45,7 @@ const signOut = async () => {
       <NuxtLink to="/cart">
         <div class="cart-box">
           <img class="cart-img" src="@/assets/images/shopping-cart.svg" />
-          <p v-if="cartStore()?.items?.length ?? false" class="cart-counter">
-            &#9679;
-          </p>
+          <p v-if="cartStore()?.items?.length" class="cart-counter">&#9679;</p>
         </div>
       </NuxtLink>
       <img
@@ -142,15 +142,12 @@ header {
 /* Cart and user parts */
 .cart-box {
   z-index: 999;
-  /* border: 3px solid rgb(255, 156, 255); */
   padding: 0.2rem;
   margin-right: 4rem;
   border-radius: 1rem;
   transition: 0.1s;
   cursor: pointer;
-  position: absolute;
-  right: 4rem;
-  bottom: 0.4rem;
+  position: relative;
 }
 .cart-img {
   width: 2.7rem;
@@ -214,8 +211,9 @@ header {
 }
 
 .logged-user-ui {
-  position: relative;
-  padding-left: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .mobile-nav-button {
   display: none;

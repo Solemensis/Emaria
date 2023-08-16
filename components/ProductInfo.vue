@@ -11,7 +11,7 @@ onMounted(() => {
     const { data: fetchedProduct } = await useSanityQuery(query);
     product.value = fetchedProduct.value;
 
-    // LOCALSTORAGE:
+    //An add-on implementation using localstorage:
 
     //push item count to localStorage on pageload
     // const vcStorage = ref(nuxtStorage.localStorage.getData("viewedCategories"));
@@ -79,7 +79,7 @@ function uiMessageHandler(ui, err) {
 
 <template>
   <div v-if="product && product.value" class="flex">
-    <img
+    <nuxt-img
       data-aos="zoom-out"
       data-aos-duration="600"
       data-aos-easing="in-out-sine"

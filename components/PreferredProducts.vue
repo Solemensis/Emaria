@@ -1,4 +1,6 @@
 <script setup>
+//A component about an implementation using localstorage:
+
 import nuxtStorage from "nuxt-storage";
 
 //check localstorage to display suggestedProducts further
