@@ -6,6 +6,6 @@ definePageMeta({
 
 <template lang="">
   <div>
-    <CartCartWindow />
+    <CartUserCart />
   </div>
 </template>

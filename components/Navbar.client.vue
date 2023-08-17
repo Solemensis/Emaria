@@ -241,7 +241,6 @@ button {
 .login-button,
 .register-button {
   font-family: "Barlow Condensed";
-  font-size: 2rem;
   font-weight: 500;
 }
 .logout-button {
@@ -254,7 +253,7 @@ button {
 .login-button {
   cursor: pointer;
   padding: 0;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   position: relative;
 }
 
@@ -282,8 +281,7 @@ button {
   background-size: 200% auto;
   transition: 0.5s;
   color: white;
-  font-size: 1.6rem;
-  font-weight: 600;
+  font-size: 1.8rem;
   transition: 0.3s;
 }
 .register-button:active {
