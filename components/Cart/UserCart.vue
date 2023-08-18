@@ -1,15 +1,18 @@
 <script setup>
 //if user, fetch user cart
-onMounted(async () => {
+onMounted(() => {
   if (!user().value) return;
   if (cartStore().items?.length) return;
-  const { data: products } = await useFetch("/api/queryCart", {
-    method: "post",
-    body: { userId: user().value.id },
-  });
-  if (products.value) {
-    cartStore().items = products.value.cart;
-  }
+
+  setTimeout(async () => {
+    const { data: products } = await useFetch("/api/queryCart", {
+      method: "post",
+      body: { userId: user().value.id },
+    });
+    if (products.value) {
+      cartStore().items = products.value.cart;
+    }
+  }, 0);
 });
 
 async function removeFromCart(product) {
