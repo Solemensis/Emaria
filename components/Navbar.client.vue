@@ -5,12 +5,8 @@ const userPanelVisible = ref(false);
 function showUserPanel() {
   userPanelVisible.value = !userPanelVisible.value;
 }
-
-const signOut = async () => {
-  const { error } = await client().auth.signOut();
-  navigateTo("/");
-};
 </script>
+
 <template>
   <header class="page-format-wide">
     <div class="logo-container">
@@ -57,17 +53,10 @@ const signOut = async () => {
         alt="user icon"
       />
       <transition name="my-transition-2">
-        <ul v-show="userPanelVisible" class="user-panel">
-          <p class="user-mail">{{ user().value?.email }}</p>
-          <NuxtLink @click="showUserPanel" class="nav-link" to="/cart"
-            ><li class="user-panel-links">Cart</li>
-          </NuxtLink>
-          <NuxtLink @click="showUserPanel" class="nav-link" to="/profile">
-            <li class="user-panel-links">Profile</li>
-          </NuxtLink>
-
-          <li @click="signOut()" class="user-panel-links">Logout</li>
-        </ul>
+        <UserPanel
+          @closeUserPanel="() => (userPanelVisible = !userPanelVisible)"
+          v-show="userPanelVisible"
+        />
       </transition>
     </div>
     <div v-else class="not-logged-user-ui">
@@ -80,6 +69,7 @@ const signOut = async () => {
     </div>
   </header>
 </template>
+
 <style scoped>
 header {
   display: flex;
@@ -117,11 +107,15 @@ header {
   text-decoration: none;
   font-family: "Barlow Condensed";
   font-size: 2.5rem;
+  padding-bottom: 2px;
 }
 .nav-link.router-link-active {
   border-bottom: 3px solid rgb(255, 106, 255);
-  padding-bottom: 2px;
 }
+.nav-link:hover {
+  border-bottom: 3px solid rgb(255, 106, 255);
+}
+
 .nav-li:after,
 .nav-ul {
   display: flex;
@@ -164,52 +158,6 @@ header {
   right: 0;
   font-weight: 800 !important;
   z-index: 999;
-}
-
-.user-panel {
-  position: absolute;
-  top: 7rem;
-  right: 0;
-  flex-direction: column;
-  background-color: #ff004413;
-  border-radius: 0.5rem;
-  padding: 1rem 1rem;
-  list-style: none;
-  text-align: center;
-  z-index: 999;
-  border: 2px solid #ddd;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-.show-user-panel {
-  width: 4rem;
-  margin-left: 1rem;
-  border: 2px solid #2d2d2d5c;
-  border-radius: 0.7rem;
-  transition: 0.2s;
-}
-.show-user-panel:hover {
-  background-color: #ff00440b;
-}
-.user-mail {
-  min-width: 7rem;
-  font-size: 1.4rem;
-  color: #1faf24;
-  text-align: center;
-  margin-bottom: 0.8rem;
-  font-weight: 600;
-}
-
-.user-panel-links {
-  font-size: 1.8rem;
-  margin-bottom: -0.1rem;
-  cursor: pointer;
-  transition: 0.2s;
-  font-family: "Barlow Condensed";
-  color: black;
-}
-
-.user-panel-links:hover {
-  color: orangered;
 }
 
 .logged-user-ui {
