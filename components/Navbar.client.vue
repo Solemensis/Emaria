@@ -159,6 +159,16 @@ header {
   font-weight: 800 !important;
   z-index: 999;
 }
+.show-user-panel {
+  width: 4rem;
+  margin-left: 1rem;
+  border: 2px solid #2d2d2d5c;
+  border-radius: 0.7rem;
+  transition: 0.2s;
+}
+.show-user-panel:hover {
+  background-color: #ff00440b;
+}
 
 .logged-user-ui {
   display: flex;
@@ -293,7 +303,8 @@ button {
   }
 
   .cart-box {
-    right: 2rem !important;
+    right: 1rem !important;
+    margin-right: 0.5rem;
   }
   .login-button {
     font-size: 1.6rem;

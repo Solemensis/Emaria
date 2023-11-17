@@ -23,10 +23,11 @@ const signOut = async () => {
 .user-panel {
   position: absolute;
   top: 7rem;
-  right: 0;
+  right: 1rem;
   flex-direction: column;
-  background-color: #ff004413;
-  border-radius: 0.5rem;
+  background-color: #ffc0d1b5;
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
   padding: 1rem 1rem;
   list-style: none;
   text-align: center;
@@ -34,16 +35,7 @@ const signOut = async () => {
   border: 2px solid #ddd;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-.show-user-panel {
-  width: 4rem;
-  margin-left: 1rem;
-  border: 2px solid #2d2d2d5c;
-  border-radius: 0.7rem;
-  transition: 0.2s;
-}
-.show-user-panel:hover {
-  background-color: #ff00440b;
-}
+
 .user-mail {
   min-width: 7rem;
   font-size: 1.4rem;
