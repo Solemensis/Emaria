@@ -1,10 +1,12 @@
 <script setup>
+const supabase = useSupabaseClient();
+
 // const userName = ref("");
 const email = ref("");
 const password = ref("");
 
 const signUp = async () => {
-  const { data, error } = await client().auth.signUp({
+  const { data, error } = await supabase.auth.signUp({
     email: email.value,
     password: password.value,
   });
